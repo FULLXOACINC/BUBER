@@ -2,7 +2,6 @@ package by.zhuk.buber.command;
 
 import by.zhuk.buber.exeption.UnknownOAuthException;
 import by.zhuk.buber.oauth.OAuth;
-
 import by.zhuk.buber.oauth.OAuthYandex;
 
 class OAuthFactory {

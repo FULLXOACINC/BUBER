@@ -107,7 +107,7 @@ public final class ConnectionPool {
         }
     }
 
-    private static void initPool() {
+    private void initPool() {
         final String DATABASE_PROPERTY = "database";
         final String DATABASE_URL = "db.url";
         final String DATABASE_USER = "db.user";

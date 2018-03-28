@@ -1,0 +1,85 @@
+2018-03-28 16:01:17.879 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:01:20.434 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:01:20.452 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:01:20.552 [main]  INFO  by.zhuk.buber.repository.UserRepository in delete- User{login='testAddLogin', firstName='null', lastName='null', age=0, isBaned=false, phoneNumber='null', balance=null, type=null} was deleted successful
+2018-03-28 16:01:20.556 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:14:30.279 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:14:32.457 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:14:32.495 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:14:32.671 [main]  INFO  by.zhuk.buber.repository.UserRepository in add- User{login='testAddLogin', firstName='testAddName', lastName='testAddLastName', age=21, isBaned=false, phoneNumber='291713229', balance=99.8900000000000005684341886080801486968994140625, type=USER} was added successful
+2018-03-28 16:14:32.680 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:16:13.679 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:16:16.056 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:16:16.089 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:16:16.383 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:16:49.802 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:16:52.760 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:16:52.821 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:16:53.048 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:17:21.489 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:17:23.813 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:17:23.839 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:17:23.989 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:17:48.052 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:17:51.240 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:17:51.275 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:18:04.814 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:23:13.829 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:23:16.098 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:23:16.129 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:23:16.288 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:24:04.289 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:24:06.947 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:24:06.990 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:24:07.227 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:24:41.574 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:24:43.679 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:24:43.703 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:24:43.820 [main]  INFO  by.zhuk.buber.repository.UserRepository in add- User{login='testAddLogin', firstName='testAddName', lastName='testAddLastName', age=21, isBaned=false, phoneNumber='291713229', balance=99.8900000000000005684341886080801486968994140625, type=USER} was added successful
+2018-03-28 16:24:43.822 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:24:58.271 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:25:00.554 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:25:00.577 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:25:00.737 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:25:33.732 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:25:36.157 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:25:36.178 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:25:36.342 [main]  INFO  by.zhuk.buber.repository.UserRepository in delete- User{login='testAddLogin', firstName='null', lastName='null', age=0, isBaned=false, phoneNumber='null', balance=null, type=null} was deleted successful
+2018-03-28 16:25:36.344 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:41:43.750 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:41:46.020 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:41:46.042 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:41:46.117 [main]  INFO  by.zhuk.buber.repository.UserRepository in delete- User{login='testAddLogin', firstName='null', lastName='null', age=0, isBaned=false, phoneNumber='null', balance=null, type=null} delete successful
+2018-03-28 16:41:46.125 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:42:19.878 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:42:22.465 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:42:31.162 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:42:31.420 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:44:08.416 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:44:10.985 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:44:15.181 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:44:15.459 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:46:11.097 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:46:12.552 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:46:12.559 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:46:12.679 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:46:39.218 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:46:41.720 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:46:56.424 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:48:05.515 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:48:21.451 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:48:24.152 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:48:29.939 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:49:30.212 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:49:32.822 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:49:58.886 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:50:11.189 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:51:38.953 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:52:06.683 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:52:09.417 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:52:19.156 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:52:21.701 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-03-28 16:54:35.986 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-03-28 16:54:38.616 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-03-28 16:54:38.635 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-03-28 16:54:38.924 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
