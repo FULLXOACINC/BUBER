@@ -4,7 +4,7 @@ import by.zhuk.buber.constant.OAuthConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.exeption.UnknownOAuthException;
 import by.zhuk.buber.oauth.OAuth;
-import by.zhuk.buber.validator.AuthorizationValidator;
+import by.zhuk.buber.validator.LoginValidator;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -18,7 +18,7 @@ public class OAuthCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
-        if (AuthorizationValidator.isAuthorization(request.getSession())) {
+        if (LoginValidator.isAuthorization(request.getSession())) {
             return new CommandResult(TransitionType.FORWARD, PagesConstant.WELCOM_PAGE);
         }
 

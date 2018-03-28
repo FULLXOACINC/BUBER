@@ -2,7 +2,7 @@ package by.zhuk.buber.filter;
 
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.validator.AuthorizationValidator;
+import by.zhuk.buber.validator.LoginValidator;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (AuthorizationValidator.isAuthorization(request.getSession()) || isLoginRequest(request.getParameter("command"))) {
+        if (LoginValidator.isAuthorization(request.getSession()) || isLoginRequest(request.getParameter("command"))) {
             filterChain.doFilter(request, response);
         } else {
             request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);

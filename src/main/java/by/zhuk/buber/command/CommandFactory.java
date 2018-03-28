@@ -15,6 +15,10 @@ public class CommandFactory {
                 command = new OAuthCommand();
                 break;
             }
+            case "login": {
+                command = new LogInCommand();
+                break;
+            }
             case "logOut": {
                 command = new LogOutCommand();
                 break;

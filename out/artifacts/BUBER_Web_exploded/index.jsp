@@ -5,6 +5,6 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<jsp:forward page="pages/welcom.jsp"/>
+<jsp:forward page="pages/welcome.jsp"/>
 </body>
 </html>
