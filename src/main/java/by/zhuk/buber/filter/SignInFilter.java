@@ -1,12 +1,13 @@
 package by.zhuk.buber.filter;
 
+import by.zhuk.buber.command.CommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.LoginValidator;
+import by.zhuk.buber.validator.SignInValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,8 +25,8 @@ import java.io.IOException;
 import java.util.Optional;
 
 @WebFilter("/*")
-public class LoginFilter implements Filter {
-    private static Logger logger = LogManager.getLogger(LoginFilter.class);
+public class SignInFilter implements Filter {
+    private static Logger logger = LogManager.getLogger(SignInFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -38,7 +39,7 @@ public class LoginFilter implements Filter {
             filterChain.doFilter(request, response);
             return;
         }
-        if (LoginValidator.isAuthorization(session)) {
+        if (SignInValidator.isAuthorization(session)) {
             UserReceiver receiver = new UserReceiver();
             String login = (String) session.getAttribute(UserConstant.LOGIN);
             Optional<User> userOptional = Optional.empty();
@@ -63,7 +64,7 @@ public class LoginFilter implements Filter {
     }
 
     private boolean isLoginRequest(String command) {
-        return command != null && (command.equals(CommandConstant.LOGIN) || command.equals(CommandConstant.OAUTH));
+        return command != null && (command.toUpperCase().equals(CommandType.SIGNIN.name()) || (command.toUpperCase().equals(CommandType.OAUTH.name())));
     }
 
     @Override

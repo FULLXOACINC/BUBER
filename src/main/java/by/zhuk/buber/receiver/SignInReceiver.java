@@ -11,7 +11,7 @@ import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 
 import java.util.List;
 
-public class LoginReceiver {
+public class SignInReceiver {
 
     public boolean isLoginExist(String login) throws ReceiverException {
         Repository<User> repository = new UserRepository();

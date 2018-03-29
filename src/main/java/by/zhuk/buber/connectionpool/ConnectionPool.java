@@ -14,8 +14,8 @@ import java.util.Enumeration;
 import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -143,7 +143,7 @@ public final class ConnectionPool {
         properties.put("useUnicode", USE_UNICODE);
 
         poolSize = Integer.parseInt(POOL_SIZE);
-        connectionQueue = new ArrayBlockingQueue<>(poolSize);
+        connectionQueue = new LinkedBlockingDeque<>(poolSize);
         try {
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             logger.log(Level.INFO, "Register MySQL JDBC driver");

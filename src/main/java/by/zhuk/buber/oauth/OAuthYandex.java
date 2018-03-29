@@ -69,8 +69,8 @@ public class OAuthYandex implements OAuth {
             tokenUrl = resourceBundle.getString(FACEBOOK_TOKEN_URL);
 
         } catch (MissingResourceException e) {
-            logger.log(Level.FATAL, "Hasn't found bundle for facebook");
-            throw new RuntimeException("Hasn't found bundle for facebook");
+            logger.log(Level.FATAL, "Hasn't found bundle for yandex");
+            throw new RuntimeException("Hasn't found bundle for yandex");
         }
         try {
             authUrl = authURI + "authorize?client_id=" + clientId +

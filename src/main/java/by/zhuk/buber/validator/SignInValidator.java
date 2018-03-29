@@ -4,7 +4,7 @@ import by.zhuk.buber.constant.UserConstant;
 
 import javax.servlet.http.HttpSession;
 
-public class LoginValidator {
+public class SignInValidator {
     private static final String LOGIN_REGEXP = "[\\w\\d]{3,20}@[\\w\\d]{3,20}.[\\w\\d]{2,10}";
 
     public static boolean isAuthorization(HttpSession session) {

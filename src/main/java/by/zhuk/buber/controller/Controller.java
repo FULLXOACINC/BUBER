@@ -4,6 +4,7 @@ import by.zhuk.buber.command.Command;
 import by.zhuk.buber.command.CommandFactory;
 import by.zhuk.buber.command.CommandResult;
 import by.zhuk.buber.command.TransitionType;
+import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +21,6 @@ import java.util.Optional;
 @WebServlet(urlPatterns = {"/controller"}, name = "controller")
 public class Controller extends HttpServlet {
     private static Logger logger = LogManager.getLogger(Controller.class);
-    private static String COMMAND = "command";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -32,7 +32,7 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Optional<Command> commandOptional = CommandFactory.findCommand(request.getParameter(COMMAND));
+        Optional<Command> commandOptional = CommandFactory.findCommand(request.getParameter(CommandConstant.COMMAND));
         if (commandOptional.isPresent()) {
             CommandResult result = commandOptional.get().execute(request);
 

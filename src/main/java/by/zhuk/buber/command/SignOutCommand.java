@@ -5,7 +5,7 @@ import by.zhuk.buber.constant.UserConstant;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class LogOutCommand implements Command {
+public class SignOutCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request) {

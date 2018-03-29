@@ -5,7 +5,7 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.UnknownOAuthException;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.oauth.OAuth;
-import by.zhuk.buber.validator.LoginValidator;
+import by.zhuk.buber.validator.SignInValidator;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -19,7 +19,7 @@ public class OAuthCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
-        if (LoginValidator.isAuthorization(request.getSession())) {
+        if (SignInValidator.isAuthorization(request.getSession())) {
             return new CommandResult(TransitionType.FORWARD, PagesConstant.WELCOME_PAGE);
         }
 
@@ -52,7 +52,6 @@ public class OAuthCommand implements Command {
                 try {
                     httpclient.executeMethod(post);
                     JSONObject jsonPostResult = oAuth.parseResult(post);
-
                     GetMethod get = new GetMethod(oAuth.takeLoginInfoUrl(jsonPostResult));
                     httpclient.executeMethod(get);
                     JSONObject jsonGetResult = oAuth.parseResult(get);

@@ -7,6 +7,8 @@ import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.specification.SQLSpecification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
@@ -15,24 +17,59 @@ import java.util.List;
 import static org.testng.Assert.fail;
 
 public class UserRepositoryTest {
+    private User user;
+    private User updateUser;
+    private User findUser;
+    private UserRepository repository;
 
-    @Test
-    public void testAddPositive() {
+    @BeforeTest
+    public void start() {
         ConnectionPool.getInstance();
-        UserRepository repository = new UserRepository();
-        User user = new User();
-        user.setLogin("testAddLogin");
-        user.setFirstName("testAddName");
-        user.setLastName("testAddLastName");
+        repository = new UserRepository();
+        user = new User();
+        user.setLogin("testLogin");
+        user.setFirstName("testName");
+        user.setLastName("testLastName");
         user.setPassword("password");
         user.setType(UserType.USER);
         user.setBalance(new BigDecimal(99.89));
         user.setAge(21);
         user.setPhoneNumber("291713229");
+
+        findUser = new User();
+        findUser.setLogin("san91130324@gmail.com");
+        findUser.setFirstName("Alex");
+        findUser.setLastName("Zhuk");
+        findUser.setPassword("dc76e9f0c0006e8f919e0c515c66dbba3982f785");
+        findUser.setType(UserType.ADMIN);
+        findUser.setBalance(new BigDecimal("12.00"));
+        findUser.setAge(20);
+        findUser.setPhoneNumber("291713227");
+        findUser.setBaned(false);
+
+        updateUser = new User();
+        updateUser.setLogin("testLogin");
+        updateUser.setFirstName("testName");
+        updateUser.setLastName("testLastName");
+        updateUser.setPassword("password");
+        updateUser.setType(UserType.USER);
+        updateUser.setBalance(new BigDecimal(96.89));
+        updateUser.setAge(21);
+        updateUser.setPhoneNumber("291713229");
+
+    }
+
+    @AfterTest
+    public void end() {
+
+    }
+
+    @Test
+    public void testAddPositive() {
         try {
             repository.add(user);
         } catch (RepositoryException e) {
-            fail("Test does not throws RepositoryException",e);
+            fail("Test does not throws RepositoryException", e);
         }
     }
 
@@ -52,7 +89,7 @@ public class UserRepositoryTest {
         try {
             repository.update(user);
         } catch (RepositoryException e) {
-            fail("Test does not throws RepositoryException",e);
+            fail("Test does not throws RepositoryException", e);
         }
     }
 
@@ -60,12 +97,12 @@ public class UserRepositoryTest {
     public void testDeletePositive() {
         ConnectionPool.getInstance();
         UserRepository repository = new UserRepository();
-        User user =new User();
+        User user = new User();
         user.setLogin("testAddLogin");
         try {
             repository.delete(user);
         } catch (RepositoryException e) {
-            fail("Test does not throws RepositoryException",e);
+            fail("Test does not throws RepositoryException", e);
         }
     }
 
@@ -85,11 +122,11 @@ public class UserRepositoryTest {
         user.setPhoneNumber("291713227");
         user.setBaned(false);
         try {
-            List<User> users=repository.find(sqlSpecification);
-            User result=users.get(0);
-            Assert.assertEquals(result,user);
+            List<User> users = repository.find(sqlSpecification);
+            User result = users.get(0);
+            Assert.assertEquals(result, user);
         } catch (RepositoryException e) {
-            fail("Test does not throws RepositoryException",e);
+            fail("Test does not throws RepositoryException", e);
         }
     }
 }
