@@ -95,8 +95,8 @@ public class OAuthYandex implements OAuth {
     }
 
     @Override
-    public String takeDisplayName(JSONObject json) {
-        return json.getString("display_name");
+    public String takeEmail(JSONObject json) {
+        return (String)json.getJSONArray("emails").get(0);
     }
 
     @Override

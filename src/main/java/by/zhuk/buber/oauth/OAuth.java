@@ -21,5 +21,5 @@ public interface OAuth {
 
     JSONObject parseResult(HttpMethod method);
 
-    String takeDisplayName(JSONObject json);
+    String takeEmail(JSONObject json);
 }

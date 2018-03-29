@@ -14,7 +14,8 @@
     <title>${buber}</title>
 </head>
 <body>
-${buber}
+${sessionScope.login}
+${sessionScope.type}
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <input type="hidden" name="command" value="logOut">
     <input type="submit" value="${logOut}">

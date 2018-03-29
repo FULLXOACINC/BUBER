@@ -1,35 +1,20 @@
 package by.zhuk.buber.command;
 
-import by.zhuk.buber.exeption.UnknownCommandException;
+
+import java.util.Optional;
 
 public class CommandFactory {
 
-    public static Command createCommand(String commandName) throws UnknownCommandException {
-        Command command;
-        switch (commandName) {
-            case "lang": {
-                command = new LangChangeCommand();
-                break;
-            }
-            case "oauth": {
-                command = new OAuthCommand();
-                break;
-            }
-            case "login": {
-                command = new LogInCommand();
-                break;
-            }
-            case "logOut": {
-                command = new LogOutCommand();
-                break;
-            }
-            default: {
-                throw new UnknownCommandException(commandName);
-            }
 
-
+    public static Optional<Command> findCommand(String commandName) {
+        try{
+            CommandType type = CommandType.valueOf(commandName.toUpperCase());
+            return Optional.of(type.getCommand());
+        }catch (IllegalArgumentException e){
+            return Optional.empty();
         }
-        return command;
+
     }
+
 
 }

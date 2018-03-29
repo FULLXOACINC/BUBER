@@ -5,7 +5,7 @@ import by.zhuk.buber.command.CommandFactory;
 import by.zhuk.buber.command.CommandResult;
 import by.zhuk.buber.command.TransitionType;
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.exeption.UnknownCommandException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet(urlPatterns = {"/controller"}, name = "controller")
 public class Controller extends HttpServlet {
@@ -30,20 +31,23 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Command command;
-        try {
-            command = CommandFactory.createCommand(request.getParameter(COMMAND));
-            CommandResult result = command.execute(request);
+
+        Optional<Command> commandOptional = CommandFactory.findCommand(request.getParameter(COMMAND));
+        if (commandOptional.isPresent()) {
+            CommandResult result = commandOptional.get().execute(request);
+
+
             if (result.getType() == TransitionType.FORWARD) {
                 request.getRequestDispatcher(result.getTransitionResource()).forward(request, response);
             } else {
                 response.sendRedirect(result.getTransitionResource());
             }
-
-        } catch (UnknownCommandException e) {
-            request.getRequestDispatcher(PagesConstant.WELCOM_PAGE).forward(request, response);
-            logger.catching(e);
         }
+        else {
+            logger.log(Level.WARN,"Unknown command");
+            response.sendRedirect(PagesConstant.WELCOME_PAGE);
+        }
+
     }
 
 

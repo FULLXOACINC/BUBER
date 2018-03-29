@@ -14,6 +14,6 @@ public class LangChangeCommand implements Command {
         HttpSession session = request.getSession();
         session.setAttribute(LANG, lang);
 
-        return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOM_PAGE);
+        return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
     }
 }

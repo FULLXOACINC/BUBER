@@ -11,12 +11,14 @@
 <fmt:message bundle="${locale}" key="text.enter" var="enter"/>
 <fmt:message bundle="${locale}" key="text.errors.loginNotValid" var="loginNotValidMessage"/>
 <fmt:message bundle="${locale}" key="text.errors.loginNotExist" var="loginNotExistMessage"/>
+<fmt:message bundle="${locale}" key="text.errors.loginPasswordNotEq" var="loginPasswordNotEqMessage"/>
+<fmt:message bundle="${locale}" key="text.errors.bannedError" var="bannedErrorMessage"/>
 <html>
 <head>
     <title>${login}</title>
 </head>
 <body>
-<form action="${ pageContext.request.contextPath }/controller">
+<form action="${ pageContext.request.contextPath }/controller" method="post">
     <p>${login}<input type="text" name="login"/></p>
     <p>${password}<input type="password" name="password"/></p>
     <input type="hidden" name="command" value="login">
@@ -28,6 +30,12 @@
 </c:if>
 <c:if test="${loginExistError}">
     ${loginNotExistMessage}
+</c:if>
+<c:if test="${loginPasswordError}">
+    ${loginPasswordNotEqMessage}
+</c:if>
+<c:if test="${bannedError}">
+    ${bannedErrorMessage}
 </c:if>
 <br/>
 <hr/>

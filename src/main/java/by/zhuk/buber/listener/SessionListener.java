@@ -18,7 +18,7 @@ public class SessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
         session.setAttribute(LANG, RU);
-        session.setAttribute(LAST_PAGE, PagesConstant.WELCOM_PAGE);
+        session.setAttribute(LAST_PAGE, PagesConstant.WELCOME_PAGE);
     }
 
     @Override
