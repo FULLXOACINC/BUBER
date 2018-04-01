@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter(urlPatterns = {"/*"},filterName="saveLastPage")
 public class SaveLastPageUrlFilter implements Filter {
     private static final String LAST_PAGE_URL = "lastPageUrl";
     private static final String CHANGE_LANG = "changeLang";

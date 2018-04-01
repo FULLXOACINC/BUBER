@@ -3,8 +3,9 @@ package by.zhuk.buber.command;
 public enum CommandType {
     LANG(new LangChangeCommand()),
     OAUTH(new OAuthCommand()),
-    SIGNIN(new SignInCommand()),
-    SIGNOUT(new SignOutCommand());
+    SIGN_IN(new SignInCommand()),
+    SIGN_UP_USER(new SignUpUserCommand()),
+    SIGN_OUT(new SignOutCommand());
 
     private Command command;
 

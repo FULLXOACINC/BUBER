@@ -34,7 +34,7 @@ public class UserRepositoryTest {
         user.setType(UserType.USER);
         user.setBalance(new BigDecimal(99.89));
         user.setAge(21);
-        user.setPhoneNumber("291713229");
+        user.setPhoneNumber("+375291713229");
 
         findUser = new User();
         findUser.setLogin("san91130324@gmail.com");
@@ -44,7 +44,7 @@ public class UserRepositoryTest {
         findUser.setType(UserType.ADMIN);
         findUser.setBalance(new BigDecimal("12.00"));
         findUser.setAge(20);
-        findUser.setPhoneNumber("291713227");
+        findUser.setPhoneNumber("+375291713227");
         findUser.setBaned(false);
 
         updateUser = new User();
@@ -55,7 +55,7 @@ public class UserRepositoryTest {
         updateUser.setType(UserType.USER);
         updateUser.setBalance(new BigDecimal(96.89));
         updateUser.setAge(21);
-        updateUser.setPhoneNumber("291713229");
+        updateUser.setPhoneNumber("+375291713229");
 
     }
 
@@ -85,7 +85,7 @@ public class UserRepositoryTest {
         user.setType(UserType.USER);
         user.setBalance(new BigDecimal(98.89));
         user.setAge(21);
-        user.setPhoneNumber("291713229");
+        user.setPhoneNumber("+375291713229");
         try {
             repository.update(user);
         } catch (RepositoryException e) {
@@ -119,7 +119,7 @@ public class UserRepositoryTest {
         user.setType(UserType.ADMIN);
         user.setBalance(new BigDecimal("12.00"));
         user.setAge(20);
-        user.setPhoneNumber("291713227");
+        user.setPhoneNumber("+375291713227");
         user.setBaned(false);
         try {
             List<User> users = repository.find(sqlSpecification);

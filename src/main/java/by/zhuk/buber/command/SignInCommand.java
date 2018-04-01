@@ -7,12 +7,15 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public class SignInCommand implements Command {
+    private static Logger logger = LogManager.getLogger(SignInCommand.class);
     private static String LOGIN="login";
     private static String PASSWORD="password";
 
@@ -24,7 +27,7 @@ public class SignInCommand implements Command {
     public CommandResult execute(HttpServletRequest request) {
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
-        if (!SignInValidator.isLoginValide(login)) {
+        if (!SignInValidator.isLoginValid(login)) {
             request.setAttribute(SIGN_IN_VLIDE_ERROR, true);
             return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
         }
@@ -49,6 +52,7 @@ public class SignInCommand implements Command {
             session.setAttribute(UserConstant.TYPE,user.getType().name());
         } catch (ReceiverException e) {
             //TODO go to error page
+            logger.catching(e);
             return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
         return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);

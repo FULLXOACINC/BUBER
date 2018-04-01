@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter("/*")
+@WebFilter(urlPatterns = {"/*"},filterName="signIn")
 public class SignInFilter implements Filter {
     private static Logger logger = LogManager.getLogger(SignInFilter.class);
 
@@ -34,8 +34,9 @@ public class SignInFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
         HttpSession session = request.getSession();
-        if (isLoginRequest(request.getParameter(CommandConstant.COMMAND))) {
+        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE)) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -63,8 +64,8 @@ public class SignInFilter implements Filter {
         }
     }
 
-    private boolean isLoginRequest(String command) {
-        return command != null && (command.toUpperCase().equals(CommandType.SIGNIN.name()) || (command.toUpperCase().equals(CommandType.OAUTH.name())));
+    private boolean isLoginCommand(String command) {
+        return command != null && (command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name()) || command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name()) || (command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name())));
     }
 
     @Override

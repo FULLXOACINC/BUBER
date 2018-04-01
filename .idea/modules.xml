@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BUBER.iml" filepath="$PROJECT_DIR$/BUBER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buber.iml" filepath="$PROJECT_DIR$/buber.iml" />
     </modules>
   </component>
 </project>

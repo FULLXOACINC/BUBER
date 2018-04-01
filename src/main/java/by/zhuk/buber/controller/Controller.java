@@ -31,8 +31,8 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Optional<Command> commandOptional = CommandFactory.findCommand(request.getParameter(CommandConstant.COMMAND));
+        String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
+        Optional<Command> commandOptional = CommandFactory.findCommand(command);
         if (commandOptional.isPresent()) {
             CommandResult result = commandOptional.get().execute(request);
 
@@ -42,9 +42,8 @@ public class Controller extends HttpServlet {
             } else {
                 response.sendRedirect(result.getTransitionResource());
             }
-        }
-        else {
-            logger.log(Level.WARN,"Unknown command");
+        } else {
+            logger.log(Level.WARN, "Unknown command");
             response.sendRedirect(PagesConstant.WELCOME_PAGE);
         }
 
