@@ -29,8 +29,8 @@ public final class ConnectionPool {
 
     private ConnectionPool() {
         if (instanceCreated.get()) {
-            logger.log(Level.FATAL, "Tried to clone connection pool with reflection api");
-            throw new RuntimeException("Tried to clone connection pool with reflection api");
+            logger.log(Level.FATAL, "Tried to create connection pool with reflection api");
+            throw new RuntimeException("Tried to create connection pool with reflection api");
         }
     }
 

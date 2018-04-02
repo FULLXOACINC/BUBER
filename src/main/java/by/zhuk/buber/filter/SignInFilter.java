@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter(urlPatterns = {"/*"},filterName="signIn")
+@WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
 public class SignInFilter implements Filter {
     private static Logger logger = LogManager.getLogger(SignInFilter.class);
 
@@ -47,17 +47,21 @@ public class SignInFilter implements Filter {
             try {
                 userOptional = receiver.findUserByLogin(login);
             } catch (ReceiverException e) {
+                //TODO error page
                 logger.catching(e);
             }
-            User user = userOptional.get();
-            if (!user.isBaned()) {
-                filterChain.doFilter(request, response);
-            } else {
-                session.removeAttribute(UserConstant.LOGIN);
-                session.removeAttribute(UserConstant.TYPE);
-                request.setAttribute("bannedError", true);
-                request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                if (!user.isBaned()) {
+                    filterChain.doFilter(request, response);
+                } else {
+                    session.removeAttribute(UserConstant.LOGIN);
+                    session.removeAttribute(UserConstant.TYPE);
+                    request.setAttribute("bannedError", true);
+                    request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
+                }
             }
+
 
         } else {
             request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
@@ -65,7 +69,7 @@ public class SignInFilter implements Filter {
     }
 
     private boolean isLoginCommand(String command) {
-        return command != null && (command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name()) || command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name()) || (command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name())));
+        return command != null && (command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name()) || command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_ACCEPT.name())|| command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name()) || (command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name())));
     }
 
     @Override

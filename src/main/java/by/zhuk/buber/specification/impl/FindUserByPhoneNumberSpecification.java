@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.impl;
 
 import by.zhuk.buber.specification.SQLSpecification;
-import by.zhuk.buber.specification.Specification;
 
 import java.util.ArrayList;
 import java.util.List;

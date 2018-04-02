@@ -5,6 +5,7 @@ public enum CommandType {
     OAUTH(new OAuthCommand()),
     SIGN_IN(new SignInCommand()),
     SIGN_UP_USER(new SignUpUserCommand()),
+    SIGN_UP_ACCEPT(new SignUpAcceptCommand()),
     SIGN_OUT(new SignOutCommand());
 
     private Command command;

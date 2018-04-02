@@ -1,11 +1,7 @@
 package by.zhuk.buber.command;
 
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.mail.MailProperty;
-import by.zhuk.buber.mail.MailThread;
-import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.validator.SignInValidator;
@@ -14,10 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class SignUpUserCommand implements Command {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
@@ -92,31 +84,9 @@ public class SignUpUserCommand implements Command {
 
             return new CommandResult(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
         } else {
-            try {
-                signUpReceiver.saveUser(login, firstName, secondName, password, age, phoneNumber);
-            } catch (ReceiverException e) {
-                //TODO error page
-                logger.catching(e);
-                return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
-            }
-            MessageDigest messageDigest;
-            try {
-                messageDigest = MessageDigest.getInstance("SHA-1");
-                messageDigest.update((login + "" + password).getBytes("UTF-8"));
-            } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-                //TODO error page
-                logger.catching(e);
-                return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
-            }
-
-            String encryptedString = new String(messageDigest.digest());
-            MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?hash=" + encryptedString + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
-            thread.start();
-
-            HttpSession session = request.getSession();
-            session.setAttribute(UserConstant.LOGIN, login);
-            session.setAttribute(UserConstant.TYPE, UserType.USER.name());
-            return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+            signUpReceiver.sendAcceptMail(login,firstName,secondName,password,age,phoneNumber);
+            request.setAttribute("allCorrect", true);
+            return new CommandResult(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
         }
 
     }

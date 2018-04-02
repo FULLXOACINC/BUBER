@@ -14,6 +14,7 @@
 <fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
 <fmt:message bundle="${locale}" key="text.age" var="age"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
+<fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
 <fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.loginExistErrorMessage" var="loginExistErrorMessage"/>
@@ -70,6 +71,9 @@
 </c:if>
 <c:if test="${notValidPhoneNumberError}">
     <p> ${notValidPhoneNumberErrorMessage}</p>
+</c:if>
+<c:if test="${allCorrect}">
+    <p> ${allCorrectMessage}</p>
 </c:if>
 
 <br/>
