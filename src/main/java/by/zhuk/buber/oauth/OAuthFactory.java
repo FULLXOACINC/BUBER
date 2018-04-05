@@ -1,23 +1,16 @@
 package by.zhuk.buber.oauth;
 
-import by.zhuk.buber.exeption.UnknownOAuthException;
-import by.zhuk.buber.oauth.OAuth;
-import by.zhuk.buber.oauth.OAuthYandex;
+import java.util.Optional;
 
 public class OAuthFactory {
-    public static OAuth create(String loginType) throws UnknownOAuthException {
-        OAuth oAuth;
-        switch (loginType) {
-            case "yandex": {
-                oAuth = OAuthYandex.getInstance();
-                break;
-            }
-            default: {
-                throw new UnknownOAuthException(loginType);
-            }
 
-
+    public static Optional<OAuth> findOAuth(String oAuthType) {
+        try{
+            OAuthType type = OAuthType.valueOf(oAuthType.toUpperCase());
+            return Optional.of(type.getOAuth());
+        }catch (IllegalArgumentException e){
+            return Optional.empty();
         }
-        return oAuth;
+
     }
 }

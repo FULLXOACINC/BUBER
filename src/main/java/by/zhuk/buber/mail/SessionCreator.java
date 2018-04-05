@@ -1,5 +1,6 @@
 package by.zhuk.buber.mail;
 
+import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
@@ -45,7 +46,7 @@ public class SessionCreator {
     }
 
     public Session createSession() {
-        return Session.getDefaultInstance(sessionProperties, new javax.mail.Authenticator() {
+        return Session.getDefaultInstance(sessionProperties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, userPassword);
             }

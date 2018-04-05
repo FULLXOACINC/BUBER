@@ -14,15 +14,17 @@ import java.util.List;
 
 public class FindUsersCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
+    private static final String PATTERN = "pattern";
+    private static final String USERS = "users";
 
     @Override
-    public CommandResult execute(HttpServletRequest request) {
+    public Router execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
         if (!AdminValidator.isAdmin(session)) {
-            return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
         }
-        String findPattern = request.getParameter("pattern");
+        String findPattern = request.getParameter(PATTERN);
         UserReceiver receiver = new UserReceiver();
         List<User> users;
         try {
@@ -30,12 +32,12 @@ public class FindUsersCommand implements Command {
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
 
         }
-        request.setAttribute("users", users);
+        request.setAttribute(USERS, users);
 
-        return new CommandResult(TransitionType.FORWARD, PagesConstant.ADMIN_PAGE);
+        return new Router(TransitionType.FORWARD, PagesConstant.ADMIN_PAGE);
 
     }
 }

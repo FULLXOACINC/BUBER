@@ -1,4 +1,4 @@
-package by.zhuk.buber.singleton;
+package by.zhuk.buber.signuppool;
 
 import by.zhuk.buber.model.User;
 

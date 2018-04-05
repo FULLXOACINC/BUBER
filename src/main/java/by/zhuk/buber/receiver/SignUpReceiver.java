@@ -8,8 +8,8 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.UserRepository;
-import by.zhuk.buber.singleton.SignUpUserInfo;
-import by.zhuk.buber.singleton.SignUpUserPool;
+import by.zhuk.buber.signuppool.SignUpUserInfo;
+import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByPhoneNumberSpecification;
 

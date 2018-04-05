@@ -5,13 +5,12 @@ import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.UserRepository;
-import by.zhuk.buber.singleton.SignUpUserInfo;
-import by.zhuk.buber.singleton.SignUpUserPool;
+import by.zhuk.buber.signuppool.SignUpUserInfo;
+import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByLoginAndPasswordSpecification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,6 +26,7 @@ public class SignInReceiver {
             throw new ReceiverException(e);
         }
         ConcurrentHashMap<String, SignUpUserInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
+
         boolean isLoginExistSignUp = false;
         for (SignUpUserInfo info : signUpMap.values()) {
             if (info.getUser().getLogin().equals(login)) {

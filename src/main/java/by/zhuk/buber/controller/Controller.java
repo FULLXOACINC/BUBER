@@ -2,7 +2,7 @@ package by.zhuk.buber.controller;
 
 import by.zhuk.buber.command.Command;
 import by.zhuk.buber.command.CommandFactory;
-import by.zhuk.buber.command.CommandResult;
+import by.zhuk.buber.command.Router;
 import by.zhuk.buber.command.TransitionType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
         String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
         Optional<Command> commandOptional = CommandFactory.findCommand(command);
         if (commandOptional.isPresent()) {
-            CommandResult result = commandOptional.get().execute(request);
+            Router result = commandOptional.get().execute(request);
 
 
             if (result.getType() == TransitionType.FORWARD) {

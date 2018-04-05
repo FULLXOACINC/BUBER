@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 public class SignOutCommand implements Command {
 
     @Override
-    public CommandResult execute(HttpServletRequest request) {
+    public Router execute(HttpServletRequest request) {
         request.getSession().removeAttribute(UserConstant.LOGIN);
         request.getSession().removeAttribute(UserConstant.TYPE);
-        return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+        return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
     }
 }

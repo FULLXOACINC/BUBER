@@ -1,4 +1,4 @@
-package by.zhuk.buber.singleton;
+package by.zhuk.buber.signuppool;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

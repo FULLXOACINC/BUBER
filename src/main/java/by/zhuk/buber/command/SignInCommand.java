@@ -25,42 +25,42 @@ public class SignInCommand implements Command {
     private static String SIGN_IN_PASSWORD_ERROR="signInPasswordError";
 
     @Override
-    public CommandResult execute(HttpServletRequest request) {
+    public Router execute(HttpServletRequest request) {
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
         if (!SignInValidator.isLoginValid(login)) {
             request.setAttribute(SIGN_IN_VLIDE_ERROR, true);
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
         }
         SignInReceiver signInReceiver = new SignInReceiver();
         try {
             if (!signInReceiver.isLoginExist(login)) {
                 request.setAttribute(SIGN_IN_EXIST_ERROR, true);
-                return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+                return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
             }
             if (!signInReceiver.checkPassword(login, password)) {
                 request.setAttribute(SIGN_IN_PASSWORD_ERROR, true);
-                return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+                return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
             }
             UserReceiver userReceiver = new UserReceiver();
             Optional<User> userOptional =userReceiver.findUserByLogin(login);
             HttpSession session = request.getSession();
             if (!userOptional.isPresent()) {
-                return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+                return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
             }
             User user =userOptional.get();
             session.setAttribute(UserConstant.LOGIN,user.getLogin());
             session.setAttribute(UserConstant.TYPE,user.getType().name());
             if(user.getType() == UserType.ADMIN){
-                return new CommandResult(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
+                return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
             }else {
-                return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+                return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
             }
 
         } catch (ReceiverException e) {
             //TODO go to error page
             logger.catching(e);
-            return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
 
     }

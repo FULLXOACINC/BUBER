@@ -13,16 +13,43 @@ import javax.servlet.http.HttpServletRequest;
 
 public class SignUpUserCommand implements Command {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
+    private static final String LOGIN = "login";
+    private static final String FIRST_NAME = "firstName";
+    private static final String SECOND_NAME = "secondName";
+    private static final String PASSWORD = "password";
+    private static final String REPEAT_PASSWORD = "repeatPassword";
+    private static final String AGE = "age";
+    private static final String PHONE_NUMBER = "phoneNumber";
+
+
+    private static final String NOT_VALID_LOGIN_ERROR = "notValidLoginError";
+    private static final String LOGIN_EXIST_ERROR = "loginExistError";
+    private static final String PHONE_NUMBER_EXIST_ERROR = "phoneNumberExistError";
+    private static final String FIRST_NAME_ERROR = "firstNameError";
+    private static final String SECOND_NAME_ERROR = "secondNameError";
+    private static final String NOT_VALID_PASSWORD = "notValidPasswordError";
+    private static final String PASSWORD_NOT_EQ = "passwordNotEq";
+    private static final String AGE_ERROR = "ageError";
+    private static final String NOT_VALID_PHONE_NUMBER_ERROR = "notValidPhoneNumberError";
+
+    private static final String OLD_LOGIN = "oldLogin";
+    private static final String OLD_FIRST_NAME = "oldFirstName";
+    private static final String OLD_SECOND_NAME = "oldSecondName";
+    private static final String OLD_AGE = "oldAge";
+    private static final String OLD_PHONE_NUMBER = "oldPhoneNumber";
+
+    private static final String ALL_CORRECT = "allCorrect";
+
 
     @Override
-    public CommandResult execute(HttpServletRequest request) {
-        String login = request.getParameter("login");
-        String firstName = request.getParameter("firstName");
-        String secondName = request.getParameter("secondName");
-        String password = request.getParameter("password");
-        String repeatPassword = request.getParameter("repeatPassword");
-        String age = request.getParameter("age");
-        String phoneNumber = request.getParameter("phoneNumber");
+    public Router execute(HttpServletRequest request) {
+        String login = request.getParameter(LOGIN);
+        String firstName = request.getParameter(FIRST_NAME);
+        String secondName = request.getParameter(SECOND_NAME);
+        String password = request.getParameter(PASSWORD);
+        String repeatPassword = request.getParameter(REPEAT_PASSWORD);
+        String age = request.getParameter(AGE);
+        String phoneNumber = request.getParameter(PHONE_NUMBER);
 
         SignInReceiver signInReceiver = new SignInReceiver();
         SignUpReceiver signUpReceiver = new SignUpReceiver();
@@ -31,62 +58,62 @@ public class SignUpUserCommand implements Command {
 
         if (!SignInValidator.isLoginValid(login)) {
             signUpProblem = true;
-            request.setAttribute("notValidLoginError", true);
+            request.setAttribute(NOT_VALID_LOGIN_ERROR, true);
         }
 
         try {
             if (signInReceiver.isLoginExist(login)) {
                 signUpProblem = true;
-                request.setAttribute("loginExistError", true);
+                request.setAttribute(LOGIN_EXIST_ERROR, true);
             }
             if (signUpReceiver.isPhoneNumberExist(phoneNumber)) {
                 signUpProblem = true;
-                request.setAttribute("phoneNumberExistError", true);
+                request.setAttribute(PHONE_NUMBER_EXIST_ERROR, true);
             }
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
         }
 
         if (!SignUpValidator.isNameValid(firstName)) {
             signUpProblem = true;
-            request.setAttribute("firstNameError", true);
+            request.setAttribute(FIRST_NAME_ERROR, true);
         }
         if (!SignUpValidator.isNameValid(secondName)) {
             signUpProblem = true;
-            request.setAttribute("secondNameError", true);
+            request.setAttribute(SECOND_NAME_ERROR, true);
         }
         if (!SignUpValidator.isPasswordValid(password)) {
             signUpProblem = true;
-            request.setAttribute("notValidPasswordError", true);
+            request.setAttribute(NOT_VALID_PASSWORD, true);
         }
         if (!password.equals(repeatPassword)) {
             signUpProblem = true;
-            request.setAttribute("passwordNotEq", true);
+            request.setAttribute(PASSWORD_NOT_EQ, true);
         }
         if (!SignUpValidator.isAgeValid(age)) {
             signUpProblem = true;
-            request.setAttribute("ageError", true);
+            request.setAttribute(AGE_ERROR, true);
         }
         if (!SignUpValidator.isPhoneNumberValid(phoneNumber)) {
             signUpProblem = true;
-            request.setAttribute("notValidPhoneNumberError", true);
+            request.setAttribute(NOT_VALID_PHONE_NUMBER_ERROR, true);
         }
 
 
         if (signUpProblem) {
-            request.setAttribute("oldLogin", login);
-            request.setAttribute("oldFirstName", firstName);
-            request.setAttribute("oldSecondName", secondName);
-            request.setAttribute("oldAge", age);
-            request.setAttribute("oldPhoneNumber", phoneNumber);
+            request.setAttribute(OLD_LOGIN, login);
+            request.setAttribute(OLD_FIRST_NAME, firstName);
+            request.setAttribute(OLD_SECOND_NAME, secondName);
+            request.setAttribute(OLD_AGE, age);
+            request.setAttribute(OLD_PHONE_NUMBER, phoneNumber);
 
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
+            return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
         } else {
-            signUpReceiver.sendAcceptMail(login,firstName,secondName,password,age,phoneNumber);
-            request.setAttribute("allCorrect", true);
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
+            signUpReceiver.sendAcceptMail(login, firstName, secondName, password, age, phoneNumber);
+            request.setAttribute(ALL_CORRECT, true);
+            return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
         }
 
     }

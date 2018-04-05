@@ -1,10 +1,10 @@
 package by.zhuk.buber.command;
 
-public class CommandResult {
+public class Router {
     private TransitionType type;
     private String transitionResource ;
 
-    public CommandResult(TransitionType type, String transitionResource) {
+    public Router(TransitionType type, String transitionResource) {
         this.type = type;
         this.transitionResource = transitionResource;
     }

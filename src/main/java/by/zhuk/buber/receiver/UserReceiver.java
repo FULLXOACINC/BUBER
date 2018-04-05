@@ -3,14 +3,12 @@ package by.zhuk.buber.receiver;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.impl.FindUserByPatternSpecification;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 

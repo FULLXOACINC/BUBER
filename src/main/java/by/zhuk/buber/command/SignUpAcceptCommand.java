@@ -5,8 +5,8 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignUpReceiver;
-import by.zhuk.buber.singleton.SignUpUserInfo;
-import by.zhuk.buber.singleton.SignUpUserPool;
+import by.zhuk.buber.signuppool.SignUpUserInfo;
+import by.zhuk.buber.signuppool.SignUpUserPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,14 +15,15 @@ import javax.servlet.http.HttpSession;
 
 public class SignUpAcceptCommand implements Command {
     private static Logger logger = LogManager.getLogger(SignUpAcceptCommand.class);
+    private static final String HASH_PARAM = "hash";
 
     @Override
-    public CommandResult execute(HttpServletRequest request) {
-        String hash = request.getParameter("hash");
+    public Router execute(HttpServletRequest request) {
+        String hash = request.getParameter(HASH_PARAM);
         SignUpUserPool pool = SignUpUserPool.getInstance();
         SignUpUserInfo info = pool.find(hash);
-        if(info == null ){
-            return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+        if (info == null) {
+            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
         SignUpReceiver receiver = new SignUpReceiver();
         try {
@@ -34,9 +35,9 @@ public class SignUpAcceptCommand implements Command {
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
-            return new CommandResult(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
-        return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+        return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
     }
 
 }

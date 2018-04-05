@@ -8,7 +8,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -50,8 +49,6 @@ public class MailThread extends Thread {
             message.setSubject(mailSubject);
             message.setContent(mailText, TYPE);
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(sendToEmail));
-        } catch (AddressException e) {
-            logger.catching(e);
         } catch (MessagingException e) {
             logger.catching(e);
         }
