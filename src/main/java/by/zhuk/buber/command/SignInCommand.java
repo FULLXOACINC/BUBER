@@ -4,6 +4,7 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
+import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
@@ -50,11 +51,17 @@ public class SignInCommand implements Command {
             User user =userOptional.get();
             session.setAttribute(UserConstant.LOGIN,user.getLogin());
             session.setAttribute(UserConstant.TYPE,user.getType().name());
+            if(user.getType() == UserType.ADMIN){
+                return new CommandResult(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
+            }else {
+                return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+            }
+
         } catch (ReceiverException e) {
             //TODO go to error page
             logger.catching(e);
             return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
-        return new CommandResult(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+
     }
 }

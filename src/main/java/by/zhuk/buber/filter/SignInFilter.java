@@ -69,7 +69,15 @@ public class SignInFilter implements Filter {
     }
 
     private boolean isLoginCommand(String command) {
-        return command != null && (command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name()) || command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_ACCEPT.name())|| command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name()) || (command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name())));
+        if (command == null) {
+            return false;
+        }
+        boolean isSignInCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name());
+        boolean isSignUpAcceptCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_ACCEPT.name());
+        boolean isSignUpUserCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name());
+        boolean isOAuthCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name());
+
+        return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand;
     }
 
     @Override

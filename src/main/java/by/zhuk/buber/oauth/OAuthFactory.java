@@ -1,10 +1,10 @@
-package by.zhuk.buber.command;
+package by.zhuk.buber.oauth;
 
 import by.zhuk.buber.exeption.UnknownOAuthException;
 import by.zhuk.buber.oauth.OAuth;
 import by.zhuk.buber.oauth.OAuthYandex;
 
-class OAuthFactory {
+public class OAuthFactory {
     public static OAuth create(String loginType) throws UnknownOAuthException {
         OAuth oAuth;
         switch (loginType) {

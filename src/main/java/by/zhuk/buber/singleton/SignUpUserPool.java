@@ -1,6 +1,5 @@
 package by.zhuk.buber.singleton;
 
-import by.zhuk.buber.model.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +13,7 @@ public class SignUpUserPool {
     private static SignUpUserPool instance;
     private static AtomicBoolean instanceCreated = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
-    private static ConcurrentHashMap<String, SignUpUserInfo> map;
+    private static ConcurrentHashMap<String, SignUpUserInfo> signUpMap;
 
     private SignUpUserPool() {
         if (instanceCreated.get()) {
@@ -29,7 +28,7 @@ public class SignUpUserPool {
 
             if (!instanceCreated.get()) {
                 instance = new SignUpUserPool();
-                map = new ConcurrentHashMap<>();
+                signUpMap = new ConcurrentHashMap<>();
                 instanceCreated.set(true);
             }
             lock.unlock();
@@ -39,13 +38,18 @@ public class SignUpUserPool {
     }
 
     public void putInfo(String hash, SignUpUserInfo info) {
-        map.put(hash, info);
+        signUpMap.put(hash, info);
     }
 
     public void removeInfo(String hash) {
-        map.remove(hash);
+        signUpMap.remove(hash);
     }
-    public SignUpUserInfo find(String hash){
-        return map.get(hash);
+
+    public SignUpUserInfo find(String hash) {
+        return signUpMap.get(hash);
+    }
+
+    public ConcurrentHashMap<String, SignUpUserInfo> takeSignUpMap() {
+        return signUpMap;
     }
 }

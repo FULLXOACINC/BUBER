@@ -3,6 +3,7 @@ package by.zhuk.buber.listener;
 import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.oauth.OAuthYandex;
+import by.zhuk.buber.singleton.SingUpPoolCleaner;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -15,6 +16,9 @@ public class ControllerListener implements ServletContextListener {
         ConnectionPool.getInstance();
         OAuthYandex.getInstance();
         MailProperty.getInstance();
+        Thread cleaner = new Thread(new SingUpPoolCleaner());
+        cleaner.setDaemon(true);
+        cleaner.start();
     }
 
     @Override

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"},filterName="saveLastPage")
+@WebFilter(urlPatterns = {"/*"}, filterName = "saveLastPage")
 public class SaveLastPageUrlFilter implements Filter {
     private static final String LAST_PAGE_URL = "lastPageUrl";
     private static final String CHANGE_LANG = "changeLang";
@@ -32,10 +32,12 @@ public class SaveLastPageUrlFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
+        if (request.getQueryString() != null) {
+            String lastPageUrl = request.getServletPath() + "?" + request.getQueryString();
+            HttpSession session = request.getSession();
+            session.setAttribute(LAST_PAGE_URL, lastPageUrl);
+        }
 
-        String lastPageUrl = request.getServletPath() + "?" + request.getQueryString();
-        HttpSession session = request.getSession();
-        session.setAttribute(LAST_PAGE_URL, lastPageUrl);
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

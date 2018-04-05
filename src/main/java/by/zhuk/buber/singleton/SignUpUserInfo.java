@@ -13,10 +13,6 @@ public class SignUpUserInfo {
         this.time = time;
     }
 
-    public SignUpUserInfo() {
-
-    }
-
     public User getUser() {
         return user;
     }

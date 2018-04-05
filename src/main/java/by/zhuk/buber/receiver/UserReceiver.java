@@ -8,6 +8,7 @@ import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
+import by.zhuk.buber.specification.impl.FindUserByPatternSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -31,21 +32,15 @@ public class UserReceiver {
         return user;
     }
 
-    public void saveUser(String login){
-        User user = new User();
-        user.setLogin("testLogin");
-        user.setFirstName("testName");
-        user.setLastName("testLastName");
-        user.setPassword("password");
-        user.setType(UserType.USER);
-        user.setBalance(new BigDecimal(99.89));
-        user.setAge(21);
-        user.setPhoneNumber("+375291713229");
+    public List<User> findAllUser(String findPattern) throws ReceiverException {
         Repository<User> repository = new UserRepository();
+        Specification specification = new FindUserByPatternSpecification(findPattern);
+        List<User> users;
         try {
-            repository.add(user);
+            users = repository.find(specification);
         } catch (RepositoryException e) {
-            e.printStackTrace();
+            throw new ReceiverException(e);
         }
+        return users;
     }
 }

@@ -21,13 +21,16 @@ public class SignUpAcceptCommand implements Command {
         String hash = request.getParameter("hash");
         SignUpUserPool pool = SignUpUserPool.getInstance();
         SignUpUserInfo info = pool.find(hash);
+        if(info == null ){
+            return new CommandResult(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+        }
         SignUpReceiver receiver = new SignUpReceiver();
         try {
             receiver.saveUser(info.getUser());
             HttpSession session = request.getSession();
             session.setAttribute(UserConstant.LOGIN, info.getUser().getLogin());
             session.setAttribute(UserConstant.TYPE, UserType.USER.name());
-
+            pool.removeInfo(hash);
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
