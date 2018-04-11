@@ -8,6 +8,7 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +28,7 @@ import java.util.Optional;
 @WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
 public class SignInFilter implements Filter {
     private static Logger logger = LogManager.getLogger(SignInFilter.class);
+    private static String BANNED_ERROR="bannedError";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -40,6 +42,7 @@ public class SignInFilter implements Filter {
             filterChain.doFilter(request, response);
             return;
         }
+
         if (SignInValidator.isAuthorization(session)) {
             UserReceiver receiver = new UserReceiver();
             String login = (String) session.getAttribute(UserConstant.LOGIN);
@@ -54,16 +57,21 @@ public class SignInFilter implements Filter {
                 User user = userOptional.get();
                 if (!user.isBaned()) {
                     filterChain.doFilter(request, response);
-                } else {
+                }else {
                     session.removeAttribute(UserConstant.LOGIN);
                     session.removeAttribute(UserConstant.TYPE);
-                    request.setAttribute("bannedError", true);
+                    request.setAttribute(BANNED_ERROR, true);
                     request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
                 }
+            } else {
+                logger.log(Level.WARN, "User is authorization [" + UserConstant.LOGIN + "],but not found in DB");
+                session.removeAttribute(UserConstant.LOGIN);
+                session.removeAttribute(UserConstant.TYPE);
+                response.sendRedirect(PagesConstant.LOGIN_PAGE);
             }
 
 
-        } else {
+        }else {
             request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
         }
     }
@@ -72,10 +80,12 @@ public class SignInFilter implements Filter {
         if (command == null) {
             return false;
         }
-        boolean isSignInCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_IN.name());
-        boolean isSignUpAcceptCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_ACCEPT.name());
-        boolean isSignUpUserCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.SIGN_UP_USER.name());
-        boolean isOAuthCommand = command.toUpperCase().replaceAll("-", "_").equals(CommandType.OAUTH.name());
+        command = command.toUpperCase().replaceAll("-", "_");
+
+        boolean isSignInCommand = command.equals(CommandType.SIGN_IN.name());
+        boolean isSignUpAcceptCommand = command.equals(CommandType.SIGN_UP_ACCEPT.name());
+        boolean isSignUpUserCommand = command.equals(CommandType.SIGN_UP_USER.name());
+        boolean isOAuthCommand = command.equals(CommandType.OAUTH.name()) || command.equals(CommandType.OAUTH_ACCEPT.name());
 
         return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand;
     }

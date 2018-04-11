@@ -32,10 +32,10 @@ ${sessionScope.type}
     <input type="submit" value="${find}">
 </form>
 <c:forEach items="${users}" var="user">
-    <p>
     <c:out value="${user.login}" escapeXml="true"/>
     <c:out value="${user.firstName}" escapeXml="true"/>
     <c:out value="${user.lastName}" escapeXml="true"/>
+    <c:out value="${user.phoneNumber}" escapeXml="true"/>
 
     <c:if test="${user.type != 'ADMIN'}">
         <c:if test="${!user.isBaned()}">
@@ -52,13 +52,8 @@ ${sessionScope.type}
                 <input type="submit" value="${unBan}">
             </form>
         </c:if>
-        <form action="${ pageContext.request.contextPath }/controller" method="post">
-            <input type="hidden" name="command" value="user-ban">
-            <input type="hidden" name="user" value="${user.login}">
-            <input type="submit" value="${unBan}">
-        </form>
     </c:if>
-    </p>
+    <hr/>
 </c:forEach>
 
 <form action="${ pageContext.request.contextPath }/controller" method="post">

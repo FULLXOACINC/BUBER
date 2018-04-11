@@ -8,6 +8,7 @@ public enum CommandType {
     SIGN_UP_ACCEPT(new SignUpAcceptCommand()),
     SIGN_OUT(new SignOutCommand()),
     FIND_USERS(new FindUsersCommand()),
+    OAUTH_ACCEPT(new OAuthAcceptCommand()),
     USER_BAN(new UserBanCommand());
 
     private Command command;

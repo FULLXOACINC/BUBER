@@ -17,7 +17,7 @@
 ${sessionScope.login}
 ${sessionScope.type}
 <c:if test="${sessionScope.type == 'ADMIN'}">
-    <form action="/pages/admin.jsp" method="post">
+    <form action="/jsp/admin.jsp" method="post">
         <input type="submit" value="${console}">
     </form>
 </c:if>

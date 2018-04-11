@@ -42,7 +42,7 @@
 </c:if>
 <br/>
 
-<form action="/pages/signUp.jsp">
+<form action="/jsp/signUp.jsp">
     <input type="submit" value="${singUp}">
 </form>
 <hr/>
