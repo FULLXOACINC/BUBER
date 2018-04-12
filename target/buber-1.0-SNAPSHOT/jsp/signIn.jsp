@@ -27,7 +27,7 @@
     <input type="hidden" name="command" value="sign-in">
     <input type="submit" value="${enter}">
 </form>
-
+<%--TODO rewrite with <c:choose>--%>
 <c:if test="${signInValidError}">
     ${loginNotValidMessage}
 </c:if>

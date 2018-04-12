@@ -16,8 +16,11 @@ import by.zhuk.buber.specification.impl.FindUserByPhoneNumberSpecification;
 import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class SignUpReceiver {
+
+    private static String MAIL_BUNDLE ="";
 
     public boolean isPhoneNumberExist(String number) throws ReceiverException {
 
@@ -43,6 +46,8 @@ public class SignUpReceiver {
 
     public void sendAcceptMail(String login, String firstName, String lastName, String password, String age, String phoneNumber) {
         String hash = String.valueOf(login.concat(password).hashCode());
+
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(MAIL_BUNDLE);
         MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=" + hash + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();

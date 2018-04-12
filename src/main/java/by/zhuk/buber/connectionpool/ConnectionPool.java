@@ -138,7 +138,7 @@ public final class ConnectionPool {
         poolSize = Integer.parseInt(dbProperties.getProperty(DATABASE_POOL_SIZE));
         connectionQueue = new LinkedBlockingDeque<>(poolSize);
         try {
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             logger.log(Level.INFO, "Register MySQL JDBC driver");
         } catch (SQLException e) {
             logger.log(Level.FATAL, "Mysql jdbc driver hasn't loaded", e);

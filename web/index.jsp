@@ -4,6 +4,6 @@
   <title></title>
 </head>
 <body>
-<jsp:forward page="pages/welcome.jsp"/>
+<jsp:forward page="jsp/welcome.jsp"/>
 </body>
 </html>
