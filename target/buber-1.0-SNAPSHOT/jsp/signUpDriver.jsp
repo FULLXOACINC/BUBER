@@ -34,14 +34,11 @@
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <p>${login}<input type="text" name="login" value="${oldLogin}"/></p>
-    <p>${password}<input type="password" name="password"/></p>
-    <p>${repeatPassword}<input type="password" name="repeatPassword"/></p>
-    <p>${firstName}<input type="text" name="firstName" value="${oldFirstName}"/></p>
-    <p>${secondName}<input type="text" name="secondName" value="${oldSecondName}"/></p>
-    <p>${age}<input type="text" name="age" value="${oldAge}"/></p>
-    <p>${phoneNumber}<input type="text" name="phoneNumber" value="${oldPhoneNumber}"/></p>
+    <p>${carNumber}<input type="text" name="carNumber" value="7522AT1"/></p>
+    <p>${documentId}<input type="text" name="documentId" value="7AD123132"/></p>
+    <p>${carMark}<input type="text" name="carMark" value="${oldCarMark}"/></p>
 
-    <input type="hidden" name="command" value="sign-up-user">
+    <input type="hidden" name="command" value="sign-up-driver">
     <input type="submit" value="${signUp}">
 </form>
 

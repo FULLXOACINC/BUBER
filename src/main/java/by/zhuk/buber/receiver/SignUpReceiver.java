@@ -16,10 +16,14 @@ import by.zhuk.buber.repository.TransactionRepository;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
+import by.zhuk.buber.specification.Specification;
+import by.zhuk.buber.specification.impl.FindCarMarkByName;
+import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class SignUpReceiver {
     private static String MAIL_BUNDLE = "";
@@ -39,30 +43,50 @@ public class SignUpReceiver {
         MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=" + hash + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
-        User user = new User();
-        user.setLogin(login);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-        user.setPhoneNumber(phoneNumber);
-        user.setBaned(false);
-        user.setType(UserType.USER);
-        user.setBalance(new BigDecimal(0));
-        user.setBirthDay(LocalDate.parse(birthDay));
+        User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER);
         SignUpUserInfo info = new SignUpUserInfo(user, LocalTime.now());
         pool.putInfo(hash, info);
     }
 
-    public void saveDriver(String login, String carNumber, String documentId, String carMark) {
+    public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
 
         TransactionRepository<Driver> driverRepository = new DriverRepository();
         TransactionRepository<CarMark> carMarkRepository = new CarMarkRepository();
-        Driver driver = new Driver();
-        driver.setLogin(login);
-        driver.setCarNumber(carNumber);
-        driver.setDocumentId(documentId);
-        driver.setCarMark(carMark);
+
+        Repository<User> userRepository = new UserRepository();
+        try {
+            transaction.startTransaction(driverRepository, carMarkRepository);
+            CarMark carMark = new CarMark();
+            carMark.setMarkName(carMarkName);
+
+            carMarkRepository.add(carMark);
+            Specification specification = new FindCarMarkByName(carMarkName);
+            List<CarMark> carMarks = carMarkRepository.find(specification);
+            carMark = carMarks.get(0);
+
+            Driver driver = new Driver();
+            driver.setLogin(login);
+            driver.setCarNumber(carNumber);
+            driver.setDocumentId(documentId);
+            driver.setCarMark(String.valueOf(carMark.getIndex()));
+            driverRepository.add(driver);
+
+            transaction.commit();
+            transaction.endTransaction();
+
+
+            List<User> users = userRepository.find(new FindUserByLoginSpecification(login));
+            if (!users.isEmpty()) {
+                User user = users.get(0);
+                user.setType(UserType.DRIVER);
+                userRepository.update(user);
+            }
+        } catch (RepositoryException e) {
+            transaction.rollBack();
+            throw new ReceiverException(e);
+        }
+
 
     }
 }

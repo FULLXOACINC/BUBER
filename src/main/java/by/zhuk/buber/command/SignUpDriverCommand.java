@@ -6,6 +6,7 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,21 +55,23 @@ public class SignUpDriverCommand implements Command {
                 signUpProblem = true;
                 request.setAttribute(LOGIN_NOT_EXIST_ERROR, true);
             }
+
+            if (!signUpProblem) {
+                SignUpReceiver signUpReceiver = new SignUpReceiver();
+
+                signUpReceiver.saveDriver(login, carNumber, documentId, carMark);
+            } else {
+                request.setAttribute(OLD_LOGIN, login);
+                request.setAttribute(OLD_CAR_NUMBER, carNumber);
+                request.setAttribute(OLD_DOCUMENT_ID, documentId);
+                request.setAttribute(OLD_CAR_MARK, carMark);
+            }
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
             return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
         }
 
-        if (!signUpProblem) {
-            SignUpReceiver signUpReceiver = new SignUpReceiver();
-            signUpReceiver.saveDriver(login, carNumber, documentId, carMark);
-        } else {
-            request.setAttribute(OLD_LOGIN, login);
-            request.setAttribute(OLD_CAR_NUMBER, carNumber);
-            request.setAttribute(OLD_DOCUMENT_ID, documentId);
-            request.setAttribute(OLD_CAR_MARK, carMark);
-        }
-        return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
+        return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_DRIVER_PAGE);
     }
 }

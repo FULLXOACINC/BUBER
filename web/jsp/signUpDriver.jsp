@@ -34,11 +34,11 @@
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <p>${login}<input type="text" name="login" value="${oldLogin}"/></p>
-    <p>${carNumber}<input type="text" name="carNumber" value="${oldCarNumber}"/></p>
-    <p>${documentId}<input type="text" name="documentId" value="${oldDocumentId}"/></p>
+    <p>${carNumber}<input type="text" name="carNumber" value="7522AT1"/></p>
+    <p>${documentId}<input type="text" name="documentId" value="7AD123132"/></p>
     <p>${carMark}<input type="text" name="carMark" value="${oldCarMark}"/></p>
 
-    <input type="hidden" name="command" value="sign-up-user">
+    <input type="hidden" name="command" value="sign-up-driver">
     <input type="submit" value="${signUp}">
 </form>
 

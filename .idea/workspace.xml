@@ -7,110 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c6dd6e-c811-440d-8f6d-9e399ea5b345" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/AdminReceiver.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/web/META-INF/context.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/WEB-INF/weblogic.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/buber.iml" afterPath="$PROJECT_DIR$/buber.iml" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/FindUsersCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/FindUsersCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/OAuthCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/OAuthCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/Router.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/Router.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignInCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignInCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpUserCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpUserCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/UserBanCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SwitchBanCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/UserConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/UserConstant.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/EncodingFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/EncodingFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/SignInFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/SignInFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/listener/ControllerListener.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/listener/ControllerListener.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/mail/MailProperty.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/mail/MailProperty.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/UserType.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/UserType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthFactory.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/CarMark.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/CarMark.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/UserRepository.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/UserRepository.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/AdminValidator.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignInValidator.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignInValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignUpValidator.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignUpUserValidator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mail.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/properties/text_en.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text_ru.properties" afterPath="$PROJECT_DIR$/src/main/resources/properties/text_ru.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/yandex.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/by/zhuk/buber/repository/UserRepositoryTest.java" afterPath="$PROJECT_DIR$/src/test/java/by/zhuk/buber/repository/UserRepositoryTest.java" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/CommandType.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/CommandType.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/FindUsersCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/FindUsersCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/SignInCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/SignInCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/SignUpUserCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/SignUpUserCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/UserBanCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/connectionpool/ConnectionPool.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/connectionpool/ConnectionPool.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/constant/UserConstant.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/constant/UserConstant.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/listener/ControllerListener.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/listener/ControllerListener.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/mail/MailProperty.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/mail/MailProperty.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/model/User.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/model/User.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/model/UserType.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/model/UserType.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/oauth/OAuthYandex.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/oauth/OAuthYandex.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/SignUpReceiver.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/SignUpReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/UserReceiver.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/UserReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/repository/UserRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/validator/AdminValidator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/validator/SignUpValidator.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/validator/SignUpValidator.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/database.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/mail.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/text_en.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/text_ru.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/yandex.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/web.xml" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/weblogic.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/admin.jsp" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/admin.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/signIn.jsp" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/signIn.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/signUp.jsp" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/signUp.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/welcome.jsp" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/welcome.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/CommandType.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/CommandType.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/FindUsersCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/FindUsersCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/SignInCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/SignInCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/SignUpUserCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/SignUpUserCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/UserBanCommand.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/connectionpool/ConnectionPool.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/connectionpool/ConnectionPool.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/constant/UserConstant.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/constant/UserConstant.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/listener/ControllerListener.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/listener/ControllerListener.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/mail/MailProperty.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/mail/MailProperty.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/model/User.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/model/User.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/model/UserType.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/model/UserType.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/oauth/OAuthYandex.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/oauth/OAuthYandex.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/SignUpReceiver.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/SignUpReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/UserReceiver.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/UserReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/repository/UserRepository.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/repository/UserRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByLoginSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/validator/AdminValidator.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/validator/SignUpValidator.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/validator/SignUpValidator.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mail.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/text_en.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/text_ru.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/yandex.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/by/zhuk/buber/repository/UserRepositoryTest.class" afterPath="$PROJECT_DIR$/target/test-classes/by/zhuk/buber/repository/UserRepositoryTest.class" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-      <change beforePath="$PROJECT_DIR$/web/jsp/admin.jsp" afterPath="$PROJECT_DIR$/web/jsp/admin.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/jsp/signIn.jsp" afterPath="$PROJECT_DIR$/web/jsp/signIn.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/jsp/signUp.jsp" afterPath="$PROJECT_DIR$/web/jsp/signUp.jsp" />
-      <change beforePath="$PROJECT_DIR$/web/jsp/welcome.jsp" afterPath="$PROJECT_DIR$/web/jsp/welcome.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/CarMarkRepository.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/CarMarkRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryTransaction.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryTransaction.java" />
+      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/validator/SignUpValidator.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/validator/SignUpValidator.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/web/jsp/signUpDriver.jsp" afterPath="$PROJECT_DIR$/web/jsp/signUpDriver.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,49 +28,100 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SignUpDriverCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1148">
-              <caret line="64" column="31" lean-forward="false" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SignUpReceiver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="43" />
+            <state relative-caret-position="143">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriverRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java">
+      <file leaf-file-name="CarMarkRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/CarMarkRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+            <state relative-caret-position="412">
+              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1523826487140" expanded="true" signature="658:960" ph="INSERT INTO buber_db.driver... " />
-                <marker date="1523826487140" expanded="true" signature="658:1001" ph="INSERT INTO buber_db.driver... " />
-                <marker date="1523826487140" expanded="true" signature="1056:1112" ph="INSERT INTO buber_db.driver... " />
+                <element signature="e#1015#1016#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
+                <marker date="1523834766617" expanded="true" signature="887:943" ph="INSERT INTO buber_db.car_mark... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PreparedStatement.class" pinned="false" current-in-tab="true">
-        <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-i386/jre/lib/rt.jar!/java/sql/PreparedStatement.class">
+      <file leaf-file-name="CommandType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="121">
-              <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="21" />
-              <folding />
+              <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding>
+                <element signature="e#936#937#0" expanded="true" />
+                <element signature="e#964#965#0" expanded="true" />
+                <element signature="e#1006#1007#0" expanded="true" />
+                <element signature="e#1040#1041#0" expanded="true" />
+                <element signature="e#1076#1077#0" expanded="true" />
+                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#1158#1159#0" expanded="true" />
+                <element signature="e#1200#1201#0" expanded="true" />
+                <element signature="e#1235#1236#0" expanded="true" />
+                <element signature="e#1266#1267#0" expanded="true" />
+                <element signature="e#1314#1315#0" expanded="true" />
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1420#1421#0" expanded="true" />
+                <element signature="e#1468#1469#0" expanded="true" />
+                <element signature="e#1508#1509#0" expanded="true" />
+                <element signature="e#1546#1547#0" expanded="true" />
+                <element signature="e#1577#1578#0" expanded="true" />
+                <element signature="e#1628#1629#0" expanded="true" />
+                <element signature="e#1668#1669#0" expanded="true" />
+                <element signature="e#1700#1701#0" expanded="true" />
+                <element signature="e#1730#1731#0" expanded="true" />
+                <element signature="e#1773#1774#0" expanded="true" />
+                <element signature="e#1804#1805#0" expanded="true" />
+                <element signature="e#1842#1843#0" expanded="true" />
+                <element signature="e#1876#1877#0" expanded="true" />
+                <element signature="e#1930#1931#0" expanded="true" />
+                <element signature="e#1976#1977#0" expanded="true" />
+                <element signature="e#2014#2015#0" expanded="true" />
+                <element signature="e#2044#2045#0" expanded="true" />
+                <element signature="e#2094#2095#0" expanded="true" />
+                <element signature="e#2132#2133#0" expanded="true" />
+                <element signature="e#2165#2166#0" expanded="true" />
+                <element signature="e#2192#2193#0" expanded="true" />
+                <element signature="e#2234#2235#0" expanded="true" />
+                <element signature="e#2266#2267#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DriverRepository.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1395#1396#0" expanded="true" />
+                <element signature="e#1439#1440#0" expanded="true" />
+                <marker date="1523836503115" expanded="true" signature="652:955" ph="INSERT INTO buber_db.driver... " />
+                <marker date="1523836503115" expanded="true" signature="652:992" ph="INSERT INTO buber_db.driver... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,8 +129,8 @@
       <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="216">
+              <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
               <folding>
                 <marker date="1523814631315" expanded="true" signature="814:1015" ph="INSERT INTO buber_db.user... " />
                 <marker date="1523814631315" expanded="true" signature="1065:1241" ph="UPDATE buber_db.user... " />
@@ -183,100 +140,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Driver.java">
+      <file leaf-file-name="SignUpDriverCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="32" />
+            <state relative-caret-position="52">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
-                <element signature="e#397#398#0" expanded="true" />
-                <element signature="e#425#426#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
-                <element signature="e#537#538#0" expanded="true" />
-                <element signature="e#569#570#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#661#662#0" expanded="true" />
-                <element signature="e#698#699#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-                <element signature="e#861#862#0" expanded="true" />
-                <element signature="e#891#892#0" expanded="true" />
-                <element signature="e#937#938#0" expanded="true" />
-                <element signature="e#975#976#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
-                <element signature="e#1064#1065#0" expanded="true" />
-                <element signature="e#1245#1246#0" expanded="true" />
-                <element signature="e#1288#1289#0" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-                <element signature="e#1489#1490#0" expanded="true" />
-                <element signature="e#1536#1537#0" expanded="true" />
-                <element signature="e#1571#1572#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriverAchieve.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/DriverAchieve.java">
+      <file leaf-file-name="FindCarMarkByName.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindCarMarkByName.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+            <state relative-caret-position="106">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
-                <element signature="e#490#491#0" expanded="true" />
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#584#585#0" expanded="true" />
-                <element signature="e#636#637#0" expanded="true" />
-                <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#699#700#0" expanded="true" />
-                <element signature="e#744#745#0" expanded="true" />
-                <element signature="e#784#785#0" expanded="true" />
-                <element signature="e#816#817#0" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#892#893#0" expanded="true" />
-                <element signature="e#932#933#0" expanded="true" />
-                <element signature="e#965#966#0" expanded="true" />
-                <element signature="e#997#998#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1086#1087#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#631#632#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
+                <element signature="e#752#753#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signUp.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/jsp/signUp.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="26" column="57" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text_en.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/text_en.properties">
-          <provider selected="true" editor-type-id="ResourceBundle">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text_ru.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/text_ru.properties">
-          <provider selected="true" editor-type-id="ResourceBundle">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -310,13 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/LangChangeCommand.java" />
-        <option value="$PROJECT_DIR$/web/pages/error/dbError.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/SignInFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java" />
-        <option value="$PROJECT_DIR$/web/jsp/error/dbError.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/listener/ControllerListener.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/mail/MailProperty.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/UserType.java" />
@@ -346,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPhoneNumberSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByPatternSpecification.java" />
         <option value="$PROJECT_DIR$/web/jsp/admin.jsp" />
-        <option value="$PROJECT_DIR$/web/jsp/signUpDriver.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignUpUserValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/validator/SignUpDriverValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" />
@@ -354,12 +233,20 @@
         <option value="$PROJECT_DIR$/web/jsp/signUp.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/properties/text_en.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/properties/text_ru.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Achive.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/DriverAchive.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Driver.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/DriverAchieve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/TransactionRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Driver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindCarMarkByNane.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindCarMarkByName.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java" />
+        <option value="$PROJECT_DIR$/web/jsp/signUpDriver.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/CarMark.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/CarMarkRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java" />
       </list>
     </option>
@@ -521,6 +408,25 @@
               <item name="BUBER" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="buber" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="buber" type="462c0819:PsiDirectoryNode" />
+              <item name="specification" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -618,8 +524,9 @@
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="by.zhuk.buber.model" />
       <recent name="by.zhuk.buber.specification.impl" />
+      <recent name="by.zhuk.buber.repository" />
+      <recent name="by.zhuk.buber.model" />
       <recent name="by.zhuk.buber.singleton" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -1010,7 +917,7 @@
       <workItem from="1523451976299" duration="767000" />
       <workItem from="1523513492073" duration="582000" />
       <workItem from="1523514370982" duration="9002000" />
-      <workItem from="1523742704831" duration="30753000" />
+      <workItem from="1523742704831" duration="39861000" />
     </task>
     <servers />
   </component>
@@ -1047,7 +954,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103158000" />
+    <option name="totallyTimeSpent" value="112266000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1096,6 +1003,41 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.50282484" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292978" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24939467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36893204" sideWeight="0.49717513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3462783" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1105,17 +1047,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java</url>
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="54" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="request.getRequestURI()" />
-        <watch expression="userOptional.isPresent()" />
-        <watch expression="user.isBaned()" />
-        <watch expression="user.isBaned()" />
-        <watch expression="user.isBaned()" />
-        <watch expression="user.isBaned() ? 1 : 0" />
-        <watch expression="request.getParameter(&quot;bday&quot;);" />
+        <watch expression="carMarkRepository.find(specification)" />
       </configuration>
       <configuration name="TestNG">
         <watch expression="signUpMap.values()" />
@@ -1128,62 +1072,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignOutCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="48" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/listener/ControllerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="133" column="44" lean-forward="false" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/SignInFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/filter/AdminFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -1308,51 +1196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="105" column="37" lean-forward="false" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
-          <folding>
-            <element signature="e#936#937#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1006#1007#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-            <element signature="e#1158#1159#0" expanded="true" />
-            <element signature="e#1200#1201#0" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1389#1390#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1508#1509#0" expanded="true" />
-            <element signature="e#1546#1547#0" expanded="true" />
-            <element signature="e#1577#1578#0" expanded="true" />
-            <element signature="e#1628#1629#0" expanded="true" />
-            <element signature="e#1668#1669#0" expanded="true" />
-            <element signature="e#1700#1701#0" expanded="true" />
-            <element signature="e#1730#1731#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#1804#1805#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1876#1877#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#1976#1977#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2044#2045#0" expanded="true" />
-            <element signature="e#2094#2095#0" expanded="true" />
-            <element signature="e#2132#2133#0" expanded="true" />
-            <element signature="e#2165#2166#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
-            <element signature="e#2234#2235#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/by/zhuk/buber/repository/UserRepositoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -1365,14 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignInReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1391,14 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1471,9 +1298,9 @@
         <state relative-caret-position="164">
           <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#560#561#0" expanded="false" />
+            <element signature="e#616#617#0" expanded="false" />
             <element signature="method#isBirthDayValid#0;class#SignUpUserValidator#0" expanded="false" />
           </folding>
         </state>
@@ -1483,22 +1310,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-22">
           <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/jsp/signUpDriver.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1541,6 +1352,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-i386/jre/lib/rt.jar!/java/sql/PreparedStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/TransactionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/Repository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#939#940#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1023#1024#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+            <element signature="e#1491#1492#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1573#1574#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/DriverAchieve.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
@@ -1566,61 +1434,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/Driver.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindUserByLoginAndPasswordSpecification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="32" />
+        <state relative-caret-position="212">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#661#662#0" expanded="true" />
-            <element signature="e#698#699#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#975#976#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1245#1246#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1489#1490#0" expanded="true" />
-            <element signature="e#1536#1537#0" expanded="true" />
-            <element signature="e#1571#1572#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignInReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#964#965#0" expanded="true" />
+            <element signature="e#1006#1007#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1200#1201#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
+            <element signature="e#1314#1315#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1420#1421#0" expanded="true" />
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1508#1509#0" expanded="true" />
+            <element signature="e#1546#1547#0" expanded="true" />
+            <element signature="e#1577#1578#0" expanded="true" />
+            <element signature="e#1628#1629#0" expanded="true" />
+            <element signature="e#1668#1669#0" expanded="true" />
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1730#1731#0" expanded="true" />
+            <element signature="e#1773#1774#0" expanded="true" />
+            <element signature="e#1804#1805#0" expanded="true" />
+            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#1876#1877#0" expanded="true" />
+            <element signature="e#1930#1931#0" expanded="true" />
+            <element signature="e#1976#1977#0" expanded="true" />
+            <element signature="e#2014#2015#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2132#2133#0" expanded="true" />
+            <element signature="e#2165#2166#0" expanded="true" />
+            <element signature="e#2192#2193#0" expanded="true" />
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2266#2267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/impl/FindCarMarkByName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1148">
-          <caret line="64" column="31" lean-forward="false" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+        <state relative-caret-position="52">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="48" selection-end-column="9" />
+        <state relative-caret-position="216">
+          <caret line="28" column="59" lean-forward="true" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
           <folding>
             <marker date="1523814631315" expanded="true" signature="814:1015" ph="INSERT INTO buber_db.user... " />
             <marker date="1523814631315" expanded="true" signature="1065:1241" ph="UPDATE buber_db.user... " />
@@ -1629,24 +1559,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+        <state relative-caret-position="143">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/jsp/signUpDriver.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="40" column="61" lean-forward="false" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/CarMark.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1523826487140" expanded="true" signature="658:960" ph="INSERT INTO buber_db.driver... " />
-            <marker date="1523826487140" expanded="true" signature="658:1001" ph="INSERT INTO buber_db.driver... " />
-            <marker date="1523826487140" expanded="true" signature="1056:1112" ph="INSERT INTO buber_db.driver... " />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-i386/jre/lib/rt.jar!/java/sql/PreparedStatement.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/CarMarkRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="412">
+          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
+            <marker date="1523834766617" expanded="true" signature="887:943" ph="INSERT INTO buber_db.car_mark... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1439#1440#0" expanded="true" />
+            <marker date="1523836503115" expanded="true" signature="652:955" ph="INSERT INTO buber_db.driver... " />
+            <marker date="1523836503115" expanded="true" signature="652:992" ph="INSERT INTO buber_db.driver... " />
+          </folding>
         </state>
       </provider>
     </entry>

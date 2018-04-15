@@ -17,10 +17,7 @@ public class DriverRepository implements TransactionRepository<Driver> {
     private static Logger logger = LogManager.getLogger(DriverRepository.class);
     private Connection connection;
 
-    private static final String INSERT_DRIVER = "INSERT INTO buber_db.driver (driver_login, driver_car_number, driver_document_id, driver_car_mark, driver_current_ lat_coordinate, driver_current_lng_coordinate, driver_is_working, driver_achive_fast and furious, driver_achieve_narrator, driver_achieve_clear_car,driver_achieve_bad) VALUES (?, ?, ?, ?, '54.238991', '35.238991', 0, 0, 0, 0, 0);";
-    private static final String INSERT_CAR_MARK = "INSERT INTO buber_db.car_mark (car_mark_name) VALUES (?);";
-
-
+    private static final String INSERT_DRIVER = "INSERT INTO buber_db.driver (driver_login, driver_car_number, driver_document_id, driver_car_mark, driver_current_lat_coordinate, driver_current_lng_coordinate, driver_is_working,driver_achieve_fast_and_furious, driver_achieve_narrator, driver_achieve_clear_car ,driver_achieve_bad) VALUES (?, ?, ? , ?, 54.238991, 35.238991, 0, 0, 0, 0, 0);";
     private static final String UPDATE_DRIVER = "UPDATE buber_db.driver SET user_name=?, user_second_name=?, user_password=?, user_type=?, user_balance=?, user_birth_dey=?, user_phone_number=?, user_is_ban=? WHERE user_login= ?";
     private static final String DELETE_DRIVER = "DELETE FROM buber_db.driver WHERE driver_login= ?";
 
@@ -32,7 +29,6 @@ public class DriverRepository implements TransactionRepository<Driver> {
     @Override
     public void add(Driver driver) throws RepositoryException {
         try (PreparedStatement statement = connection.prepareStatement(INSERT_DRIVER)) {
-
 
             statement.setString(1, driver.getLogin());
             statement.setString(2, driver.getCarNumber());
@@ -48,12 +44,12 @@ public class DriverRepository implements TransactionRepository<Driver> {
     }
 
     @Override
-    public void update(Driver entity) throws RepositoryException {
+    public void update(Driver driver) throws RepositoryException {
 
     }
 
     @Override
-    public void delete(Driver entity) throws RepositoryException {
+    public void delete(Driver driver) throws RepositoryException {
 
     }
 

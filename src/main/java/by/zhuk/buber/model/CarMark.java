@@ -27,4 +27,12 @@ public class CarMark {
     public void setMarkName(String markName) {
         this.markName = markName;
     }
+
+    @Override
+    public String toString() {
+        return "CarMark{" +
+                "index=" + index +
+                ", markName='" + markName + '\'' +
+                '}';
+    }
 }

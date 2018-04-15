@@ -23,7 +23,7 @@
 <fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="secondNameErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.notValidPasswordErrorMessage" var="notValidPasswordErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.passwordNotEqMessage" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.error.ageErrorMessage" var="ageErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.error.birthDayErrorMessage" var="birthDayErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="notValidPhoneNumberErrorMessage"/>
 
 
@@ -38,7 +38,7 @@
     <p>${repeatPassword}<input type="password" name="repeatPassword"/></p>
     <p>${firstName}<input type="text" name="firstName" value="${oldFirstName}"/></p>
     <p>${secondName}<input type="text" name="secondName" value="${oldSecondName}"/></p>
-    <p>${age}<input type="date" name="birthDay" value="1998-04-13"></p>
+    <p>${age}<input type="date" name="birthDay" value="${oldBirthDay}"></p>
 
     <p>${phoneNumber}<input type="text" name="phoneNumber" value="${oldPhoneNumber}"/></p>
 
@@ -67,8 +67,8 @@
 <c:if test="${passwordNotEq}">
     <p>${passwordNotEqMessage}</p>
 </c:if>
-<c:if test="${ageError}">
-    <p> ${ageErrorMessage}</p>
+<c:if test="${birthDayError}">
+    <p> ${birthDayErrorMessage}</p>
 </c:if>
 <c:if test="${notValidPhoneNumberError}">
     <p> ${notValidPhoneNumberErrorMessage}</p>
