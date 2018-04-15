@@ -8,11 +8,13 @@ import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.impl.FindUserByPatternSpecification;
+import by.zhuk.buber.specification.impl.FindUserByPhoneNumberSpecification;
 
 import java.util.List;
 import java.util.Optional;
 
 public class UserReceiver {
+
 
     public Optional<User> findUserByLogin(String login) throws ReceiverException {
         Repository<User> repository = new UserRepository();
@@ -40,5 +42,18 @@ public class UserReceiver {
             throw new ReceiverException(e);
         }
         return users;
+    }
+
+    public boolean isPhoneNumberExist(String number) throws ReceiverException {
+
+        Repository<User> repository = new UserRepository();
+        Specification specification = new FindUserByPhoneNumberSpecification(number);
+        List<User> users;
+        try {
+            users = repository.find(specification);
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+        return !users.isEmpty();
     }
 }

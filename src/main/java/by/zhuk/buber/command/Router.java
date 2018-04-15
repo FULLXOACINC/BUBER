@@ -2,7 +2,7 @@ package by.zhuk.buber.command;
 
 public class Router {
     private TransitionType type;
-    private String transitionResource ;
+    private String transitionResource;
 
     public Router(TransitionType type, String transitionResource) {
         this.type = type;

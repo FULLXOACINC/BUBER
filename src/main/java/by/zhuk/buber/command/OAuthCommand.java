@@ -31,7 +31,7 @@ public class OAuthCommand implements Command {
         oAuthOptional = OAuthFactory.findOAuth(loginType);
 
         if (!oAuthOptional.isPresent()) {
-            logger.log(Level.WARN,"Unknown command");
+            logger.log(Level.WARN, "Unknown command");
             return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
 

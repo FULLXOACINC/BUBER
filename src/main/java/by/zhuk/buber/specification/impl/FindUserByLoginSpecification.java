@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FindUserByLoginSpecification implements SQLSpecification {
     private List<Object> prepareParameters;
-    private static final String SELECT_BY_LOGIN = "SELECT user_login,user_name, user_second_name, user_password, user_type, user_balance, user_age, user_phone_number, user_is_ban FROM buber_db.user WHERE user_login=?";
+    private static final String SELECT_BY_LOGIN = "SELECT user_login,user_name, user_second_name, user_password, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban FROM buber_db.user WHERE user_login=?";
 
     public FindUserByLoginSpecification(String login) {
         prepareParameters = new ArrayList<>();

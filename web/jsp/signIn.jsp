@@ -5,7 +5,7 @@
 
 
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="text" var="locale" scope="session"/>
+<fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
 <fmt:message bundle="${locale}" key="text.signUp" var="singUp"/>
 <fmt:message bundle="${locale}" key="text.yandex" var="yandex"/>
@@ -27,19 +27,22 @@
     <input type="hidden" name="command" value="sign-in">
     <input type="submit" value="${enter}">
 </form>
-<%--TODO rewrite with <c:choose>--%>
-<c:if test="${signInValidError}">
-    ${loginNotValidMessage}
-</c:if>
-<c:if test="${signInExistError}">
-    ${loginNotExistMessage}
-</c:if>
-<c:if test="${signInPasswordError}">
-    ${loginPasswordNotEqMessage}
-</c:if>
-<c:if test="${bannedError}">
-    ${bannedErrorMessage}
-</c:if>
+
+<c:choose>
+    <c:when test="${signInValidError}">
+        ${loginNotValidMessage}
+    </c:when>
+    <c:when test="${signInExistError}">
+        ${loginNotExistMessage}
+    </c:when>
+    <c:when test="${signInPasswordError}">
+        ${loginPasswordNotEqMessage}
+    </c:when>
+    <c:when test="${bannedError}">
+        ${bannedErrorMessage}
+    </c:when>
+</c:choose>
+
 <br/>
 
 <form action="/jsp/signUp.jsp">

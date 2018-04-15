@@ -5,7 +5,7 @@
 
 
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="text" var="locale" scope="session"/>
+<fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
 <fmt:message bundle="${locale}" key="text.signUp" var="signUp"/>
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
@@ -38,7 +38,8 @@
     <p>${repeatPassword}<input type="password" name="repeatPassword"/></p>
     <p>${firstName}<input type="text" name="firstName" value="${oldFirstName}"/></p>
     <p>${secondName}<input type="text" name="secondName" value="${oldSecondName}"/></p>
-    <p>${age}<input type="text" name="age" value="${oldAge}"/></p>
+    <p>${age}<input type="date" name="birthDay" value="1998-04-13"></p>
+
     <p>${phoneNumber}<input type="text" name="phoneNumber" value="${oldPhoneNumber}"/></p>
 
     <input type="hidden" name="command" value="sign-up-user">

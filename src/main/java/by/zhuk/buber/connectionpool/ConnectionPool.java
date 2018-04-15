@@ -13,9 +13,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Enumeration;
-import java.util.MissingResourceException;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -110,7 +108,7 @@ public final class ConnectionPool {
     }
 
     private void initPool() {
-        final String DATABASE_PROPERTY = "database.properties";
+        final String DATABASE_PROPERTY = "properties/database.properties";
         final String DATABASE_URL = "db.url";
         final String DATABASE_USER = "db.user";
         final String DATABASE_PASSWORD = "db.password";
@@ -141,7 +139,7 @@ public final class ConnectionPool {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             logger.log(Level.INFO, "Register MySQL JDBC driver");
         } catch (SQLException e) {
-            logger.log(Level.FATAL, "Mysql jdbc driver hasn't loaded", e);
+            logger.catching(e);
             throw new RuntimeException("Mysql jdbc driver hasn't loaded", e);
         }
         for (int index = 0; index < poolSize; index++) {

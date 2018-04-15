@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="text" var="locale" scope="session"/>
+<fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
@@ -14,9 +14,16 @@
     <title>${buber}</title>
 </head>
 <body>
+<form action="${ pageContext.request.contextPath }/controller" method="post">
+    <input type="radio" name="lang" value="ru"> ru<br/>
+    <input type="radio" name="lang" value="en"> en<br/>
+
+    <input type="hidden" name="command" value="lang">
+    <input type="submit" value="${lang}">
+</form>
 ${sessionScope.login}
 ${sessionScope.type}
-<c:if test="${sessionScope.type == 'ADMIN'}">
+<c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
     <form action="/jsp/admin.jsp" method="post">
         <input type="submit" value="${console}">
     </form>

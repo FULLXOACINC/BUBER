@@ -49,24 +49,23 @@ public class OAuthYandex implements OAuth {
     }
 
     private void init() {
-        final String FACEBOOK_PROPERTY = "yandex";
-        final String FACEBOOK_CLIENT_ID = "yandex.clientId";
-        final String FACEBOOK_CLIENT_SECRET = "yandex.clientSecret";
-        final String FACEBOOK_REDIRECT_URI = "yandex.redirectUri";
-        final String FACEBOOK_AUTH_URI = "yandex.authUrl";
-        final String FACEBOOK_TOKEN_URL = "yandex.tokenUrl";
+        final String YANDEX_PROPERTY = "properties/yandex";
+        final String YANDEX_CLIENT_ID = "yandex.clientId";
+        final String YANDEX_CLIENT_SECRET = "yandex.clientSecret";
+        final String YANDEX_REDIRECT_URI = "yandex.redirectUri";
+        final String YANDEX_AUTH_URI = "yandex.authUrl";
+        final String YANDEX_TOKEN_URL = "yandex.tokenUrl";
 
         ResourceBundle resourceBundle;
         String authURI;
 
         try {
-            resourceBundle = ResourceBundle.getBundle(FACEBOOK_PROPERTY);
-
-            clientId = resourceBundle.getString(FACEBOOK_CLIENT_ID);
-            clientSecret = resourceBundle.getString(FACEBOOK_CLIENT_SECRET);
-            redirectUri = resourceBundle.getString(FACEBOOK_REDIRECT_URI);
-            authURI = resourceBundle.getString(FACEBOOK_AUTH_URI);
-            tokenUrl = resourceBundle.getString(FACEBOOK_TOKEN_URL);
+            resourceBundle = ResourceBundle.getBundle(YANDEX_PROPERTY);
+            clientId = resourceBundle.getString(YANDEX_CLIENT_ID);
+            clientSecret = resourceBundle.getString(YANDEX_CLIENT_SECRET);
+            redirectUri = resourceBundle.getString(YANDEX_REDIRECT_URI);
+            authURI = resourceBundle.getString(YANDEX_AUTH_URI);
+            tokenUrl = resourceBundle.getString(YANDEX_TOKEN_URL);
 
         } catch (MissingResourceException e) {
             logger.log(Level.FATAL, "Hasn't found bundle for yandex");
@@ -96,7 +95,7 @@ public class OAuthYandex implements OAuth {
 
     @Override
     public String takeEmail(JSONObject json) {
-        return (String)json.getJSONArray("emails").get(0);
+        return (String) json.getJSONArray("emails").get(0);
     }
 
     @Override

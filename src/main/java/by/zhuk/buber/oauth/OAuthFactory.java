@@ -5,10 +5,10 @@ import java.util.Optional;
 public class OAuthFactory {
 
     public static Optional<OAuth> findOAuth(String oAuthType) {
-        try{
+        try {
             OAuthType type = OAuthType.valueOf(oAuthType.toUpperCase());
             return Optional.of(type.getOAuth());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return Optional.empty();
         }
 

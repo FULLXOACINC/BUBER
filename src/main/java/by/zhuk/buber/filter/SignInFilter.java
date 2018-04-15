@@ -28,7 +28,7 @@ import java.util.Optional;
 @WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
 public class SignInFilter implements Filter {
     private static Logger logger = LogManager.getLogger(SignInFilter.class);
-    private static String BANNED_ERROR="bannedError";
+    private static String BANNED_ERROR = "bannedError";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -57,7 +57,7 @@ public class SignInFilter implements Filter {
                 User user = userOptional.get();
                 if (!user.isBaned()) {
                     filterChain.doFilter(request, response);
-                }else {
+                } else {
                     session.removeAttribute(UserConstant.LOGIN);
                     session.removeAttribute(UserConstant.TYPE);
                     request.setAttribute(BANNED_ERROR, true);
@@ -71,7 +71,7 @@ public class SignInFilter implements Filter {
             }
 
 
-        }else {
+        } else {
             request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
         }
     }

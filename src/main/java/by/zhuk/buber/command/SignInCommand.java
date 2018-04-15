@@ -4,7 +4,6 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
@@ -17,12 +16,12 @@ import java.util.Optional;
 
 public class SignInCommand implements Command {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
-    private static String LOGIN="login";
-    private static String PASSWORD="password";
+    private static String LOGIN = "login";
+    private static String PASSWORD = "password";
 
-    private static String SIGN_IN_VLIDE_ERROR="signInValidError";
-    private static String SIGN_IN_EXIST_ERROR="signInExistError";
-    private static String SIGN_IN_PASSWORD_ERROR="signInPasswordError";
+    private static String SIGN_IN_VLIDE_ERROR = "signInValidError";
+    private static String SIGN_IN_EXIST_ERROR = "signInExistError";
+    private static String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -43,19 +42,15 @@ public class SignInCommand implements Command {
                 return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
             }
             UserReceiver userReceiver = new UserReceiver();
-            Optional<User> userOptional =userReceiver.findUserByLogin(login);
+            Optional<User> userOptional = userReceiver.findUserByLogin(login);
             HttpSession session = request.getSession();
             if (!userOptional.isPresent()) {
                 return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
             }
-            User user =userOptional.get();
-            session.setAttribute(UserConstant.LOGIN,user.getLogin());
-            session.setAttribute(UserConstant.TYPE,user.getType().name());
-            if(user.getType() == UserType.ADMIN){
-                return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
-            }else {
-                return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
-            }
+            User user = userOptional.get();
+            session.setAttribute(UserConstant.LOGIN, user.getLogin());
+            session.setAttribute(UserConstant.TYPE, user.getType().name());
+            return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
 
         } catch (ReceiverException e) {
             //TODO go to error page

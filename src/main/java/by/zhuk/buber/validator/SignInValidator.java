@@ -11,7 +11,7 @@ public class SignInValidator {
         return session.getAttribute(UserConstant.LOGIN) != null && session.getAttribute(UserConstant.TYPE) != null;
     }
 
-    public static boolean isLoginValid(String login){
+    public static boolean isLoginValid(String login) {
         return login.matches(LOGIN_REGEXP);
     }
 }

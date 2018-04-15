@@ -4,30 +4,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
-<fmt:setBundle basename="text" var="locale" scope="session"/>
+<fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
 <fmt:message bundle="${locale}" key="text.admin.ban" var="ban"/>
 <fmt:message bundle="${locale}" key="text.admin.unBan" var="unBan"/>
-
+<fmt:message bundle="${locale}" key="text.admin.removeAdminStatus" var="removeAdminStatus"/>
+<fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
+<fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
 <html>
 <head>
     <title>${buber}</title>
 </head>
 <body>
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <input type="radio" name="lang" value="ru"> ru<br/>
-    <input type="radio" name="lang" value="en"> en<br/>
-
-    <input type="hidden" name="command" value="lang">
-    <input type="submit" value="${lang}">
+<form action="/jsp/signUpDriver.jsp">
+    <input type="submit" value="${signUpDriver}">
+</form>
+<form action="${pageContext.request.contextPath}/controller" method="post">
+    <input type="hidden" name="command" value="sign-out">
+    <input type="submit" value="${signOut}">
 </form>
 ${sessionScope.login}
 ${sessionScope.type}
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <input type="text" name="pattern" value="">
+<form action="${ pageContext.request.contextPath }/controller">
+    <input type="text" name="pattern">
     <input type="hidden" name="command" value="find-users">
     <input type="submit" value="${find}">
 </form>
@@ -37,28 +39,39 @@ ${sessionScope.type}
     <c:out value="${user.lastName}" escapeXml="true"/>
     <c:out value="${user.phoneNumber}" escapeXml="true"/>
 
-    <c:if test="${user.type != 'ADMIN'}">
-        <c:if test="${!user.isBaned()}">
-            <form action="${ pageContext.request.contextPath }/controller" method="post">
-                <input type="hidden" name="command" value="user-ban">
-                <input type="hidden" name="user" value="${user.login}">
-                <input type="submit" value="${ban}">
-            </form>
-        </c:if>
-        <c:if test="${user.isBaned()}">
-            <form action="${ pageContext.request.contextPath }/controller" method="post">
-                <input type="hidden" name="command" value="user-ban">
-                <input type="hidden" name="user" value="${user.login}">
-                <input type="submit" value="${unBan}">
-            </form>
-        </c:if>
+    <c:set var="banView"/>
+    <c:choose>
+        <c:when test="${!user.isBaned()}">
+            <c:set var="banView" value="${ban}"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="banView" value="${unBan}"/>
+        </c:otherwise>
+    </c:choose>
+
+    <c:set var="adminStatusView"/>
+    <c:choose>
+        <c:when test="${user.type == 'ADMIN'}">
+            <c:set var="adminStatusView" value="${removeAdminStatus}"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="adminStatusView" value="${takeAdminStatus}"/>
+        </c:otherwise>
+    </c:choose>
+    <c:if test="${user.type != 'ROOT_ADMIN' && !(user.login eq sessionScope.login)}">
+        <form action="${ pageContext.request.contextPath }/controller" method="post">
+            <input type="hidden" name="command" value="switch-ban">
+            <input type="hidden" name="user" value="${user.login}">
+            <input type="submit" value="${banView}">
+        </form>
+
+        <form action="${ pageContext.request.contextPath }/controller" method="post">
+            <input type="hidden" name="command" value="switch-admin-status">
+            <input type="hidden" name="user" value="${user.login}">
+            <input type="submit" value="${adminStatusView}">
+        </form>
     </c:if>
     <hr/>
 </c:forEach>
-
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <input type="hidden" name="command" value="sign-out">
-    <input type="submit" value="${signOut}">
-</form>
 </body>
 </html>

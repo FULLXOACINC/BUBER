@@ -4,12 +4,10 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.AdminValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FindUsersCommand implements Command {
@@ -19,11 +17,6 @@ public class FindUsersCommand implements Command {
 
     @Override
     public Router execute(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-
-        if (!AdminValidator.isAdmin(session)) {
-            return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
-        }
         String findPattern = request.getParameter(PATTERN);
         UserReceiver receiver = new UserReceiver();
         List<User> users;

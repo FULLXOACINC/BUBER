@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,8 +21,8 @@ import java.util.List;
 public class UserRepository implements Repository<User> {
     private static Logger logger = LogManager.getLogger(UserRepository.class);
 
-    private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_name, user_second_name, user_password,user_type, user_balance, user_age, user_phone_number, user_is_ban) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0')";
-    private static final String UPDATE_USER = "UPDATE buber_db.user SET user_name=?, user_second_name=?, user_password=?, user_type=?, user_balance=?, user_age=?, user_phone_number=?, user_is_ban=? WHERE user_login= ?";
+    private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_name, user_second_name, user_password,user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0')";
+    private static final String UPDATE_USER = "UPDATE buber_db.user SET user_name=?, user_second_name=?, user_password=?, user_type=?, user_balance=?, user_birth_dey=?, user_phone_number=?, user_is_ban=? WHERE user_login= ?";
     private static final String DELETE_USER = "DELETE FROM buber_db.user WHERE user_login= ?";
 
     @Override
@@ -37,7 +38,7 @@ public class UserRepository implements Repository<User> {
             statement.setString(4, user.getPassword());
             statement.setString(5, user.getType().name());
             statement.setBigDecimal(6, user.getBalance());
-            statement.setInt(7, user.getAge());
+            statement.setDate(7, Date.valueOf(user.getBirthDay()));
             statement.setString(8, user.getPhoneNumber());
 
             statement.executeUpdate();
@@ -62,7 +63,7 @@ public class UserRepository implements Repository<User> {
             statement.setString(3, user.getPassword());
             statement.setString(4, user.getType().name());
             statement.setBigDecimal(5, user.getBalance());
-            statement.setInt(6, user.getAge());
+            statement.setDate(6, Date.valueOf(user.getBirthDay()));
             statement.setString(7, user.getPhoneNumber());
 
             int isBanes = user.isBaned() ? 1 : 0;
@@ -117,7 +118,7 @@ public class UserRepository implements Repository<User> {
                 UserType type = UserType.valueOf(resultSet.getString(5).toUpperCase());
                 user.setType(type);
                 user.setBalance(resultSet.getBigDecimal(6));
-                user.setAge(resultSet.getInt(7));
+                user.setBirthDay(resultSet.getDate(7).toLocalDate());
                 user.setPhoneNumber(resultSet.getString(8));
                 boolean isBaned = resultSet.getBoolean(9);
                 user.setBaned(isBaned);

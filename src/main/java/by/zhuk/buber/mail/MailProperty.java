@@ -18,7 +18,7 @@ public class MailProperty {
     private static ReentrantLock lock = new ReentrantLock();
     private static Properties properties = new Properties();
 
-    private static final String PROPERTY_MAIL = "mail";
+    private static final String PROPERTY_MAIL = "properties/mail";
     private static final String MAIL_SMTP_HOST = "mail.smtp.host";
     private static final String MAIL_SMTP_PORT = "mail.smtp.port";
     private static final String MAIL_USER_NAME = "mail.user.name";
