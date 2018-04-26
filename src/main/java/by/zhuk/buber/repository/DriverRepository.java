@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DriverRepository implements TransactionRepository<Driver> {
+public class DriverRepository implements Repository<Driver> {
 
     private static Logger logger = LogManager.getLogger(DriverRepository.class);
     private Connection connection;

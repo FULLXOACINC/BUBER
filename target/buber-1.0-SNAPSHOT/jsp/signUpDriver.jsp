@@ -23,7 +23,7 @@
 <fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="secondNameErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.notValidPasswordErrorMessage" var="notValidPasswordErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.passwordNotEqMessage" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.error.ageErrorMessage" var="ageErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.error.birthDayErrorMessage" var="birthDayErrorMessage"/>
 <fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="notValidPhoneNumberErrorMessage"/>
 
 
@@ -64,7 +64,7 @@
     <p>${passwordNotEqMessage}</p>
 </c:if>
 <c:if test="${ageError}">
-    <p> ${ageErrorMessage}</p>
+    <p> ${birthDayErrorMessage}</p>
 </c:if>
 <c:if test="${notValidPhoneNumberError}">
     <p> ${notValidPhoneNumberErrorMessage}</p>

@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarMarkRepository implements TransactionRepository<CarMark> {
+public class CarMarkRepository implements Repository<CarMark> {
     private static Logger logger = LogManager.getLogger(CarMarkRepository.class);
     private Connection connection;
 

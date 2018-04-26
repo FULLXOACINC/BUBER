@@ -12,7 +12,6 @@ import by.zhuk.buber.repository.CarMarkRepository;
 import by.zhuk.buber.repository.DriverRepository;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryTransaction;
-import by.zhuk.buber.repository.TransactionRepository;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
@@ -29,10 +28,15 @@ public class SignUpReceiver {
     private static String MAIL_BUNDLE = "";
 
     public void saveUser(User user) throws ReceiverException {
+        RepositoryTransaction transaction = new RepositoryTransaction();
         Repository<User> repository = new UserRepository();
         try {
+            transaction.startTransaction(repository);
             repository.add(user);
+            transaction.commit();
+            transaction.endTransaction();
         } catch (RepositoryException e) {
+            transaction.rollBack();
             throw new ReceiverException(e);
         }
     }
@@ -51,12 +55,11 @@ public class SignUpReceiver {
     public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
 
-        TransactionRepository<Driver> driverRepository = new DriverRepository();
-        TransactionRepository<CarMark> carMarkRepository = new CarMarkRepository();
-
+        Repository<Driver> driverRepository = new DriverRepository();
+        Repository<CarMark> carMarkRepository = new CarMarkRepository();
         Repository<User> userRepository = new UserRepository();
         try {
-            transaction.startTransaction(driverRepository, carMarkRepository);
+            transaction.startTransaction(driverRepository, carMarkRepository,userRepository);
             CarMark carMark = new CarMark();
             carMark.setMarkName(carMarkName);
 
@@ -72,16 +75,16 @@ public class SignUpReceiver {
             driver.setCarMark(String.valueOf(carMark.getIndex()));
             driverRepository.add(driver);
 
-            transaction.commit();
-            transaction.endTransaction();
-
-
             List<User> users = userRepository.find(new FindUserByLoginSpecification(login));
             if (!users.isEmpty()) {
                 User user = users.get(0);
                 user.setType(UserType.DRIVER);
                 userRepository.update(user);
             }
+            transaction.commit();
+            transaction.endTransaction();
+
+
         } catch (RepositoryException e) {
             transaction.rollBack();
             throw new ReceiverException(e);

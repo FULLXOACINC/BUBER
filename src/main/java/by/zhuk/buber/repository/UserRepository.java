@@ -20,17 +20,21 @@ import java.util.List;
 
 public class UserRepository implements Repository<User> {
     private static Logger logger = LogManager.getLogger(UserRepository.class);
+    private Connection connection;
 
     private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_name, user_second_name, user_password,user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0')";
     private static final String UPDATE_USER = "UPDATE buber_db.user SET user_name=?, user_second_name=?, user_password=?, user_type=?, user_balance=?, user_birth_dey=?, user_phone_number=?, user_is_ban=? WHERE user_login= ?";
     private static final String DELETE_USER = "DELETE FROM buber_db.user WHERE user_login= ?";
 
     @Override
-    public void add(User user) throws RepositoryException {
-        ConnectionPool pool = ConnectionPool.getInstance();
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
-        try (Connection connection = pool.takeConnection();
-             PreparedStatement statement = connection.prepareStatement(INSERT_USER)) {
+    @Override
+    public void add(User user) throws RepositoryException {
+
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_USER)) {
 
             statement.setString(1, user.getLogin());
             statement.setString(2, user.getFirstName());
@@ -52,10 +56,9 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public void update(User user) throws RepositoryException {
-        ConnectionPool pool = ConnectionPool.getInstance();
 
-        try (Connection connection = pool.takeConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
+
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
 
 
             statement.setString(1, user.getFirstName());
@@ -80,10 +83,8 @@ public class UserRepository implements Repository<User> {
     @Override
     public void delete(User user) throws RepositoryException {
         String login = user.getLogin();
-        ConnectionPool pool = ConnectionPool.getInstance();
 
-        try (Connection connection = pool.takeConnection();
-             PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
 
             statement.setString(1, login);
             statement.executeUpdate();
@@ -99,8 +100,7 @@ public class UserRepository implements Repository<User> {
 
 
         List<User> users = new ArrayList<>();
-        try (Connection connection = ConnectionPool.getInstance().takeConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlSpecification.takePrepareQuery())) {
+        try (PreparedStatement statement = connection.prepareStatement(sqlSpecification.takePrepareQuery())) {
             List<Object> params = sqlSpecification.getPrepareParameters();
 
             for (int index = 1; index <= params.size(); index++) {

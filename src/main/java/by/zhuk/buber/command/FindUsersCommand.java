@@ -21,11 +21,11 @@ public class FindUsersCommand implements Command {
         UserReceiver receiver = new UserReceiver();
         List<User> users;
         try {
-            users = receiver.findAllUser(findPattern);
+            users = receiver.findUsersByPattern(findPattern);
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
 
         }
         request.setAttribute(USERS, users);

@@ -1,4 +1,4 @@
-package by.zhuk.buber.listener;
+package by.zhuk.buber.controller;
 
 import by.zhuk.buber.constant.PagesConstant;
 

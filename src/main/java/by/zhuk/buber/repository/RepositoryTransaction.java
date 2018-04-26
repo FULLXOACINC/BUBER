@@ -17,7 +17,7 @@ public class RepositoryTransaction {
         connection = ConnectionPool.getInstance().takeConnection();
     }
 
-    public void startTransaction(TransactionRepository repository, TransactionRepository... repositories) throws RepositoryException {
+    public void startTransaction(Repository repository, Repository... repositories) throws RepositoryException {
 
         try {
             connection.setAutoCommit(false);
@@ -25,7 +25,7 @@ public class RepositoryTransaction {
             throw new RepositoryException(e);
         }
         repository.setConnection(connection);
-        for (TransactionRepository transactionRepositor : repositories) {
+        for (Repository transactionRepositor : repositories) {
             transactionRepositor.setConnection(connection);
         }
 
@@ -34,6 +34,7 @@ public class RepositoryTransaction {
     public void endTransaction() throws RepositoryException {
         try {
             connection.setAutoCommit(true);
+            connection.close();
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
@@ -42,6 +43,7 @@ public class RepositoryTransaction {
     public void commit() throws RepositoryException {
         try {
             connection.commit();
+
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
@@ -49,6 +51,7 @@ public class RepositoryTransaction {
     public void rollBack() {
         try {
             connection.rollback();
+            connection.close();
         } catch (SQLException e) {
             logger.catching(e);
         }

@@ -4,6 +4,7 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
+import by.zhuk.buber.repository.RepositoryTransaction;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
@@ -17,14 +18,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SignInReceiver {
 
     public boolean isLoginExist(String login) throws ReceiverException {
-        Repository<User> repository = new UserRepository();
         Specification specification = new FindUserByLoginSpecification(login);
-        List<User> users;
-        try {
-            users = repository.find(specification);
-        } catch (RepositoryException e) {
-            throw new ReceiverException(e);
-        }
+        UserReceiver userReceiver = new UserReceiver();
+        List<User> users=userReceiver.findUsersBySpecification(specification);
         ConcurrentHashMap<String, SignUpUserInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
 
         boolean isLoginExistSignUp = false;
@@ -38,15 +34,10 @@ public class SignInReceiver {
     }
 
 
-    public boolean checkPassword(String login, String password) throws ReceiverException {
-        Repository<User> repository = new UserRepository();
+    public boolean checkPassword(String login, String password) throws ReceiverException { ;
         Specification specification = new FindUserByLoginAndPasswordSpecification(login, password);
-        List<User> users;
-        try {
-            users = repository.find(specification);
-        } catch (RepositoryException e) {
-            throw new ReceiverException(e);
-        }
+        UserReceiver userReceiver = new UserReceiver();
+        List<User> users=userReceiver.findUsersBySpecification(specification);
         return !users.isEmpty();
 
     }

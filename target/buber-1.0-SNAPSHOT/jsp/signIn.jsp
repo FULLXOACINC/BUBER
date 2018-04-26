@@ -7,6 +7,7 @@
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
+<fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.signUp" var="singUp"/>
 <fmt:message bundle="${locale}" key="text.yandex" var="yandex"/>
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
@@ -21,6 +22,13 @@
     <title>${login}</title>
 </head>
 <body>
+<form action="${ pageContext.request.contextPath }/controller" method="post">
+    <input type="radio" name="lang" value="ru"> ru<br/>
+    <input type="radio" name="lang" value="en"> en<br/>
+
+    <input type="hidden" name="command" value="lang">
+    <input type="submit" value="${lang}">
+</form>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <p>${login}<input type="text" name="login"/></p>
     <p>${password}<input type="password" name="password"/></p>

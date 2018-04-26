@@ -17,6 +17,8 @@
 <html>
 <head>
     <title>${buber}</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/js/admin.js"></script>
 </head>
 <body>
 <form action="/jsp/signUpDriver.jsp">
@@ -28,11 +30,9 @@
 </form>
 ${sessionScope.login}
 ${sessionScope.type}
-<form action="${ pageContext.request.contextPath }/controller">
-    <input type="text" name="pattern">
-    <input type="hidden" name="command" value="find-users">
-    <input type="submit" value="${find}">
-</form>
+<input id="find-users" type="submit" value="${find}">
+
+<tbody>
 <c:forEach items="${users}" var="user">
     <c:out value="${user.login}" escapeXml="true"/>
     <c:out value="${user.firstName}" escapeXml="true"/>
@@ -73,5 +73,6 @@ ${sessionScope.type}
     </c:if>
     <hr/>
 </c:forEach>
+</tbody>
 </body>
 </html>

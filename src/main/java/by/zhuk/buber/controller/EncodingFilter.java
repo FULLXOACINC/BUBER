@@ -1,4 +1,4 @@
-package by.zhuk.buber.filter;
+package by.zhuk.buber.controller;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

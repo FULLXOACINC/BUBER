@@ -1,4 +1,4 @@
-package by.zhuk.buber.filter;
+package by.zhuk.buber.controller;
 
 import by.zhuk.buber.command.CommandType;
 import by.zhuk.buber.constant.CommandConstant;

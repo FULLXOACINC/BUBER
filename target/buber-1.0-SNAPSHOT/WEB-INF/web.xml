@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <filter-mapping>
         <filter-name>encoding</filter-name>
         <url-pattern>/*</url-pattern>
@@ -15,4 +16,14 @@
         <filter-name>admin</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+    <error-page>
+        <location>/jsp/error/errorDB.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/error/error404.jsp</location>
+    </error-page>
+
 </web-app>
