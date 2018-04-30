@@ -1,10 +1,7 @@
 package by.zhuk.buber.repository;
 
-import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.CarMark;
-import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.specification.SQLSpecification;
 import by.zhuk.buber.specification.Specification;
 import org.apache.logging.log4j.Level;

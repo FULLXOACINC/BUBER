@@ -30,7 +30,7 @@ public class AdminFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (isAdminCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.ADMIN_PAGE)) {
+        if (isAdminCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.ADMIN_PAGE) || request.getRequestURI().startsWith(PagesConstant.USER_VIEW_PAGE)) {
             HttpSession session = request.getSession();
             String userType = (String) session.getAttribute(UserConstant.TYPE);
             if (UserType.ROOT_ADMIN.name().equals(userType) || UserType.ADMIN.name().equals(userType)) {

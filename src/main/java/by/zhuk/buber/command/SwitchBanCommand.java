@@ -43,6 +43,6 @@ public class SwitchBanCommand implements Command {
         }
 
 
-        return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
+        return new Router(TransitionType.REDIRECT, request.getRequestURI()+"?command=view-user&user="+userLogin);
     }
 }

@@ -6,8 +6,6 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.RepositoryTransaction;
 import by.zhuk.buber.repository.UserRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class AdminReceiver {
 

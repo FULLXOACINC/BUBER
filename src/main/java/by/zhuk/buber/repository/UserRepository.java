@@ -1,6 +1,5 @@
 package by.zhuk.buber.repository;
 
-import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;

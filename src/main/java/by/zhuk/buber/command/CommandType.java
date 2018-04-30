@@ -11,6 +11,7 @@ public enum CommandType {
     OAUTH_ACCEPT(new OAuthAcceptCommand()),
     SWITCH_ADMIN_STATUS(new SwitchAdminStatusCommand()),
     SIGN_UP_DRIVER(new SignUpDriverCommand()),
+    VIEW_USER(new ViewUserCommand()),
     SWITCH_BAN(new SwitchBanCommand());
 
     private Command command;

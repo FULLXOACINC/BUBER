@@ -6,7 +6,6 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
