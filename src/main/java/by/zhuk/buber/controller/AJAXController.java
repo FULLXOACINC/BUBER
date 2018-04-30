@@ -1,11 +1,8 @@
 package by.zhuk.buber.controller;
 
-import by.zhuk.buber.command.Command;
-import by.zhuk.buber.command.CommandFactory;
-import by.zhuk.buber.command.Router;
-import by.zhuk.buber.command.TransitionType;
+import by.zhuk.buber.command.ajax.AJAXCommand;
+import by.zhuk.buber.command.ajax.AJAXCommandFactory;
 import by.zhuk.buber.constant.CommandConstant;
-import by.zhuk.buber.constant.PagesConstant;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 
 @WebServlet(urlPatterns = {"/AJAXController/*"}, name = "AJAXController")
@@ -32,11 +30,19 @@ public class AJAXController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        JSONObject json = new JSONObject();
-        json.put("test","rest");
-        logger.log(Level.INFO,"GOOD");
-        response.getWriter().print(json);
+        Optional<AJAXCommand> commandOptional = AJAXCommandFactory.findCommand(command);
+        JSONObject result;
+        if (commandOptional.isPresent()) {
+            result = commandOptional.get().execute(request);
+        } else {
+            logger.log(Level.WARN, "Unknown command");
+            result = new JSONObject();
+            result.put("error", "Unknown command");
+
+        }
+        response.getWriter().print(result);
     }
 }

@@ -21,18 +21,16 @@
     <script src="/js/admin.js"></script>
 </head>
 <body>
-<form action="/jsp/signUpDriver.jsp">
-    <input type="submit" value="${signUpDriver}">
-</form>
 <form action="${pageContext.request.contextPath}/controller" method="post">
     <input type="hidden" name="command" value="sign-out">
     <input type="submit" value="${signOut}">
 </form>
-${sessionScope.login}
-${sessionScope.type}
+<form action="/jsp/signUpDriver.jsp">
+    <input type="submit" value="${signUpDriver}">
+</form>
+<input id="pattern" type="text" value="">
 <input id="find-users" type="submit" value="${find}">
-
-<tbody>
+<br/>
 <c:forEach items="${users}" var="user">
     <c:out value="${user.login}" escapeXml="true"/>
     <c:out value="${user.firstName}" escapeXml="true"/>
@@ -73,6 +71,9 @@ ${sessionScope.type}
     </c:if>
     <hr/>
 </c:forEach>
-</tbody>
+
+<div id="searched">
+
+</div>
 </body>
 </html>

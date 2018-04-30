@@ -30,14 +30,10 @@
 </form>
 ${sessionScope.login}
 ${sessionScope.type}
-<%--<form action="${ pageContext.request.contextPath }/controller">--%>
-<%--<form>--%>
-    <%--<input type="text" name="pattern">--%>
-    <%--<input type="hidden" name="command" value="find-users">--%>
-<%--</form>--%>
+<input id="pattern" type="text" value="">
+<br/>
 <input id="find-users" type="submit" value="${find}">
-
-<tbody>
+<br/>
 <c:forEach items="${users}" var="user">
     <c:out value="${user.login}" escapeXml="true"/>
     <c:out value="${user.firstName}" escapeXml="true"/>
@@ -78,6 +74,9 @@ ${sessionScope.type}
     </c:if>
     <hr/>
 </c:forEach>
-</tbody>
+
+<div id="searched">
+
+</div>
 </body>
 </html>
