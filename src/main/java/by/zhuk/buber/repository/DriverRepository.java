@@ -2,7 +2,6 @@ package by.zhuk.buber.repository;
 
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.Driver;
-import by.zhuk.buber.specification.Specification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,9 +9,8 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
-public class DriverRepository implements Repository<Driver> {
+public class DriverRepository extends AbstractRepository<Driver> {
 
     private static Logger logger = LogManager.getLogger(DriverRepository.class);
     private Connection connection;
@@ -53,10 +51,6 @@ public class DriverRepository implements Repository<Driver> {
 
     }
 
-    @Override
-    public List<Driver> find(Specification specification) throws RepositoryException {
-        return null;
-    }
 
 
 }

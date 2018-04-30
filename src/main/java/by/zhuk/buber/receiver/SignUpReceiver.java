@@ -8,9 +8,9 @@ import by.zhuk.buber.model.CarMark;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
+import by.zhuk.buber.repository.AbstractRepository;
 import by.zhuk.buber.repository.CarMarkRepository;
 import by.zhuk.buber.repository.DriverRepository;
-import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryTransaction;
 import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
@@ -29,7 +29,7 @@ public class SignUpReceiver {
 
     public void saveUser(User user) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
-        Repository<User> repository = new UserRepository();
+        AbstractRepository<User> repository = new UserRepository();
         try {
             transaction.startTransaction(repository);
             repository.add(user);
@@ -47,7 +47,7 @@ public class SignUpReceiver {
         MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=" + hash + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
-        User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER);
+        User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER,(float) 0.0);
         SignUpUserInfo info = new SignUpUserInfo(user, LocalTime.now());
         pool.putInfo(hash, info);
     }
@@ -55,16 +55,16 @@ public class SignUpReceiver {
     public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
 
-        Repository<Driver> driverRepository = new DriverRepository();
-        Repository<CarMark> carMarkRepository = new CarMarkRepository();
-        Repository<User> userRepository = new UserRepository();
+        AbstractRepository<Driver> driverRepository = new DriverRepository();
+        AbstractRepository<CarMark> carMarkRepository = new CarMarkRepository();
+        AbstractRepository<User> userRepository = new UserRepository();
         try {
             transaction.startTransaction(driverRepository, carMarkRepository,userRepository);
             CarMark carMark = new CarMark();
             carMark.setMarkName(carMarkName);
 
             carMarkRepository.add(carMark);
-            Specification specification = new FindCarMarkByName(carMarkName);
+            Specification<CarMark> specification = new FindCarMarkByName(carMarkName);
             List<CarMark> carMarks = carMarkRepository.find(specification);
             carMark = carMarks.get(0);
 

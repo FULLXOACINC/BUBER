@@ -2,20 +2,15 @@ package by.zhuk.buber.repository;
 
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.CarMark;
-import by.zhuk.buber.specification.SQLSpecification;
-import by.zhuk.buber.specification.Specification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CarMarkRepository implements Repository<CarMark> {
+public class CarMarkRepository extends AbstractRepository<CarMark> {
     private static Logger logger = LogManager.getLogger(CarMarkRepository.class);
     private Connection connection;
 
@@ -50,28 +45,4 @@ public class CarMarkRepository implements Repository<CarMark> {
 
     }
 
-    @Override
-    public List<CarMark> find(Specification specification) throws RepositoryException {
-        SQLSpecification sqlSpecification = (SQLSpecification) specification;
-
-        List<CarMark> carMarks = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(sqlSpecification.takePrepareQuery())) {
-            List<Object> params = sqlSpecification.getPrepareParameters();
-
-            for (int index = 1; index <= params.size(); index++) {
-                statement.setObject(index, params.get(index - 1));
-            }
-
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                CarMark carMark = new CarMark();
-                carMark.setIndex(resultSet.getInt(1));
-                carMark.setMarkName(resultSet.getString(2));
-                carMarks.add(carMark);
-            }
-        } catch (SQLException e) {
-            throw new RepositoryException(e);
-        }
-        return carMarks;
-    }
 }

@@ -13,6 +13,7 @@
 <fmt:message bundle="${locale}" key="text.admin.removeAdminStatus" var="removeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
+<fmt:message bundle="${locale}" key="text.notFound" var="notFound"/>
 <html>
 <head>
     <title>${buber}</title>

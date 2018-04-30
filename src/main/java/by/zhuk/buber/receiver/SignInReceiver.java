@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SignInReceiver {
 
     public boolean isLoginExist(String login) throws ReceiverException {
-        Specification specification = new FindUserByLoginSpecification(login);
+        Specification<User> specification = new FindUserByLoginSpecification(login);
         UserReceiver userReceiver = new UserReceiver();
         List<User> users=userReceiver.findUsersBySpecification(specification);
         ConcurrentHashMap<String, SignUpUserInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
@@ -31,7 +31,7 @@ public class SignInReceiver {
 
 
     public boolean checkPassword(String login, String password) throws ReceiverException { ;
-        Specification specification = new FindUserByLoginAndPasswordSpecification(login, password);
+        Specification<User> specification = new FindUserByLoginAndPasswordSpecification(login, password);
         UserReceiver userReceiver = new UserReceiver();
         List<User> users=userReceiver.findUsersBySpecification(specification);
         return !users.isEmpty();

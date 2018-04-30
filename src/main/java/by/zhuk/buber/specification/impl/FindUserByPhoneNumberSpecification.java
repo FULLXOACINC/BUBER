@@ -1,17 +1,20 @@
 package by.zhuk.buber.specification.impl;
 
-import by.zhuk.buber.specification.SQLSpecification;
+import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.model.User;
+import by.zhuk.buber.specification.Specification;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindUserByPhoneNumberSpecification implements SQLSpecification {
-    private List<Object> prepareParameters;
-    private static final String SELECT_BY_LOGIN = "SELECT user_login,user_name, user_second_name, user_password, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban FROM buber_db.user WHERE user_phone_number=?";
-
-    public FindUserByPhoneNumberSpecification(String number) {
-        prepareParameters = new ArrayList<>();
-        prepareParameters.add(number);
+public class FindUserByPhoneNumberSpecification implements Specification<User> {
+    private static final String SELECT_BY_LOGIN = "SELECT user_login FROM buber_db.user WHERE user_phone_number=?";
+    private String phoneNumber;
+    public FindUserByPhoneNumberSpecification(String phoneNumber) {
+        this.phoneNumber=phoneNumber;
     }
 
     @Override
@@ -20,7 +23,28 @@ public class FindUserByPhoneNumberSpecification implements SQLSpecification {
     }
 
     @Override
-    public List<Object> getPrepareParameters() {
-        return new ArrayList<>(prepareParameters);
+    public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
+
+        try {
+            statement.setString(1, phoneNumber);
+        } catch (SQLException e) {
+            throw new SpecificationException(e);
+        }
+
+    }
+
+    @Override
+    public List<User> createEntities(ResultSet resultSet) throws SpecificationException {
+        List<User> users = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                User user = new User();
+                user.setLogin(resultSet.getString(1));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new SpecificationException(e);
+        }
+        return users;
     }
 }

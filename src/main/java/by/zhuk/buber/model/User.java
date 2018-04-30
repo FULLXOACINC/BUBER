@@ -14,11 +14,13 @@ public class User {
     private String phoneNumber;
     private BigDecimal balance;
     private UserType type;
+    private float discount;
+
 
     public User() {
     }
 
-    public User(String login, String firstName, String lastName, String password, LocalDate birthDay, boolean isBaned, String phoneNumber, BigDecimal balance, UserType type) {
+    public User(String login, String firstName, String lastName, String password, LocalDate birthDay, boolean isBaned, String phoneNumber, BigDecimal balance, UserType type, float discount) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,6 +30,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.balance = balance;
         this.type = type;
+        this.discount = discount;
     }
 
     public String getLogin() {
@@ -102,6 +105,14 @@ public class User {
         this.type = type;
     }
 
+    public float getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(float discount) {
+        this.discount = discount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -112,6 +123,7 @@ public class User {
         }
         User user = (User) o;
         return isBaned == user.isBaned &&
+                Float.compare(user.discount, discount) == 0 &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
@@ -124,8 +136,7 @@ public class User {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(login, firstName, lastName, password, birthDay, isBaned, phoneNumber, balance, type);
+        return Objects.hash(login, firstName, lastName, password, birthDay, isBaned, phoneNumber, balance, type, discount);
     }
 
     @Override
@@ -134,12 +145,12 @@ public class User {
                 "login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
                 ", birthDay=" + birthDay +
                 ", isBaned=" + isBaned +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", balance=" + balance +
                 ", type=" + type +
+                ", discount=" + discount +
                 '}';
     }
 }

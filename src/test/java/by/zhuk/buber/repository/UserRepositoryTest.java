@@ -4,7 +4,8 @@ import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.specification.SQLSpecification;
+
+import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -109,7 +110,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindPositive() {
-        SQLSpecification sqlSpecification = new FindUserByLoginSpecification("san91130324@gmail.com");
+        Specification<User> sqlSpecification = new FindUserByLoginSpecification("san91130324@gmail.com");
         ConnectionPool.getInstance();
         UserRepository repository = new UserRepository();
         User user = new User();
