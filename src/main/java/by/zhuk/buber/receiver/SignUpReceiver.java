@@ -8,16 +8,18 @@ import by.zhuk.buber.model.CarMark;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.repository.AbstractRepository;
-import by.zhuk.buber.repository.CarMarkRepository;
-import by.zhuk.buber.repository.DriverRepository;
+import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryTransaction;
-import by.zhuk.buber.repository.UserRepository;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
-import by.zhuk.buber.specification.impl.FindCarMarkByName;
-import by.zhuk.buber.specification.impl.FindUserByLoginSpecification;
+import by.zhuk.buber.specification.add.AddCarMarkSpecification;
+import by.zhuk.buber.specification.add.AddDriverSpecification;
+import by.zhuk.buber.specification.add.AddUserSpecification;
+import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.FindCarMarkByNameSpecification;
+import by.zhuk.buber.specification.find.FindUserByLoginSpecification;
+import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,10 +31,11 @@ public class SignUpReceiver {
 
     public void saveUser(User user) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
-        AbstractRepository<User> repository = new UserRepository();
+        Repository<User> repository = new Repository<>();
         try {
             transaction.startTransaction(repository);
-            repository.add(user);
+            Specification carAddSpecification= new AddUserSpecification(user);
+            repository.add(carAddSpecification);
             transaction.commit();
             transaction.endTransaction();
         } catch (RepositoryException e) {
@@ -55,31 +58,32 @@ public class SignUpReceiver {
     public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
         RepositoryTransaction transaction = new RepositoryTransaction();
 
-        AbstractRepository<Driver> driverRepository = new DriverRepository();
-        AbstractRepository<CarMark> carMarkRepository = new CarMarkRepository();
-        AbstractRepository<User> userRepository = new UserRepository();
+        Repository<Driver> driverRepository = new Repository<>();
+        Repository<CarMark> carMarkRepository = new Repository<>();
+        Repository<User> userRepository = new Repository<>();
         try {
             transaction.startTransaction(driverRepository, carMarkRepository,userRepository);
-            CarMark carMark = new CarMark();
-            carMark.setMarkName(carMarkName);
-
-            carMarkRepository.add(carMark);
-            Specification<CarMark> specification = new FindCarMarkByName(carMarkName);
+            Specification carAddSpecification= new AddCarMarkSpecification(carMarkName);
+            carMarkRepository.add(carAddSpecification);
+            FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
             List<CarMark> carMarks = carMarkRepository.find(specification);
-            carMark = carMarks.get(0);
+            CarMark carMark = carMarks.get(0);
 
             Driver driver = new Driver();
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
             driver.setCarMark(String.valueOf(carMark.getIndex()));
-            driverRepository.add(driver);
+            Specification driverAddSpecification= new AddDriverSpecification(driver);
+            driverRepository.add(driverAddSpecification);
+
 
             List<User> users = userRepository.find(new FindUserByLoginSpecification(login));
             if (!users.isEmpty()) {
                 User user = users.get(0);
                 user.setType(UserType.DRIVER);
-                userRepository.update(user);
+                Specification updateUserTypeSpecification= new UpdateUserTypeSpecification(user);
+                userRepository.update(updateUserTypeSpecification);
             }
             transaction.commit();
             transaction.endTransaction();

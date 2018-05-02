@@ -17,7 +17,7 @@ public class RepositoryTransaction {
         connection = ConnectionPool.getInstance().takeConnection();
     }
 
-    public void startTransaction(AbstractRepository repository, AbstractRepository... repositories) throws RepositoryException {
+    public void startTransaction(Repository repository, Repository... repositories) throws RepositoryException {
 
         try {
             connection.setAutoCommit(false);
@@ -25,7 +25,7 @@ public class RepositoryTransaction {
             throw new RepositoryException(e);
         }
         repository.setConnection(connection);
-        for (AbstractRepository transactionRepositor : repositories) {
+        for (Repository transactionRepositor : repositories) {
             transactionRepositor.setConnection(connection);
         }
 
