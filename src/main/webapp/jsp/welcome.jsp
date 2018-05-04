@@ -6,6 +6,7 @@
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
+<fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
 
@@ -23,8 +24,11 @@
 </form>
 ${sessionScope.login}
 ${sessionScope.type}
+<form action="/jsp/orderTaxi.jsp">
+    <input type="submit" value="${orderTaxi}">
+</form>
 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
-    <form action="/jsp/admin.jsp" method="post">
+    <form action="/jsp/admin.jsp">
         <input type="submit" value="${console}">
     </form>
 </c:if>

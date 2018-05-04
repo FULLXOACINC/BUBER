@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var findFun=function () {
         $.ajax({
+            type: "POST",
             url: '/AJAXController',
             data: {
                 command: "find-users",

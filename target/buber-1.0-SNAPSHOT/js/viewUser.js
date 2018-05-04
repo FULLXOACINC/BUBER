@@ -1,11 +1,10 @@
 $(document).ready(function () {
-    var findFun=function () {
+    var setDiscountFun=function () {
         $.ajax({
-            type: "POST",
             url: '/AJAXController',
             data: {
-                command: "find-users",
-                pattern: $('#pattern').val()
+                command: "set-discount",
+                pattern: $('#discount').val()
             },
             success: function (response) {
                 $("#searched").empty();
@@ -26,6 +25,5 @@ $(document).ready(function () {
             }
         });
     };
-    $('#find-users').click(findFun);
-    $('#pattern').keyup(findFun);
+    $('#set-discount').click(setDiscountFun);
 });

@@ -14,6 +14,7 @@
 <fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
 <fmt:message bundle="${locale}" key="text.notFound" var="notFound"/>
+<fmt:message bundle="${locale}" key="text.change" var="change"/>
 <html>
 <head>
     <title>${buber}</title>
@@ -64,6 +65,8 @@
                 <input type="submit" value="${adminStatusView}">
             </form>
         </c:if>
+        <input id="discount" type="text" value="${user.discount}">
+        <input id="find-users" type="submit" value="${change}">
     </c:otherwise>
 </c:choose>
 

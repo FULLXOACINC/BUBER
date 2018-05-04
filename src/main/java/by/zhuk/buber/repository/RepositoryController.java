@@ -8,32 +8,40 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class RepositoryTransaction {
-    private static Logger logger = LogManager.getLogger(RepositoryTransaction.class);
+public class RepositoryController {
+    private static Logger logger = LogManager.getLogger(RepositoryController.class);
 
     private Connection connection;
 
-    public RepositoryTransaction() {
+    public RepositoryController(Repository repository, Repository... repositories) {
         connection = ConnectionPool.getInstance().takeConnection();
+        repository.setConnection(connection);
+        for (Repository transactionRepository : repositories) {
+            transactionRepository.setConnection(connection);
+        }
     }
 
-    public void startTransaction(Repository repository, Repository... repositories) throws RepositoryException {
-
+    public void startTransaction() throws RepositoryException {
         try {
             connection.setAutoCommit(false);
         } catch (SQLException e) {
             throw new RepositoryException(e);
         }
-        repository.setConnection(connection);
-        for (Repository transactionRepositor : repositories) {
-            transactionRepositor.setConnection(connection);
-        }
+
 
     }
 
     public void endTransaction() throws RepositoryException {
         try {
             connection.setAutoCommit(true);
+            connection.close();
+        } catch (SQLException e) {
+            throw new RepositoryException(e);
+        }
+    }
+
+    public void end() throws RepositoryException {
+        try {
             connection.close();
         } catch (SQLException e) {
             throw new RepositoryException(e);

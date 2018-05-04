@@ -9,7 +9,7 @@ import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
-import by.zhuk.buber.repository.RepositoryTransaction;
+import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
@@ -30,16 +30,13 @@ public class SignUpReceiver {
     private static String MAIL_BUNDLE = "";
 
     public void saveUser(User user) throws ReceiverException {
-        RepositoryTransaction transaction = new RepositoryTransaction();
         Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
         try {
-            transaction.startTransaction(repository);
             Specification carAddSpecification= new AddUserSpecification(user);
             repository.add(carAddSpecification);
-            transaction.commit();
-            transaction.endTransaction();
+            controller.end();
         } catch (RepositoryException e) {
-            transaction.rollBack();
             throw new ReceiverException(e);
         }
     }
@@ -56,13 +53,13 @@ public class SignUpReceiver {
     }
 
     public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
-        RepositoryTransaction transaction = new RepositoryTransaction();
 
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();
         Repository<User> userRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(driverRepository, carMarkRepository,userRepository);
         try {
-            transaction.startTransaction(driverRepository, carMarkRepository,userRepository);
+            controller.startTransaction();
             Specification carAddSpecification= new AddCarMarkSpecification(carMarkName);
             carMarkRepository.add(carAddSpecification);
             FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
@@ -85,12 +82,12 @@ public class SignUpReceiver {
                 Specification updateUserTypeSpecification= new UpdateUserTypeSpecification(user);
                 userRepository.update(updateUserTypeSpecification);
             }
-            transaction.commit();
-            transaction.endTransaction();
+            controller.commit();
+            controller.endTransaction();
 
 
         } catch (RepositoryException e) {
-            transaction.rollBack();
+            controller.rollBack();
             throw new ReceiverException(e);
         }
 

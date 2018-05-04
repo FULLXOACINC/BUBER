@@ -4,7 +4,7 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
-import by.zhuk.buber.repository.RepositoryTransaction;
+import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.FindUserByPatternSpecification;
@@ -38,16 +38,13 @@ public class UserReceiver {
     }
 
     public List<User> findUsersBySpecification(FindSpecification<User> specification) throws ReceiverException {
-        RepositoryTransaction transaction = new RepositoryTransaction();
         Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
         List<User> users;
         try {
-            transaction.startTransaction(repository);
             users = repository.find(specification);
-            transaction.commit();
-            transaction.endTransaction();
+            controller.end();
         } catch (RepositoryException e) {
-            transaction.rollBack();
             throw new ReceiverException(e);
         }
         return users;

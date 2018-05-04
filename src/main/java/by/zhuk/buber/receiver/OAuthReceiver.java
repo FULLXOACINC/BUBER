@@ -13,7 +13,7 @@ public class OAuthReceiver {
 
     public String findEmail(OAuth oAuth, String code) throws ReceiverException {
 
-        HttpClient httpclient = new HttpClient();
+        HttpClient httpClient = new HttpClient();
         PostMethod post = new PostMethod(oAuth.getTokenUrl());
         post.addParameter("grant_type", "authorization_code");
         post.addParameter("code", code);
@@ -21,10 +21,10 @@ public class OAuthReceiver {
         post.addParameter("client_secret", oAuth.getClientSecret());
         post.addParameter("redirect_uri", oAuth.getRedirectUri());
         try {
-            httpclient.executeMethod(post);
+            httpClient.executeMethod(post);
             JSONObject jsonPostResult = oAuth.parseResult(post);
             GetMethod get = new GetMethod(oAuth.takeLoginInfoUrl(jsonPostResult));
-            httpclient.executeMethod(get);
+            httpClient.executeMethod(get);
             JSONObject jsonGetResult = oAuth.parseResult(get);
 
             return oAuth.takeEmail(jsonGetResult);
