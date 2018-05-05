@@ -12,7 +12,7 @@
 <fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
 <fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
-<fmt:message bundle="${locale}" key="text.age" var="age"/>
+<fmt:message bundle="${locale}" key="text.birthDay" var="birthDay"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
@@ -30,52 +30,61 @@
 <html>
 <head>
     <title>${signUp}</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/js/signUp.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
 </head>
 <body>
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <p>${login}<input type="text" name="login" value="${oldLogin}"/></p>
-    <p>${password}<input type="password" name="password"/></p>
-    <p>${repeatPassword}<input type="password" name="repeatPassword"/></p>
-    <p>${firstName}<input type="text" name="firstName" value="${oldFirstName}"/></p>
-    <p>${secondName}<input type="text" name="secondName" value="${oldSecondName}"/></p>
-    <p>${age}<input type="date" name="birthDay" value="${oldBirthDay}"></p>
 
-    <p>${phoneNumber}<input type="text" name="phoneNumber" value="${oldPhoneNumber}"/></p>
+<p>${login}<input type="text" id="login"/></p>
+<p>${password}<input type="password" id="password"/></p>
+<p>${repeatPassword}<input type="password" id="repeatPassword"/></p>
+<p>${firstName}<input type="text" id="firstName"/></p>
+<p>${secondName}<input type="text" id="secondName"/></p>
+<p>${birthDay}<input type="date" id="birthDay"></p>
+<p>${phoneNumber}<input type="text" id="phoneNumber"/></p>
 
-    <input type="hidden" name="command" value="sign-up-user">
-    <input type="submit" value="${signUp}">
-</form>
+<input type="submit" id="sign-up" value="${signUp}">
 
-<c:if test="${notValidLoginError}">
+<div class="error" id="not-valid-login-error">
     <p>${notValidLoginErrorMessage}</p>
-</c:if>
-<c:if test="${loginExistError}">
+</div>
+
+<div class="error" id="login-exist-error">
     <p>${loginExistErrorMessage}</p>
-</c:if>
-<c:if test="${phoneNumberExistError}">
-    <p> ${phoneNumberExistErrorMessage}</p>
-</c:if>
-<c:if test="${firstNameError}">
-    <p> ${firstNameErrorMessage}</p>
-</c:if>
-<c:if test="${secondNameError}">
-    <p> ${secondNameErrorMessage}</p>
-</c:if>
-<c:if test="${notValidPasswordError}">
-    <p> ${notValidPasswordErrorMessage}</p>
-</c:if>
-<c:if test="${passwordNotEq}">
+</div>
+
+<div class="error" id="phone-number-exist-error">
+    <p>${phoneNumberExistErrorMessage}</p>
+</div>
+
+<div class="error" id="first-name-error">
+    <p>${firstNameErrorMessage}</p>
+</div>
+
+<div class="error" id="second-name-error">
+    <p>${secondNameErrorMessage}</p>
+</div>
+
+<div class="error" id="not-valid-password-error">
+    <p>${notValidPasswordErrorMessage}</p>
+</div>
+
+<div class="error" id="password-not-eq-error">
     <p>${passwordNotEqMessage}</p>
-</c:if>
-<c:if test="${birthDayError}">
-    <p> ${birthDayErrorMessage}</p>
-</c:if>
-<c:if test="${notValidPhoneNumberError}">
-    <p> ${notValidPhoneNumberErrorMessage}</p>
-</c:if>
-<c:if test="${allCorrect}">
-    <p> ${allCorrectMessage}</p>
-</c:if>
+</div>
+
+<div class="error" id="birth-day-error">
+    <p>${birthDayErrorMessage}</p>
+</div>
+
+<div class="error" id="not-valid-phone-number-error">
+    <p>${notValidPhoneNumberErrorMessage}</p>
+</div>
+
+<div class="correct" id="all-correct">
+    <p>${allCorrectMessage}</p>
+</div>
 
 <br/>
 

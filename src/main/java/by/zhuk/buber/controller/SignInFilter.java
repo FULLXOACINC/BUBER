@@ -1,6 +1,7 @@
 package by.zhuk.buber.controller;
 
 import by.zhuk.buber.command.CommandType;
+import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
@@ -28,7 +29,9 @@ import java.util.Optional;
 @WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
 public class SignInFilter implements Filter {
     private static Logger logger = LogManager.getLogger(SignInFilter.class);
-    private static String BANNED_ERROR = "bannedError";
+    private static final String BANNED_ERROR = "bannedError";
+    private static final String JS_FILE_EXPANSION = ".js";
+    private static final String CSS_FILE_EXPANSION = ".css";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -38,7 +41,7 @@ public class SignInFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE)) {
+        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE) || requestJsOrCSSFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -50,8 +53,8 @@ public class SignInFilter implements Filter {
             try {
                 userOptional = receiver.findUserByLogin(login);
             } catch (ReceiverException e) {
-                //TODO error page
                 logger.catching(e);
+                response.sendRedirect(PagesConstant.ERROR_PAGE);
             }
             if (userOptional.isPresent()) {
                 User user = userOptional.get();
@@ -76,6 +79,10 @@ public class SignInFilter implements Filter {
         }
     }
 
+    private boolean requestJsOrCSSFile(String requestURI) {
+        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION) ;
+    }
+
     private boolean isLoginCommand(String command) {
         if (command == null) {
             return false;
@@ -84,7 +91,7 @@ public class SignInFilter implements Filter {
 
         boolean isSignInCommand = command.equals(CommandType.SIGN_IN.name());
         boolean isSignUpAcceptCommand = command.equals(CommandType.SIGN_UP_ACCEPT.name());
-        boolean isSignUpUserCommand = command.equals(CommandType.SIGN_UP_USER.name());
+        boolean isSignUpUserCommand = command.equals(AJAXCommandType.SIGN_UP_USER.name());
         boolean isOAuthCommand = command.equals(CommandType.OAUTH.name()) || command.equals(CommandType.OAUTH_ACCEPT.name());
 
         return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand;

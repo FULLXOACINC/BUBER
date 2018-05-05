@@ -18,6 +18,8 @@
 <html>
 <head>
     <title>${buber}</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/js/viewUser.js"></script>
 </head>
 <body>
 <form action="/jsp/admin.jsp">
@@ -66,7 +68,8 @@
             </form>
         </c:if>
         <input id="discount" type="text" value="${user.discount}">
-        <input id="find-users" type="submit" value="${change}">
+        <input id="login" type="hidden" value="${user.login}">
+        <input id="change-discount" type="submit" value="${change}">
     </c:otherwise>
 </c:choose>
 

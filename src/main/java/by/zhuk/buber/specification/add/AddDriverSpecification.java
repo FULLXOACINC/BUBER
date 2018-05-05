@@ -1,10 +1,8 @@
 package by.zhuk.buber.specification.add;
 
-import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.specification.Specification;
-import org.apache.logging.log4j.Level;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

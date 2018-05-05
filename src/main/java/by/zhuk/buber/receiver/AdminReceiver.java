@@ -8,6 +8,7 @@ import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.update.UpdateUserBanStatusSpecification;
+import by.zhuk.buber.specification.update.UpdateUserDiscountSpecification;
 import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
 
 public class AdminReceiver {
@@ -40,6 +41,18 @@ public class AdminReceiver {
 
                 repository.update(updateSpecification);
             }
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void changeDiscount(float discount, String login) throws ReceiverException {
+        Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+        try {
+            Specification updateSpecification =new UpdateUserDiscountSpecification(login,discount);
+            repository.update(updateSpecification);
             controller.end();
         } catch (RepositoryException e) {
             throw new ReceiverException(e);

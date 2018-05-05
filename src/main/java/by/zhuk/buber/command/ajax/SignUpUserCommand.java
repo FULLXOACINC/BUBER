@@ -1,6 +1,5 @@
-package by.zhuk.buber.command;
+package by.zhuk.buber.command.ajax;
 
-import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.receiver.SignInReceiver;
@@ -10,10 +9,11 @@ import by.zhuk.buber.validator.SignInValidator;
 import by.zhuk.buber.validator.SignUpUserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class SignUpUserCommand implements Command {
+public class SignUpUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
     private static final String FIRST_NAME = "firstName";
     private static final String SECOND_NAME = "secondName";
@@ -28,22 +28,17 @@ public class SignUpUserCommand implements Command {
     private static final String PHONE_NUMBER_EXIST_ERROR = "phoneNumberExistError";
     private static final String FIRST_NAME_ERROR = "firstNameError";
     private static final String SECOND_NAME_ERROR = "secondNameError";
-    private static final String NOT_VALID_PASSWORD = "notValidPasswordError";
-    private static final String PASSWORD_NOT_EQ = "passwordNotEq";
+    private static final String NOT_VALID_PASSWORD_ERROR = "notValidPasswordError";
+    private static final String PASSWORD_NOT_EQ_ERROR = "passwordNotEqError";
     private static final String BIRTH_DAY_ERROR = "birthDayError";
     private static final String NOT_VALID_PHONE_NUMBER_ERROR = "notValidPhoneNumberError";
-
-    private static final String OLD_LOGIN = "oldLogin";
-    private static final String OLD_FIRST_NAME = "oldFirstName";
-    private static final String OLD_SECOND_NAME = "oldSecondName";
-    private static final String OLD_BIRTH_DAY = "oldBirthDay";
-    private static final String OLD_PHONE_NUMBER = "oldPhoneNumber";
 
     private static final String ALL_CORRECT = "allCorrect";
 
 
     @Override
-    public Router execute(HttpServletRequest request) {
+    public JSONObject execute(HttpServletRequest request) {
+        JSONObject json = new JSONObject();
         String login = request.getParameter(UserConstant.LOGIN);
         String firstName = request.getParameter(FIRST_NAME);
         String secondName = request.getParameter(SECOND_NAME);
@@ -56,65 +51,47 @@ public class SignUpUserCommand implements Command {
         SignInReceiver signInReceiver = new SignInReceiver();
         SignUpReceiver signUpReceiver = new SignUpReceiver();
 
-        boolean signUpProblem = false;
-
         if (!SignInValidator.isLoginValid(login)) {
-            signUpProblem = true;
-            request.setAttribute(NOT_VALID_LOGIN_ERROR, true);
+            json.put(NOT_VALID_LOGIN_ERROR, NOT_VALID_LOGIN_ERROR);
         }
 
         try {
             if (signInReceiver.isLoginExist(login)) {
-                signUpProblem = true;
-                request.setAttribute(LOGIN_EXIST_ERROR, true);
+                json.put(LOGIN_EXIST_ERROR, LOGIN_EXIST_ERROR);
             }
             if (userReceiver.isPhoneNumberExist(phoneNumber)) {
-                signUpProblem = true;
-                request.setAttribute(PHONE_NUMBER_EXIST_ERROR, true);
+                json.put(PHONE_NUMBER_EXIST_ERROR, PHONE_NUMBER_EXIST_ERROR);
             }
         } catch (ReceiverException e) {
-            //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            json.put(ERROR, e.getMessage());
+            return json;
         }
 
         if (!SignUpUserValidator.isNameValid(firstName)) {
-            signUpProblem = true;
-            request.setAttribute(FIRST_NAME_ERROR, true);
+            json.put(FIRST_NAME_ERROR, FIRST_NAME_ERROR);
         }
         if (!SignUpUserValidator.isNameValid(secondName)) {
-            signUpProblem = true;
-            request.setAttribute(SECOND_NAME_ERROR, true);
+            json.put(SECOND_NAME_ERROR, SECOND_NAME_ERROR);
         }
         if (!SignUpUserValidator.isPasswordValid(password)) {
-            signUpProblem = true;
-            request.setAttribute(NOT_VALID_PASSWORD, true);
+            json.put(NOT_VALID_PASSWORD_ERROR, NOT_VALID_PASSWORD_ERROR);
         }
         if (!password.equals(repeatPassword)) {
-            signUpProblem = true;
-            request.setAttribute(PASSWORD_NOT_EQ, true);
+            json.put(PASSWORD_NOT_EQ_ERROR, PASSWORD_NOT_EQ_ERROR);
         }
         if (!SignUpUserValidator.isBirthDayValid(birthDay)) {
-            signUpProblem = true;
-            request.setAttribute(BIRTH_DAY_ERROR, true);
+            json.put(BIRTH_DAY_ERROR, BIRTH_DAY_ERROR);
         }
         if (!SignUpUserValidator.isPhoneNumberValid(phoneNumber)) {
-            signUpProblem = true;
-            request.setAttribute(NOT_VALID_PHONE_NUMBER_ERROR, true);
+            json.put(NOT_VALID_PHONE_NUMBER_ERROR, NOT_VALID_PHONE_NUMBER_ERROR);
         }
 
 
-        if (!signUpProblem) {
+        if (json.length() == 0) {
             signUpReceiver.sendAcceptMail(login, firstName, secondName, password, birthDay, phoneNumber);
-            request.setAttribute(ALL_CORRECT, true);
-
-        } else {
-            request.setAttribute(OLD_LOGIN, login);
-            request.setAttribute(OLD_FIRST_NAME, firstName);
-            request.setAttribute(OLD_SECOND_NAME, secondName);
-            request.setAttribute(OLD_BIRTH_DAY, birthDay);
-            request.setAttribute(OLD_PHONE_NUMBER, phoneNumber);
+            json.put(ALL_CORRECT, ALL_CORRECT);
         }
-        return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_PAGE);
+        return json;
     }
 }

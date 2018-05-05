@@ -1,15 +1,16 @@
 $(document).ready(function () {
-    var setDiscountFun=function () {
+    var changeDiscountFun=function () {
         $.ajax({
+            type: "POST",
             url: '/AJAXController',
             data: {
-                command: "set-discount",
-                pattern: $('#discount').val()
+                command: "change-discount",
+                login:  $('#login').val(),
+                discount: $('#discount').val()
             },
             success: function (response) {
-                $("#discount").empty();
                 if (!response['error']) {
-                    console.log("set discount correct");
+                    console.log("change discount correct");
                 }else {
                     console.log(response['error']);
                 }
@@ -21,5 +22,5 @@ $(document).ready(function () {
             }
         });
     };
-    $('#set-discount').click(setDiscountFun);
+    $('#change-discount').click(changeDiscountFun);
 });

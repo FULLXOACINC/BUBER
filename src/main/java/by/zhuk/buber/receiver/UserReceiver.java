@@ -37,7 +37,7 @@ public class UserReceiver {
         return !users.isEmpty();
     }
 
-    public List<User> findUsersBySpecification(FindSpecification<User> specification) throws ReceiverException {
+    List<User> findUsersBySpecification(FindSpecification<User> specification) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
         List<User> users;
@@ -48,5 +48,12 @@ public class UserReceiver {
             throw new ReceiverException(e);
         }
         return users;
+    }
+
+    public boolean isUserExist(String login) throws ReceiverException {
+        FindSpecification<User> specification = new FindUserByLoginSpecification(login);
+        UserReceiver userReceiver = new UserReceiver();
+        List<User> users=userReceiver.findUsersBySpecification(specification);
+        return !users.isEmpty();
     }
 }

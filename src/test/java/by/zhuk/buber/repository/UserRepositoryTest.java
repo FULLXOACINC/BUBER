@@ -1,21 +1,6 @@
 package by.zhuk.buber.repository;
 
-import by.zhuk.buber.connectionpool.ConnectionPool;
-import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.specification.find.FindSpecification;
-import by.zhuk.buber.specification.find.FindUserByLoginSpecification;
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.testng.Assert.fail;
 
 public class UserRepositoryTest {
     //TODO rewrite tests

@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.update;
 
 import by.zhuk.buber.exeption.SpecificationException;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
@@ -12,9 +11,9 @@ public class UpdateUserDiscountSpecification implements Specification {
     private String login;
     private float discount;
 
-    public UpdateUserDiscountSpecification(User user) {
-        login=user.getLogin();
-        discount=user.getDiscount();
+    public UpdateUserDiscountSpecification(String login, float discount) {
+        this.login = login;
+        this.discount = discount;
     }
 
     @Override

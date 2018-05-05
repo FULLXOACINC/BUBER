@@ -1,19 +1,16 @@
 $(document).ready(function () {
-    var setDiscountFun=function () {
+    var changeDiscountFun=function () {
         $.ajax({
+            type: "POST",
             url: '/AJAXController',
             data: {
-                command: "set-discount",
-                pattern: $('#discount').val()
+                command: "change-discount",
+                login:  $('#login').val(),
+                discount: $('#discount').val()
             },
             success: function (response) {
-                $("#searched").empty();
                 if (!response['error']) {
-                    response['users'].forEach(function (user) {
-                        $("#searched").append("<form action='/controller'><input type='hidden' name='command' value='view-user'>\n" +
-                            "<input type='hidden' name='user' value='" + user.login + "'>\n" +
-                            "<input type='submit' value='" + user.login + "'></form>");
-                    });
+                    console.log("change discount correct");
                 }else {
                     console.log(response['error']);
                 }
@@ -25,5 +22,5 @@ $(document).ready(function () {
             }
         });
     };
-    $('#set-discount').click(setDiscountFun);
+    $('#change-discount').click(changeDiscountFun);
 });

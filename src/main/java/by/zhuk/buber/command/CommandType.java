@@ -5,7 +5,6 @@ public enum CommandType {
     LANG(new LangChangeCommand()),
     OAUTH(new OAuthCommand()),
     SIGN_IN(new SignInCommand()),
-    SIGN_UP_USER(new SignUpUserCommand()),
     SIGN_UP_ACCEPT(new SignUpAcceptCommand()),
     SIGN_OUT(new SignOutCommand()),
     OAUTH_ACCEPT(new OAuthAcceptCommand()),

@@ -12,7 +12,7 @@
 <fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
 <fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
-<fmt:message bundle="${locale}" key="text.age" var="age"/>
+<fmt:message bundle="${locale}" key="text.birthDay" var="age"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
