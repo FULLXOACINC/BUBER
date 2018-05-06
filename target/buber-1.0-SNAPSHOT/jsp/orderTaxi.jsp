@@ -15,12 +15,14 @@
     <title>${buber}</title>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script src="/js/orderTaxi.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>
     <style>
         #map {
             height: 100%;
         }
+
         html, body {
             height: 90%;
             margin: 0;

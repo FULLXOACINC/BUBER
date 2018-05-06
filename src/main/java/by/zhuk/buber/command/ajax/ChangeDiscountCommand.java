@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ChangeDiscountCommand implements AJAXCommand{
+public class ChangeDiscountCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String DISCOUNT = "discount";
     private static final String NOT_VALID_DISCOUNT = "notValidDiscount";
@@ -22,18 +22,18 @@ public class ChangeDiscountCommand implements AJAXCommand{
         JSONObject json = new JSONObject();
         String discount = request.getParameter(DISCOUNT);
         String login = request.getParameter(UserConstant.LOGIN);
-        if(!AdminValidator.isDiscountValid(discount)){
+        if (!AdminValidator.isDiscountValid(discount)) {
             json.put(ERROR, NOT_VALID_DISCOUNT);
             return json;
         }
         AdminReceiver adminReceiver = new AdminReceiver();
         UserReceiver userReceiver = new UserReceiver();
         try {
-            if(!userReceiver.isUserExist(login)){
+            if (!userReceiver.isUserExist(login)) {
                 json.put(ERROR, USER_NOT_FOUND);
                 return json;
             }
-            adminReceiver.changeDiscount(Float.parseFloat(discount),login);
+            adminReceiver.changeDiscount(Float.parseFloat(discount), login);
         } catch (ReceiverException e) {
             logger.catching(e);
             json.put(ERROR, e.getMessage());

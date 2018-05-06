@@ -20,12 +20,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class ConnectionPool {
-    private static Logger logger = LogManager.getLogger(ConnectionPool.class);
+    private Logger logger = LogManager.getLogger(ConnectionPool.class);
     private static ConnectionPool instance;
     private static AtomicBoolean instanceCreated = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
-    private static BlockingQueue<ProxyConnection> connectionQueue;
-    private static int poolSize;
+    private BlockingQueue<ProxyConnection> connectionQueue;
+    private int poolSize;
 
     private ConnectionPool() {
         if (instanceCreated.get()) {
@@ -116,6 +116,12 @@ public final class ConnectionPool {
         final String DATABASE_USE_UNICODE = "db.useUnicode";
         final String DATABASE_POOL_SIZE = "db.poolSize";
 
+        final String USER = "user";
+        final String PASSWORD = "password";
+        final String CHARACTER_ENCODING = "characterEncoding";
+        final String USE_UNICODE = "useUnicode";
+
+
         Properties dbProperties = new Properties();
         try {
 
@@ -128,10 +134,10 @@ public final class ConnectionPool {
         }
 
         Properties properties = new Properties();
-        properties.put("user", dbProperties.getProperty(DATABASE_USER));
-        properties.put("password", dbProperties.getProperty(DATABASE_PASSWORD));
-        properties.put("characterEncoding", dbProperties.getProperty(DATABASE_CHARACTER_ENCODING));
-        properties.put("useUnicode", dbProperties.getProperty(DATABASE_USE_UNICODE));
+        properties.put(USER, dbProperties.getProperty(DATABASE_USER));
+        properties.put(PASSWORD, dbProperties.getProperty(DATABASE_PASSWORD));
+        properties.put(CHARACTER_ENCODING, dbProperties.getProperty(DATABASE_CHARACTER_ENCODING));
+        properties.put(USE_UNICODE, dbProperties.getProperty(DATABASE_USE_UNICODE));
 
         poolSize = Integer.parseInt(dbProperties.getProperty(DATABASE_POOL_SIZE));
         connectionQueue = new LinkedBlockingDeque<>(poolSize);

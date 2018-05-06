@@ -40,6 +40,6 @@ public class SwitchAdminStatusCommand implements Command {
             logger.catching(e);
             return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
         }
-        return new Router(TransitionType.REDIRECT, request.getRequestURI()+"?command=view-user&user="+userLogin);
+        return new Router(TransitionType.REDIRECT, request.getRequestURI() + "?command=view-user&user=" + userLogin);
     }
 }

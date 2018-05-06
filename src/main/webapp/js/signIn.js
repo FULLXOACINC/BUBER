@@ -18,8 +18,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 hideAllMessage();
-                if(response['redirectPage']){
-                    $(location).attr('href',response['redirectPage']);
+                if (response['redirectPage']) {
+                    $(location).attr('href', response['redirectPage']);
                 }
                 $('#password').val('');
                 if (response['signInValidError']) {

@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public class ViewUserCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
-    private static final String USER="user";
-    private static final String NOT_FOUND="notFound";
+    private static final String USER = "user";
+    private static final String NOT_FOUND = "notFound";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -21,10 +21,10 @@ public class ViewUserCommand implements Command {
         UserReceiver userReceiver = new UserReceiver();
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(user);
-            if(optionalUser.isPresent()){
-                request.setAttribute(USER,optionalUser.get());
-            }else {
-                request.setAttribute(NOT_FOUND,true);
+            if (optionalUser.isPresent()) {
+                request.setAttribute(USER, optionalUser.get());
+            } else {
+                request.setAttribute(NOT_FOUND, true);
             }
             return new Router(TransitionType.FORWARD, PagesConstant.USER_VIEW_PAGE);
         } catch (ReceiverException e) {

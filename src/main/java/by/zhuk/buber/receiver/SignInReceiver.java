@@ -16,7 +16,7 @@ public class SignInReceiver {
     public boolean isLoginExist(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
         UserReceiver userReceiver = new UserReceiver();
-        List<User> users=userReceiver.findUsersBySpecification(specification);
+        List<User> users = userReceiver.findUsersBySpecification(specification);
         ConcurrentHashMap<String, SignUpUserInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
 
         boolean isLoginExistSignUp = false;
@@ -30,10 +30,11 @@ public class SignInReceiver {
     }
 
 
-    public boolean checkPassword(String login, String password) throws ReceiverException { ;
+    public boolean checkPassword(String login, String password) throws ReceiverException {
+        ;
         FindSpecification<User> specification = new FindUserByLoginAndPasswordSpecification(login, password);
         UserReceiver userReceiver = new UserReceiver();
-        List<User> users=userReceiver.findUsersBySpecification(specification);
+        List<User> users = userReceiver.findUsersBySpecification(specification);
         return !users.isEmpty();
 
     }

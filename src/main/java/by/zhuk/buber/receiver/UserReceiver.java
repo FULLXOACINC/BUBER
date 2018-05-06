@@ -53,7 +53,7 @@ public class UserReceiver {
     public boolean isUserExist(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
         UserReceiver userReceiver = new UserReceiver();
-        List<User> users=userReceiver.findUsersBySpecification(specification);
+        List<User> users = userReceiver.findUsersBySpecification(specification);
         return !users.isEmpty();
     }
 }

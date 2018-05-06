@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,19 +19,22 @@ import java.util.Optional;
 @WebServlet(urlPatterns = {"/AJAXController/*"}, name = "AJAXController")
 public class AJAXController extends HttpServlet {
     private static Logger logger = LogManager.getLogger(Controller.class);
+    private static String CHARACTER_ENCODING = "UTF-8";
+    private static String CONTENT_TYPE = "application/json";
+    private static String ERROR = "error";
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         processRequest(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         processRequest(request, response);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json");
+        response.setCharacterEncoding(CHARACTER_ENCODING);
+        response.setContentType(CONTENT_TYPE);
         Optional<AJAXCommand> commandOptional = AJAXCommandFactory.findCommand(command);
         JSONObject result;
         if (commandOptional.isPresent()) {
@@ -40,8 +42,7 @@ public class AJAXController extends HttpServlet {
         } else {
             logger.log(Level.WARN, "Unknown command");
             result = new JSONObject();
-            result.put("error", "Unknown command");
-
+            result.put(ERROR, "Unknown command");
         }
         response.getWriter().print(result);
     }

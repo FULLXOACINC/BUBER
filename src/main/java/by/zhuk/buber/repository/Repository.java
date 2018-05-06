@@ -14,15 +14,15 @@ import java.util.List;
 public class Repository<T> {
     private Connection connection;
 
-    public void add(Specification specification) throws RepositoryException{
+    public void add(Specification specification) throws RepositoryException {
         updateQueryExecute(specification);
     }
 
-    public void update(Specification specification) throws RepositoryException{
+    public void update(Specification specification) throws RepositoryException {
         updateQueryExecute(specification);
     }
 
-    public void delete(Specification specification) throws RepositoryException{
+    public void delete(Specification specification) throws RepositoryException {
         updateQueryExecute(specification);
     }
 

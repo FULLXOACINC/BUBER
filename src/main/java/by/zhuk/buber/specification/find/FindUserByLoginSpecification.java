@@ -13,14 +13,16 @@ import java.util.List;
 public class FindUserByLoginSpecification implements FindSpecification<User> {
     private static final String SELECT_BY_LOGIN = "SELECT user_name, user_second_name, user_password, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
     private String login;
+
     public FindUserByLoginSpecification(String login) {
-        this.login=login;
+        this.login = login;
     }
 
     @Override
     public String takePrepareQuery() {
         return SELECT_BY_LOGIN;
     }
+
     @Override
     public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
         try {

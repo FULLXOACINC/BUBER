@@ -1,8 +1,11 @@
 <svg width="55" height="55" xmlns="http://www.w3.org/2000/svg">
     <g>
         <title>Layer 1</title>
-        <ellipse stroke="#666666" fill="#E2C344" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="27.67419" cy="18.13449" id="svg_7" rx="14.08255" ry="14.08255" stroke-width="2"/>
-        <line stroke="#666666" fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="20.13235" y1="29.41388" x2="28.80881" y2="55.44324" id="svg_9"/>
-        <line stroke="#666666" fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="36.68436" y1="28.74645" x2="29.20926" y2="55.04279" id="svg_10"/>
+        <ellipse stroke="#666666" fill="#E2C344" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null"
+                 cx="27.67419" cy="18.13449" id="svg_7" rx="14.08255" ry="14.08255" stroke-width="3"/>
+        <line stroke="#666666" fill="none" stroke-width="3" stroke-dasharray="null" stroke-linejoin="null"
+              stroke-linecap="null" x1="20.13235" y1="29.41388" x2="28.80881" y2="55.44324" id="svg_9"/>
+        <line stroke="#666666" fill="none" stroke-width="3" stroke-dasharray="null" stroke-linejoin="null"
+              stroke-linecap="null" x1="36.68436" y1="28.74645" x2="29.20926" y2="55.04279" id="svg_10"/>
     </g>
 </svg>

@@ -12,8 +12,9 @@ import java.util.List;
 public class FindUserByPhoneNumberSpecification implements FindSpecification<User> {
     private static final String SELECT_BY_LOGIN = "SELECT user_login FROM buber_db.user WHERE user_phone_number=?";
     private String phoneNumber;
+
     public FindUserByPhoneNumberSpecification(String phoneNumber) {
-        this.phoneNumber=phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

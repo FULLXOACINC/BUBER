@@ -25,7 +25,6 @@ public class SignUpDriverCommand implements AJAXCommand {
     private static final String DRIVER_EXIST_ERROR = "driverExistError";
 
 
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -44,7 +43,7 @@ public class SignUpDriverCommand implements AJAXCommand {
         if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
             json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
         }
-
+        //TODO check exist CAR_NUMBER DOCUMENT_ID
         SignInReceiver signInReceiver = new SignInReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {

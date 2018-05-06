@@ -6,6 +6,9 @@ import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.model.UserType;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,6 +24,7 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/*"}, filterName = "admin")
 public class AdminFilter implements Filter {
+    private static Logger logger = LogManager.getLogger(AdminFilter.class);
     @Override
     public void init(FilterConfig filterConfig) {
 
@@ -31,12 +35,14 @@ public class AdminFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (isAdminCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.ADMIN_PAGE) || request.getRequestURI().startsWith(PagesConstant.USER_VIEW_PAGE)) {
+        if (isAdminCommand(request.getParameter(CommandConstant.COMMAND)) || isAdminPages(request.getRequestURI())) {
             HttpSession session = request.getSession();
+            String userLogin = (String) session.getAttribute(UserConstant.LOGIN);
             String userType = (String) session.getAttribute(UserConstant.TYPE);
             if (UserType.ROOT_ADMIN.name().equals(userType) || UserType.ADMIN.name().equals(userType)) {
                 filterChain.doFilter(request, response);
             } else {
+                logger.log(Level.INFO,"User tries to perform an action without admin rights : "+userLogin);
                 response.sendRedirect(PagesConstant.WELCOME_PAGE);
             }
         } else {
@@ -45,16 +51,21 @@ public class AdminFilter implements Filter {
 
     }
 
+    private boolean isAdminPages(String requestURI) {
+        return requestURI.startsWith(PagesConstant.ADMIN_PAGE) || requestURI.startsWith(PagesConstant.USER_VIEW_PAGE) || requestURI.startsWith(PagesConstant.SING_UP_DRIVER_PAGE);
+    }
+
     private boolean isAdminCommand(String command) {
         if (command == null) {
             return false;
         }
         command = command.toUpperCase().replaceAll("-", "_");
 
+        boolean isChangeDiscount = command.equals(AJAXCommandType.CHANGE_DISCOUNT.name());
         boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
-        return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand;
+        return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount;
     }
 
     @Override

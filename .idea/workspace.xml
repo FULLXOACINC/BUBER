@@ -7,20 +7,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c6dd6e-c811-440d-8f6d-9e399ea5b345" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/DriverReceiver.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindDriverByLoginSpecification.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpDriverCommand.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SwitchAdminStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SwitchAdminStatusCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SwitchBanCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SwitchBanCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ViewUserCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ViewUserCommand.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpUserCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpUserCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/ChangeDiscountCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/ChangeDiscountCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AJAXController.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AJAXController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuth.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuth.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/AdminReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/AdminReceiver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignInReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignInReceiver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/Repository.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/Repository.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryController.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/RepositoryController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/add/AddUserSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/add/AddUserSpecification.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindCarMarkByNameSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindCarMarkByNameSpecification.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByLoginAndPasswordSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByLoginAndPasswordSpecification.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByLoginSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByLoginSpecification.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByPhoneNumberSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindUserByPhoneNumberSpecification.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/update/UpdateUserBanStatusSpecification.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/update/UpdateUserBanStatusSpecification.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/signUp.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/signUp.css" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/img/endMarker.svg" afterPath="$PROJECT_DIR$/src/main/webapp/img/endMarker.svg" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/startMarker.svg" afterPath="$PROJECT_DIR$/src/main/webapp/img/startMarker.svg" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/admin.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/admin.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/signIn.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/signIn.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/viewUser.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/viewUser.js" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/welcome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/welcome.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,81 +51,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="signUpDriver.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signUpDriver.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="65" column="23" lean-forward="false" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SignUpDriverCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="50">
+              <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignOutCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignOutCommand.java">
+      <file leaf-file-name="AdminFilter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="216">
+              <caret line="44" column="94" lean-forward="false" selection-start-line="44" selection-start-column="94" selection-end-line="44" selection-end-column="94" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignUpAcceptCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/SignUpAcceptCommand.java">
+      <file leaf-file-name="ChangeDiscountCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/ChangeDiscountCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OAuthCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/OAuthCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="40" column="49" lean-forward="false" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUpReceiver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="899">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandType.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            <state relative-caret-position="90">
+              <caret line="14" column="80" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -149,9 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/repository/DriverRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/add/AddDriverSpecification.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/add/AddCarMarkSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/update/UpdateUserTyprSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/update/UpdateUserTypeSpecification.java" />
         <option value="$PROJECT_DIR$/src/test/java/by/zhuk/buber/repository/UserRepositoryTest.java" />
@@ -173,9 +139,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/properties/text_en.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/orderTaxi.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/img/endMarker.svg" />
         <option value="$PROJECT_DIR$/src/main/webapp/img/carMarker.svg" />
-        <option value="$PROJECT_DIR$/src/main/webapp/img/startMarker.svg" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/SessionListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuth.java" />
@@ -184,13 +148,10 @@
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/SignInFilter.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/signIn.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/signIn.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/admin.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/signUp.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/viewUser.js" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/OAuthAcceptCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindCarMarkByNameSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindDriverByLoginSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/DriverReceiver.java" />
@@ -198,8 +159,16 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpUserCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AJAXController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/img/startMarker.svg" />
+        <option value="$PROJECT_DIR$/src/main/webapp/img/endMarker.svg" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/admin.js" />
+        <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java" />
       </list>
     </option>
   </component>
@@ -554,11 +523,11 @@
       <recent name="by.zhuk.buber.receiver" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/webapp/js" />
       <recent name="$PROJECT_DIR$/src/main/webapp/img" />
       <recent name="$PROJECT_DIR$/src/main/webapp/jsp" />
       <recent name="$PROJECT_DIR$/web/jsp" />
-      <recent name="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="by.zhuk.buber.specification.find" />
@@ -960,7 +929,7 @@
       <workItem from="1525431069729" duration="100000" />
       <workItem from="1525436725896" duration="3169000" />
       <workItem from="1525473886952" duration="21822000" />
-      <workItem from="1525616430163" duration="11801000" />
+      <workItem from="1525616430163" duration="17177000" />
     </task>
     <servers />
   </component>
@@ -997,7 +966,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196920000" />
+    <option name="totallyTimeSpent" value="202296000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1024,7 +993,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24939467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39967638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1032,7 +1001,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36893204" sideWeight="0.49717513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36893204" sideWeight="0.49717513" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3462783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24455206" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1097,12 +1066,6 @@
           <properties />
           <option name="timeStamp" value="74" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="78" />
     </breakpoint-manager>
@@ -1121,138 +1084,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/text_en.properties">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/viewUser.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/signUp.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/endMarker.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/carMarker.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/LangChangeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="77" lean-forward="false" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/SessionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/EncodingFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/ControllerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar!/org/apache/commons/httpclient/HttpClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="111" column="15" lean-forward="false" selection-start-line="111" selection-start-column="15" selection-end-line="111" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthYandex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="20" column="75" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/OAuthReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/startMarker.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1277,40 +1108,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignInCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="26" column="55" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/signIn.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="49" column="28" lean-forward="true" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="24" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/orderTaxi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-591">
-          <caret line="84" column="27" lean-forward="false" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
-          <folding>
-            <marker date="1525616614460" expanded="true" signature="2955:2961" ph="&amp;##160;" />
-            <marker date="1525616614460" expanded="true" signature="2968:2974" ph="&amp;##160;" />
-            <marker date="1525616614460" expanded="true" signature="3051:3057" ph="&amp;##160;" />
-            <marker date="1525616614460" expanded="true" signature="3081:3087" ph="&amp;##160;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1350,22 +1152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-168">
           <caret line="35" column="54" lean-forward="false" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1482,14 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindDriverByLoginSpecification.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
@@ -1514,6 +1292,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/p.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ProxyConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignUpReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="899">
@@ -1522,10 +1316,176 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/connectionpool/ConnectionPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2074">
+          <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignInCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="26" column="55" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/PagesConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/UserConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/constant/CommandConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/CommandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AJAXController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-297">
+          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/oauth/OAuthType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/AdminReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="43" column="22" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/tag/FooterProjectInfoTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/orderTaxi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="80" column="43" lean-forward="true" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
+          <folding>
+            <marker date="1525616614460" expanded="true" signature="2955:2961" ph="&amp;##160;" />
+            <marker date="1525616614460" expanded="true" signature="2968:2974" ph="&amp;##160;" />
+            <marker date="1525616614460" expanded="true" signature="3051:3057" ph="&amp;##160;" />
+            <marker date="1525616614460" expanded="true" signature="3081:3087" ph="&amp;##160;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/startMarker.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/carMarker.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/FindUsersCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/img/endMarker.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/SignUpDriverCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/ChangeDiscountCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" column="80" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="44" column="94" lean-forward="false" selection-start-line="44" selection-start-column="94" selection-end-line="44" selection-end-column="94" />
           <folding />
         </state>
       </provider>

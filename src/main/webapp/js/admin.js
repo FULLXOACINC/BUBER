@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var findFun=function () {
+    var findFun = function () {
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -11,11 +11,12 @@ $(document).ready(function () {
                 $("#searched").empty();
                 if (!response['error']) {
                     response['users'].forEach(function (user) {
-                        $("#searched").append("<form action='/controller'><input type='hidden' name='command' value='view-user'>\n" +
+                        $("#searched").append("<form action='/controller'>" +
+                            "<input type='hidden' name='command' value='view-user'>\n" +
                             "<input type='hidden' name='user' value='" + user.login + "'>\n" +
                             "<input type='submit' value='" + user.login + "'></form>");
                     });
-                }else {
+                } else {
                     console.log(response['error']);
                 }
 

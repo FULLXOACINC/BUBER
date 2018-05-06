@@ -15,8 +15,8 @@ public class FindUserByLoginAndPasswordSpecification implements FindSpecificatio
     private String password;
 
     public FindUserByLoginAndPasswordSpecification(String login, String password) {
-        this.login=login;
-        this.password=password;
+        this.login = login;
+        this.password = password;
     }
 
     @Override

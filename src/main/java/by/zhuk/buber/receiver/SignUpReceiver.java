@@ -33,7 +33,7 @@ public class SignUpReceiver {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
         try {
-            Specification carAddSpecification= new AddUserSpecification(user);
+            Specification carAddSpecification = new AddUserSpecification(user);
             repository.add(carAddSpecification);
             controller.end();
         } catch (RepositoryException e) {
@@ -47,7 +47,7 @@ public class SignUpReceiver {
         MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=" + hash + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
-        User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER,(float) 0.0);
+        User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER, (float) 0.0);
         SignUpUserInfo info = new SignUpUserInfo(user, LocalTime.now());
         pool.putInfo(hash, info);
     }
@@ -57,10 +57,10 @@ public class SignUpReceiver {
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();
         Repository<User> userRepository = new Repository<>();
-        RepositoryController controller = new RepositoryController(driverRepository, carMarkRepository,userRepository);
+        RepositoryController controller = new RepositoryController(driverRepository, carMarkRepository, userRepository);
         try {
             controller.startTransaction();
-            Specification carAddSpecification= new AddCarMarkSpecification(carMarkName);
+            Specification carAddSpecification = new AddCarMarkSpecification(carMarkName);
             carMarkRepository.add(carAddSpecification);
             FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
             List<CarMark> carMarks = carMarkRepository.find(specification);
@@ -71,7 +71,7 @@ public class SignUpReceiver {
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
             driver.setCarMark(String.valueOf(carMark.getIndex()));
-            Specification driverAddSpecification= new AddDriverSpecification(driver);
+            Specification driverAddSpecification = new AddDriverSpecification(driver);
             driverRepository.add(driverAddSpecification);
 
 
@@ -79,7 +79,7 @@ public class SignUpReceiver {
             if (!users.isEmpty()) {
                 User user = users.get(0);
                 user.setType(UserType.DRIVER);
-                Specification updateUserTypeSpecification= new UpdateUserTypeSpecification(user);
+                Specification updateUserTypeSpecification = new UpdateUserTypeSpecification(user);
                 userRepository.update(updateUserTypeSpecification);
             }
             controller.commit();

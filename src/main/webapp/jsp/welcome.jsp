@@ -28,9 +28,9 @@ ${sessionScope.type}
     <input type="submit" value="${orderTaxi}">
 </form>
 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
-    <form action="/jsp/admin.jsp">
-        <input type="submit" value="${console}">
-    </form>
+<form action="/jsp/admin.jsp">
+    <input type="submit" value="${console}">
+</form>
 </c:if>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <input type="hidden" name="command" value="sign-out">

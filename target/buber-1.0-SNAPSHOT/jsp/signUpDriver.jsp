@@ -41,11 +41,11 @@
     <input type="hidden" name="command" value="sign-up-driver">
 </form>
 
-<p>${login}<input type="text" id="login" /></p>
+<p>${login}<input type="text" id="login"/></p>
 <p>${carNumber}<input type="text" id="carNumber" value="7522AT1"/></p>
 <p>${documentId}<input type="text" id="documentId" value="7AD123132"/></p>
 <p>${carMark}<input type="text" id="carMark"/></p>
-<p><input type="submit" id="sign-up-driver"value="${signUp}"></p>
+<p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
 
 <div class="error" id="car-number-error">
     <p>carNumberError</p>

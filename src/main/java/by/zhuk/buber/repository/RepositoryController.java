@@ -56,6 +56,7 @@ public class RepositoryController {
             throw new RepositoryException(e);
         }
     }
+
     public void rollBack() {
         try {
             connection.rollback();

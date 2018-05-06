@@ -12,8 +12,9 @@ import java.util.List;
 public class FindCarMarkByNameSpecification implements FindSpecification<CarMark> {
     private static final String SELECT_BY_CAR_NAME = "SELECT car_mark_id,car_mark_name FROM buber_db.car_mark WHERE car_mark_name=?";
     private String carMarkName;
+
     public FindCarMarkByNameSpecification(String carMarkName) {
-        this.carMarkName=carMarkName;
+        this.carMarkName = carMarkName;
     }
 
     @Override
