@@ -1,17 +1,18 @@
-package by.zhuk.buber.command;
+package by.zhuk.buber.command.ajax;
 
-import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class SignUpDriverCommand implements Command {
+public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
     private static final String CAR_NUMBER = "carNumber";
     private static final String DOCUMENT_ID = "documentId";
@@ -21,56 +22,48 @@ public class SignUpDriverCommand implements Command {
     private static final String DOCUMENT_ID_ERROR = "documentIdError";
     private static final String CAR_MARK_ERROR = "carMarkError";
     private static final String LOGIN_NOT_EXIST_ERROR = "loginNotExistError";
+    private static final String DRIVER_EXIST_ERROR = "driverExistError";
 
-    private static final String OLD_LOGIN = "oldLogin";
-    private static final String OLD_CAR_NUMBER = "oldCarNumber";
-    private static final String OLD_DOCUMENT_ID = "oldDocumentId";
-    private static final String OLD_CAR_MARK = "oldCarMark";
+
 
     @Override
-    public Router execute(HttpServletRequest request) {
+    public JSONObject execute(HttpServletRequest request) {
+        JSONObject json = new JSONObject();
+
         String login = request.getParameter(UserConstant.LOGIN);
         String carNumber = request.getParameter(CAR_NUMBER);
         String documentId = request.getParameter(DOCUMENT_ID);
         String carMark = request.getParameter(CAR_MARK);
 
-        boolean signUpProblem = false;
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
-            signUpProblem = true;
-            request.setAttribute(CAR_NUMBER_ERROR, true);
+            json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
         }
         if (!SignUpDriverValidator.isDocIdValid(documentId)) {
-            signUpProblem = true;
-            request.setAttribute(DOCUMENT_ID_ERROR, true);
+            json.put(DOCUMENT_ID_ERROR, DOCUMENT_ID_ERROR);
         }
         if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
-            signUpProblem = true;
-            request.setAttribute(CAR_MARK_ERROR, true);
+            json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
         }
 
         SignInReceiver signInReceiver = new SignInReceiver();
+        DriverReceiver driverReceiver = new DriverReceiver();
         try {
             if (!signInReceiver.isLoginExist(login)) {
-                signUpProblem = true;
-                request.setAttribute(LOGIN_NOT_EXIST_ERROR, true);
+                json.put(LOGIN_NOT_EXIST_ERROR, LOGIN_NOT_EXIST_ERROR);
             }
-
-            if (!signUpProblem) {
+            if (driverReceiver.isDriverExist(login)) {
+                json.put(DRIVER_EXIST_ERROR, DRIVER_EXIST_ERROR);
+            }
+            if (json.length() == 0) {
                 SignUpReceiver signUpReceiver = new SignUpReceiver();
-
                 signUpReceiver.saveDriver(login, carNumber, documentId, carMark);
-            } else {
-                request.setAttribute(OLD_LOGIN, login);
-                request.setAttribute(OLD_CAR_NUMBER, carNumber);
-                request.setAttribute(OLD_DOCUMENT_ID, documentId);
-                request.setAttribute(OLD_CAR_MARK, carMark);
+                json.put(ALL_CORRECT, ALL_CORRECT);
             }
         } catch (ReceiverException e) {
-            //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            json.put(ERROR, e.getMessage());
         }
 
-        return new Router(TransitionType.FORWARD, PagesConstant.SING_UP_DRIVER_PAGE);
+        return json;
     }
 }

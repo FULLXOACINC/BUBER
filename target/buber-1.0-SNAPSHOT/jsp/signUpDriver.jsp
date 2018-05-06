@@ -30,50 +30,47 @@
 <html>
 <head>
     <title>${signUp}</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/js/signUpDriver.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
 </head>
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
-    <p>${login}<input type="text" name="login" value="${oldLogin}"/></p>
-    <p>${carNumber}<input type="text" name="carNumber" value="7522AT1"/></p>
-    <p>${documentId}<input type="text" name="documentId" value="7AD123132"/></p>
-    <p>${carMark}<input type="text" name="carMark" value="${oldCarMark}"/></p>
+
 
     <input type="hidden" name="command" value="sign-up-driver">
-    <input type="submit" value="${signUp}">
 </form>
 
-<c:if test="${notValidLoginError}">
-    <p>${notValidLoginErrorMessage}</p>
-</c:if>
-<c:if test="${loginExistError}">
-    <p>${loginExistErrorMessage}</p>
-</c:if>
-<c:if test="${phoneNumberExistError}">
-    <p> ${phoneNumberExistErrorMessage}</p>
-</c:if>
-<c:if test="${firstNameError}">
-    <p> ${firstNameErrorMessage}</p>
-</c:if>
-<c:if test="${secondNameError}">
-    <p> ${secondNameErrorMessage}</p>
-</c:if>
-<c:if test="${notValidPasswordError}">
-    <p> ${notValidPasswordErrorMessage}</p>
-</c:if>
-<c:if test="${passwordNotEq}">
-    <p>${passwordNotEqMessage}</p>
-</c:if>
-<c:if test="${ageError}">
-    <p> ${birthDayErrorMessage}</p>
-</c:if>
-<c:if test="${notValidPhoneNumberError}">
-    <p> ${notValidPhoneNumberErrorMessage}</p>
-</c:if>
-<c:if test="${allCorrect}">
-    <p> ${allCorrectMessage}</p>
-</c:if>
+<p>${login}<input type="text" id="login" /></p>
+<p>${carNumber}<input type="text" id="carNumber" value="7522AT1"/></p>
+<p>${documentId}<input type="text" id="documentId" value="7AD123132"/></p>
+<p>${carMark}<input type="text" id="carMark"/></p>
+<p><input type="submit" id="sign-up-driver"value="${signUp}"></p>
 
-<br/>
+<div class="error" id="car-number-error">
+    <p>carNumberError</p>
+</div>
+
+<div class="error" id="document-id-error">
+    <p>documentIdError</p>
+</div>
+
+<div class="error" id="car-mark-error">
+    <p>carMarkError</p>
+</div>
+
+<div class="error" id="login-not-exist-error">
+    <p>loginNotExistError</p>
+</div>
+
+<div class="error" id="driver-exist-error">
+    <p>driverExistError</p>
+</div>
+
+<div class="correct" id="all-correct">
+    <p>allCorrectMessage</p>
+</div>
+
 
 <ctg:hello auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>

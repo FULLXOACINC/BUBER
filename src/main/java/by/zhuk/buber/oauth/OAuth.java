@@ -1,6 +1,5 @@
 package by.zhuk.buber.oauth;
 
-import org.apache.commons.httpclient.HttpMethod;
 import org.json.JSONObject;
 
 public interface OAuth {

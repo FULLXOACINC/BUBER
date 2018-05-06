@@ -33,8 +33,6 @@ public class SignUpUserCommand implements AJAXCommand {
     private static final String BIRTH_DAY_ERROR = "birthDayError";
     private static final String NOT_VALID_PHONE_NUMBER_ERROR = "notValidPhoneNumberError";
 
-    private static final String ALL_CORRECT = "allCorrect";
-
 
     @Override
     public JSONObject execute(HttpServletRequest request) {

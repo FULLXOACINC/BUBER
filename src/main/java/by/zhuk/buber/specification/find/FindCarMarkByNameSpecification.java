@@ -44,4 +44,5 @@ public class FindCarMarkByNameSpecification implements FindSpecification<CarMark
             throw new SpecificationException(e);
         }
         return carMarks;
-    }}
+    }
+}

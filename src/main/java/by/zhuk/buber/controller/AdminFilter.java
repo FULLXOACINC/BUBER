@@ -1,6 +1,7 @@
 package by.zhuk.buber.controller;
 
 import by.zhuk.buber.command.CommandType;
+import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
@@ -51,7 +52,7 @@ public class AdminFilter implements Filter {
         command = command.toUpperCase().replaceAll("-", "_");
 
         boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
-        boolean isSignUpDriverCommand = command.equals(CommandType.SIGN_UP_DRIVER.name());
+        boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
         return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand;
     }
