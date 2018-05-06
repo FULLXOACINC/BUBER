@@ -20,6 +20,9 @@
 <html>
 <head>
     <title>${login}</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script src="/js/signIn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
 </head>
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
@@ -29,29 +32,27 @@
     <input type="hidden" name="command" value="lang">
     <input type="submit" value="${lang}">
 </form>
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <p>${login}<input type="text" name="login"/></p>
-    <p>${password}<input type="password" name="password"/></p>
-    <input type="hidden" name="command" value="sign-in">
-    <input type="submit" value="${enter}">
-</form>
+<p>${login}<input type="text" id="login"/></p>
+<p>${password}<input type="password" id="password"/></p>
+<input type="submit" id="enter" value="${enter}">
 
-<c:choose>
-    <c:when test="${signInValidError}">
-        ${loginNotValidMessage}
-    </c:when>
-    <c:when test="${signInExistError}">
-        ${loginNotExistMessage}
-    </c:when>
-    <c:when test="${signInPasswordError}">
-        ${loginPasswordNotEqMessage}
-    </c:when>
-    <c:when test="${bannedError}">
-        ${bannedErrorMessage}
-    </c:when>
-</c:choose>
 
-<br/>
+<div class="error" id="login-not-valid-error">
+    <p>${loginNotValidMessage}</p>
+</div>
+<div class="error" id="login-not-exist-error">
+    <p>${loginNotExistMessage}</p>
+</div>
+<div class="error" id="login-password-not-eq-error">
+    <p>${loginPasswordNotEqMessage}</p>
+</div>
+
+<c:if test="${bannedError}">
+    <div id="banned-error">
+        <p>${bannedErrorMessage}</p>
+    </div>
+</c:if>
+
 
 <form action="/jsp/signUp.jsp">
     <input type="submit" value="${singUp}">

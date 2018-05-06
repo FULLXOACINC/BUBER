@@ -20,9 +20,8 @@ $(document).ready(function () {
                 }
 
             },
-            error: function (jqXHR, exception) {
-                console.log("bad");
-                // Your error handling logic here..
+            error: function (exception) {
+                console.log(exception);
             }
         });
     };

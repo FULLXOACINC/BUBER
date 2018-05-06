@@ -41,7 +41,7 @@ public class SignInFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE) || requestJsOrCSSFile(request.getRequestURI())) {
+        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE) || requestFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -79,8 +79,8 @@ public class SignInFilter implements Filter {
         }
     }
 
-    private boolean requestJsOrCSSFile(String requestURI) {
-        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION) ;
+    private boolean requestFile(String requestURI) {
+        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION);
     }
 
     private boolean isLoginCommand(String command) {
@@ -89,12 +89,13 @@ public class SignInFilter implements Filter {
         }
         command = command.toUpperCase().replaceAll("-", "_");
 
-        boolean isSignInCommand = command.equals(CommandType.SIGN_IN.name());
+        boolean isLangCommand = command.equals(CommandType.LANG.name());
+        boolean isSignInCommand = command.equals(AJAXCommandType.SIGN_IN.name());
         boolean isSignUpAcceptCommand = command.equals(CommandType.SIGN_UP_ACCEPT.name());
         boolean isSignUpUserCommand = command.equals(AJAXCommandType.SIGN_UP_USER.name());
         boolean isOAuthCommand = command.equals(CommandType.OAUTH.name()) || command.equals(CommandType.OAUTH_ACCEPT.name());
 
-        return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand;
+        return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand || isLangCommand;
     }
 
     @Override

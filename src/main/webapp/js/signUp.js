@@ -62,8 +62,8 @@ $(document).ready(function () {
                 }
 
             },
-            error: function (jqXHR, exception) {
-                console.log("bad");
+            error: function (exception) {
+                console.log(exception);
             }
         });
     };

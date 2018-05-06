@@ -21,7 +21,6 @@ public class OAuthAcceptCommand implements Command {
     private static final String LOGIN_TYPE = "loginType";
     private static final String ERROR_PARAM = "error";
     private static final String CODE_PARAM = "code";
-    private static String SIGN_IN_EXIST_ERROR = "signInExistError";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -34,7 +33,7 @@ public class OAuthAcceptCommand implements Command {
         oAuthOptional = OAuthFactory.findOAuth(loginType);
 
         if (!oAuthOptional.isPresent()) {
-            logger.log(Level.WARN, "Unknown command");
+            logger.log(Level.WARN, "Unknown oAuth type");
             return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
 
@@ -53,8 +52,7 @@ public class OAuthAcceptCommand implements Command {
                     request.getSession().setAttribute(UserConstant.LOGIN, email);
                     request.getSession().setAttribute(UserConstant.TYPE, UserType.USER);
                 } else {
-                    request.setAttribute(SIGN_IN_EXIST_ERROR, true);
-                    return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+                    return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
                 }
 
             } catch (ReceiverException e) {

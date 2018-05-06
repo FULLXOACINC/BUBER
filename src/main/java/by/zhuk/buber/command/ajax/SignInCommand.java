@@ -1,4 +1,4 @@
-package by.zhuk.buber.command;
+package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
@@ -9,12 +9,13 @@ import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-public class SignInCommand implements Command {
+public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
     private static String LOGIN = "login";
     private static String PASSWORD = "password";
@@ -23,40 +24,45 @@ public class SignInCommand implements Command {
     private static String SIGN_IN_EXIST_ERROR = "signInExistError";
     private static String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
 
+    private static String REDIRECT_PAGE = "redirectPage";
+
     @Override
-    public Router execute(HttpServletRequest request) {
+    public JSONObject execute(HttpServletRequest request) {
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
+
+        JSONObject json = new JSONObject();
         if (!SignInValidator.isLoginValid(login)) {
-            request.setAttribute(SIGN_IN_VLIDE_ERROR, true);
-            return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+            json.put(SIGN_IN_VLIDE_ERROR, SIGN_IN_VLIDE_ERROR);
+            return json;
         }
         SignInReceiver signInReceiver = new SignInReceiver();
         try {
             if (!signInReceiver.isLoginExist(login)) {
-                request.setAttribute(SIGN_IN_EXIST_ERROR, true);
-                return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+                json.put(SIGN_IN_EXIST_ERROR, SIGN_IN_EXIST_ERROR);
+                return json;
             }
             if (!signInReceiver.checkPassword(login, password)) {
-                request.setAttribute(SIGN_IN_PASSWORD_ERROR, true);
-                return new Router(TransitionType.FORWARD, PagesConstant.LOGIN_PAGE);
+                json.put(SIGN_IN_PASSWORD_ERROR, SIGN_IN_PASSWORD_ERROR);
+                return json;
             }
             UserReceiver userReceiver = new UserReceiver();
             Optional<User> userOptional = userReceiver.findUserByLogin(login);
             HttpSession session = request.getSession();
-            if (!userOptional.isPresent()) {
-                return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            if (userOptional.isPresent()) {
+                User user = userOptional.get();
+                session.setAttribute(UserConstant.LOGIN, user.getLogin());
+                session.setAttribute(UserConstant.TYPE, user.getType().name());
+                json.put(REDIRECT_PAGE, PagesConstant.WELCOME_PAGE);
+
             }
-            User user = userOptional.get();
-            session.setAttribute(UserConstant.LOGIN, user.getLogin());
-            session.setAttribute(UserConstant.TYPE, user.getType().name());
-            return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
+
 
         } catch (ReceiverException e) {
-            //TODO go to error page
             logger.catching(e);
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            json.put(ERROR, e.getMessage());
         }
+        return json;
 
     }
 }

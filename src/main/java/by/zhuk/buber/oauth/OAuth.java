@@ -19,7 +19,5 @@ public interface OAuth {
 
     String takeLoginInfoUrl(JSONObject tokenUrl);
 
-    JSONObject parseResult(HttpMethod method);
-
     String takeEmail(JSONObject json);
 }

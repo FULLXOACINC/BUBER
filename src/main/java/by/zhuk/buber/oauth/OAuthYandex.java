@@ -82,18 +82,6 @@ public class OAuthYandex implements OAuth {
     }
 
     @Override
-    public JSONObject parseResult(HttpMethod method) {
-        JSONObject result = null;
-        try {
-            result = new JSONObject(
-                    new JSONTokener(new InputStreamReader(method.getResponseBodyAsStream())));
-        } catch (JSONException | IOException e) {
-            logger.catching(e);
-        }
-        return result;
-    }
-
-    @Override
     public String takeEmail(JSONObject json) {
         return (String) json.getJSONArray("emails").get(0);
     }
