@@ -6,7 +6,7 @@ public class Driver {
     private String login;
     private String carNumber;
     private String documentId;
-    private String carMark;
+    private CarMark carMark;
     private float currentLatCoordinate;
     private float currentLngCoordinate;
     private boolean isWorking;
@@ -40,11 +40,11 @@ public class Driver {
         this.documentId = documentId;
     }
 
-    public String getCarMark() {
+    public CarMark getCarMark() {
         return carMark;
     }
 
-    public void setCarMark(String carMark) {
+    public void setCarMark(CarMark carMark) {
         this.carMark = carMark;
     }
 

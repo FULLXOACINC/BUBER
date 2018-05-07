@@ -8,6 +8,7 @@
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
+<fmt:message bundle="${locale}" key="text.fillUp" var="fillUp"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
 
 <html>
@@ -22,7 +23,7 @@
     <input type="hidden" name="command" value="lang">
     <input type="submit" value="${lang}">
 </form>
-${sessionScope.login}
+${sessionScope.documentId}
 ${sessionScope.type}
 <form action="/jsp/orderTaxi.jsp">
     <input type="submit" value="${orderTaxi}">
@@ -35,5 +36,8 @@ ${sessionScope.type}
 <form action="${ pageContext.request.contextPath }/controller" method="post">
     <input type="hidden" name="command" value="sign-out">
     <input type="submit" value="${signOut}">
+</form>
+<form action="/jsp/fillUpPurse.jsp">
+    <input type="submit" value="${fillUp}">
 </form>
 </html>

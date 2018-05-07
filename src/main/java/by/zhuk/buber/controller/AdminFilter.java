@@ -65,6 +65,7 @@ public class AdminFilter implements Filter {
         boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
+
         return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount;
     }
 

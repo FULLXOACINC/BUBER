@@ -5,8 +5,8 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.find.FindSpecification;
-import by.zhuk.buber.specification.find.FindUserByLoginAndPasswordSpecification;
-import by.zhuk.buber.specification.find.FindUserByLoginSpecification;
+import by.zhuk.buber.specification.find.user.FindUserByLoginAndPasswordSpecification;
+import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,8 +15,8 @@ public class SignInReceiver {
 
     public boolean isLoginExist(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
-        UserReceiver userReceiver = new UserReceiver();
-        List<User> users = userReceiver.findUsersBySpecification(specification);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
         ConcurrentHashMap<String, SignUpUserInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
 
         boolean isLoginExistSignUp = false;
@@ -31,10 +31,9 @@ public class SignInReceiver {
 
 
     public boolean checkPassword(String login, String password) throws ReceiverException {
-        ;
         FindSpecification<User> specification = new FindUserByLoginAndPasswordSpecification(login, password);
-        UserReceiver userReceiver = new UserReceiver();
-        List<User> users = userReceiver.findUsersBySpecification(specification);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
         return !users.isEmpty();
 
     }

@@ -30,7 +30,7 @@
 <html>
 <head>
     <title>${signUp}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="/js/signUp.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/signUp.css">
 </head>

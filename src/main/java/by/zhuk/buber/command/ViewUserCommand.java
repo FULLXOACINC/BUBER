@@ -17,10 +17,10 @@ public class ViewUserCommand implements Command {
 
     @Override
     public Router execute(HttpServletRequest request) {
-        String user = request.getParameter(USER);
+        String login = request.getParameter(USER);
         UserReceiver userReceiver = new UserReceiver();
         try {
-            Optional<User> optionalUser = userReceiver.findUserByLogin(user);
+            Optional<User> optionalUser = userReceiver.findUserByLogin(login);
             if (optionalUser.isPresent()) {
                 request.setAttribute(USER, optionalUser.get());
             } else {

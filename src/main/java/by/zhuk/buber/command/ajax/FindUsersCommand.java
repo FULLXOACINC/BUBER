@@ -2,6 +2,7 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
+import by.zhuk.buber.receiver.AdminReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +20,7 @@ public class FindUsersCommand implements AJAXCommand {
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         String findPattern = request.getParameter(PATTERN);
-        UserReceiver receiver = new UserReceiver();
+        AdminReceiver receiver = new AdminReceiver();
         List<User> users;
         try {
             users = receiver.findUsersByPattern(findPattern);

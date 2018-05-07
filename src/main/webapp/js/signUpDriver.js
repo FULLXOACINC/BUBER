@@ -5,6 +5,8 @@ function hideAllMessage() {
     $('#car-mark-error').hide();
     $('#login-not-exist-error').hide();
     $('#driver-exist-error').hide();
+    $('#car-number-exist-error').hide();
+    $('#document-id-exist-error').hide();
 }
 
 $(document).ready(function () {
@@ -38,6 +40,12 @@ $(document).ready(function () {
                     }
                     if (response['driverExistError']) {
                         $('#driver-exist-error').show();
+                    }
+                    if (response['carNumberExistError']) {
+                        $('#car-number-exist-error').show();
+                    }
+                    if (response['documentIdExistError']) {
+                        $('#document-id-exist-error').show();
                     }
 
                 }

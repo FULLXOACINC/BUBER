@@ -1,8 +1,9 @@
-package by.zhuk.buber.specification.find;
+package by.zhuk.buber.specification.find.user;
 
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
+import by.zhuk.buber.specification.find.FindSpecification;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

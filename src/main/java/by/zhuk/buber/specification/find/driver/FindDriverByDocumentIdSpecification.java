@@ -1,7 +1,8 @@
-package by.zhuk.buber.specification.find;
+package by.zhuk.buber.specification.find.driver;
 
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.Driver;
+import by.zhuk.buber.specification.find.FindSpecification;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,23 +10,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindDriverByLoginSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login FROM buber_db.driver WHERE driver_login=?";
-    private String login;
+public class FindDriverByDocumentIdSpecification implements FindSpecification<Driver> {
+    private static final String SELECT_BY_DRIVER_DOCUMENT_ID = "SELECT driver_document_id FROM buber_db.driver WHERE driver_document_id=?";
+    private String documentId;
 
-    public FindDriverByLoginSpecification(String login) {
-        this.login = login;
+    public FindDriverByDocumentIdSpecification(String documentId) {
+        this.documentId = documentId;
     }
 
     @Override
     public String takePrepareQuery() {
-        return SELECT_BY_DRIVER_LOGIN;
+        return SELECT_BY_DRIVER_DOCUMENT_ID;
     }
 
     @Override
     public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
         try {
-            statement.setString(1, login);
+            statement.setString(1, documentId);
         } catch (SQLException e) {
             throw new SpecificationException(e);
         }
@@ -37,7 +38,7 @@ public class FindDriverByLoginSpecification implements FindSpecification<Driver>
         try {
             while (resultSet.next()) {
                 Driver driver = new Driver();
-                driver.setLogin(resultSet.getString(1));
+                driver.setDocumentId(resultSet.getString(1));
                 drivers.add(driver);
             }
         } catch (SQLException e) {

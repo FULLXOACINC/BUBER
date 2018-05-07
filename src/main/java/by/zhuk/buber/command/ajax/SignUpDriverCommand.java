@@ -2,9 +2,8 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.receiver.DriverReceiver;
-import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
+import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +20,10 @@ public class SignUpDriverCommand implements AJAXCommand {
     private static final String CAR_NUMBER_ERROR = "carNumberError";
     private static final String DOCUMENT_ID_ERROR = "documentIdError";
     private static final String CAR_MARK_ERROR = "carMarkError";
-    private static final String LOGIN_NOT_EXIST_ERROR = "loginNotExistError";
+    private static final String USER_NOT_EXIST_ERROR = "userNotExistError";
     private static final String DRIVER_EXIST_ERROR = "driverExistError";
+    private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
+    private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
 
 
     @Override
@@ -43,15 +44,20 @@ public class SignUpDriverCommand implements AJAXCommand {
         if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
             json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
         }
-        //TODO check exist CAR_NUMBER DOCUMENT_ID
-        SignInReceiver signInReceiver = new SignInReceiver();
+        UserReceiver userReceiver = new UserReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
-            if (!signInReceiver.isLoginExist(login)) {
-                json.put(LOGIN_NOT_EXIST_ERROR, LOGIN_NOT_EXIST_ERROR);
+            if (!userReceiver.isUserExist(login)) {
+                json.put(USER_NOT_EXIST_ERROR, USER_NOT_EXIST_ERROR);
             }
             if (driverReceiver.isDriverExist(login)) {
                 json.put(DRIVER_EXIST_ERROR, DRIVER_EXIST_ERROR);
+            }
+            if (driverReceiver.isCarNumberExist(carNumber)) {
+                json.put(CAR_NUMBER_EXIST_ERROR, CAR_NUMBER_EXIST_ERROR);
+            }
+            if (driverReceiver.isDriverDocumentIdExist(documentId)) {
+                json.put(DOCUMENT_ID_EXIST_ERROR, DOCUMENT_ID_EXIST_ERROR);
             }
             if (json.length() == 0) {
                 SignUpReceiver signUpReceiver = new SignUpReceiver();

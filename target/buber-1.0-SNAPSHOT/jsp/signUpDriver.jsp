@@ -67,6 +67,14 @@
     <p>driverExistError</p>
 </div>
 
+<div class="error" id="car-number-exist-error">
+    <p>carNumberExistError</p>
+</div>
+
+<div class="error" id="document-id-exist-error">
+    <p>documentIdExistError</p>
+</div>
+
 <div class="correct" id="all-correct">
     <p>allCorrectMessage</p>
 </div>
