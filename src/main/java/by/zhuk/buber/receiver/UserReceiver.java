@@ -4,7 +4,6 @@ import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
-import by.zhuk.buber.specification.find.user.FindUserByPatternSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
 
 import java.util.List;

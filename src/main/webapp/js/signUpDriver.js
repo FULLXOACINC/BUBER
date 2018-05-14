@@ -17,9 +17,9 @@ $(document).ready(function () {
             data: {
                 command: "sign-up-driver",
                 login: $('#login').val(),
-                carNumber: $('#carNumber').val(),
-                documentId: $('#documentId').val(),
-                carMark: $('#carMark').val(),
+                carNumber: $('#car-number').val(),
+                documentId: $('#document-id').val(),
+                carMark: $('#car-mark').val(),
             },
             success: function (response) {
                 hideAllMessage();

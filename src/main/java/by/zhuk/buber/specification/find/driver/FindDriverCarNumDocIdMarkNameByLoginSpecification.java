@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindDriverCarNumberDocumentIdCarMarkNameByLoginSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_name FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
+public class FindDriverCarNumDocIdMarkNameByLoginSpecification implements FindSpecification<Driver> {
+    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_id,car_mark_name FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
     private String login;
 
-    public FindDriverCarNumberDocumentIdCarMarkNameByLoginSpecification(String login) {
+    public FindDriverCarNumDocIdMarkNameByLoginSpecification(String login) {
         this.login = login;
     }
 
@@ -44,7 +44,8 @@ public class FindDriverCarNumberDocumentIdCarMarkNameByLoginSpecification implem
                 driver.setDocumentId(resultSet.getString(3));
 
                 CarMark carMark = new CarMark();
-                carMark.setMarkName(resultSet.getString(4));
+                carMark.setIndex(resultSet.getInt(4));
+                carMark.setMarkName(resultSet.getString(5));
                 driver.setCarMark(carMark);
                 drivers.add(driver);
             }

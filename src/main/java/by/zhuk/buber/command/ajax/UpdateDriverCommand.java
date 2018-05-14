@@ -2,14 +2,15 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.receiver.DriverReceiver;
-import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 public class UpdateDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
@@ -20,7 +21,7 @@ public class UpdateDriverCommand implements AJAXCommand {
     private static final String CAR_NUMBER_ERROR = "carNumberError";
     private static final String DOCUMENT_ID_ERROR = "documentIdError";
     private static final String CAR_MARK_ERROR = "carMarkError";
-    private static final String DRIVER_EXIST_ERROR = "driverExistError";
+    private static final String DRIVER_NOT_EXIST_ERROR = "driverNotExistError";
     private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
     private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
 
@@ -44,14 +45,17 @@ public class UpdateDriverCommand implements AJAXCommand {
             json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
         }
         DriverReceiver driverReceiver = new DriverReceiver();
+
         try {
-            if (driverReceiver.isDriverExist(login)) {
-                json.put(DRIVER_EXIST_ERROR, DRIVER_EXIST_ERROR);
+            if (!driverReceiver.isDriverExist(login)) {
+                json.put(DRIVER_NOT_EXIST_ERROR, DRIVER_NOT_EXIST_ERROR);
             }
-            if (driverReceiver.isCarNumberExist(carNumber)) {
+            Optional<Driver> driverOptional = driverReceiver.findDriverByLogin(login);
+            Driver driver = driverOptional.get();
+            if (driverReceiver.isCarNumberExist(carNumber) && !driver.getCarNumber().equals(carNumber)) {
                 json.put(CAR_NUMBER_EXIST_ERROR, CAR_NUMBER_EXIST_ERROR);
             }
-            if (driverReceiver.isDriverDocumentIdExist(documentId)) {
+            if (driverReceiver.isDriverDocumentIdExist(documentId) && !driver.getDocumentId().equals(documentId)) {
                 json.put(DOCUMENT_ID_EXIST_ERROR, DOCUMENT_ID_EXIST_ERROR);
             }
             if (json.length() == 0) {

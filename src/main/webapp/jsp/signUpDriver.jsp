@@ -42,9 +42,9 @@
 </form>
 
 <p>${login}<input type="text" id="login"/></p>
-<p>${carNumber}<input type="text" id="carNumber" value="7522AT1"/></p>
-<p>${documentId}<input type="text" id="documentId" value="7AD123132"/></p>
-<p>${carMark}<input type="text" id="carMark"/></p>
+<p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
+<p>${documentId}<input type="text" id="document-id" value="7AD123132"/></p>
+<p>${carMark}<input type="text" id="car-mark"/></p>
 <p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
 
 <div class="error" id="car-number-error">

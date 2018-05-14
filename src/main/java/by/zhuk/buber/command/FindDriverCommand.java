@@ -3,9 +3,7 @@ package by.zhuk.buber.command;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.Driver;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.DriverReceiver;
-import by.zhuk.buber.receiver.UserReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +26,7 @@ public class FindDriverCommand implements Command {
             } else {
                 request.setAttribute(NOT_FOUND, true);
             }
-            return new Router(TransitionType.FORWARD, PagesConstant.USER_VIEW_PAGE);
+            return new Router(TransitionType.FORWARD, PagesConstant.UPDATE_DRIVER_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);
             return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);

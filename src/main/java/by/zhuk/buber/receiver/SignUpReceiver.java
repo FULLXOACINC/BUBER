@@ -16,8 +16,8 @@ import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddCarMarkSpecification;
 import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
-import by.zhuk.buber.specification.find.carmark.FindCarMarkByNameSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.carmark.FindCarMarkByNameSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
 
@@ -76,7 +76,7 @@ public class SignUpReceiver {
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
-            driver.setCarMark(String.valueOf(carMark.getIndex()));
+            driver.setCarMark(carMark);
             Specification driverAddSpecification = new AddDriverSpecification(driver);
             driverRepository.add(driverAddSpecification);
 

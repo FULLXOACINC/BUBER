@@ -26,7 +26,7 @@ public class AddDriverSpecification implements Specification {
             statement.setString(1, driver.getLogin());
             statement.setString(2, driver.getCarNumber());
             statement.setString(3, driver.getDocumentId());
-            statement.setInt(4, Integer.parseInt(driver.getCarMark()));
+            statement.setInt(4, driver.getCarMark().getIndex());
         } catch (SQLException e) {
             throw new SpecificationException(e);
         }

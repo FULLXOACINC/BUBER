@@ -3,23 +3,22 @@ function hideAllMessage() {
     $('#car-number-error').hide();
     $('#document-id-error').hide();
     $('#car-mark-error').hide();
-    $('#login-not-exist-error').hide();
-    $('#driver-exist-error').hide();
+    $('#driver-not-exist-error').hide();
     $('#car-number-exist-error').hide();
     $('#document-id-exist-error').hide();
 }
 
 $(document).ready(function () {
-    var signUpFun = function () {
+    var updateFun = function () {
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
-                command: "sign-up-driver",
+                command: "update-driver",
                 login: $('#login').val(),
                 carNumber: $('#car-number').val(),
                 documentId: $('#document-id').val(),
-                carMark: $('#car-mark').val(),
+                carMark: $('#car-mark').val()
             },
             success: function (response) {
                 hideAllMessage();
@@ -35,11 +34,8 @@ $(document).ready(function () {
                     if (response['carMarkError']) {
                         $('#car-mark-error').show();
                     }
-                    if (response['loginNotExistError']) {
-                        $('#login-not-exist-error').show();
-                    }
-                    if (response['driverExistError']) {
-                        $('#driver-exist-error').show();
+                    if (response['driverNotExistError']) {
+                        $('#driver-not-exist-error').show();
                     }
                     if (response['carNumberExistError']) {
                         $('#car-number-exist-error').show();
@@ -56,5 +52,5 @@ $(document).ready(function () {
             }
         });
     };
-    $('#sign-up-driver').click(signUpFun);
+    $('#update-driver').click(updateFun);
 });

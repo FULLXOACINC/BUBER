@@ -2,6 +2,7 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignUpDriverValidator;

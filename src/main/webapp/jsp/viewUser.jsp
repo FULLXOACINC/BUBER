@@ -15,6 +15,7 @@
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
 <fmt:message bundle="${locale}" key="text.notFound" var="notFound"/>
 <fmt:message bundle="${locale}" key="text.change" var="change"/>
+<fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
 <html>
 <head>
     <title>${buber}</title>
@@ -65,6 +66,13 @@
                 <input type="hidden" name="command" value="switch-admin-status">
                 <input type="hidden" name="user" value="${user.login}">
                 <input type="submit" value="${adminStatusView}">
+            </form>
+        </c:if>
+        <c:if test="${user.type == 'DRIVER'}">
+            <form action="${ pageContext.request.contextPath }/controller" method="post">
+                <input type="hidden" name="command" value="find-driver">
+                <input type="hidden" name="driver" value="${user.login}">
+                <input type="submit" value="${updateDriver}">
             </form>
         </c:if>
         <input id="discount" type="text" value="${user.discount}">
