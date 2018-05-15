@@ -30,9 +30,9 @@
 <html>
 <head>
     <title>${signUp}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script src="/js/signUpDriver.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/signUpDriver.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">

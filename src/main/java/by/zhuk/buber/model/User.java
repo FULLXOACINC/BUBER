@@ -113,6 +113,10 @@ public class User {
         this.discount = discount;
     }
 
+    public void fillUpBalance(BigDecimal moneyAmount) {
+        balance = balance.add(moneyAmount);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

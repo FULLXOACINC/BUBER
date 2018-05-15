@@ -10,6 +10,7 @@ function hideAllMessage() {
 
 $(document).ready(function () {
     var updateFun = function () {
+        hideAllMessage();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -21,7 +22,7 @@ $(document).ready(function () {
                 carMark: $('#car-mark').val()
             },
             success: function (response) {
-                hideAllMessage();
+
                 if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {

@@ -19,11 +19,11 @@
 <html>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script src="/js/viewUser.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
 </head>
 <body>
-<form action="/jsp/admin.jsp">
+<form action="${pageContext.request.contextPath}/jsp/admin.jsp">
     <input type="submit" value="${console}">
 </form>
 <c:choose>

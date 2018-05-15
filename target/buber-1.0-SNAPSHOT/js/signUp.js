@@ -13,6 +13,7 @@ function hideAllMessage() {
 
 $(document).ready(function () {
     var signUpFun = function () {
+        hideAllMessage();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -27,7 +28,6 @@ $(document).ready(function () {
                 phoneNumber: $('#phoneNumber').val()
             },
             success: function (response) {
-                hideAllMessage();
                 if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {

@@ -1,4 +1,3 @@
-<%-- Created by IntelliJ IDEA. --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,15 +12,15 @@
 <html>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script src="/js/admin.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/controller" method="post">
     <input type="hidden" name="command" value="sign-out">
     <input type="submit" value="${signOut}">
 </form>
-<form action="/jsp/signUpDriver.jsp">
+<form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
     <input type="submit" value="${signUpDriver}">
 </form>
 <input id="pattern" type="text" value="">

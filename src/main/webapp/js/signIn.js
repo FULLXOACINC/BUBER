@@ -8,6 +8,7 @@ function hideAllMessage() {
 
 $(document).ready(function () {
     var signInFun = function () {
+        hideAllMessage();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -17,7 +18,6 @@ $(document).ready(function () {
                 password: $('#password').val()
             },
             success: function (response) {
-                hideAllMessage();
                 if (response['redirectPage']) {
                     $(location).attr('href', response['redirectPage']);
                 }

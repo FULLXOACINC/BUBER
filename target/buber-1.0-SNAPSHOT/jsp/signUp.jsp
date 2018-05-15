@@ -31,8 +31,8 @@
 <head>
     <title>${signUp}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="/js/signUp.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+    <script src="${pageContext.request.contextPath}/js/signUp.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
 

@@ -13,8 +13,8 @@
 <html>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script src="/js/orderTaxi.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/orderTaxi.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>

@@ -25,11 +25,11 @@
 </form>
 ${sessionScope.documentId}
 ${sessionScope.type}
-<form action="/jsp/orderTaxi.jsp">
+<form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
     <input type="submit" value="${orderTaxi}">
 </form>
 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
-<form action="/jsp/admin.jsp">
+<form action="${pageContext.request.contextPath}/jsp/admin.jsp">
     <input type="submit" value="${console}">
 </form>
 </c:if>
@@ -37,7 +37,7 @@ ${sessionScope.type}
     <input type="hidden" name="command" value="sign-out">
     <input type="submit" value="${signOut}">
 </form>
-<form action="/jsp/fillUpPurse.jsp">
+<form action="${pageContext.request.contextPath}/jsp/fillUpBalance.jsp">
     <input type="submit" value="${fillUp}">
 </form>
 </html>

@@ -20,9 +20,9 @@
 <html>
 <head>
     <title>${login}</title>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script src="/js/signIn.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/signUp.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/signIn.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
 <form action="${ pageContext.request.contextPath }/controller" method="post">
@@ -54,7 +54,7 @@
 </c:if>
 
 
-<form action="/jsp/signUp.jsp">
+<form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
     <input type="submit" value="${singUp}">
 </form>
 <hr/>

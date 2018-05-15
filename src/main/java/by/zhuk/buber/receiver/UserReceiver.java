@@ -1,16 +1,28 @@
 package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.User;
+import by.zhuk.buber.repository.Repository;
+import by.zhuk.buber.repository.RepositoryController;
+import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
+import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
 public class UserReceiver {
+    private static final BigDecimal MAX_USER_BALANCE = new BigDecimal("100000.00");
 
+    private static Logger logger = LogManager.getLogger(UserReceiver.class);
 
     public Optional<User> findUserByLogin(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
@@ -36,5 +48,41 @@ public class UserReceiver {
         Finder<User> userFinder = new Finder<>();
         List<User> users = userFinder.findBySpecification(specification);
         return !users.isEmpty();
+    }
+
+    public void fillUpBalance(String login, String moneyAmount) throws ReceiverException {
+        BigDecimal money = new BigDecimal(moneyAmount);
+        FindSpecification<User> specification = new FindUserBalanceSpecification(login);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
+        if (users.isEmpty()) {
+            logger.log(Level.WARN, "Not found users with login :" + login);
+            return;
+        }
+        User user = users.get(0);
+        user.fillUpBalance(money);
+        Repository<User> repository = new Repository<>();
+        RepositoryController repositoryController = new RepositoryController(repository);
+        try {
+            Specification updateBalanceSpecification = new UpdateUserBalanceSpecification(login, user.getBalance());
+            repository.update(updateBalanceSpecification);
+            repositoryController.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public boolean isUserBalanceFull(String login, String moneyAmount) throws ReceiverException {
+        BigDecimal money = new BigDecimal(moneyAmount);
+        FindSpecification<User> specification = new FindUserBalanceSpecification(login);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
+        if (users.isEmpty()) {
+            logger.log(Level.WARN, "Not found users with login :" + login);
+            return false;
+        }
+        User user = users.get(0);
+        user.fillUpBalance(money);
+        return user.getBalance().compareTo(MAX_USER_BALANCE) == -1;
     }
 }
