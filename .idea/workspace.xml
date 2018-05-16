@@ -6,42 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2c6dd6e-c811-440d-8f6d-9e399ea5b345" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/fillUpBalance.jsp" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/FillUpBalanceCommand.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/FillUpBalanceCommand.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/UserReceiver.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/properties/text_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/properties/text_en.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/properties/text_ru.properties" afterPath="$PROJECT_DIR$/src/main/resources/properties/text_ru.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/signUp.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/common.css" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/signIn.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/signIn.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/signUp.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/signUp.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/updateDriver.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/updateDriver.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/fillUpPurse.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signIn.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/signIn.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signUp.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/signUp.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/signUpDriver.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/updateDriver.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/updateDriver.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/viewUser.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/viewUser.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/welcome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/welcome.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/FindDriverCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/FindDriverCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/ajax/FillUpBalanceCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/ajax/FillUpBalanceCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/ajax/FindUsersCommand.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/command/ajax/FindUsersCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/DriverReceiver.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/DriverReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/UserReceiver.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/receiver/UserReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/update/UpdateDriverSpecification.class" afterPath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/WEB-INF/classes/by/zhuk/buber/specification/update/UpdateDriverSpecification.class" />
-      <change beforePath="$PROJECT_DIR$/target/buber-1.0-SNAPSHOT/jsp/fillUpPurse.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/FindDriverCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/FindDriverCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/ajax/FillUpBalanceCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/ajax/FillUpBalanceCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/ajax/FindUsersCommand.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/command/ajax/FindUsersCommand.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/DriverReceiver.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/DriverReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/UserReceiver.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/receiver/UserReceiver.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/update/UpdateDriverSpecification.class" afterPath="$PROJECT_DIR$/target/classes/by/zhuk/buber/specification/update/UpdateDriverSpecification.class" />
-    </list>
+    <list default="true" id="b2c6dd6e-c811-440d-8f6d-9e399ea5b345" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,113 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="orderTaxi.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/orderTaxi.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-816">
-              <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="33" />
-              <folding>
-                <marker date="1525616614460" expanded="true" signature="2955:2961" ph="&amp;##160;" />
-                <marker date="1525616614460" expanded="true" signature="2968:2974" ph="&amp;##160;" />
-                <marker date="1525616614460" expanded="true" signature="3051:3057" ph="&amp;##160;" />
-                <marker date="1525616614460" expanded="true" signature="3081:3087" ph="&amp;##160;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/admin.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fillUpBalance.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/fillUpBalance.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="28" column="68" lean-forward="true" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="orderTaxi.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/orderTaxi.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fillUpBalance.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/fillUpBalance.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="37" column="11" lean-forward="true" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/welcome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="33" column="7" lean-forward="false" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="viewUser.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/viewUser.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-738">
-              <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signIn.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signIn.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signUp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signUp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="29" column="42" lean-forward="false" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="signUpDriver.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -196,7 +55,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/controller/AdminFilter.java" />
-        <option value="$PROJECT_DIR$/listofFiles" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/receiver/SignInReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindDriverByCarNumberSpecification.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/FindDriverByDocumentIdSpecification.java" />
@@ -246,6 +104,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/js/signUpDriver.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/updateDriver.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/fillUpBalance.js" />
+        <option value="$PROJECT_DIR$/listofFiles" />
       </list>
     </option>
   </component>
@@ -339,74 +198,6 @@
             <path>
               <item name="buber" type="b2602c69:ProjectViewProjectNode" />
               <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="buber" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="buber" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="buber" type="462c0819:PsiDirectoryNode" />
-              <item name="command" type="462c0819:PsiDirectoryNode" />
-              <item name="ajax" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buber" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BUBER" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -856,7 +647,7 @@
       <workItem from="1525701794562" duration="5419000" />
       <workItem from="1525921554481" duration="144000" />
       <workItem from="1526291371873" duration="9145000" />
-      <workItem from="1526403021958" duration="12311000" />
+      <workItem from="1526403021958" duration="14537000" />
     </task>
     <servers />
   </component>
@@ -893,7 +684,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232016000" />
+    <option name="totallyTimeSpent" value="234242000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -906,7 +697,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="81" y="24" width="1285" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -928,8 +718,8 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32038835" sideWeight="0.49717513" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36245954" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32038835" sideWeight="0.49717513" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36245954" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23567393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1026,25 +816,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/model/CarMark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding>
-            <element signature="e#347#348#0" expanded="false" />
-            <element signature="e#381#382#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/command/ajax/AJAXCommandType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/zhuk/buber/specification/find/driver/FindDriverCarNumDocIdMarkNameByLoginSpecification.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -1221,12 +992,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="1339" column="8" lean-forward="false" selection-start-line="1339" selection-start-column="8" selection-end-line="1339" selection-end-column="8" />
-          <folding>
-            <element signature="e#23502#23503#0" expanded="true" />
-            <element signature="e#23560#23561#0" expanded="true" />
-            <element signature="e#39806#39807#0" expanded="true" />
-            <element signature="e#39849#39850#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1350,11 +1116,11 @@
         <state relative-caret-position="-46">
           <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#762#763#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#623#624#0" expanded="false" />
+            <element signature="e#657#658#0" expanded="false" />
+            <element signature="e#711#712#0" expanded="false" />
+            <element signature="e#762#763#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1391,22 +1157,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signUp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="42" lean-forward="false" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signIn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/orderTaxi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-816">
@@ -1431,7 +1181,31 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/fillUpBalance.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
-          <caret line="28" column="68" lean-forward="true" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+          <caret line="28" column="68" lean-forward="false" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/listofFiles">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="89" column="62" lean-forward="false" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="0" column="4558" lean-forward="false" selection-start-line="0" selection-start-column="4558" selection-end-line="0" selection-end-column="4558" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/fillUpBalance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1440,14 +1214,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/fillUpBalance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="37" column="11" lean-forward="true" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -1462,8 +1228,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/viewUser.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-738">
-          <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+        <state relative-caret-position="832">
+          <caret line="67" column="37" lean-forward="false" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/signUp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="42" lean-forward="false" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
           <folding />
         </state>
       </provider>
