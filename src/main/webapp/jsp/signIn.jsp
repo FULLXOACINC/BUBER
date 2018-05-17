@@ -10,6 +10,7 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.signUp" var="singUp"/>
 <fmt:message bundle="${locale}" key="text.yandex" var="yandex"/>
+<fmt:message bundle="${locale}" key="text.google" var="google"/>
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
 <fmt:message bundle="${locale}" key="text.loginWith" var="loginWith"/>
 <fmt:message bundle="${locale}" key="text.enter" var="enter"/>
@@ -62,6 +63,11 @@
     <input type="hidden" name="command" value="oauth">
     <input type="hidden" name="loginType" value="yandex">
     <input type="submit" value="${yandex}">
+</form>
+<form action="${pageContext.request.contextPath}/controller">
+    <input type="hidden" name="command" value="oauth">
+    <input type="hidden" name="loginType" value="google">
+    <input type="submit" value="${google}">
 </form>
 <ctg:hello auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
 </body>

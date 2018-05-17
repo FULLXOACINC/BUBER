@@ -3,11 +3,11 @@ package by.zhuk.buber.command;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.oauth.OAuth;
+import by.zhuk.buber.model.User;
+import by.zhuk.buber.oauth.AbstractOAuth;
 import by.zhuk.buber.oauth.OAuthFactory;
 import by.zhuk.buber.receiver.OAuthReceiver;
-import by.zhuk.buber.receiver.SignInReceiver;
+import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +29,7 @@ public class OAuthAcceptCommand implements Command {
         }
 
         String loginType = (String) request.getSession().getAttribute(LOGIN_TYPE);
-        Optional<OAuth> oAuthOptional;
+        Optional<AbstractOAuth> oAuthOptional;
         oAuthOptional = OAuthFactory.findOAuth(loginType);
 
         if (!oAuthOptional.isPresent()) {
@@ -37,9 +37,9 @@ public class OAuthAcceptCommand implements Command {
             return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
 
-        OAuth oAuth = oAuthOptional.get();
+        AbstractOAuth oAuth = oAuthOptional.get();
 
-        if (oAuth.hasError(request.getParameter(ERROR_PARAM))) {
+        if (oAuth.isHasError(request.getParameter(ERROR_PARAM))) {
             return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         } else {
 
@@ -47,10 +47,12 @@ public class OAuthAcceptCommand implements Command {
 
             try {
                 String email = oAuthReceiver.findEmail(oAuth, request.getParameter(CODE_PARAM));
-                SignInReceiver signInReceiver = new SignInReceiver();
-                if (signInReceiver.isLoginExist(email)) {
+                UserReceiver userReceiver = new UserReceiver();
+                Optional<User> optionalUser = userReceiver.findUserByLogin(email);
+                if (optionalUser.isPresent()) {
+                    User user = optionalUser.get();
                     request.getSession().setAttribute(UserConstant.LOGIN, email);
-                    request.getSession().setAttribute(UserConstant.TYPE, UserType.USER);
+                    request.getSession().setAttribute(UserConstant.TYPE, user.getType().name());
                 } else {
                     return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
                 }

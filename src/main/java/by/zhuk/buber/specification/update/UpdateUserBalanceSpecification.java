@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.update;
 
 import by.zhuk.buber.exeption.SpecificationException;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.specification.Specification;
 
 import java.math.BigDecimal;

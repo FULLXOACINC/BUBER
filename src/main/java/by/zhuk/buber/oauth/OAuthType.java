@@ -1,15 +1,16 @@
 package by.zhuk.buber.oauth;
 
 public enum OAuthType {
-    YANDEX(OAuthYandex.getInstance());
+    YANDEX(new OAuthYandex()),
+    GOOGLE(new OAuthGoogle());
 
-    private OAuth oAuth;
+    private AbstractOAuth oAuth;
 
-    OAuthType(OAuth oAuth) {
+    OAuthType(AbstractOAuth oAuth) {
         this.oAuth = oAuth;
     }
 
-    public OAuth getOAuth() {
+    public AbstractOAuth getOAuth() {
         return oAuth;
     }
 }

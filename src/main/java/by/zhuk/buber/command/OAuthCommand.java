@@ -1,7 +1,7 @@
 package by.zhuk.buber.command;
 
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.oauth.OAuth;
+import by.zhuk.buber.oauth.AbstractOAuth;
 import by.zhuk.buber.oauth.OAuthFactory;
 import by.zhuk.buber.validator.SignInValidator;
 import org.apache.logging.log4j.Level;
@@ -25,7 +25,7 @@ public class OAuthCommand implements Command {
         if (loginType == null) {
             loginType = (String) request.getSession().getAttribute(LOGIN_TYPE);
         }
-        Optional<OAuth> oAuthOptional;
+        Optional<AbstractOAuth> oAuthOptional;
 
 
         oAuthOptional = OAuthFactory.findOAuth(loginType);
@@ -35,7 +35,7 @@ public class OAuthCommand implements Command {
             return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
         }
 
-        OAuth oAuth = oAuthOptional.get();
+        AbstractOAuth oAuth = oAuthOptional.get();
 
         request.getSession().setAttribute(LOGIN_TYPE, loginType);
         return new Router(TransitionType.REDIRECT, oAuth.getAuthUrl());

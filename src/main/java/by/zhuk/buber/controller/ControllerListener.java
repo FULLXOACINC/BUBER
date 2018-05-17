@@ -16,7 +16,6 @@ public class ControllerListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ConnectionPool.getInstance();
-        OAuthYandex.getInstance();
         MailProperty.getInstance();
         Thread cleaner = new Thread(new SingUpPoolCleaner(SIGN_UP_CLEAR_TIME));
         cleaner.setDaemon(true);
