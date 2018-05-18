@@ -34,13 +34,13 @@ public class OAuthAcceptCommand implements Command {
 
         if (!oAuthOptional.isPresent()) {
             logger.log(Level.WARN, "Unknown oAuth type");
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         }
 
         AbstractOAuth oAuth = oAuthOptional.get();
 
         if (oAuth.isHasError(request.getParameter(ERROR_PARAM))) {
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         } else {
 
             OAuthReceiver oAuthReceiver = new OAuthReceiver();
@@ -54,13 +54,13 @@ public class OAuthAcceptCommand implements Command {
                     request.getSession().setAttribute(UserConstant.LOGIN, email);
                     request.getSession().setAttribute(UserConstant.TYPE, user.getType().name());
                 } else {
-                    return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+                    return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
                 }
 
             } catch (ReceiverException e) {
                 //TODO error page
                 logger.catching(e);
-                new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+                new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
             }
 
             return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);

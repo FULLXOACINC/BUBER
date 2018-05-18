@@ -32,7 +32,7 @@ public class OAuthCommand implements Command {
 
         if (!oAuthOptional.isPresent()) {
             logger.log(Level.WARN, "Unknown command");
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         }
 
         AbstractOAuth oAuth = oAuthOptional.get();

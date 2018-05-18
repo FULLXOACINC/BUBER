@@ -11,6 +11,6 @@ public class SignOutCommand implements Command {
     public Router execute(HttpServletRequest request) {
         request.getSession().removeAttribute(UserConstant.LOGIN);
         request.getSession().removeAttribute(UserConstant.TYPE);
-        return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+        return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
     }
 }

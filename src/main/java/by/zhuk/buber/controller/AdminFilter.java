@@ -25,6 +25,7 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {"/*"}, filterName = "admin")
 public class AdminFilter implements Filter {
     private static Logger logger = LogManager.getLogger(AdminFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) {
 
@@ -42,7 +43,7 @@ public class AdminFilter implements Filter {
             if (UserType.ROOT_ADMIN.name().equals(userType) || UserType.ADMIN.name().equals(userType)) {
                 filterChain.doFilter(request, response);
             } else {
-                logger.log(Level.INFO,"User tries to perform an action without admin rights : "+userLogin);
+                logger.log(Level.INFO, "User tries to perform an action without admin rights : " + userLogin);
                 response.sendRedirect(PagesConstant.WELCOME_PAGE);
             }
         } else {
@@ -64,9 +65,11 @@ public class AdminFilter implements Filter {
         boolean isChangeDiscount = command.equals(AJAXCommandType.CHANGE_DISCOUNT.name());
         boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
+        boolean isUpdateDriverCommand = command.equals(AJAXCommandType.UPDATE_DRIVER.name());
+        boolean isFindDriverCommand = command.equals(CommandType.FIND_DRIVER.name());
         boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
 
-        return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount;
+        return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount || isUpdateDriverCommand || isFindDriverCommand;
     }
 
     @Override

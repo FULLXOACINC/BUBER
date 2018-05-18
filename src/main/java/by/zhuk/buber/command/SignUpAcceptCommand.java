@@ -23,7 +23,7 @@ public class SignUpAcceptCommand implements Command {
         SignUpUserPool pool = SignUpUserPool.getInstance();
         SignUpUserInfo info = pool.find(hash);
         if (info == null) {
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         }
         SignUpReceiver receiver = new SignUpReceiver();
         try {
@@ -35,7 +35,7 @@ public class SignUpAcceptCommand implements Command {
         } catch (ReceiverException e) {
             //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.REDIRECT, PagesConstant.LOGIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         }
         return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
     }

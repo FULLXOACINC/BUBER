@@ -4,14 +4,7 @@ import by.zhuk.buber.command.CommandType;
 import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.constant.UserConstant;
-import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.model.User;
-import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.SignInValidator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -24,12 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
 public class SignInFilter implements Filter {
-    private static Logger logger = LogManager.getLogger(SignInFilter.class);
-    private static final String BANNED_ERROR = "bannedError";
     private static final String JS_FILE_EXPANSION = ".js";
     private static final String CSS_FILE_EXPANSION = ".css";
 
@@ -41,42 +31,18 @@ public class SignInFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpSession session = request.getSession();
-        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().startsWith(PagesConstant.SING_UP_PAGE) || requestFile(request.getRequestURI())) {
+        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().equals(PagesConstant.SING_UP_PAGE) || request.getRequestURI().equals(PagesConstant.SIGN_IN_PAGE) ||requestFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        if (SignInValidator.isAuthorization(session)) {
-            UserReceiver receiver = new UserReceiver();
-            String login = (String) session.getAttribute(UserConstant.LOGIN);
-            Optional<User> userOptional = Optional.empty();
-            try {
-                userOptional = receiver.findUserByLogin(login);
-            } catch (ReceiverException e) {
-                logger.catching(e);
-                response.sendRedirect(PagesConstant.ERROR_PAGE);
-            }
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-                if (!user.isBaned()) {
-                    filterChain.doFilter(request, response);
-                } else {
-                    session.removeAttribute(UserConstant.LOGIN);
-                    session.removeAttribute(UserConstant.TYPE);
-                    request.setAttribute(BANNED_ERROR, true);
-                    request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
-                }
-            } else {
-                logger.log(Level.WARN, "User is authorization [" + UserConstant.LOGIN + "],but not found in DB");
-                session.removeAttribute(UserConstant.LOGIN);
-                session.removeAttribute(UserConstant.TYPE);
-                response.sendRedirect(PagesConstant.LOGIN_PAGE);
-            }
-
-
+        if (!SignInValidator.isAuthorization(session)) {
+            response.sendRedirect(PagesConstant.SIGN_IN_PAGE);
         } else {
-            request.getRequestDispatcher(PagesConstant.LOGIN_PAGE).forward(request, response);
+            filterChain.doFilter(request, response);
         }
+
+
     }
 
     private boolean requestFile(String requestURI) {
