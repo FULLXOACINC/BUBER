@@ -4,8 +4,8 @@ import org.json.JSONObject;
 
 public class OAuthYandex extends AbstractOAuth {
 
-    private static final String TYPE="yandex";
-    private static final String EMAILS="emails";
+    private static final String TYPE = "yandex";
+    private static final String EMAILS = "emails";
 
     public OAuthYandex() {
         setupOAuth(TYPE);

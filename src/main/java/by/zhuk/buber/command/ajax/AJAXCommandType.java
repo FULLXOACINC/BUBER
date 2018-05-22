@@ -4,9 +4,11 @@ public enum AJAXCommandType {
     FIND_USERS(new FindUsersCommand()),
     SIGN_UP_USER(new SignUpUserCommand()),
     SIGN_IN(new SignInCommand()),
+    ACCEPT_COMPLAINT(new AcceptComplaintCommand()),
     SIGN_UP_DRIVER(new SignUpDriverCommand()),
     FILL_UP_BALANCE(new FillUpBalanceCommand()),
     UPDATE_DRIVER(new UpdateDriverCommand()),
+    FIND_USER_COMPLAINTS(new FindUserComplaintsCommand()),
     CHANGE_DISCOUNT(new ChangeDiscountCommand());
 
     private AJAXCommand command;

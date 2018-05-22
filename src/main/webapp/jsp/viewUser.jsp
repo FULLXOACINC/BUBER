@@ -13,6 +13,7 @@
 <fmt:message bundle="${locale}" key="text.admin.removeAdminStatus" var="removeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
+<fmt:message bundle="${locale}" key="text.admin.viewUserComplaints" var="viewUserComplaints"/>
 <fmt:message bundle="${locale}" key="text.notFound" var="notFound"/>
 <fmt:message bundle="${locale}" key="text.change" var="change"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
@@ -78,6 +79,10 @@
         <input id="discount" type="text" value="${user.discount}">
         <input id="login" type="hidden" value="${user.login}">
         <input id="change-discount" type="submit" value="${change}">
+        <div>
+            <input id="view-complaints" type="submit" value="${viewUserComplaints}">
+            <div id="complaints"></div>
+        </div>
     </c:otherwise>
 </c:choose>
 

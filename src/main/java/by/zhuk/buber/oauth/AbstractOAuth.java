@@ -75,7 +75,7 @@ public abstract class AbstractOAuth {
             logger.log(Level.FATAL, "Hasn't found bundle for " + type);
             throw new RuntimeException("Hasn't found bundle for " + type);
         } catch (UnsupportedEncodingException e) {
-            logger.log(Level.WARN, "Unknown problem in OAuth (type="+type+")");
+            logger.log(Level.WARN, "Unknown problem in OAuth (type=" + type + ")");
         }
     }
 }

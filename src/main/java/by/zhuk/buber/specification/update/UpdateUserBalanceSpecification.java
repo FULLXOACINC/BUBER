@@ -14,8 +14,8 @@ public class UpdateUserBalanceSpecification implements Specification {
 
 
     public UpdateUserBalanceSpecification(String login, BigDecimal balance) {
-        this.login=login;
-        this.balance=balance;
+        this.login = login;
+        this.balance = balance;
     }
 
     @Override

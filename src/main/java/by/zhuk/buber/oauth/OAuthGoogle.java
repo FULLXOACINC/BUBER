@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public class OAuthGoogle extends AbstractOAuth {
     private static final String TYPE = "google";
-    private static final String EMAIL="email";
+    private static final String EMAIL = "email";
 
     public OAuthGoogle() {
         super.setupOAuth(TYPE);

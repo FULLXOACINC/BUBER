@@ -63,12 +63,12 @@ public class SignUpReceiver {
             FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
             List<CarMark> carMarks = carMarkRepository.find(specification);
             CarMark carMark;
-            if(carMarks.isEmpty()){
+            if (carMarks.isEmpty()) {
                 Specification carAddSpecification = new AddCarMarkSpecification(carMarkName);
                 carMarkRepository.add(carAddSpecification);
                 carMarks = carMarkRepository.find(specification);
                 carMark = carMarks.get(0);
-            }else {
+            } else {
                 carMark = carMarks.get(0);
             }
 

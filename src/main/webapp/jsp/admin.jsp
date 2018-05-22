@@ -9,6 +9,7 @@
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
 <fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
+<fmt:message bundle="${locale}" key="text.admin.viewUnacceptedComplaints" var="viewUnacceptedComplaints"/>
 <html>
 <head>
     <title>${buber}</title>
@@ -22,6 +23,10 @@
 </form>
 <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
     <input type="submit" value="${signUpDriver}">
+</form>
+<form action="${pageContext.request.contextPath}/controller">
+    <input type="hidden" name="command" value="view-unaccepted-complaints">
+    <input type="submit" value="${viewUnacceptedComplaints}">
 </form>
 <input id="pattern" type="text" value="">
 <input id="find-users" type="submit" value="${find}">

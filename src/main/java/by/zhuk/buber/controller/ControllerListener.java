@@ -2,7 +2,6 @@ package by.zhuk.buber.controller;
 
 import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.mail.MailProperty;
-import by.zhuk.buber.oauth.OAuthYandex;
 import by.zhuk.buber.signuppool.SingUpPoolCleaner;
 
 import javax.servlet.ServletContextEvent;

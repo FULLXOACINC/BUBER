@@ -2,11 +2,13 @@ package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.complaint.FindUserComplaintsSpecification;
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
@@ -84,5 +86,11 @@ public class UserReceiver {
         User user = users.get(0);
         user.fillUpBalance(money);
         return user.getBalance().compareTo(MAX_USER_BALANCE) == -1;
+    }
+
+    public List<Complaint> findUserComplaints(String login) throws ReceiverException {
+        FindSpecification<Complaint> specification = new FindUserComplaintsSpecification(login);
+        Finder<Complaint> complaintFinder = new Finder<>();
+        return complaintFinder.findBySpecification(specification);
     }
 }

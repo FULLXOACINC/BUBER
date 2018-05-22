@@ -39,7 +39,7 @@ public class FindCarMarkByNameSpecification implements FindSpecification<CarMark
             while (resultSet.next()) {
                 CarMark carMark = new CarMark();
                 carMark.setIndex(resultSet.getInt(1));
-                carMark.setMarkName(resultSet.getString(1));
+                carMark.setMarkName(resultSet.getString(2));
                 carMarks.add(carMark);
             }
         } catch (SQLException e) {

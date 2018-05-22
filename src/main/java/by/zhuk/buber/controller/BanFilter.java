@@ -34,7 +34,7 @@ public class BanFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-        if(session.getAttribute(UserConstant.LOGIN)==null){
+        if (session.getAttribute(UserConstant.LOGIN) == null) {
             filterChain.doFilter(request, response);
             return;
         }
