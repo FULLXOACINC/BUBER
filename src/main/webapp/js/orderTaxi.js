@@ -3,38 +3,24 @@ var startMarker;
 var endMarker;
 var directionsService;
 var directionsDisplay;
+var rendererOptions;
 var index = 0;
 
+var startAddress;
+var endAddress;
 
-function findDistanceInfo(startLat, startLng, endLat, endLng) {
-    var info;
-    $.ajax({
-        type: "POST",
-        url: '/AJAXController',
-        data: {
-            command: "find-distance-info",
-            startLat: startLat,
-            startLng: startLng,
-            endLat: endLat,
-            endLng: endLng
-        },
-        success: function (response) {
-            if (!response['error']) {
-                console.log(response);
-                info = {distance: response['distance'], duration: response['duration']}
-            } else {
-                console.log(response['error']);
-            }
-        },
-        error: function (exception) {
-            console.log(exception);
-        }
-    });
-    return info;
-}
 
 $(document).ready(function () {
     var selectStartEndAddressFun = function () {
+        if(!map){
+            return ;
+        }
+        if($('#start-address').val() === startAddress && $('#end-address').val() === endAddress){
+            return ;
+        }
+        clearMap();
+        startAddress=$('#start-address').val();
+        endAddress=$('#end-address').val();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -67,8 +53,8 @@ $(document).ready(function () {
                         success: function (response) {
                             if (!response['error']) {
                                 console.log(response);
-                                var info = {distance: response['distance'], duration: response['duration']}
-
+                                $('#distance').text(response['distance']);
+                                $('#duration').text(response['duration']);
 
                                 var start = new google.maps.LatLng(startLat, startLng);
                                 var end = new google.maps.LatLng(endLat, endLng);
@@ -93,8 +79,7 @@ $(document).ready(function () {
                                     travelMode: 'DRIVING'
                                 }, function (response, status) {
                                     if (status === 'OK') {
-                                        startMarker.setMap(null);
-                                        endMarker.setMap(null);
+
                                         var route1 = response.routes[0].legs[0];
                                         var route2 = response.routes[0].legs[response.routes[0].legs.length - 1];
                                         startMarker = new google.maps.Marker({
@@ -102,16 +87,19 @@ $(document).ready(function () {
                                             map: map,
                                             icon: '/img/startMarker.svg'
                                         });
-                                        startMarker.setMap(map);
                                         endMarker = new google.maps.Marker({
                                             position: route2.end_location,
                                             map: map,
                                             icon: '/img/endMarker.svg'
                                         });
+
+                                        startMarker.setMap(map);
                                         endMarker.setMap(map);
+                                        directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+                                        directionsDisplay.setMap(map);
                                         directionsDisplay.setDirections(response);
                                     } else {
-                                        window.alert('Directions request failed due to ' + status);
+                                        console.log('Directions request failed due to ' + status);
                                     }
                                 });
                             } else {
@@ -134,8 +122,25 @@ $(document).ready(function () {
         });
     };
     $('#select-addresses').click(selectStartEndAddressFun);
+    $('#clear-map').click(clearMap);
+
 });
 
+function clearMap() {
+    startAddress=null;
+    endAddress=null;
+    $('#distance').empty();
+    $('#duration').empty();
+    if(startMarker!=null){
+        startMarker.setMap(null);
+    }
+    if(endMarker!=null){
+        endMarker.setMap(null);
+    }
+    if(directionsDisplay!=null){
+        directionsDisplay.setMap(null);
+    }
+}
 
 function initMap() {
     directionsService = new google.maps.DirectionsService;
@@ -143,7 +148,7 @@ function initMap() {
         zoom: 11,
         center: new google.maps.LatLng(53.90453979999999, 27.5615344)
     });
-    var rendererOptions = {
+    rendererOptions = {
         map: map,
         suppressMarkers: true,
         dragable: true,
@@ -153,10 +158,6 @@ function initMap() {
             strokeColor: "#666666"
         }
     };
-    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
-
-    directionsDisplay.setMap(map);
     startMarker = new google.maps.Marker();
     endMarker = new google.maps.Marker();
 
