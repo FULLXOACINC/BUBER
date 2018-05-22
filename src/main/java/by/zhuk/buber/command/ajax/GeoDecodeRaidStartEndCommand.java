@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class GeoDecodeRaidStartEndCommand implements AJAXCommand{
+public class GeoDecodeRaidStartEndCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(GeoDecodeRaidStartEndCommand.class);
     private static final String START_ADDRESS = "startAddress";
     private static final String END_ADDRESS = "endAddress";
@@ -36,22 +36,22 @@ public class GeoDecodeRaidStartEndCommand implements AJAXCommand{
                 Coordinate startCoordinate = optionalStartCoordinate.get();
                 Coordinate endCoordinate = optionalEndCoordinate.get();
 
-                JSONObject startJSONObject= new JSONObject();
-                startJSONObject.put(LNG,startCoordinate.getLng());
-                startJSONObject.put(LAT,startCoordinate.getLat());
+                JSONObject startJSONObject = new JSONObject();
+                startJSONObject.put(LNG, startCoordinate.getLng());
+                startJSONObject.put(LAT, startCoordinate.getLat());
 
-                JSONObject endJSONObject= new JSONObject();
-                endJSONObject.put(LNG,endCoordinate.getLng());
-                endJSONObject.put(LAT,endCoordinate.getLat());
+                JSONObject endJSONObject = new JSONObject();
+                endJSONObject.put(LNG, endCoordinate.getLng());
+                endJSONObject.put(LAT, endCoordinate.getLat());
 
-                json.put(START,startJSONObject);
-                json.put(END,endJSONObject);
-            }else {
-                json.put(DECODE_PROBLEM,DECODE_PROBLEM);
+                json.put(START, startJSONObject);
+                json.put(END, endJSONObject);
+            } else {
+                json.put(DECODE_PROBLEM, DECODE_PROBLEM);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR,ERROR);
+            json.put(ERROR, ERROR);
         }
         return json;
     }

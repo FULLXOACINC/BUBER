@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class FindDistanceInfoCommand implements AJAXCommand{
+public class FindDistanceInfoCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindDistanceInfoCommand.class);
 
     private static final String DISTANCE = "distance";
@@ -34,18 +34,18 @@ public class FindDistanceInfoCommand implements AJAXCommand{
         DistanceReceiver distanceReceiver = new DistanceReceiver();
 
         try {
-            Optional<DistanceInfo> optionalDistanceInfo = distanceReceiver.findDistanceInfo(startLat,startLng,endLat,endLng);
+            Optional<DistanceInfo> optionalDistanceInfo = distanceReceiver.findDistanceInfo(startLat, startLng, endLat, endLng);
             if (optionalDistanceInfo.isPresent()) {
                 DistanceInfo distanceInfo = optionalDistanceInfo.get();
 
-                json.put(DISTANCE,distanceInfo.getDistance());
-                json.put(DURATION,distanceInfo.getDuration());
-            }else {
+                json.put(DISTANCE, distanceInfo.getDistance());
+                json.put(DURATION, distanceInfo.getDuration());
+            } else {
                 json.put(FIND_PROBLEM, FIND_PROBLEM);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR,ERROR);
+            json.put(ERROR, ERROR);
         }
         return json;
     }

@@ -8,7 +8,7 @@
     <short-name>ctg</short-name>
     <uri>/WEB-INF/tld/custom.tld</uri>
     <tag>
-        <name>hello</name>
+        <name>footer</name>
         <tag-class>by.zhuk.buber.tag.FooterProjectInfoTag</tag-class>
         <body-content>empty</body-content>
         <attribute>

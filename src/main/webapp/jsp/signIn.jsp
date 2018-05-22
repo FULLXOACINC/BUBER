@@ -69,6 +69,6 @@
     <input type="hidden" name="loginType" value="google">
     <input type="submit" value="${google}">
 </form>
-<ctg:hello auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
+<ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
 </body>
 </html>

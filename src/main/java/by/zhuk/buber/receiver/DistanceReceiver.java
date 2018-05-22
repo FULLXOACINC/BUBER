@@ -1,5 +1,6 @@
 package by.zhuk.buber.receiver;
 
+import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
 import by.zhuk.buber.validator.JSONValidator;
@@ -18,11 +19,12 @@ import java.util.Optional;
 
 public class DistanceReceiver {
     private static final String DISTANCE_INFO_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=%s,%s&destination=%s,%s&key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY";
-    private static final String RESULTS = "results";
-    private static final String GEOMETRY = "geometry";
-    private static final String LOCATION = "location";
-    private static final String LAT = "lat";
-    private static final String LNG = "lng";
+    private static final String ROUTES = "routes";
+    private static final String LEGS = "legs";
+    private static final String DISTANCE = "distance";
+    private static final String DURATION = "duration";
+    private static final String VALUE = "value";
+    private static final String TEXT = "text";
 
     public Optional<DistanceInfo> findDistanceInfo(String startLat, String startLng, String endLat, String endLng) throws ReceiverException {
         HttpClient httpClient = new HttpClient();
@@ -30,7 +32,7 @@ public class DistanceReceiver {
         Formatter formatter = new Formatter(stringBuilder);
 
         try {
-            formatter.format(DISTANCE_INFO_URL, URLEncoder.encode(startLat, "UTF-8"), URLEncoder.encode(startLng, "UTF-8"), URLEncoder.encode(endLat, "UTF-8"), URLEncoder.encode(endLng, "UTF-8"));
+            formatter.format(DISTANCE_INFO_URL, URLEncoder.encode(startLat, CommandConstant.ENCODE_UTF8), URLEncoder.encode(startLng, CommandConstant.ENCODE_UTF8), URLEncoder.encode(endLat, CommandConstant.ENCODE_UTF8), URLEncoder.encode(endLng, CommandConstant.ENCODE_UTF8));
 
             GetMethod getMethod = new GetMethod(stringBuilder.toString());
 
@@ -41,20 +43,20 @@ public class DistanceReceiver {
             if (JSONValidator.isJSONHasError(jsonObject)) {
                 return optionalDistanceInfo;
             }
-            JSONArray jsonArray = (JSONArray) jsonObject.get("routes");
+            JSONArray jsonArray = (JSONArray) jsonObject.get(ROUTES);
 
             if (jsonArray.length() == 0) {
                 return optionalDistanceInfo;
             }
-            JSONObject routeObject = (JSONObject)jsonArray.get(0);
-            JSONArray legsJSONArray = (JSONArray) routeObject.get("legs");
+            JSONObject routeObject = (JSONObject) jsonArray.get(0);
+            JSONArray legsJSONArray = (JSONArray) routeObject.get(LEGS);
             JSONObject legsJSON = (JSONObject) legsJSONArray.get(0);
-            JSONObject distanceJSON =(JSONObject)legsJSON.get("distance");
-            JSONObject durationJSON =(JSONObject)legsJSON.get("duration");
+            JSONObject distanceJSON = (JSONObject) legsJSON.get(DISTANCE);
+            JSONObject durationJSON = (JSONObject) legsJSON.get(DURATION);
 
             DistanceInfo distanceInfo = new DistanceInfo();
-            distanceInfo.setDistance(distanceJSON.getInt("value"));
-            distanceInfo.setDuration(durationJSON.getString("text"));
+            distanceInfo.setDistance(distanceJSON.getInt(VALUE));
+            distanceInfo.setDuration(durationJSON.getString(TEXT));
 
             optionalDistanceInfo = Optional.of(distanceInfo);
             return optionalDistanceInfo;

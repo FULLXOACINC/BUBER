@@ -1,5 +1,6 @@
 package by.zhuk.buber.receiver;
 
+import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
 import org.apache.commons.httpclient.HttpClient;
@@ -30,7 +31,7 @@ public class GeoDecoder {
         Formatter formatter = new Formatter(stringBuilder);
 
         try {
-            formatter.format(GEO_DECODER_URL, URLEncoder.encode(address, "UTF-8"));
+            formatter.format(GEO_DECODER_URL, URLEncoder.encode(address, CommandConstant.ENCODE_UTF8));
 
             GetMethod getMethod = new GetMethod(stringBuilder.toString());
 

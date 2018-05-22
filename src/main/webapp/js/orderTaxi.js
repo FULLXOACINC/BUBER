@@ -12,15 +12,15 @@ var endAddress;
 
 $(document).ready(function () {
     var selectStartEndAddressFun = function () {
-        if(!map){
-            return ;
+        if (!map) {
+            return;
         }
-        if($('#start-address').val() === startAddress && $('#end-address').val() === endAddress){
-            return ;
+        if ($('#start-address').val() === startAddress && $('#end-address').val() === endAddress) {
+            return;
         }
         clearMap();
-        startAddress=$('#start-address').val();
-        endAddress=$('#end-address').val();
+        startAddress = $('#start-address').val();
+        endAddress = $('#end-address').val();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -127,17 +127,17 @@ $(document).ready(function () {
 });
 
 function clearMap() {
-    startAddress=null;
-    endAddress=null;
+    startAddress = null;
+    endAddress = null;
     $('#distance').empty();
     $('#duration').empty();
-    if(startMarker!=null){
+    if (startMarker != null) {
         startMarker.setMap(null);
     }
-    if(endMarker!=null){
+    if (endMarker != null) {
         endMarker.setMap(null);
     }
-    if(directionsDisplay!=null){
+    if (directionsDisplay != null) {
         directionsDisplay.setMap(null);
     }
 }

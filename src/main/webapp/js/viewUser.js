@@ -33,16 +33,16 @@ $(document).ready(function () {
             success: function (response) {
                 if (!response['error']) {
                     response['complaints'].forEach(function (complaint) {
-                        if(!complaint.accept){
-                            $('#complaints').append("<div id='complaint-"+complaint.complaintId+"'>"+
-                                "<div>ID: "+complaint.complaintId+"</div>\n" +
-                                "<div>RAID ID: "+complaint.raidId+"</div>\n" +
-                                "<div id='"+complaint.complaintId+"-text'></div>\n"+
-                                "<input type='submit' class='accept' id="+complaint.complaintId+" value='Ok'>\n"+
+                        if (!complaint.accept) {
+                            $('#complaints').append("<div id='complaint-" + complaint.complaintId + "'>" +
+                                "<div>ID: " + complaint.complaintId + "</div>\n" +
+                                "<div>RAID ID: " + complaint.raidId + "</div>\n" +
+                                "<div id='" + complaint.complaintId + "-text'></div>\n" +
+                                "<input type='submit' class='accept' id=" + complaint.complaintId + " value='Ok'>\n" +
                                 "</div>");
-                            $("#"+complaint.complaintId+"-text").text(complaint.complaintText);
+                            $("#" + complaint.complaintId + "-text").text(complaint.complaintText);
                             var acceptComplaintFun = function () {
-                                removeComplaint=this.id;
+                                removeComplaint = this.id;
                                 $.ajax({
                                     type: "POST",
                                     url: '/AJAXController',
@@ -52,8 +52,8 @@ $(document).ready(function () {
                                     },
                                     success: function (response) {
                                         if (!response['error']) {
-                                            console.log("accept complaint correct id:"+removeComplaint);
-                                            $( "#"+complaint.complaintId).remove();
+                                            console.log("accept complaint correct id:" + removeComplaint);
+                                            $("#" + complaint.complaintId).remove();
                                         } else {
                                             console.log(response['error']);
                                         }
@@ -64,14 +64,14 @@ $(document).ready(function () {
                                     }
                                 });
                             };
-                            $('#'+complaint.complaintId).click(acceptComplaintFun);
-                        }else {
-                            $('#complaints').append("<div id='complaint-"+complaint.complaintId+"'>"+
-                                "<div>ID: "+complaint.complaintId+"</div>\n" +
-                                "<div>RAID ID: "+complaint.raidId+"</div>\n" +
-                                "<div id='"+complaint.complaintId+"-text'></div>\n"+
+                            $('#' + complaint.complaintId).click(acceptComplaintFun);
+                        } else {
+                            $('#complaints').append("<div id='complaint-" + complaint.complaintId + "'>" +
+                                "<div>ID: " + complaint.complaintId + "</div>\n" +
+                                "<div>RAID ID: " + complaint.raidId + "</div>\n" +
+                                "<div id='" + complaint.complaintId + "-text'></div>\n" +
                                 "</div>");
-                            $("#"+complaint.complaintId+"-text").text(complaint.complaintText);
+                            $("#" + complaint.complaintId + "-text").text(complaint.complaintText);
                         }
                     });
                 } else {

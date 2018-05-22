@@ -2,7 +2,6 @@ package by.zhuk.buber.specification.find.complaint;
 
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.Complaint;
-import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.specification.find.FindSpecification;
 
 import java.sql.PreparedStatement;
@@ -14,8 +13,9 @@ import java.util.List;
 public class FindUserComplaintsSpecification implements FindSpecification<Complaint> {
     private static final String SELECT_COMPLAINTS_BY_LOGIN = "SELECT complaint_id,complaint_raid_id,complaint_text,complaint_is_accept FROM buber_db.complaint WHERE complaint_person_login=?";
     private String login;
+
     public FindUserComplaintsSpecification(String login) {
-        this.login=login;
+        this.login = login;
     }
 
     @Override

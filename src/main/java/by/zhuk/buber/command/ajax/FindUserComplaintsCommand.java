@@ -21,7 +21,7 @@ public class FindUserComplaintsCommand implements AJAXCommand {
         String login = request.getParameter(UserConstant.LOGIN);
         UserReceiver userReceiver = new UserReceiver();
         try {
-            List<Complaint> complaints=userReceiver.findUserComplaints(login);
+            List<Complaint> complaints = userReceiver.findUserComplaints(login);
             json.put(COMPLAINTS, complaints);
         } catch (ReceiverException e) {
             logger.catching(e);

@@ -88,7 +88,7 @@
 
 <br/>
 
-<ctg:hello auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>
 </html>
 

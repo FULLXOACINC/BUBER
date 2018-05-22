@@ -1,5 +1,6 @@
 package by.zhuk.buber.oauth;
 
+import by.zhuk.buber.constant.CommandConstant;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.logging.log4j.Level;
@@ -16,6 +17,12 @@ import java.util.ResourceBundle;
 public abstract class AbstractOAuth {
     private static Logger logger = LogManager.getLogger(AbstractOAuth.class);
     private final static String ACCESS_TOKEN = "access_token";
+    private final static String GRANT_TYPE = "grant_type";
+    private final static String AUTHORIZATION_CODE = "authorization_code";
+    private final static String CODE = "code";
+    private final static String CLIENT_ID = "client_id";
+    private final static String CLIENT_SECRET = "client_secret";
+    private final static String REDIRECT_URI = "redirect_uri";
 
     private String clientId;
     private String redirectUri;
@@ -39,11 +46,11 @@ public abstract class AbstractOAuth {
 
     public HttpMethod takeTokenHttpMethod(String code) {
         PostMethod post = new PostMethod(tokenUrl);
-        post.addParameter("grant_type", "authorization_code");
-        post.addParameter("code", code);
-        post.addParameter("client_id", clientId);
-        post.addParameter("client_secret", clientSecret);
-        post.addParameter("redirect_uri", redirectUri);
+        post.addParameter(GRANT_TYPE, AUTHORIZATION_CODE);
+        post.addParameter(CODE, code);
+        post.addParameter(CLIENT_ID, clientId);
+        post.addParameter(CLIENT_SECRET, clientSecret);
+        post.addParameter(REDIRECT_URI, redirectUri);
         return post;
     }
 
@@ -69,7 +76,7 @@ public abstract class AbstractOAuth {
             StringBuilder stringBuilder = new StringBuilder();
             Formatter formatter = new Formatter(stringBuilder);
 
-            formatter.format(resourceBundle.getString(AUTH_URI), clientId, URLEncoder.encode(redirectUri, "UTF-8"));
+            formatter.format(resourceBundle.getString(AUTH_URI), clientId, URLEncoder.encode(redirectUri, CommandConstant.ENCODE_UTF8));
             authUrl = stringBuilder.toString();
         } catch (MissingResourceException e) {
             logger.log(Level.FATAL, "Hasn't found bundle for " + type);

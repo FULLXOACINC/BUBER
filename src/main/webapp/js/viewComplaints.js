@@ -1,7 +1,7 @@
 var removeComplaint;
 $(document).ready(function () {
     var acceptComplaintFun = function () {
-        removeComplaint=this.id;
+        removeComplaint = this.id;
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -11,8 +11,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (!response['error']) {
-                    console.log("accept complaint correct id:"+removeComplaint);
-                    $( "#complaint-"+removeComplaint).remove();
+                    console.log("accept complaint correct id:" + removeComplaint);
+                    $("#complaint-" + removeComplaint).remove();
                 } else {
                     console.log(response['error']);
                 }
