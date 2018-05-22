@@ -35,11 +35,12 @@ $(document).ready(function () {
                     response['complaints'].forEach(function (complaint) {
                         if(!complaint.accept){
                             $('#complaints').append("<div id='complaint-"+complaint.complaintId+"'>"+
-                                "<div>"+complaint.complaintId+"</div>\n" +
-                                "<div>"+complaint.raidId+"</div>\n" +
-                                "<div>"+complaint.complaintText+"</div>\n"+
+                                "<div>ID: "+complaint.complaintId+"</div>\n" +
+                                "<div>RAID ID: "+complaint.raidId+"</div>\n" +
+                                "<div id='"+complaint.complaintId+"-text'></div>\n"+
                                 "<input type='submit' class='accept' id="+complaint.complaintId+" value='Ok'>\n"+
                                 "</div>");
+                            $("#"+complaint.complaintId+"-text").text(complaint.complaintText);
                             var acceptComplaintFun = function () {
                                 removeComplaint=this.id;
                                 $.ajax({
@@ -66,10 +67,11 @@ $(document).ready(function () {
                             $('#'+complaint.complaintId).click(acceptComplaintFun);
                         }else {
                             $('#complaints').append("<div id='complaint-"+complaint.complaintId+"'>"+
-                                "<div>"+complaint.complaintId+"</div>\n" +
-                                "<div>"+complaint.raidId+"</div>\n" +
-                                "<div>"+complaint.complaintText+"</div>\n"+
+                                "<div>ID: "+complaint.complaintId+"</div>\n" +
+                                "<div>RAID ID: "+complaint.raidId+"</div>\n" +
+                                "<div id='"+complaint.complaintId+"-text'></div>\n"+
                                 "</div>");
+                            $("#"+complaint.complaintId+"-text").text(complaint.complaintText);
                         }
                     });
                 } else {

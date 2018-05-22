@@ -17,14 +17,14 @@ import java.util.Optional;
 
 public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
-    private static String LOGIN = "login";
-    private static String PASSWORD = "password";
+    private static final String LOGIN = "login";
+    private static final String PASSWORD = "password";
 
-    private static String SIGN_IN_VLIDE_ERROR = "signInValidError";
-    private static String SIGN_IN_EXIST_ERROR = "signInExistError";
-    private static String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
+    private static final String SIGN_IN_VLIDE_ERROR = "signInValidError";
+    private static final String SIGN_IN_EXIST_ERROR = "signInExistError";
+    private static final String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
 
-    private static String REDIRECT_PAGE = "redirectPage";
+    private static final String REDIRECT_PAGE = "redirectPage";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {

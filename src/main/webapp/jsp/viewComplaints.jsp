@@ -32,7 +32,7 @@
             <input type='submit' value='${complaint.complaintPersonLogin}'>
         </form>
         <p>${complaintId}: ${complaint.raidId}</p>
-        <p>${complaint.complaintText}</p>
+        <p><c:out value="${complaint.complaintText}" escapeXml="true" /></p>
         <p><input type='submit' class="accept" id='${complaint.complaintId}' value="${acceptComplaint}"></p>
         <hr/>
     </div>

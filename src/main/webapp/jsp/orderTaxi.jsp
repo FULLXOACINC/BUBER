@@ -8,8 +8,11 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
-<fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
-<fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
+<fmt:message bundle="${locale}" key="text.startAddress" var="startAddress"/>
+<fmt:message bundle="${locale}" key="text.endAddress" var="endAddress"/>
+<fmt:message bundle="${locale}" key="text.selectAddresses" var="selectAddresses"/>
+<fmt:message bundle="${locale}" key="text.clearMap" var="clearMap"/>
+
 <html>
 <head>
     <title>${buber}</title>
@@ -31,6 +34,10 @@
     </style>
 </head>
 <body>
+<p>${startAddress}<input type="text" id="start-address" value="ул 50 лет победы 23 29,Минск"/></p>
+<p>${endAddress}<input type="text" id="end-address" value="просп. Жукова 29, Минск"/></p>
+<input type="submit" id="select-addresses" value="${selectAddresses}"/>
+<input type="submit" id="clearMap" value="${clearMap}"/>
 <div id="map"></div>
 <button id="btn">Test</button>
 </body>

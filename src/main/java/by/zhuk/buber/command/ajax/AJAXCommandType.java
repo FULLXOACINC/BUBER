@@ -8,6 +8,9 @@ public enum AJAXCommandType {
     SIGN_UP_DRIVER(new SignUpDriverCommand()),
     FILL_UP_BALANCE(new FillUpBalanceCommand()),
     UPDATE_DRIVER(new UpdateDriverCommand()),
+    GEO_DECODE_RAID_START_END(new GeoDecodeRaidStartEndCommand()),
+    FIND_DISTANCE_INFO(new FindDistanceInfoCommand()),
+
     FIND_USER_COMPLAINTS(new FindUserComplaintsCommand()),
     CHANGE_DISCOUNT(new ChangeDiscountCommand());
 

@@ -66,11 +66,11 @@ public abstract class AbstractOAuth {
             tokenUrl = resourceBundle.getString(TOKEN_URL);
             infoUrl = resourceBundle.getString(INFO_URL);
 
-            StringBuilder sbuf = new StringBuilder();
-            Formatter fmt = new Formatter(sbuf);
+            StringBuilder stringBuilder = new StringBuilder();
+            Formatter formatter = new Formatter(stringBuilder);
 
-            fmt.format(resourceBundle.getString(AUTH_URI), clientId, URLEncoder.encode(redirectUri, "UTF-8"));
-            authUrl = sbuf.toString();
+            formatter.format(resourceBundle.getString(AUTH_URI), clientId, URLEncoder.encode(redirectUri, "UTF-8"));
+            authUrl = stringBuilder.toString();
         } catch (MissingResourceException e) {
             logger.log(Level.FATAL, "Hasn't found bundle for " + type);
             throw new RuntimeException("Hasn't found bundle for " + type);
