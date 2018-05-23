@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindDriverCarNumDocIdMarkNameByLoginSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_id,car_mark_name FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
+public class FindDriverToUpdateSpecification implements FindSpecification<Driver> {
+    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_id,car_mark_name,driver_tariff FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
     private String login;
 
-    public FindDriverCarNumDocIdMarkNameByLoginSpecification(String login) {
+    public FindDriverToUpdateSpecification(String login) {
         this.login = login;
     }
 
@@ -38,7 +38,7 @@ public class FindDriverCarNumDocIdMarkNameByLoginSpecification implements FindSp
         List<Driver> drivers = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Driver driver = new Driver(achive, rate);
+                Driver driver = new Driver();
                 driver.setLogin(resultSet.getString(1));
                 driver.setCarNumber(resultSet.getString(2));
                 driver.setDocumentId(resultSet.getString(3));
@@ -47,6 +47,7 @@ public class FindDriverCarNumDocIdMarkNameByLoginSpecification implements FindSp
                 carMark.setIndex(resultSet.getInt(4));
                 carMark.setMarkName(resultSet.getString(5));
                 driver.setCarMark(carMark);
+                driver.setTariff(resultSet.getBigDecimal(6));
                 drivers.add(driver);
             }
         } catch (SQLException e) {

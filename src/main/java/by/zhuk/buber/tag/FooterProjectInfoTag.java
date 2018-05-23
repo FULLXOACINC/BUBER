@@ -20,7 +20,7 @@ public class FooterProjectInfoTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {
         try {
-            pageContext.getOut().write("<div><hr/><p>" + auth + "</p><p>" + description + "</p><hr/></div>");
+            pageContext.getOut().write("<div class='footer'><hr/><p>" + auth + "</p><p>" + description + "</p><hr/></div>");
         } catch (IOException e) {
 
             throw new JspException(e.getMessage());

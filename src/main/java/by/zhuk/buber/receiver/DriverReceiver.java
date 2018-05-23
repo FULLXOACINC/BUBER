@@ -11,9 +11,10 @@ import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
-import by.zhuk.buber.specification.find.driver.FindDriverCarNumDocIdMarkNameByLoginSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverSpecification;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,7 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
-    public void updateDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
+    public void updateDriver(String login, String carNumber, String documentId, String carMarkName, BigDecimal tariff) throws ReceiverException {
 
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();
@@ -50,10 +51,11 @@ public class DriverReceiver {
             CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
             CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Driver driver = new Driver(achive, rate);
+            Driver driver = new Driver();
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
+            driver.setTariff(tariff);
 
             driver.setCarMark(carMark);
             Specification driverAddSpecification = new UpdateDriverSpecification(driver);
@@ -70,7 +72,7 @@ public class DriverReceiver {
     }
 
     public Optional<Driver> findDriverByLogin(String login) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindDriverCarNumDocIdMarkNameByLoginSpecification(login);
+        FindSpecification<Driver> specification = new FindDriverToUpdateSpecification(login);
         Finder<Driver> driverFinder = new Finder<>();
         List<Driver> drivers = driverFinder.findBySpecification(specification);
         Optional<Driver> driver = Optional.empty();

@@ -66,7 +66,7 @@ public class SignUpReceiver {
         pool.putInfo(hash, info);
     }
 
-    public void saveDriver(String login, String carNumber, String documentId, String carMarkName) throws ReceiverException {
+    public void saveDriver(String login, String carNumber, String documentId, String carMarkName,BigDecimal tariff) throws ReceiverException {
 
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();
@@ -77,11 +77,12 @@ public class SignUpReceiver {
             CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
             CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Driver driver = new Driver(achive, rate);
+            Driver driver = new Driver();
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
             driver.setCarMark(carMark);
+            driver.setTariff(tariff);
             Specification driverAddSpecification = new AddDriverSpecification(driver);
             driverRepository.add(driverAddSpecification);
 

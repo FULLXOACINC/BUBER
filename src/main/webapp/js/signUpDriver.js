@@ -7,6 +7,9 @@ function hideAllMessage() {
     $('#driver-exist-error').hide();
     $('#car-number-exist-error').hide();
     $('#document-id-exist-error').hide();
+    $('#tariff-error').hide();
+
+
 }
 
 $(document).ready(function () {
@@ -21,6 +24,7 @@ $(document).ready(function () {
                 carNumber: $('#car-number').val(),
                 documentId: $('#document-id').val(),
                 carMark: $('#car-mark').val(),
+                tariff:$('#tariff').val()
             },
             success: function (response) {
 
@@ -47,6 +51,9 @@ $(document).ready(function () {
                     }
                     if (response['documentIdExistError']) {
                         $('#document-id-exist-error').show();
+                    }
+                    if (response['tariffError']) {
+                        $('#tariff-error').show();
                     }
 
                 }

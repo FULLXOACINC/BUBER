@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
-
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <p>${login}<input type="text" id="login"/></p>
 <p>${password}<input type="password" id="password"/></p>
 <p>${repeatPassword}<input type="password" id="repeatPassword"/></p>

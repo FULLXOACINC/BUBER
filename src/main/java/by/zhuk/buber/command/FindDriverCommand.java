@@ -13,7 +13,6 @@ import java.util.Optional;
 public class FindDriverCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
     private static final String DRIVER = "driver";
-    private static final String NOT_FOUND = "notFound";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -21,11 +20,7 @@ public class FindDriverCommand implements Command {
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
             Optional<Driver> optionalUser = driverReceiver.findDriverByLogin(login);
-            if (optionalUser.isPresent()) {
-                request.setAttribute(DRIVER, optionalUser.get());
-            } else {
-                request.setAttribute(NOT_FOUND, true);
-            }
+            optionalUser.ifPresent(driver -> request.setAttribute(DRIVER, driver));
             return new Router(TransitionType.FORWARD, PagesConstant.UPDATE_DRIVER_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

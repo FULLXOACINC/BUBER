@@ -37,7 +37,7 @@ public class FindDriverByDocumentIdSpecification implements FindSpecification<Dr
         List<Driver> drivers = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Driver driver = new Driver(achive, rate);
+                Driver driver = new Driver();
                 driver.setDocumentId(resultSet.getString(1));
                 drivers.add(driver);
             }

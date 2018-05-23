@@ -4,21 +4,24 @@ import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.specification.Specification;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UpdateDriverSpecification implements Specification {
-    private static final String UPDATE_DRIVER_BY_LOGIN = "UPDATE buber_db.driver SET driver_car_number=? , driver_document_id=?, driver_car_mark=? WHERE driver_login=?";
+    private static final String UPDATE_DRIVER_BY_LOGIN = "UPDATE buber_db.driver SET driver_car_number=? , driver_document_id=?, driver_car_mark=?,driver_tariff=? WHERE driver_login=?";
     private String carNumber;
     private String documentId;
     private String login;
     private int carMark;
+    private BigDecimal tariff;
 
     public UpdateDriverSpecification(Driver driver) {
         carNumber = driver.getCarNumber();
         documentId = driver.getDocumentId();
         carMark = driver.getCarMark().getIndex();
         login = driver.getLogin();
+        tariff = driver.getTariff();
     }
 
     @Override
@@ -32,7 +35,8 @@ public class UpdateDriverSpecification implements Specification {
             statement.setString(1, carNumber);
             statement.setString(2, documentId);
             statement.setInt(3, carMark);
-            statement.setString(4, login);
+            statement.setBigDecimal(4, tariff);
+            statement.setString(5, login);
 
         } catch (SQLException e) {
             throw new SpecificationException(e);

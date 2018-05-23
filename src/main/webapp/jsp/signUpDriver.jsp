@@ -13,17 +13,16 @@
 <fmt:message bundle="${locale}" key="text.carMark" var="carMark"/>
 <fmt:message bundle="${locale}" key="text.tariff" var="tariff"/>
 
-<fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
+<fmt:message bundle="${locale}" key="text.driverCorrectMessage" var="driverSignUpCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.loginExistErrorMessage" var="loginExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.phoneNumberExistErrorMessage" var="phoneNumberExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.firstNameErrorMessage" var="firstNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="secondNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPasswordErrorMessage" var="notValidPasswordErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.passwordNotEqMessage" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.error.birthDayErrorMessage" var="birthDayErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="notValidPhoneNumberErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberError" var="carNumberError"/>
+<fmt:message bundle="${locale}" key="text.error.documentIdError" var="documentIdError"/>
+<fmt:message bundle="${locale}" key="text.error.carMarkError" var="carMarkError"/>
+<fmt:message bundle="${locale}" key="text.error.driverExistError" var="driverExistError"/>
+<fmt:message bundle="${locale}" key="text.error.loginNotExistError" var="loginNotExistError"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberExistError" var="carNumberExistError"/>
+<fmt:message bundle="${locale}" key="text.error.documentIdExistError" var="documentIdExistError"/>
+<fmt:message bundle="${locale}" key="text.error.tariffError" var="tariffError"/>
 
 
 <html>
@@ -34,11 +33,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-
-
-    <input type="hidden" name="command" value="sign-up-driver">
-</form>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 
 <p>${login}<input type="text" id="login"/></p>
 <p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
@@ -49,39 +44,39 @@
 <p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
 
 <div class="error" id="car-number-error">
-    <p>carNumberError</p>
+    <p>${carNumberError}</p>
 </div>
 
 <div class="error" id="document-id-error">
-    <p>documentIdError</p>
+    <p>${documentIdError}</p>
 </div>
 
 <div class="error" id="car-mark-error">
-    <p>carMarkError</p>
+    <p>${carMarkError}</p>
 </div>
 
 <div class="error" id="login-not-exist-error">
-    <p>loginNotExistError</p>
+    <p>${loginNotExistError}</p>
 </div>
 
 <div class="error" id="driver-exist-error">
-    <p>driverExistError</p>
+    <p>${driverExistError}</p>
 </div>
 
 <div class="error" id="car-number-exist-error">
-    <p>carNumberExistError</p>
+    <p>${carNumberExistError}</p>
 </div>
 
 <div class="error" id="document-id-exist-error">
-    <p>documentIdExistError</p>
+    <p>${documentIdExistError}</p>
 </div>
 
 <div class="error" id="tariff-error">
-    <p>tariffError</p>
+    <p>${tariffError}</p>
 </div>
 
 <div class="correct" id="all-correct">
-    <p>allCorrectMessage</p>
+    <p>${driverSignUpCorrectMessage}</p>
 </div>
 
 

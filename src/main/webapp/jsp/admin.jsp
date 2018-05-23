@@ -17,10 +17,8 @@
     <script src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/controller" method="post">
-    <input type="hidden" name="command" value="sign-out">
-    <input type="submit" value="${signOut}">
-</form>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+
 <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
     <input type="submit" value="${signUpDriver}">
 </form>

@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 
 public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
@@ -25,8 +26,8 @@ public class SignUpDriverCommand implements AJAXCommand {
     private static final String DRIVER_EXIST_ERROR = "driverExistError";
     private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
     private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
-
-
+    private static final String TARIFF_ERROR = "tariffError";
+    private static final String TARIFF = "tariff";
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -35,7 +36,7 @@ public class SignUpDriverCommand implements AJAXCommand {
         String carNumber = request.getParameter(CAR_NUMBER);
         String documentId = request.getParameter(DOCUMENT_ID);
         String carMark = request.getParameter(CAR_MARK);
-
+        String tariff = request.getParameter(TARIFF);
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
         }
@@ -44,6 +45,9 @@ public class SignUpDriverCommand implements AJAXCommand {
         }
         if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
             json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
+        }
+        if (!SignUpDriverValidator.isTariffValid(tariff)) {
+            json.put(TARIFF_ERROR, TARIFF_ERROR);
         }
         UserReceiver userReceiver = new UserReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
@@ -62,7 +66,8 @@ public class SignUpDriverCommand implements AJAXCommand {
             }
             if (json.length() == 0) {
                 SignUpReceiver signUpReceiver = new SignUpReceiver();
-                signUpReceiver.saveDriver(login, carNumber, documentId, carMark);
+                BigDecimal tariffBigDecimal = new BigDecimal(tariff);
+                signUpReceiver.saveDriver(login, carNumber, documentId, carMark,tariffBigDecimal);
                 json.put(ALL_CORRECT, ALL_CORRECT);
             }
         } catch (ReceiverException e) {

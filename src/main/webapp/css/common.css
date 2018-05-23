@@ -1,7 +1,24 @@
 .error {
-    display: none;
+    border: 2px solid red;
+    background-color: #1d1e1f;
+    color: red;
+}
+
+.body {
+    background-color: #1d1e1f;
 }
 
 .correct {
-    display: none;
+    border: 2px solid green;
+    background-color: #1d1e1f;
+    color: green;
+}
+.footer {
+    border: 2px solid #fff000;
+    background-color: #1d1e1f;
+    color: #fff000;
+    position: relative;
+}
+#map {
+    height: 80%;
 }

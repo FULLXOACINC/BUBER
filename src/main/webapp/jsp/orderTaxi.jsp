@@ -1,6 +1,7 @@
 <%-- Created by IntelliJ IDEA. --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -18,22 +19,13 @@
     <title>${buber}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/orderTaxi.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>
-    <style>
-        #map {
-            height: 100%;
-        }
-
-        html, body {
-            height: 90%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
 </head>
 <body>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <p>${startAddress}<input type="text" id="start-address" value="ул 50 лет победы 23 29,Минск"/></p>
 <p>${endAddress}<input type="text" id="end-address" value="просп. Жукова 29, Минск"/></p>
 <input type="submit" id="select-addresses" value="${selectAddresses}"/>
@@ -41,5 +33,6 @@
 <div id="distance"></div>
 <div id="duration"></div>
 <div id="map"></div>
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>
 </html>

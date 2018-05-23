@@ -24,9 +24,7 @@
     <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/jsp/admin.jsp">
-    <input type="submit" value="${console}">
-</form>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <c:choose>
     <c:when test="${notFound}">
         notFound
@@ -85,6 +83,8 @@
         </div>
     </c:otherwise>
 </c:choose>
-
+<footer>
+    <ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
+</footer>
 </body>
 </html>

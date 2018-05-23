@@ -11,7 +11,8 @@ public class Driver {
     private float currentLatCoordinate;
     private float currentLngCoordinate;
     private boolean isWorking;
-    private DriverAchieve achieve;
+    private int positiveMark;
+    private int negativeMark;
     private BigDecimal tariff;
 
 
@@ -71,13 +72,6 @@ public class Driver {
         isWorking = working;
     }
 
-    public DriverAchieve getAchieve() {
-        return achieve;
-    }
-
-    public void setAchieve(DriverAchieve achieve) {
-        this.achieve = achieve;
-    }
 
     public BigDecimal getTariff() {
         return tariff;
@@ -85,6 +79,22 @@ public class Driver {
 
     public void setTariff(BigDecimal tariff) {
         this.tariff = tariff;
+    }
+
+    public int getPositiveMark() {
+        return positiveMark;
+    }
+
+    public void setPositiveMark(int positiveMark) {
+        this.positiveMark = positiveMark;
+    }
+
+    public int getNegativeMark() {
+        return negativeMark;
+    }
+
+    public void setNegativeMark(int negativeMark) {
+        this.negativeMark = negativeMark;
     }
 
     @Override
@@ -99,18 +109,19 @@ public class Driver {
         return Float.compare(driver.currentLatCoordinate, currentLatCoordinate) == 0 &&
                 Float.compare(driver.currentLngCoordinate, currentLngCoordinate) == 0 &&
                 isWorking == driver.isWorking &&
+                positiveMark == driver.positiveMark &&
+                negativeMark == driver.negativeMark &&
                 Objects.equals(login, driver.login) &&
                 Objects.equals(carNumber, driver.carNumber) &&
                 Objects.equals(documentId, driver.documentId) &&
                 Objects.equals(carMark, driver.carMark) &&
-                Objects.equals(achieve, driver.achieve) &&
                 Objects.equals(tariff, driver.tariff);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(login, carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, achieve, tariff);
+        return Objects.hash(login, carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, positiveMark, negativeMark, tariff);
     }
 
     @Override
@@ -123,7 +134,8 @@ public class Driver {
                 ", currentLatCoordinate=" + currentLatCoordinate +
                 ", currentLngCoordinate=" + currentLngCoordinate +
                 ", isWorking=" + isWorking +
-                ", achieve=" + achieve +
+                ", positiveMark=" + positiveMark +
+                ", negativeMark=" + negativeMark +
                 ", tariff=" + tariff +
                 '}';
     }

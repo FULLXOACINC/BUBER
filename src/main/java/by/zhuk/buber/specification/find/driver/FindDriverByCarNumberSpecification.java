@@ -37,7 +37,7 @@ public class FindDriverByCarNumberSpecification implements FindSpecification<Dri
         List<Driver> drivers = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Driver driver = new Driver(achive, rate);
+                Driver driver = new Driver();
                 driver.setCarNumber(resultSet.getString(1));
                 drivers.add(driver);
             }

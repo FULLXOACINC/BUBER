@@ -2,13 +2,14 @@ function hideAllMessage() {
     $('#login-not-valid-error').hide();
     $('#login-not-exist-error').hide();
     $('#login-password-not-eq-error').hide();
-    $('#banned-error').hide();
-
 }
 
 $(document).ready(function () {
+    hideAllMessage();
     var signInFun = function () {
         hideAllMessage();
+        $('#banned-error').hide();
+        console.log($('#login').val() + " " + $('#password').val());
         $.ajax({
             type: "POST",
             url: '/AJAXController',

@@ -29,7 +29,6 @@ public class SignInFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
         HttpSession session = request.getSession();
         if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().equals(PagesConstant.SING_UP_PAGE) || request.getRequestURI().equals(PagesConstant.SIGN_IN_PAGE) || requestFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);

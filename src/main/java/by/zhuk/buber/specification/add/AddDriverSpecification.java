@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AddDriverSpecification implements Specification {
-    private static final String INSERT_DRIVER = "INSERT INTO buber_db.driver (driver_login, driver_car_number, driver_document_id, driver_car_mark, driver_current_lat_coordinate, driver_current_lng_coordinate, driver_is_working,driver_achieve_fast_and_furious, driver_achieve_narrator, driver_achieve_clear_car ,driver_achieve_bad) VALUES (?, ?, ? , ?, 54.238991, 35.238991, 0, 0, 0, 0, 0);";
+    private static final String INSERT_DRIVER = "INSERT INTO buber_db.driver (driver_login, driver_car_number, driver_document_id, driver_car_mark, driver_current_lat_coordinate, driver_current_lng_coordinate, driver_is_working,driver_positive_mark, driver_negative_mark,driver_tariff) VALUES (?, ?, ? , ?, 54.238991, 35.238991, 0, 0, 0, ?);";
     private Driver driver;
 
     public AddDriverSpecification(Driver driver) {
@@ -27,6 +27,7 @@ public class AddDriverSpecification implements Specification {
             statement.setString(2, driver.getCarNumber());
             statement.setString(3, driver.getDocumentId());
             statement.setInt(4, driver.getCarMark().getIndex());
+            statement.setBigDecimal(5, driver.getTariff());
         } catch (SQLException e) {
             throw new SpecificationException(e);
         }

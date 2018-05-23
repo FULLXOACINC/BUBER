@@ -20,6 +20,7 @@
     <script src="${pageContext.request.contextPath}/js/viewComplaints.js"></script>
 </head>
 <body>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <form action="${pageContext.request.contextPath}/jsp/admin.jsp">
     <input type="submit" value="${console}">
 </form>

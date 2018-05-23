@@ -23,52 +23,60 @@
     <title>${login}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/signIn.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/signIn.css">
 </head>
 <body>
-<form action="${ pageContext.request.contextPath }/controller" method="post">
-    <input type="radio" name="lang" value="ru"> ru<br/>
-    <input type="radio" name="lang" value="en"> en<br/>
 
-    <input type="hidden" name="command" value="lang">
-    <input type="submit" value="${lang}">
-</form>
-<p>${login}<input type="text" id="login"/></p>
-<p>${password}<input type="password" id="password"/></p>
-<input type="submit" id="enter" value="${enter}">
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+<div class="container">
 
+    <div class="form-signin">
+        <h2 class="form-signin-heading">${signInHeading}</h2>
+        <input type="text" id="login" class="form-control" placeholder="${login}">
 
-<div class="error" id="login-not-valid-error">
-    <p>${loginNotValidMessage}</p>
-</div>
-<div class="error" id="login-not-exist-error">
-    <p>${loginNotExistMessage}</p>
-</div>
-<div class="error" id="login-password-not-eq-error">
-    <p>${loginPasswordNotEqMessage}</p>
-</div>
+        <input type="password" id="password" class="form-control" placeholder="${password}">
+        <div>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" id="enter" value="${enter}">
+        </div>
 
-<c:if test="${bannedError}">
-    <div id="banned-error">
-        <p>${bannedErrorMessage}</p>
+        <div class="error" id="login-not-valid-error">
+            <p>${loginNotValidMessage}</p>
+        </div>
+        <div class="error" id="login-not-exist-error">
+            <p>${loginNotExistMessage}</p>
+        </div>
+        <div class="error" id="login-password-not-eq-error">
+            <p>${loginPasswordNotEqMessage}</p>
+        </div>
+
+        <c:if test="${bannedError}">
+            <div class="error" id="banned-error">
+                <p>${bannedErrorMessage}</p>
+            </div>
+        </c:if>
+
+        <form action="${pageContext.request.contextPath}/controller">
+            <input type="hidden" name="command" value="oauth">
+            <input type="hidden" name="loginType" value="google">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${google}">
+        </form>
+        <form action="${pageContext.request.contextPath}/controller">
+            <input type="hidden" name="command" value="oauth">
+            <input type="hidden" name="loginType" value="yandex">
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="${yandex}">
+        </form>
+        <form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${singUp}">
+        </form>
     </div>
-</c:if>
 
 
-<form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
-    <input type="submit" value="${singUp}">
-</form>
-<hr/>
-<form action="${pageContext.request.contextPath}/controller">
-    <input type="hidden" name="command" value="oauth">
-    <input type="hidden" name="loginType" value="yandex">
-    <input type="submit" value="${yandex}">
-</form>
-<form action="${pageContext.request.contextPath}/controller">
-    <input type="hidden" name="command" value="oauth">
-    <input type="hidden" name="loginType" value="google">
-    <input type="submit" value="${google}">
-</form>
-<ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
+</div>
+
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
+
+
 </body>
 </html>

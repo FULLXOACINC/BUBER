@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+
 <input type="radio" name="money-amount" value="5.00" checked>5.00<br/>
 <input type="radio" name="money-amount" value="10.00">10.00<br/>
 <input type="radio" name="money-amount" value="15.00">15.00<br/>

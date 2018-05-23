@@ -37,7 +37,7 @@ public class FindDriverByLoginSpecification implements FindSpecification<Driver>
         List<Driver> drivers = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Driver driver = new Driver(achive, rate);
+                Driver driver = new Driver();
                 driver.setLogin(resultSet.getString(1));
                 drivers.add(driver);
             }
