@@ -1,6 +1,7 @@
 <%-- Created by IntelliJ IDEA. --%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -22,6 +23,8 @@
     <title>${buber}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+
 </head>
 <body>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
@@ -83,8 +86,6 @@
         </div>
     </c:otherwise>
 </c:choose>
-<footer>
     <ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
-</footer>
 </body>
 </html>

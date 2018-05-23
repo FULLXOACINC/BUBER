@@ -1,0 +1,8 @@
+2018-05-23 22:46:54.547 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-05-23 22:46:58.724 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-05-23 22:46:58.727 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-05-23 22:46:59.095 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-05-23 22:48:42.804 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-05-23 22:48:45.054 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-05-23 22:48:45.059 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-05-23 22:48:45.354 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool

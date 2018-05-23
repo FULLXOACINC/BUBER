@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -46,5 +47,6 @@
 <div class="correct" id="fill-up-balance-correct">
     <p>${fillUpBalanceCorrectMessage}</p>
 </div>
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>
 </html>

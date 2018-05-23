@@ -12,6 +12,7 @@ import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecificatio
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
+import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverSpecification;
 
 import java.math.BigDecimal;
@@ -80,5 +81,11 @@ public class DriverReceiver {
             driver = Optional.ofNullable(drivers.get(0));
         }
         return driver;
+    }
+
+    public List<Driver> findSuitableDrivers(float lat, float lng) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng);
+        Finder<Driver> finder = new Finder<>();
+        return finder.findBySpecification(specification);
     }
 }

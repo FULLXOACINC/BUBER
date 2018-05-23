@@ -3,6 +3,7 @@ package by.zhuk.buber.command.ajax;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
 import by.zhuk.buber.receiver.DistanceReceiver;
+import by.zhuk.buber.validator.CoordinateValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ public class FindDistanceInfoCommand implements AJAXCommand {
     private static final String END_LAT = "endLat";
 
     private static final String FIND_PROBLEM = "findProblem";
+    private static final String NOT_VALID_COORDINATE = "notValidCoordinate";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -30,6 +32,11 @@ public class FindDistanceInfoCommand implements AJAXCommand {
         String startLat = request.getParameter(START_LAT);
         String endLng = request.getParameter(END_LNG);
         String endLat = request.getParameter(END_LAT);
+
+        if (!CoordinateValidator.isCoordinateValid(startLng) || !CoordinateValidator.isCoordinateValid(startLat) || !CoordinateValidator.isCoordinateValid(endLng) || !CoordinateValidator.isCoordinateValid(endLat)) {
+            json.put(NOT_VALID_COORDINATE, NOT_VALID_COORDINATE);
+            return json;
+        }
 
         DistanceReceiver distanceReceiver = new DistanceReceiver();
 

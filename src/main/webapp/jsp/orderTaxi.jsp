@@ -13,7 +13,8 @@
 <fmt:message bundle="${locale}" key="text.endAddress" var="endAddress"/>
 <fmt:message bundle="${locale}" key="text.selectAddresses" var="selectAddresses"/>
 <fmt:message bundle="${locale}" key="text.clearMap" var="clearMap"/>
-
+<fmt:message bundle="${locale}" key="text.distance" var="distance"/>
+<fmt:message bundle="${locale}" key="text.duration" var="duration"/>
 <html>
 <head>
     <title>${buber}</title>
@@ -30,8 +31,13 @@
 <p>${endAddress}<input type="text" id="end-address" value="просп. Жукова 29, Минск"/></p>
 <input type="submit" id="select-addresses" value="${selectAddresses}"/>
 <input type="submit" id="clear-map" value="${clearMap}"/>
-<div id="distance"></div>
-<div id="duration"></div>
+
+<div id="distance">${distance}:
+    <div id="distance-val"></div>
+</div>
+<div id="duration">${duration}:
+    <div id="duration-val"></div>
+</div>
 <div id="map"></div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>

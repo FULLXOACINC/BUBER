@@ -1,7 +1,8 @@
 body {
-  padding-bottom: 1px;
+    padding-bottom: 1px;
+    font-family: sans-serif;
 }
 
 .navbar {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
