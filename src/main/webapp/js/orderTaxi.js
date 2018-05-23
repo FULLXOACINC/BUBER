@@ -49,107 +49,8 @@ $(document).ready(function () {
                     var endLng = response['end']['lng'];
                     var endLat = response['end']['lat'];
 
-                    $.ajax({
-                            type: "POST",
-                            url: '/AJAXController',
-                            data: {
-                                command: "find-distance-info",
-                                startLat: startLat,
-                                startLng: startLng,
-                                endLat: endLat,
-                                endLng: endLng
-                            },
-                            success: function (response) {
-                                if (!response['error'] && !response['findProblem'] && !response['notValidCoordinate']) {
-                                    $('#duration').show();
-                                    $('#distance').show();
-                                    $('#duration-val').text(response['distance']);
-                                    $('#duration-val').text(response['duration']);
+                    addRaidAndDriversToMap(startLng, startLat, endLng, endLat);
 
-                                    distance = response['distance'];
-
-                                    $.ajax({
-                                        type: "POST",
-                                        url: '/AJAXController',
-                                        data: {
-                                            command: "find-suitable-drivers",
-                                            lat: startLat,
-                                            lng: startLng
-                                        },
-                                        success: function (response) {
-                                            if (!response['error'] && !response['notValidCoordinate']) {
-                                                response["drivers"].forEach(function (driver) {
-                                                    placeDriver(driver["firstName"], driver["lastName"], driver["lat"], driver["lng"], driver["login"], driver["positiveMark"], driver["negativeMark"], driver["tariff"], driver["drivers"], driver["carNumber"], driver["carMark"])
-                                                });
-                                                var startCoordinate = new google.maps.LatLng(startLat, startLng);
-                                                var endCoordinate = new google.maps.LatLng(endLat, endLng);
-
-                                                var waypts = [];
-                                                waypts.push({
-                                                    location: startCoordinate,
-                                                    stopover: true
-                                                });
-
-                                                waypts.push({
-                                                    location: endCoordinate,
-                                                    stopover: true
-                                                });
-
-
-                                                directionsService.route({
-                                                    origin: startCoordinate,
-                                                    destination: endCoordinate,
-                                                    waypoints: waypts,
-                                                    optimizeWaypoints: true,
-                                                    travelMode: 'DRIVING'
-                                                }, function (response, status) {
-                                                    if (status === 'OK') {
-
-                                                        var route1 = response.routes[0].legs[0];
-                                                        var route2 = response.routes[0].legs[response.routes[0].legs.length - 1];
-                                                        startMarker = new google.maps.Marker({
-                                                            position: route1.start_location,
-                                                            map: map,
-                                                            icon: '/img/startMarker.svg'
-                                                        });
-                                                        endMarker = new google.maps.Marker({
-                                                            position: route2.end_location,
-                                                            map: map,
-                                                            icon: '/img/endMarker.svg'
-                                                        });
-
-                                                        startMarker.setMap(map);
-                                                        endMarker.setMap(map);
-
-                                                        directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-                                                        directionsDisplay.setMap(map);
-                                                        directionsDisplay.setDirections(response);
-                                                    } else {
-                                                        console.log('Directions request failed due to ' + status);
-                                                    }
-
-
-                                                });
-                                            } else {
-                                                console.log(response);
-                                            }
-                                        },
-                                        error: function (exception) {
-                                            console.log(exception);
-                                        }
-                                    });
-
-
-                                } else {
-                                    console.log(response);
-                                }
-                            }
-                            ,
-                            error: function (exception) {
-                                console.log(exception);
-                            }
-                        }
-                    );
 
                 } else {
                     console.log(response['error']);
@@ -169,15 +70,17 @@ $(document).ready(function () {
 function clearMap() {
     startAddress = null;
     endAddress = null;
-    $('#distance').empty();
-    $('#duration').empty();
+    $('#distance').hide();
+    $('#duration').hide();
+    $('#distance-val').empty();
+    $('#duration-val').empty();
     if (startMarker != null) {
         startMarker.setMap(null);
-        startMarker=null;
+        startMarker = null;
     }
     if (endMarker != null) {
         endMarker.setMap(null);
-        endMarker=null;
+        endMarker = null;
 
     }
     if (directionsDisplay != null) {
@@ -188,6 +91,112 @@ function clearMap() {
         driver.setMap(null);
     });
     drivers = [];
+}
+
+function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
+    $.ajax({
+        type: "POST",
+        url: '/AJAXController',
+        data: {
+            command: "find-distance-info",
+            startLat: startLat,
+            startLng: startLng,
+            endLat: endLat,
+            endLng: endLng
+        },
+        success: function (response) {
+            if (!response['error'] && !response['findProblem'] && !response['notValidCoordinate']) {
+
+                var duration = response['duration'];
+                distance = response['distance'];
+                $('#distance-val').text(distance);
+                $('#duration-val').text(duration);
+                console.log(duration+" "+distance);
+
+                $('#duration').show();
+                $('#distance').show();
+
+                $.ajax({
+                    type: "POST",
+                    url: '/AJAXController',
+                    data: {
+                        command: "find-suitable-drivers",
+                        lat: startLat,
+                        lng: startLng
+                    },
+                    success: function (response) {
+                        if (!response['error'] && !response['notValidCoordinate']) {
+                            response["drivers"].forEach(function (driver) {
+                                placeDriver(driver["firstName"], driver["lastName"], driver["lat"], driver["lng"], driver["login"], driver["positiveMark"], driver["negativeMark"], driver["tariff"], driver["drivers"], driver["carNumber"], driver["carMark"])
+                            });
+                            var startCoordinate = new google.maps.LatLng(startLat, startLng);
+                            var endCoordinate = new google.maps.LatLng(endLat, endLng);
+
+                            var waypts = [];
+                            waypts.push({
+                                location: startCoordinate,
+                                stopover: true
+                            });
+
+                            waypts.push({
+                                location: endCoordinate,
+                                stopover: true
+                            });
+
+
+                            directionsService.route({
+                                origin: startCoordinate,
+                                destination: endCoordinate,
+                                waypoints: waypts,
+                                optimizeWaypoints: true,
+                                travelMode: 'DRIVING'
+                            }, function (response, status) {
+                                if (status === 'OK') {
+
+                                    var route1 = response.routes[0].legs[0];
+                                    var route2 = response.routes[0].legs[response.routes[0].legs.length - 1];
+                                    startMarker = new google.maps.Marker({
+                                        position: route1.start_location,
+                                        map: map,
+                                        icon: '/img/startMarker.svg'
+                                    });
+                                    endMarker = new google.maps.Marker({
+                                        position: route2.end_location,
+                                        map: map,
+                                        icon: '/img/endMarker.svg'
+                                    });
+
+                                    startMarker.setMap(map);
+                                    endMarker.setMap(map);
+
+                                    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+                                    directionsDisplay.setMap(map);
+                                    directionsDisplay.setDirections(response);
+                                } else {
+                                    console.log('Directions request failed due to ' + status);
+                                }
+
+
+                            });
+                        } else {
+                            console.log(response);
+                        }
+                    },
+                    error: function (exception) {
+                        console.log(exception);
+                    }
+                });
+
+
+            } else {
+                console.log(response);
+            }
+        }
+        ,
+        error: function (exception) {
+            console.log(exception);
+        }
+    });
 }
 
 function initMap() {
@@ -213,9 +222,9 @@ function initMap() {
                 map: map,
                 icon: '/img/startMarker.svg'
             });
-            start=e.latLng;
+            start = e.latLng;
             startMarker.setMap(map);
-        }else {
+        } else {
             if (endMarker == null) {
                 startMarker.setMap(null);
                 var startLng = start.lng();
@@ -223,107 +232,8 @@ function initMap() {
                 var endLng = e.latLng.lng();
                 var endLat = e.latLng.lat();
 
-                $.ajax({
-                        type: "POST",
-                        url: '/AJAXController',
-                        data: {
-                            command: "find-distance-info",
-                            startLat: startLat,
-                            startLng: startLng,
-                            endLat: endLat,
-                            endLng: endLng
-                        },
-                        success: function (response) {
-                            if (!response['error'] && !response['findProblem'] && !response['notValidCoordinate']) {
-                                $('#duration').show();
-                                $('#distance').show();
-                                $('#duration-val').text(response['distance']);
-                                $('#duration-val').text(response['duration']);
+                addRaidAndDriversToMap(startLng, startLat, endLng, endLat);
 
-                                distance = response['distance'];
-
-                                $.ajax({
-                                    type: "POST",
-                                    url: '/AJAXController',
-                                    data: {
-                                        command: "find-suitable-drivers",
-                                        lat: startLat,
-                                        lng: startLng
-                                    },
-                                    success: function (response) {
-                                        if (!response['error'] && !response['notValidCoordinate']) {
-                                            response["drivers"].forEach(function (driver) {
-                                                placeDriver(driver["firstName"], driver["lastName"], driver["lat"], driver["lng"], driver["login"], driver["positiveMark"], driver["negativeMark"], driver["tariff"], driver["drivers"], driver["carNumber"], driver["carMark"])
-                                            });
-                                            var startCoordinate = new google.maps.LatLng(startLat, startLng);
-                                            var endCoordinate = new google.maps.LatLng(endLat, endLng);
-
-                                            var waypts = [];
-                                            waypts.push({
-                                                location: startCoordinate,
-                                                stopover: true
-                                            });
-
-                                            waypts.push({
-                                                location: endCoordinate,
-                                                stopover: true
-                                            });
-
-
-                                            directionsService.route({
-                                                origin: startCoordinate,
-                                                destination: endCoordinate,
-                                                waypoints: waypts,
-                                                optimizeWaypoints: true,
-                                                travelMode: 'DRIVING'
-                                            }, function (response, status) {
-                                                if (status === 'OK') {
-
-                                                    var route1 = response.routes[0].legs[0];
-                                                    var route2 = response.routes[0].legs[response.routes[0].legs.length - 1];
-                                                    startMarker = new google.maps.Marker({
-                                                        position: route1.start_location,
-                                                        map: map,
-                                                        icon: '/img/startMarker.svg'
-                                                    });
-                                                    endMarker = new google.maps.Marker({
-                                                        position: route2.end_location,
-                                                        map: map,
-                                                        icon: '/img/endMarker.svg'
-                                                    });
-
-                                                    startMarker.setMap(map);
-                                                    endMarker.setMap(map);
-
-                                                    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-                                                    directionsDisplay.setMap(map);
-                                                    directionsDisplay.setDirections(response);
-                                                } else {
-                                                    console.log('Directions request failed due to ' + status);
-                                                }
-
-
-                                            });
-                                        } else {
-                                            console.log(response);
-                                        }
-                                    },
-                                    error: function (exception) {
-                                        console.log(exception);
-                                    }
-                                });
-
-
-                            } else {
-                                console.log(response);
-                            }
-                        }
-                        ,
-                        error: function (exception) {
-                            console.log(exception);
-                        }
-                    }
-                );
             }
         }
 

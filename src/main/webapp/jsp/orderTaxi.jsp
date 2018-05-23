@@ -29,15 +29,16 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <p>${startAddress}<input type="text" id="start-address" value="ул 50 лет победы 23 29,Минск"/></p>
 <p>${endAddress}<input type="text" id="end-address" value="просп. Жукова 29, Минск"/></p>
-<input type="submit" id="select-addresses" value="${selectAddresses}"/>
-<input type="submit" id="clear-map" value="${clearMap}"/>
-
 <div id="distance">${distance}:
     <div id="distance-val"></div>
 </div>
 <div id="duration">${duration}:
     <div id="duration-val"></div>
 </div>
+<input type="submit" id="select-addresses" value="${selectAddresses}"/>
+<input type="submit" id="clear-map" value="${clearMap}"/>
+
+
 <div id="map"></div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>
