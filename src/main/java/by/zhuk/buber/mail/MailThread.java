@@ -15,7 +15,7 @@ import java.util.Properties;
 public class MailThread extends Thread {
     private static Logger logger = LogManager.getLogger(MailThread.class);
 
-    private static final String TYPE = "text/html";
+    private static final String TYPE = "text/html; charset=utf-8";
 
     private MimeMessage message;
     private String sendToEmail;
@@ -46,7 +46,8 @@ public class MailThread extends Thread {
         mailSession.setDebug(true);
         message = new MimeMessage(mailSession);
         try {
-            message.setSubject(mailSubject);
+            message.setSubject(mailSubject, "utf-8");
+
             message.setContent(mailText, TYPE);
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(sendToEmail));
         } catch (MessagingException e) {

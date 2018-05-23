@@ -38,7 +38,7 @@ public class FindDriverCarNumDocIdMarkNameByLoginSpecification implements FindSp
         List<Driver> drivers = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                Driver driver = new Driver();
+                Driver driver = new Driver(achive, rate);
                 driver.setLogin(resultSet.getString(1));
                 driver.setCarNumber(resultSet.getString(2));
                 driver.setDocumentId(resultSet.getString(3));

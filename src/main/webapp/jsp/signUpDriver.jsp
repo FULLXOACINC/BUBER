@@ -8,12 +8,11 @@
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
 <fmt:message bundle="${locale}" key="text.signUp" var="signUp"/>
-<fmt:message bundle="${locale}" key="text.password" var="password"/>
-<fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
-<fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
-<fmt:message bundle="${locale}" key="text.birthDay" var="age"/>
-<fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
+<fmt:message bundle="${locale}" key="text.carNumber" var="carNumber"/>
+<fmt:message bundle="${locale}" key="text.documentId" var="documentId"/>
+<fmt:message bundle="${locale}" key="text.carMark" var="carMark"/>
+<fmt:message bundle="${locale}" key="text.tariff" var="tariff"/>
+
 <fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
 <fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
@@ -45,6 +44,8 @@
 <p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
 <p>${documentId}<input type="text" id="document-id" value="7AD123132"/></p>
 <p>${carMark}<input type="text" id="car-mark"/></p>
+<p>${tariff}<input type="text" id="tariff"/></p>
+
 <p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
 
 <div class="error" id="car-number-error">
@@ -75,12 +76,16 @@
     <p>documentIdExistError</p>
 </div>
 
+<div class="error" id="tariff-error">
+    <p>tariffError</p>
+</div>
+
 <div class="correct" id="all-correct">
     <p>allCorrectMessage</p>
 </div>
 
 
-<ctg:hello auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>
 </html>
 

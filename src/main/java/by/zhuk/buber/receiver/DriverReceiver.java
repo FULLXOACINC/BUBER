@@ -7,9 +7,7 @@ import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
-import by.zhuk.buber.specification.add.AddCarMarkSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
-import by.zhuk.buber.specification.find.carmark.FindCarMarkByNameSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
@@ -49,19 +47,10 @@ public class DriverReceiver {
         RepositoryController controller = new RepositoryController(driverRepository, carMarkRepository);
         try {
             controller.startTransaction();
-            FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
-            List<CarMark> carMarks = carMarkRepository.find(specification);
-            CarMark carMark;
-            if (carMarks.isEmpty()) {
-                Specification carAddSpecification = new AddCarMarkSpecification(carMarkName);
-                carMarkRepository.add(carAddSpecification);
-                carMarks = carMarkRepository.find(specification);
-                carMark = carMarks.get(0);
-            } else {
-                carMark = carMarks.get(0);
-            }
+            CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
+            CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Driver driver = new Driver();
+            Driver driver = new Driver(achive, rate);
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);

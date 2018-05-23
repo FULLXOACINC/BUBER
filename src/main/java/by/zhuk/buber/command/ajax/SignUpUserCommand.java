@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class SignUpUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
@@ -21,6 +22,8 @@ public class SignUpUserCommand implements AJAXCommand {
     private static final String REPEAT_PASSWORD = "repeatPassword";
     private static final String BIRTH_DAY = "birthDay";
     private static final String PHONE_NUMBER = "phoneNumber";
+
+    private static final String LANG = "lang";
 
 
     private static final String NOT_VALID_LOGIN_ERROR = "notValidLoginError";
@@ -44,6 +47,9 @@ public class SignUpUserCommand implements AJAXCommand {
         String repeatPassword = request.getParameter(REPEAT_PASSWORD);
         String birthDay = request.getParameter(BIRTH_DAY);
         String phoneNumber = request.getParameter(PHONE_NUMBER);
+
+        HttpSession session = request.getSession();
+        String lang = (String) session.getAttribute(LANG);
 
         UserReceiver userReceiver = new UserReceiver();
         SignInReceiver signInReceiver = new SignInReceiver();
@@ -87,7 +93,7 @@ public class SignUpUserCommand implements AJAXCommand {
 
 
         if (json.length() == 0) {
-            signUpReceiver.sendAcceptMail(login, firstName, secondName, password, birthDay, phoneNumber);
+            signUpReceiver.sendAcceptMail(login, firstName, secondName, password, birthDay, phoneNumber, lang);
             json.put(ALL_CORRECT, ALL_CORRECT);
         }
         return json;

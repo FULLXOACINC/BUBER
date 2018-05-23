@@ -13,21 +13,24 @@ import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.signuppool.SignUpUserInfo;
 import by.zhuk.buber.signuppool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
-import by.zhuk.buber.specification.add.AddCarMarkSpecification;
 import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
-import by.zhuk.buber.specification.find.FindSpecification;
-import by.zhuk.buber.specification.find.carmark.FindCarMarkByNameSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Formatter;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SignUpReceiver {
-    private static String MAIL_BUNDLE = "";
+    private static String MAIL_BUNDLE = "properties/mailContent";
+    private static String HEAD = "head";
+    private static String CONTENT = "content";
+
 
     public void saveUser(User user) throws ReceiverException {
         Repository<User> repository = new Repository<>();
@@ -41,10 +44,21 @@ public class SignUpReceiver {
         }
     }
 
-    public void sendAcceptMail(String login, String firstName, String lastName, String password, String birthDay, String phoneNumber) {
+    public void sendAcceptMail(String login, String firstName, String lastName, String password, String birthDay, String phoneNumber, String lang) {
         String hash = String.valueOf(login.concat(password).hashCode());
+        Locale locale = new Locale(lang);
+        ResourceBundle bundle = ResourceBundle.getBundle(MAIL_BUNDLE, locale);
 
-        MailThread thread = new MailThread(login, "test", "<a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=" + hash + "\">Go to accept</a> ", MailProperty.getInstance().getProperties());
+        String head = bundle.getString(HEAD);
+        String content = bundle.getString(CONTENT);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        Formatter formatter = new Formatter(stringBuilder);
+
+        formatter.format(content, lastName, firstName, hash);
+
+
+        MailThread thread = new MailThread(login, head, stringBuilder.toString(), MailProperty.getInstance().getProperties());
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
         User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER, (float) 0.0);
@@ -60,19 +74,10 @@ public class SignUpReceiver {
         RepositoryController controller = new RepositoryController(driverRepository, carMarkRepository, userRepository);
         try {
             controller.startTransaction();
-            FindSpecification<CarMark> specification = new FindCarMarkByNameSpecification(carMarkName);
-            List<CarMark> carMarks = carMarkRepository.find(specification);
-            CarMark carMark;
-            if (carMarks.isEmpty()) {
-                Specification carAddSpecification = new AddCarMarkSpecification(carMarkName);
-                carMarkRepository.add(carAddSpecification);
-                carMarks = carMarkRepository.find(specification);
-                carMark = carMarks.get(0);
-            } else {
-                carMark = carMarks.get(0);
-            }
+            CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
+            CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Driver driver = new Driver();
+            Driver driver = new Driver(achive, rate);
             driver.setLogin(login);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);

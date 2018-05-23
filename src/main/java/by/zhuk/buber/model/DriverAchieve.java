@@ -1,5 +1,7 @@
 package by.zhuk.buber.model;
 
+import java.util.Objects;
+
 public class DriverAchieve {
     private int fastAndFurious;
     private int narrator;
@@ -49,4 +51,34 @@ public class DriverAchieve {
         this.badDriver = badDriver;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        DriverAchieve that = (DriverAchieve) o;
+        return fastAndFurious == that.fastAndFurious &&
+                narrator == that.narrator &&
+                clearCar == that.clearCar &&
+                badDriver == that.badDriver;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(fastAndFurious, narrator, clearCar, badDriver);
+    }
+
+    @Override
+    public String toString() {
+        return "DriverAchieve{" +
+                "fastAndFurious=" + fastAndFurious +
+                ", narrator=" + narrator +
+                ", clearCar=" + clearCar +
+                ", badDriver=" + badDriver +
+                '}';
+    }
 }

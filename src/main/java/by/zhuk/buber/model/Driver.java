@@ -1,5 +1,6 @@
 package by.zhuk.buber.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Driver {
@@ -10,11 +11,9 @@ public class Driver {
     private float currentLatCoordinate;
     private float currentLngCoordinate;
     private boolean isWorking;
-    private DriverAchieve achive;
+    private DriverAchieve achieve;
+    private BigDecimal tariff;
 
-    public Driver() {
-
-    }
 
     public String getLogin() {
         return login;
@@ -72,6 +71,22 @@ public class Driver {
         isWorking = working;
     }
 
+    public DriverAchieve getAchieve() {
+        return achieve;
+    }
+
+    public void setAchieve(DriverAchieve achieve) {
+        this.achieve = achieve;
+    }
+
+    public BigDecimal getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(BigDecimal tariff) {
+        this.tariff = tariff;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -81,19 +96,21 @@ public class Driver {
             return false;
         }
         Driver driver = (Driver) o;
-        return isWorking == driver.isWorking &&
+        return Float.compare(driver.currentLatCoordinate, currentLatCoordinate) == 0 &&
+                Float.compare(driver.currentLngCoordinate, currentLngCoordinate) == 0 &&
+                isWorking == driver.isWorking &&
                 Objects.equals(login, driver.login) &&
                 Objects.equals(carNumber, driver.carNumber) &&
                 Objects.equals(documentId, driver.documentId) &&
                 Objects.equals(carMark, driver.carMark) &&
-                Objects.equals(currentLatCoordinate, driver.currentLatCoordinate) &&
-                Objects.equals(currentLngCoordinate, driver.currentLngCoordinate);
+                Objects.equals(achieve, driver.achieve) &&
+                Objects.equals(tariff, driver.tariff);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(login, carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking);
+        return Objects.hash(login, carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, achieve, tariff);
     }
 
     @Override
@@ -102,10 +119,12 @@ public class Driver {
                 "login='" + login + '\'' +
                 ", carNumber='" + carNumber + '\'' +
                 ", documentId='" + documentId + '\'' +
-                ", carMark='" + carMark + '\'' +
-                ", currentLatCoordinate='" + currentLatCoordinate + '\'' +
-                ", currentLngCoordinate='" + currentLngCoordinate + '\'' +
+                ", carMark=" + carMark +
+                ", currentLatCoordinate=" + currentLatCoordinate +
+                ", currentLngCoordinate=" + currentLngCoordinate +
                 ", isWorking=" + isWorking +
+                ", achieve=" + achieve +
+                ", tariff=" + tariff +
                 '}';
     }
 }
