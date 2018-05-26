@@ -90,7 +90,8 @@ function clearMap() {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
-        center: new google.maps.LatLng(53.90453979999999, 27.5615344)
+        center: new google.maps.LatLng(53.90453979999999, 27.5615344),
+        draggableCursor:'crosshair'
     });
 
     map.addListener('click', function (e) {

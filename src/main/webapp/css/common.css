@@ -19,5 +19,6 @@
 }
 
 #map {
+    border: 2px solid #fff000;
     height: 80%;
 }

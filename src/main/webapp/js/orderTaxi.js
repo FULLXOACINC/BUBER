@@ -203,7 +203,8 @@ function initMap() {
     directionsService = new google.maps.DirectionsService;
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
-        center: new google.maps.LatLng(53.90453979999999, 27.5615344)
+        center: new google.maps.LatLng(53.90453979999999, 27.5615344),
+        draggableCursor:'crosshair'
     });
     rendererOptions = {
         map: map,

@@ -13,7 +13,6 @@ public enum AJAXCommandType {
     FIND_SUITABLE_DRIVERS(new FindSuitableDriversCommand()),
     GEO_DECODE_ADDRESS(new GeoDecodeAddressCommand()),
     UPDATE_CURRENT_DRIVER_COORDINATE(new UpdateCurrentDriverCoordinateCommand()),
-
     FIND_USER_COMPLAINTS(new FindUserComplaintsCommand()),
     CHANGE_DISCOUNT(new ChangeDiscountCommand());
 

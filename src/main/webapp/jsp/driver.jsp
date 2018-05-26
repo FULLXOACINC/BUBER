@@ -24,6 +24,7 @@
 <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
     <input type="submit" value="currentRaid">
 </form>
-<ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
+
+<ctg:footer auth="Alex Zhuk" description="Created for EPAM System ava traning"/>
 </body>
 </html>
