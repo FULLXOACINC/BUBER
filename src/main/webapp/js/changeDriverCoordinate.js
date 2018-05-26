@@ -1,0 +1,110 @@
+var map;
+var address;
+var point;
+
+function changeCurrentCoordinateFun() {
+    if (point == null) {
+        //TODO view error
+        return;
+    }
+    $.ajax({
+        type: "POST",
+        url: '/AJAXController',
+        data: {
+            command: "update-current-driver-coordinate",
+            lat: point.getPosition().lat(),
+            lng: point.getPosition().lng()
+        },
+        success: function (response) {
+            if (response['allCorrect']) {
+                console.log(response['allCorrect']);
+            } else {
+                console.log(response);
+            }
+
+        },
+        error: function (exception) {
+            console.log(exception);
+        }
+    });
+
+}
+
+$(document).ready(function () {
+    var selectAddressFun = function () {
+        if (!map) {
+            return;
+        }
+        if ($('#current-address').val() === address) {
+            return;
+        }
+        clearMap();
+        address = $('#current-address').val();
+        $.ajax({
+            type: "POST",
+            url: '/AJAXController',
+            data: {
+                command: "geo-decode-address",
+                currentAddress: $('#current-address').val()
+            },
+            success: function (response) {
+                if (!response['error']) {
+                    if (response['decodeProblem']) {
+                        console.log(response['decodeProblem']);
+                        return;
+                    }
+                    var currentLng = response['current']['lng'];
+                    var currentLat = response['current']['lat'];
+                    point = new google.maps.Marker({
+                        position: new google.maps.LatLng(currentLat, currentLng),
+                        map: map,
+                        icon: '/img/carMarker.svg'
+                    });
+                    point.setMap(map);
+
+                } else {
+                    console.log(response['error']);
+                }
+
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+        });
+    };
+    $('#select-address').click(selectAddressFun);
+    $('#accept-coordinate').click(changeCurrentCoordinateFun);
+    $('#clear-map').click(clearMap);
+
+});
+
+function clearMap() {
+
+    if (point != null) {
+        point.setMap(null);
+        point = null;
+    }
+
+}
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: new google.maps.LatLng(53.90453979999999, 27.5615344)
+    });
+
+    map.addListener('click', function (e) {
+        if (point == null) {
+            point = new google.maps.Marker({
+                position: e.latLng,
+                map: map,
+                icon: '/img/carMarker.svg'
+            });
+            point.setMap(map);
+            address = null;
+        }
+    });
+
+}
+
+

@@ -216,6 +216,8 @@ function initMap() {
         }
     };
     map.addListener('click', function (e) {
+        startAddress=null;
+        endAddress=null;
         if (startMarker == null) {
             startMarker = new google.maps.Marker({
                 position: e.latLng,

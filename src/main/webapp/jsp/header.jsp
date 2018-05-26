@@ -9,7 +9,8 @@
 <fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.fillUp" var="fillUp"/>
-<fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
+<fmt:message bundle="${locale}" key="text.admin.adminConsole" var="adminConsole"/>
+<fmt:message bundle="${locale}" key="text.driver.driverConsole" var="driverConsole"/>
 
 <html>
 <head>
@@ -18,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
-
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -42,7 +42,12 @@
                 </form>
                 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
                     <form action="${pageContext.request.contextPath}/jsp/admin.jsp">
-                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${console}">
+                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${adminConsole}">
+                    </form>
+                </c:if>
+                <c:if test="${sessionScope.type == 'DRIVER'}">
+                    <form action="${pageContext.request.contextPath}/jsp/driver.jsp">
+                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${driverConsole}">
                     </form>
                 </c:if>
             </ul>

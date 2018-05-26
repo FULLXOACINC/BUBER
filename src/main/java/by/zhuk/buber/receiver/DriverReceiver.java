@@ -13,7 +13,8 @@ import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecificati
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverSpecification;
+import by.zhuk.buber.specification.update.UpdateDriverCurrentCoordinateSpecification;
+import by.zhuk.buber.specification.update.UpdateDriverInfoSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -59,8 +60,8 @@ public class DriverReceiver {
             driver.setTariff(tariff);
 
             driver.setCarMark(carMark);
-            Specification driverAddSpecification = new UpdateDriverSpecification(driver);
-            driverRepository.update(driverAddSpecification);
+            Specification driverUpdateSpecification = new UpdateDriverInfoSpecification(driver);
+            driverRepository.update(driverUpdateSpecification);
 
             controller.commit();
             controller.endTransaction();
@@ -87,5 +88,18 @@ public class DriverReceiver {
         FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng);
         Finder<Driver> finder = new Finder<>();
         return finder.findBySpecification(specification);
+    }
+
+    public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {
+        Repository<Driver> driverRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(driverRepository);
+
+        Specification driverUpdateSpecification = new UpdateDriverCurrentCoordinateSpecification(lat, lng, driverLogin);
+        try {
+            driverRepository.update(driverUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
     }
 }

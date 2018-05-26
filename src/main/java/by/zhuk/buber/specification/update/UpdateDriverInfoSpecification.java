@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UpdateDriverSpecification implements Specification {
+public class UpdateDriverInfoSpecification implements Specification {
     private static final String UPDATE_DRIVER_BY_LOGIN = "UPDATE buber_db.driver SET driver_car_number=? , driver_document_id=?, driver_car_mark=?,driver_tariff=? WHERE driver_login=?";
     private String carNumber;
     private String documentId;
@@ -16,7 +16,7 @@ public class UpdateDriverSpecification implements Specification {
     private int carMark;
     private BigDecimal tariff;
 
-    public UpdateDriverSpecification(Driver driver) {
+    public UpdateDriverInfoSpecification(Driver driver) {
         carNumber = driver.getCarNumber();
         documentId = driver.getDocumentId();
         carMark = driver.getCarMark().getIndex();
