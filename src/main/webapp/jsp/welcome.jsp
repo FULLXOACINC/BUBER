@@ -8,20 +8,25 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
-<fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
-<fmt:message bundle="${locale}" key="text.fillUp" var="fillUp"/>
-<fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
+<fmt:message bundle="${locale}" key="text.buberWelcome" var="buberWelcome"/>
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
-
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-<div class="container">
-    Welcome to BUBER
+<div class="back d-flex">
+    <div class="container text-top my-auto">
+        <h1 class="mb-1">${buberWelcome}</h1>
+        <form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${orderTaxi}">
+        </form>
+    </div>
 </div>
+
 <ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
+</body>
 </html>

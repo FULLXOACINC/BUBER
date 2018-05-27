@@ -6,6 +6,7 @@ function hideAllMessage() {
 }
 
 $(document).ready(function () {
+    hideAllMessage();
     var fillUpBalanceFun = function () {
         hideAllMessage();
         $.ajax({

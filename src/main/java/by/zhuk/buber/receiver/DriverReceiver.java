@@ -8,6 +8,7 @@ import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
@@ -22,8 +23,8 @@ import java.util.Optional;
 
 public class DriverReceiver {
 
-    public boolean isDriverExist(String login) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindDriverByLoginSpecification(login);
+    public boolean isDriverExist(String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindDriverByLoginSpecification(driverLogin);
         Finder<Driver> finder = new Finder<>();
         List<Driver> drivers = finder.findBySpecification(specification);
         return !drivers.isEmpty();
@@ -43,7 +44,7 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
-    public void updateDriver(String login, String carNumber, String documentId, String carMarkName, BigDecimal tariff) throws ReceiverException {
+    public void updateDriver(String driverLogin, String carNumber, String documentId, String carMarkName, BigDecimal tariff) throws ReceiverException {
 
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();
@@ -54,7 +55,7 @@ public class DriverReceiver {
             CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
             Driver driver = new Driver();
-            driver.setLogin(login);
+            driver.setLogin(driverLogin);
             driver.setCarNumber(carNumber);
             driver.setDocumentId(documentId);
             driver.setTariff(tariff);
@@ -73,8 +74,8 @@ public class DriverReceiver {
         }
     }
 
-    public Optional<Driver> findDriverByLogin(String login) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindDriverToUpdateSpecification(login);
+    public Optional<Driver> findDriverByLogin(String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindDriverToUpdateSpecification(driverLogin);
         Finder<Driver> driverFinder = new Finder<>();
         List<Driver> drivers = driverFinder.findBySpecification(specification);
         Optional<Driver> driver = Optional.empty();
@@ -88,6 +89,13 @@ public class DriverReceiver {
         FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng);
         Finder<Driver> finder = new Finder<>();
         return finder.findBySpecification(specification);
+    }
+
+    public boolean isDriverSuitable(float lat, float lng,String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindSuitableDriverByLoginSpecification(lat, lng,driverLogin);
+        Finder<Driver> finder = new Finder<>();
+        List<Driver> drivers = finder.findBySpecification(specification);
+        return !drivers.isEmpty();
     }
 
     public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {

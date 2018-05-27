@@ -34,58 +34,61 @@
 <html>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/updateDriver.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-<c:choose>
-    <c:when test="${not empty driver}">
-        <p>${driver.login}</p>
-        <input type="hidden" id="login" value="${driver.login}">
-        <p>${carNumber}<input type="text" id="car-number" value="${driver.carNumber}"/></p>
-        <p>${documentId}<input type="text" id="document-id" value="${driver.documentId}"/></p>
-        <p>${carMark}<input type="text" id="car-mark" value="${driver.carMark.markName}"/></p>
-        <p>${tariff}<input type="text" id="tariff" value="${driver.tariff}"/></p>
-        <p><input type="submit" id="update-driver" value="${updateDriver}"></p>
+<div class="back">
+    <div class="container">
+        <c:choose>
+            <c:when test="${not empty driver}">
+                <p>${driver.login}</p>
+                <input type="hidden" id="login" value="${driver.login}">
+                <p>${carNumber}<input type="text" id="car-number" value="${driver.carNumber}"/></p>
+                <p>${documentId}<input type="text" id="document-id" value="${driver.documentId}"/></p>
+                <p>${carMark}<input type="text" id="car-mark" value="${driver.carMark.markName}"/></p>
+                <p>${tariff}<input type="text" id="tariff" value="${driver.tariff}"/></p>
+                <p><input type="submit" id="update-driver" value="${updateDriver}"></p>
 
-        <div class="error" id="car-number-error">
-            <p>carNumberError</p>
-        </div>
+                <div class="error" id="car-number-error">
+                    <p>carNumberError</p>
+                </div>
 
-        <div class="error" id="document-id-error">
-            <p>documentIdError</p>
-        </div>
+                <div class="error" id="document-id-error">
+                    <p>documentIdError</p>
+                </div>
 
-        <div class="error" id="car-mark-error">
-            <p>carMarkError</p>
-        </div>
+                <div class="error" id="car-mark-error">
+                    <p>carMarkError</p>
+                </div>
 
-        <div class="error" id="login-not-exist-error">
-            <p>loginNotExistError</p>
-        </div>
+                <div class="error" id="login-not-exist-error">
+                    <p>loginNotExistError</p>
+                </div>
 
-        <div class="error" id="driver-exist-error">
-            <p>driverExistError</p>
-        </div>
+                <div class="error" id="driver-exist-error">
+                    <p>driverExistError</p>
+                </div>
 
-        <div class="error" id="car-number-exist-error">
-            <p>carNumberExistError</p>
-        </div>
+                <div class="error" id="car-number-exist-error">
+                    <p>carNumberExistError</p>
+                </div>
 
-        <div class="error" id="document-id-exist-error">
-            <p>documentIdExistError</p>
-        </div>
+                <div class="error" id="document-id-exist-error">
+                    <p>documentIdExistError</p>
+                </div>
 
-        <div class="correct" id="all-correct">
-            <p>allCorrectMessage</p>
-        </div>
-    </c:when>
-    <c:otherwise>
-        ${driverNotFound}
-    </c:otherwise>
-</c:choose>
+                <div class="correct" id="all-correct">
+                    <p>allCorrectMessage</p>
+                </div>
+            </c:when>
+            <c:otherwise>
+                ${driverNotFound}
+            </c:otherwise>
+        </c:choose>
+    </div>
+</div>
 
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>

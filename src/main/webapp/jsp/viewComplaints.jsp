@@ -23,26 +23,26 @@
 
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-<form action="${pageContext.request.contextPath}/jsp/admin.jsp">
-    <input type="submit" value="${console}">
-</form>
-<c:forEach var="complaint" items="${complaints}">
-    <div id="complaint-${complaint.complaintId}">
-        <p>${raidId}: ${complaint.complaintId}</p>
-        <form action='${pageContext.request.contextPath}/controller'>
-            <input type='hidden' name='command' value='view-user'>
-            <input type='hidden' name='user' value='${complaint.complaintPersonLogin}'>
-            <input type='submit' value='${complaint.complaintPersonLogin}'>
-        </form>
-        <p>${complaintId}: ${complaint.raidId}</p>
-        <p><c:out value="${complaint.complaintText}" escapeXml="true"/></p>
-        <p><input type='submit' class="accept" id='${complaint.complaintId}' value="${acceptComplaint}"></p>
-        <hr/>
+<div class="back">
+    <div class="container">
+        <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+        <c:forEach var="complaint" items="${complaints}">
+            <div id="complaint-${complaint.complaintId}">
+                <p>${raidId}: ${complaint.complaintId}</p>
+                <form action='${pageContext.request.contextPath}/controller'>
+                    <input type='hidden' name='command' value='view-user'>
+                    <input type='hidden' name='user' value='${complaint.complaintPersonLogin}'>
+                    <input type='submit' value='${complaint.complaintPersonLogin}'>
+                </form>
+                <p>${complaintId}: ${complaint.raidId}</p>
+                <p><c:out value="${complaint.complaintText}" escapeXml="true"/></p>
+                <p><input type='submit' class="accept" id='${complaint.complaintId}' value="${acceptComplaint}"></p>
+                <hr/>
+            </div>
+
+        </c:forEach>
+
     </div>
-
-</c:forEach>
-
 </div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>

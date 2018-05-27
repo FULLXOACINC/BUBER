@@ -14,9 +14,9 @@
 <fmt:message bundle="${locale}" key="text.acceptCoordinate" var="acceptCoordinate"/>
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/changeDriverCoordinate.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <script async defer
@@ -24,18 +24,21 @@
     </script>
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 
-<div>
-    <div>${currentAddress}:</div>
-    <input type="text" id="current-address" value="ул 50 лет победы 23 29,Минск"/>
+<div class="back">
+    <div class="container">
+        <div>
+            <div>${currentAddress}:</div>
+            <input type="text" id="current-address" value="ул 50 лет победы 23 29,Минск"/>
+        </div>
+
+        <input type="submit" id="select-address" value="${selectAddress}"/>
+        <input type="submit" id="clear-map" value="${clearMap}"/>
+        <input type="submit" id="accept-coordinate" value="${acceptCoordinate}"/>
+
+        <div id="map"></div>
+    </div>
 </div>
-
-<input type="submit" id="select-address" value="${selectAddress}"/>
-<input type="submit" id="clear-map" value="${clearMap}"/>
-<input type="submit" id="accept-coordinate" value="${acceptCoordinate}"/>
-
-<div id="map"></div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>
 </html>

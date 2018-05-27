@@ -22,6 +22,7 @@ import java.io.IOException;
 public class SignInFilter implements Filter {
     private static final String JS_FILE_EXPANSION = ".js";
     private static final String CSS_FILE_EXPANSION = ".css";
+    private static final String JPG_FILE_EXPANSION = ".jpg";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -45,7 +46,7 @@ public class SignInFilter implements Filter {
     }
 
     private boolean requestFile(String requestURI) {
-        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION);
+        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION)|| requestURI.endsWith(JPG_FILE_EXPANSION);
     }
 
     private boolean isLoginCommand(String command) {

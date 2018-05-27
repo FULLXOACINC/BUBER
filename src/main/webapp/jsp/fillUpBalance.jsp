@@ -25,27 +25,30 @@
 </head>
 <body>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+<div class="back">
+    <div class="container">
+        <input type="radio" name="money-amount" value="5.00" checked>5.00<br/>
+        <input type="radio" name="money-amount" value="10.00">10.00<br/>
+        <input type="radio" name="money-amount" value="15.00">15.00<br/>
+        <input type="radio" name="money-amount" value="20.00">20.00<br/>
+        <input type="radio" name="money-amount" value="50.00">50.00<br/>
+        <input type="radio" name="money-amount" value="100.00">100.00<br/>
+        <input type="submit" id="fill-up-balance" value="${fillUpBalance}">
 
-<input type="radio" name="money-amount" value="5.00" checked>5.00<br/>
-<input type="radio" name="money-amount" value="10.00">10.00<br/>
-<input type="radio" name="money-amount" value="15.00">15.00<br/>
-<input type="radio" name="money-amount" value="20.00">20.00<br/>
-<input type="radio" name="money-amount" value="50.00">50.00<br/>
-<input type="radio" name="money-amount" value="100.00">100.00<br/>
-<input type="submit" id="fill-up-balance" value="${fillUpBalance}">
 
-
-<div class="error" id="unknown-money-format">
-    <p>${unknownMoneyFormatMessage}</p>
-</div>
-<div class="error" id="out-of-bound-balance">
-    <p>${outOfBoundBalanceMessage}</p>
-</div>
-<div class="error" id="full-balance">
-    <p>${fullBalanceMessage}</p>
-</div>
-<div class="correct" id="fill-up-balance-correct">
-    <p>${fillUpBalanceCorrectMessage}</p>
+        <div class="error" id="unknown-money-format">
+            <p>${unknownMoneyFormatMessage}</p>
+        </div>
+        <div class="error" id="out-of-bound-balance">
+            <p>${outOfBoundBalanceMessage}</p>
+        </div>
+        <div class="error" id="full-balance">
+            <p>${fullBalanceMessage}</p>
+        </div>
+        <div class="correct" id="fill-up-balance-correct">
+            <p>${fillUpBalanceCorrectMessage}</p>
+        </div>
+    </div>
 </div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
 </body>

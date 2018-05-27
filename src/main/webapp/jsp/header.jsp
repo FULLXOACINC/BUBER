@@ -9,16 +9,19 @@
 <fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.fillUp" var="fillUp"/>
-<fmt:message bundle="${locale}" key="text.admin.adminConsole" var="adminConsole"/>
-<fmt:message bundle="${locale}" key="text.driver.driverConsole" var="driverConsole"/>
+<fmt:message bundle="${locale}" key="text.userMenu" var="userMenu"/>
+<fmt:message bundle="${locale}" key="text.admin.adminMenu" var="adminMenu"/>
+<fmt:message bundle="${locale}" key="text.driver.driverMenu" var="driverMenu"/>
 <fmt:message bundle="${locale}" key="text.driver.changeCurrentCoordinate" var="changeCurrentCoordinate"/>
-
+<fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
+<fmt:message bundle="${locale}" key="text.admin.viewUnacceptedComplaints" var="viewUnacceptedComplaints"/>
+<fmt:message bundle="${locale}" key="text.admin.findUsers" var="findUsers"/>
 <html>
 <head>
     <title>${buber}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
@@ -33,29 +36,66 @@
     <div class="collapse navbar-collapse">
         <c:if test="${not empty sessionScope.login}">
             <ul class="navbar-nav mr-auto">
-                <form action="${ pageContext.request.contextPath }/controller" method="post">
-                    <input type="hidden" name="command" value="sign-out">
-                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${signOut}">
-                </form>
-                <form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
-                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${orderTaxi}">
-                </form>
-                <form action="${pageContext.request.contextPath}/jsp/fillUpBalance.jsp">
-                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${fillUp}">
-                </form>
+                <div class="dropdown">
+
+                    <button class="btn btn-outline-success my-2 my-sm-0 " id="user"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${userMenu}</button>
+
+                    <div class="dropdown-menu" aria-labelledby="user">
+                        <div>
+                            <form action="${pageContext.request.contextPath}/jsp/fillUpBalance.jsp">
+                                <input class="dropdown-item" type="submit" value="${fillUp}">
+                            </form>
+                        </div>
+                        <div>
+                            <form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
+                                <input class="dropdown-item" type="submit" value="${orderTaxi}">
+                            </form>
+                        </div>
+                        <div>
+                            <form action="${ pageContext.request.contextPath }/controller" method="post">
+                                <input type="hidden" name="command" value="sign-out">
+                                <input class="dropdown-item" type="submit" value="${signOut}">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
-                    <form action="${pageContext.request.contextPath}/jsp/admin.jsp">
-                        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="${adminConsole}">
-                    </form>
+                    <div class="dropdown">
+
+                        <button class="btn btn-outline-success my-2 my-sm-0 " id="admin"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${adminMenu}</button>
+
+                        <div class="dropdown-menu" aria-labelledby="admin">
+                            <div>
+                                <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
+                                    <input class="dropdown-item" type="submit" value="${signUpDriver}">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="${pageContext.request.contextPath}/controller">
+                                    <input type="hidden" name="command" value="view-unaccepted-complaints">
+                                    <input class="dropdown-item" type="submit" value="${viewUnacceptedComplaints}">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="${pageContext.request.contextPath}/jsp/findUsers.jsp">
+                                    <input class="dropdown-item" type="submit" value="${findUsers}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </c:if>
                 <c:if test="${sessionScope.type == 'DRIVER'}">
                     <div class="dropdown">
 
-                        <input class="btn btn-outline-success my-2 my-sm-0" id="dropdownMenuButton"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false" type="submit" value="${driverConsole}">
+                        <button class="btn btn-outline-success my-2 my-sm-0 " id="driver"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${driverMenu}</button>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="driver">
                             <div>
                                 <form action="${pageContext.request.contextPath}/jsp/changeDriverCoordinate.jsp">
                                     <input class="dropdown-item" type="submit" value="${changeCurrentCoordinate}">

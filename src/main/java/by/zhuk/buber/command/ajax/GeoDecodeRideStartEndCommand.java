@@ -10,8 +10,8 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class GeoDecodeRaidStartEndCommand implements AJAXCommand {
-    private static Logger logger = LogManager.getLogger(GeoDecodeRaidStartEndCommand.class);
+public class GeoDecodeRideStartEndCommand implements AJAXCommand {
+    private static Logger logger = LogManager.getLogger(GeoDecodeRideStartEndCommand.class);
     private static final String START_ADDRESS = "startAddress";
     private static final String END_ADDRESS = "endAddress";
 

@@ -25,58 +25,58 @@
     <script src="${pageContext.request.contextPath}/js/signIn.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/signIn.css">
 </head>
 <body>
 
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-<div class="container">
+<div class="back">
 
-    <div class="form-signin">
-        <h2 class="form-signin-heading">${signInHeading}</h2>
-        <input type="text" id="login" class="form-control" placeholder="${login}">
+    <div class="container">
 
-        <input type="password" id="password" class="form-control" placeholder="${password}">
-        <div>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" id="enter" value="${enter}">
-        </div>
+        <div class="form-signin">
+            <h2 class="form-signin-heading">${signInHeading}</h2>
+            <input type="text" id="login" class="form-control" placeholder="${login}">
 
-        <div class="error" id="login-not-valid-error">
-            <p>${loginNotValidMessage}</p>
-        </div>
-        <div class="error" id="login-not-exist-error">
-            <p>${loginNotExistMessage}</p>
-        </div>
-        <div class="error" id="login-password-not-eq-error">
-            <p>${loginPasswordNotEqMessage}</p>
-        </div>
-
-        <c:if test="${bannedError}">
-            <div class="error" id="banned-error">
-                <p>${bannedErrorMessage}</p>
+            <input type="password" id="password" class="form-control" placeholder="${password}">
+            <div>
+                <input class="btn btn-lg btn-primary btn-block" type="submit" id="enter" value="${enter}">
             </div>
-        </c:if>
 
-        <form action="${pageContext.request.contextPath}/controller">
-            <input type="hidden" name="command" value="oauth">
-            <input type="hidden" name="loginType" value="google">
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${google}">
-        </form>
-        <form action="${pageContext.request.contextPath}/controller">
-            <input type="hidden" name="command" value="oauth">
-            <input type="hidden" name="loginType" value="yandex">
-            <input type="submit" class="btn btn-lg btn-primary btn-block" value="${yandex}">
-        </form>
-        <form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${singUp}">
-        </form>
+            <div class="error" id="login-not-valid-error">
+                <p>${loginNotValidMessage}</p>
+            </div>
+            <div class="error" id="login-not-exist-error">
+                <p>${loginNotExistMessage}</p>
+            </div>
+            <div class="error" id="login-password-not-eq-error">
+                <p>${loginPasswordNotEqMessage}</p>
+            </div>
+
+            <c:if test="${bannedError}">
+                <div class="error" id="banned-error">
+                    <p>${bannedErrorMessage}</p>
+                </div>
+            </c:if>
+
+            <form action="${pageContext.request.contextPath}/controller">
+                <input type="hidden" name="command" value="oauth">
+                <input type="hidden" name="loginType" value="google">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="${google}">
+            </form>
+            <form action="${pageContext.request.contextPath}/controller">
+                <input type="hidden" name="command" value="oauth">
+                <input type="hidden" name="loginType" value="yandex">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="${yandex}">
+            </form>
+            <form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="${singUp}">
+            </form>
+        </div>
+
+
     </div>
-
-
 </div>
-
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
-
 
 </body>
 </html>

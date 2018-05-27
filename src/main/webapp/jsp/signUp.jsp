@@ -36,58 +36,64 @@
 </head>
 <body>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-<p>${login}<input type="text" id="login"/></p>
-<p>${password}<input type="password" id="password"/></p>
-<p>${repeatPassword}<input type="password" id="repeatPassword"/></p>
-<p>${firstName}<input type="text" id="firstName"/></p>
-<p>${secondName}<input type="text" id="secondName"/></p>
-<p>${birthDay}<input type="date" id="birthDay"></p>
-<p>${phoneNumber}<input type="text" id="phoneNumber"/></p>
+<div class="back">
+    <div class="container">
+        <div class="form-input">
+            <h2 class="form-input-heading">${signUp}</h2>
+            <input type="text" id="login" class="form-control" placeholder="${login}"/>
+            <input type="password" class="form-control" id="password" placeholder="${password}"/>
+            <input type="password" class="form-control" id="repeatPassword" placeholder="${repeatPassword}"/>
+            <input type="text" class="form-control" id="firstName" placeholder="${firstName}"/>
+            <input type="text" class="form-control" id="secondName" placeholder="${secondName}"/>
+            <input type="date" class="form-control" id="birthDay" placeholder="${birthDay}">
+            <input type="text" class="form-control" id="phoneNumber" placeholder="${phoneNumber}"/>
+            <div>
+                <input class="btn btn-lg btn-primary btn-block" type="submit" id="sign-up" value="${signUp}">
+            </div>
 
-<input type="submit" id="sign-up" value="${signUp}">
+            <div class="error" id="not-valid-login-error">
+                <p>${notValidLoginErrorMessage}</p>
+            </div>
 
-<div class="error" id="not-valid-login-error">
-    <p>${notValidLoginErrorMessage}</p>
+            <div class="error" id="login-exist-error">
+                <p>${loginExistErrorMessage}</p>
+            </div>
+
+            <div class="error" id="phone-number-exist-error">
+                <p>${phoneNumberExistErrorMessage}</p>
+            </div>
+
+            <div class="error" id="first-name-error">
+                <p>${firstNameErrorMessage}</p>
+            </div>
+
+            <div class="error" id="second-name-error">
+                <p>${secondNameErrorMessage}</p>
+            </div>
+
+            <div class="error" id="not-valid-password-error">
+                <p>${notValidPasswordErrorMessage}</p>
+            </div>
+
+            <div class="error" id="password-not-eq-error">
+                <p>${passwordNotEqMessage}</p>
+            </div>
+
+            <div class="error" id="birth-day-error">
+                <p>${birthDayErrorMessage}</p>
+            </div>
+
+            <div class="error" id="not-valid-phone-number-error">
+                <p>${notValidPhoneNumberErrorMessage}</p>
+            </div>
+
+            <div class="correct" id="all-correct">
+                <p>${allCorrectMessage}</p>
+            </div>
+
+        </div>
+    </div>
 </div>
-
-<div class="error" id="login-exist-error">
-    <p>${loginExistErrorMessage}</p>
-</div>
-
-<div class="error" id="phone-number-exist-error">
-    <p>${phoneNumberExistErrorMessage}</p>
-</div>
-
-<div class="error" id="first-name-error">
-    <p>${firstNameErrorMessage}</p>
-</div>
-
-<div class="error" id="second-name-error">
-    <p>${secondNameErrorMessage}</p>
-</div>
-
-<div class="error" id="not-valid-password-error">
-    <p>${notValidPasswordErrorMessage}</p>
-</div>
-
-<div class="error" id="password-not-eq-error">
-    <p>${passwordNotEqMessage}</p>
-</div>
-
-<div class="error" id="birth-day-error">
-    <p>${birthDayErrorMessage}</p>
-</div>
-
-<div class="error" id="not-valid-phone-number-error">
-    <p>${notValidPhoneNumberErrorMessage}</p>
-</div>
-
-<div class="correct" id="all-correct">
-    <p>${allCorrectMessage}</p>
-</div>
-
-<br/>
-
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>
 </html>

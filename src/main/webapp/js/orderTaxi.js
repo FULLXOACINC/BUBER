@@ -34,7 +34,7 @@ $(document).ready(function () {
             type: "POST",
             url: '/AJAXController',
             data: {
-                command: "geo-decode-raid-start-end",
+                command: "geo-decode-ride-start-end",
                 startAddress: $('#start-address').val(),
                 endAddress: $('#end-address').val()
             },
@@ -109,10 +109,8 @@ function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
 
                 var duration = response['duration'];
                 distance = response['distance'];
-                $('#distance-val').text(distance);
-                $('#duration-val').text(duration);
-                console.log(duration+" "+distance);
-
+                $('#distance-val').val("Растояние: "+distance);
+                $('#duration-val').val("Продолжительность: "+duration);
                 $('#duration').show();
                 $('#distance').show();
 
@@ -204,7 +202,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: new google.maps.LatLng(53.90453979999999, 27.5615344),
-        draggableCursor:'crosshair'
+        draggableCursor: 'crosshair'
     });
     rendererOptions = {
         map: map,
@@ -213,12 +211,12 @@ function initMap() {
         polylineOptions: {
             strokeWeight: 4,
             strokeOpacity: 1,
-            strokeColor: "#1d1e1f"
+            strokeColor: "#000000"
         }
     };
     map.addListener('click', function (e) {
-        startAddress=null;
-        endAddress=null;
+        startAddress = null;
+        endAddress = null;
         if (startMarker == null) {
             startMarker = new google.maps.Marker({
                 position: e.latLng,
@@ -256,14 +254,14 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
     var contentString = '<div id="content">' +
         '<div id="siteNotice">' +
         '</div>' +
-        '<h1 id="firstHeading" class="firstHeading">' + firstName + ' ' + LastName + '</h1>' +
         '<div id="bodyContent">' +
-        '<p><b>' + carNumber + '</b></p>' +
-        '<p><b>' + carMark + '</b></p>' +
-        '<p><b>' + positiveMark + '</b></p>' +
-        '<p><b>' + negativeMark + '</b></p>' +
-        '<p><b>' + tariff + '</b></p>' +
-        '<p><b>' + price + '</b></p>' +
+        '<div>' + firstName + ' ' + LastName + '</div>' +
+        '<div>' + carNumber + '</div>' +
+        '<div>' + carMark + '</div>' +
+        '<div>' + positiveMark + '</div>' +
+        '<div>' + negativeMark + '</div>' +
+        '<div>' + tariff + '</div>' +
+        '<div>' + price + '</div>' +
         '<button id="' + carNumber + '">Test</button>';
 
     var infoWindow = new google.maps.InfoWindow({

@@ -34,52 +34,54 @@
 </head>
 <body>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+<div class="back">
+    <div class="container">
+        <p>${login}<input type="text" id="login"/></p>
+        <p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
+        <p>${documentId}<input type="text" id="document-id" value="7AD123132"/></p>
+        <p>${carMark}<input type="text" id="car-mark"/></p>
+        <p>${tariff}<input type="text" id="tariff"/></p>
 
-<p>${login}<input type="text" id="login"/></p>
-<p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
-<p>${documentId}<input type="text" id="document-id" value="7AD123132"/></p>
-<p>${carMark}<input type="text" id="car-mark"/></p>
-<p>${tariff}<input type="text" id="tariff"/></p>
+        <p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
 
-<p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
+        <div class="error" id="car-number-error">
+            <p>${carNumberError}</p>
+        </div>
 
-<div class="error" id="car-number-error">
-    <p>${carNumberError}</p>
+        <div class="error" id="document-id-error">
+            <p>${documentIdError}</p>
+        </div>
+
+        <div class="error" id="car-mark-error">
+            <p>${carMarkError}</p>
+        </div>
+
+        <div class="error" id="login-not-exist-error">
+            <p>${loginNotExistError}</p>
+        </div>
+
+        <div class="error" id="driver-exist-error">
+            <p>${driverExistError}</p>
+        </div>
+
+        <div class="error" id="car-number-exist-error">
+            <p>${carNumberExistError}</p>
+        </div>
+
+        <div class="error" id="document-id-exist-error">
+            <p>${documentIdExistError}</p>
+        </div>
+
+        <div class="error" id="tariff-error">
+            <p>${tariffError}</p>
+        </div>
+
+        <div class="correct" id="all-correct">
+            <p>${driverSignUpCorrectMessage}</p>
+        </div>
+
+    </div>
 </div>
-
-<div class="error" id="document-id-error">
-    <p>${documentIdError}</p>
-</div>
-
-<div class="error" id="car-mark-error">
-    <p>${carMarkError}</p>
-</div>
-
-<div class="error" id="login-not-exist-error">
-    <p>${loginNotExistError}</p>
-</div>
-
-<div class="error" id="driver-exist-error">
-    <p>${driverExistError}</p>
-</div>
-
-<div class="error" id="car-number-exist-error">
-    <p>${carNumberExistError}</p>
-</div>
-
-<div class="error" id="document-id-exist-error">
-    <p>${documentIdExistError}</p>
-</div>
-
-<div class="error" id="tariff-error">
-    <p>${tariffError}</p>
-</div>
-
-<div class="correct" id="all-correct">
-    <p>${driverSignUpCorrectMessage}</p>
-</div>
-
-
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM-System java traning"/>
 </body>
 </html>

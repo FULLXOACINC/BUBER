@@ -93,4 +93,8 @@ public class UserReceiver {
         Finder<Complaint> complaintFinder = new Finder<>();
         return complaintFinder.findBySpecification(specification);
     }
+
+    public boolean isBalanceNegative(String login) {
+        return false;
+    }
 }
