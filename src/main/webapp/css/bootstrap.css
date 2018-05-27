@@ -3173,7 +3173,7 @@ tbody.collapse.show {
   color: #292b2c;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #1d1e1f;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -3188,12 +3188,13 @@ tbody.collapse.show {
 }
 
 .dropdown-item {
+  font-family: sans-serif;
   display: block;
   width: 100%;
   padding: 3px 1.5rem;
   clear: both;
   font-weight: normal;
-  color: #292b2c;
+  color: #fff000;
   text-align: inherit;
   white-space: nowrap;
   background: none;
@@ -3203,17 +3204,17 @@ tbody.collapse.show {
 .dropdown-item:focus, .dropdown-item:hover {
   color: #1d1e1f;
   text-decoration: none;
-  background-color: #f7f7f9;
+  background-color: #fff000;
 }
 
 .dropdown-item.active, .dropdown-item:active {
-  color: #fff;
+  color: #fff000;
   text-decoration: none;
-  background-color: #0275d8;
+  background-color: #1d1e1f;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
-  color: #636c72;
+  color: #fff000;
   cursor: not-allowed;
   background-color: transparent;
 }
