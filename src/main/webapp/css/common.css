@@ -1,10 +1,12 @@
 .error {
+    text-align: center;
     border: 2px solid red;
     background-color: #000000;
     color: red;
 }
 
 .correct {
+    text-align: center;
     border: 2px solid green;
     background-color: #000000;
     color: green;

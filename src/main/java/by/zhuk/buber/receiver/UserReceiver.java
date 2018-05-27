@@ -94,7 +94,14 @@ public class UserReceiver {
         return complaintFinder.findBySpecification(specification);
     }
 
-    public boolean isBalanceNegative(String login) {
-        return false;
+    public boolean isBalanceNegative(String login) throws ReceiverException {
+        FindSpecification<User> specification = new FindUserBalanceSpecification(login);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
+        if(users.isEmpty()){
+            return false;
+        }
+        BigDecimal balance=users.get(0).getBalance();
+        return balance.signum() == -1;
     }
 }

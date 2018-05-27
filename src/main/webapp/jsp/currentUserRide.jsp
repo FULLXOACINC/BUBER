@@ -39,43 +39,13 @@
 <div class="back">
     <div class="container">
         <div class="form-input">
-            <h2 class="form-input-heading">Заказать такси</h2>
-            <input type="text" id="start-address" class="form-control" placeholder="${startAddress}"/>
-            <input type="text" id="end-address" class="form-control" placeholder="${endAddress}"/>
+            <h2 class="form-input-heading">Текущая поездка</h2>
 
-            <div class="error" id="negative-balance">
-                <p>${negativeBalance}</p>
-            </div>
-            <div class="error" id="coordinate-not-valid">
-                <p>${coordinateNotValid}</p>
-            </div>
-            <div class="error" id="wrong-distance">
-                <p>${wrongDistance}</p>
-            </div>
-            <div class="error" id="order-exist">
-                <p>${orderExist}</p>
-            </div>
-            <div class="error" id="driver-not-exist">
-                <p>${driverNotExist}</p>
-            </div>
-            <div class="error" id="driver-not-suitable">
-                <p>${driverNotSuitable}</p>
-            </div>
-            <div class="error" id="driver-eq-passenger">
-                <p>${driverEqPassenger}</p>
-            </div>
-            <div class="correct" id="order-correct">
-                <p>${orderCorrect}</p>
-            </div>
+            <input type="text" class="form-control" value="${ride.rideId}" readonly/>
 
-
-            <div id="distance">
-                <input type="text" id="distance-val" class="form-control" readonly/>
-            </div>
-
-            <div id="duration">
-                <input type="text" id="duration-val" class="form-control" readonly/>
-            </div>
+            <input type="text" class="form-control" value="${ride.driver.phoneNumber}" readonly/>
+            <input type="text" class="form-control" value="${ride.driver.firstName} ${ride.driver.secondName}" readonly/>
+            <input type="text" class="form-control" value="${ride.driver.carMark.markName} ${ride.driver.carNumber}" readonly/>
 
             <input type="submit" class="btn btn-lg btn-primary btn-block" id="select-addresses"
                    value="${selectAddresses}"/>

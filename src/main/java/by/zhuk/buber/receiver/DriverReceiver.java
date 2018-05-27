@@ -8,6 +8,7 @@ import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
@@ -97,7 +98,16 @@ public class DriverReceiver {
         List<Driver> drivers = finder.findBySpecification(specification);
         return !drivers.isEmpty();
     }
-
+    public Optional<BigDecimal> findDriverTariff(String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindDriverTariffSpecification(driverLogin);
+        Finder<Driver> finder = new Finder<>();
+        List<Driver> drivers = finder.findBySpecification(specification);
+        Optional<BigDecimal> tariff = Optional.empty();
+        if (!drivers.isEmpty()) {
+            tariff = Optional.ofNullable(drivers.get(0).getTariff());
+        }
+        return tariff;
+    }
     public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);

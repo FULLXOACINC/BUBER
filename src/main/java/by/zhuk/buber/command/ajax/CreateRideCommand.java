@@ -2,10 +2,14 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.model.DistanceInfo;
+import by.zhuk.buber.receiver.DistanceReceiver;
 import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.RideReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.CoordinateValidator;
+import by.zhuk.buber.validator.DistanceValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -13,6 +17,7 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public class CreateRideCommand implements AJAXCommand {
 
@@ -27,8 +32,14 @@ public class CreateRideCommand implements AJAXCommand {
 
     private static final String DRIVER_NOT_EXIST = "driverNotExist";
     private static final String BALANCE_NEGATIVE = "balanceNegative";
+    private static final String DISTANCE_NOT_IN_RANGE = "distanceNotInRange";
     private static final String DRIVER_NOT_SUITABLE = "driverNotSuitable";
     private static final String NOT_VALID_COORDINATE = "notValidCoordinate";
+    private static final String RIDE_EXIST = "rideExist";
+    private static final String DRIVER_EQ_PASSENGER = "driverEqPassenger";
+
+    private static final BigDecimal THOUSAND = new BigDecimal("1000.00");
+    private static final int ROUND = 2;
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -45,31 +56,55 @@ public class CreateRideCommand implements AJAXCommand {
         RideReceiver rideReceiver = new RideReceiver();
         UserReceiver userReceiver = new UserReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
+        DistanceReceiver distanceReceiver = new DistanceReceiver();
 
         HttpSession session = request.getSession();
-        String login=(String)session.getAttribute(UserConstant.LOGIN);
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
-            float startLat =Float.parseFloat(startLatString);
-            float startLng =Float.parseFloat(startLngString);
-            float endLat =Float.parseFloat(endLatString);
-            float endLng =Float.parseFloat(endLngString);
+            float startLat = Float.parseFloat(startLatString);
+            float startLng = Float.parseFloat(startLngString);
+            float endLat = Float.parseFloat(endLatString);
+            float endLng = Float.parseFloat(endLngString);
             if (!driverReceiver.isDriverExist(driver)) {
                 json.put(DRIVER_NOT_EXIST, DRIVER_NOT_EXIST);
             }
             if (userReceiver.isBalanceNegative(login)) {
                 json.put(BALANCE_NEGATIVE, BALANCE_NEGATIVE);
             }
-            if (!driverReceiver.isDriverSuitable(startLat, startLng,driver)) {
+            if (rideReceiver.isRideExist(login)) {
+                json.put(RIDE_EXIST, RIDE_EXIST);
+            }
+            if (!driverReceiver.isDriverSuitable(startLat, startLng, driver)) {
                 json.put(DRIVER_NOT_SUITABLE, DRIVER_NOT_SUITABLE);
             }
-            //TODO проверить растояние
-
-
-            if (json.length() == 0) {
-
-                BigDecimal price = new BigDecimal("10.00");
-                rideReceiver.createRide(driver,login, startLat, startLng, endLat, endLng, price);
+            if (driver.equals(login)) {
+                json.put(DRIVER_EQ_PASSENGER, DRIVER_EQ_PASSENGER);
             }
+            Optional<DistanceInfo> distanceInfoOptional = distanceReceiver.findDistanceInfo(startLatString, startLngString, endLatString, endLngString);
+            if (distanceInfoOptional.isPresent()) {
+                DistanceInfo distanceInfo = distanceInfoOptional.get();
+                int distance = distanceInfo.getDistance();
+                if (!DistanceValidator.isDistanceInRange(distance)) {
+                    json.put(DISTANCE_NOT_IN_RANGE, DISTANCE_NOT_IN_RANGE);
+                }
+                if (json.length() == 0) {
+                    BigDecimal bigDecimalDistance = new BigDecimal(distance);
+                    Optional<BigDecimal> tariffOptional = driverReceiver.findDriverTariff(driver);
+                    if (tariffOptional.isPresent()) {
+                        BigDecimal tariff = tariffOptional.get();
+                        BigDecimal price = tariff.multiply(bigDecimalDistance).divide(THOUSAND,ROUND, BigDecimal.ROUND_HALF_UP);
+                        rideReceiver.createRide(driver, login, startLat, startLng, endLat, endLng, price);
+                        json.put(ALL_CORRECT, ALL_CORRECT);
+                    }else {
+                        logger.log(Level.WARN, "Unknown problem with tariff");
+                        json.put(ERROR, ERROR);
+                    }
+                }
+            } else {
+                logger.log(Level.WARN, "Unknown problem with DistanceInfo");
+                json.put(ERROR, ERROR);
+            }
+
 
         } catch (ReceiverException e) {
             logger.catching(e);

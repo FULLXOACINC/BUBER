@@ -14,8 +14,20 @@ var distance;
 var startAddress;
 var endAddress;
 
+function hideAllMessage() {
+    $('#order-correct').hide();
+    $('#driver-not-exist').hide();
+    $('#driver-not-suitable').hide();
+    $('#driver-eq-passenger').hide();
+    $('#negative-balance').hide();
+    $('#coordinate-not-valid').hide();
+    $('#wrong-distance').hide();
+    $('#order-exist').hide();
+}
+
 
 $(document).ready(function () {
+    hideAllMessage();
     $('#duration').hide();
     $('#distance').hide();
     var selectStartEndAddressFun = function () {
@@ -30,6 +42,7 @@ $(document).ready(function () {
         $('#distance').hide();
         startAddress = $('#start-address').val();
         endAddress = $('#end-address').val();
+        hideAllMessage();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
@@ -242,9 +255,7 @@ function initMap() {
 
 }
 
-
 function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativeMark, tariff, price, carNumber, carMark) {
-    console.log(lat + " " + lng);
     var marker = new google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
@@ -284,9 +295,51 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
     marker.addListener('click', function () {
         if (!secondClick) {
             infoWindow.open(marker.get('map'), marker);
-            console.log(carNumber);
             $('#' + carNumber).click(function () {
-                console.log(login);
+                $.ajax({
+                    type: "POST",
+                    url: '/AJAXController',
+                    data: {
+                        command: "create-ride",
+                        driver: login,
+                        startLat: startMarker.getPosition().lat(),
+                        startLng: startMarker.getPosition().lng(),
+                        endLat: endMarker.getPosition().lat(),
+                        endLng: endMarker.getPosition().lng()
+                    },
+                    success: function (response) {
+                        hideAllMessage();
+                        if (response['allCorrect']) {
+                            $('#order-correct').show();
+                        } else {
+                            if (response['driverNotExist']) {
+                                $('#driver-not-exist').show();
+                            }
+                            if (response['balanceNegative']) {
+                                $('#negative-balance').show();
+                            }
+                            if (response['distanceNotInRange']) {
+                                $('#wrong-distance').show();
+                            }
+                            if (response['driverNotSuitable']) {
+                                $('#driver-not-suitable').show();
+                            }
+                            if (response['notValidCoordinate']) {
+                                $('#coordinate-not-valid').show();
+                            }
+                            if (response['rideExist']) {
+                                $('#order-exist').show();
+                            }
+                            if (response['driverEqPassenger']) {
+                                $('#driver-eq-passenger').show();
+                            }
+
+                        }
+                    },
+                    error: function (exception) {
+                        console.log(exception);
+                    }
+                });
             });
             secondClick = true;
         } else {
