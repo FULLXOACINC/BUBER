@@ -12,6 +12,7 @@ import by.zhuk.buber.specification.find.complaint.FindUserComplaintsSpecificatio
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
+import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
 import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -103,5 +104,16 @@ public class UserReceiver {
         }
         BigDecimal balance=users.get(0).getBalance();
         return balance.signum() == -1;
+    }
+
+    public Optional<Float> findUserDiscount(String login) throws ReceiverException {
+        FindSpecification<User> specification = new FindUserDiscountSpecification(login);
+        Finder<User> userFinder = new Finder<>();
+        List<User> users = userFinder.findBySpecification(specification);
+        Optional<Float> discount = Optional.empty();
+        if (!users.isEmpty()) {
+            discount = Optional.of(users.get(0).getDiscount());
+        }
+        return discount;
     }
 }

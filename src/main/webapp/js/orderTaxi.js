@@ -10,9 +10,19 @@ var start;
 var drivers = [];
 
 var distance;
+var discount;
 
 var startAddress;
 var endAddress;
+
+var carNumberMessage;
+var carMarkMessage;
+var negativeMarkMessage;
+var tariffMessage;
+var priceMessage;
+var positiveMarkMessage;
+var withDiscount;
+var orderTaxi;
 
 function hideAllMessage() {
     $('#order-correct').hide();
@@ -27,6 +37,14 @@ function hideAllMessage() {
 
 
 $(document).ready(function () {
+    carNumberMessage=$('#car-number').val();
+    carMarkMessage=$('#car-mark').val();
+    negativeMarkMessage=$('#negative-mark').val();
+    tariffMessage=$('#tariff').val();
+    priceMessage=$('#price').val();
+    positiveMarkMessage=$('#positive-mark').val();
+    withDiscount=$('#with-discount').val();
+    orderTaxi=$('#order-taxi').val();
     hideAllMessage();
     $('#duration').hide();
     $('#distance').hide();
@@ -122,8 +140,9 @@ function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
 
                 var duration = response['duration'];
                 distance = response['distance'];
-                $('#distance-val').val("Растояние: "+distance);
-                $('#duration-val').val("Продолжительность: "+duration);
+                discount = response['discount'];
+                $('#distance-val').val("Растояние: " + distance);
+                $('#duration-val').val("Продолжительность: " + duration);
                 $('#duration').show();
                 $('#distance').show();
 
@@ -138,7 +157,7 @@ function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
                     success: function (response) {
                         if (!response['error'] && !response['notValidCoordinate']) {
                             response["drivers"].forEach(function (driver) {
-                                placeDriver(driver["firstName"], driver["lastName"], driver["lat"], driver["lng"], driver["login"], driver["positiveMark"], driver["negativeMark"], driver["tariff"], driver["drivers"], driver["carNumber"], driver["carMark"])
+                                placeDriver(driver["firstName"], driver["lastName"], driver["lat"], driver["lng"], driver["login"], driver["positiveMark"], driver["negativeMark"], driver["tariff"], driver["carNumber"], driver["carMark"])
                             });
                             var startCoordinate = new google.maps.LatLng(startLat, startLng);
                             var endCoordinate = new google.maps.LatLng(endLat, endLng);
@@ -255,25 +274,27 @@ function initMap() {
 
 }
 
-function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativeMark, tariff, price, carNumber, carMark) {
+function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativeMark, tariff, carNumber, carMark) {
     var marker = new google.maps.Marker({
         position: {lat: lat, lng: lng},
         map: map,
         icon: '/img/carMarker.svg'
     });
+    var price = precisionRound(distance * tariff/1000, 2);
+    var priceWithDiscount = precisionRound(price * (1 - discount), 2);
 
     var contentString = '<div id="content">' +
-        '<div id="siteNotice">' +
-        '</div>' +
+        // '<div id="siteNotice">' +
+        // '</div>' +
         '<div id="bodyContent">' +
         '<div>' + firstName + ' ' + LastName + '</div>' +
-        '<div>' + carNumber + '</div>' +
-        '<div>' + carMark + '</div>' +
-        '<div>' + positiveMark + '</div>' +
-        '<div>' + negativeMark + '</div>' +
-        '<div>' + tariff + '</div>' +
-        '<div>' + price + '</div>' +
-        '<button id="' + carNumber + '">Test</button>';
+        '<div>' +carNumberMessage+' '+ carNumber + '</div>' +
+        '<div>' +carMarkMessage+' '+ carMark + '</div>' +
+        '<div>' +positiveMarkMessage+' '+ positiveMark + '</div>' +
+        '<div>' +negativeMarkMessage+' '+ negativeMark + '</div>' +
+        '<div>' +tariffMessage+' '+ tariff + '</div>' +
+        '<div>' +priceMessage+' '+ price +' ('+withDiscount+' '+priceWithDiscount+ ')</div>' +
+        '<button class="btn btn-lg btn-primary btn-block" id="' + carNumber + '">'+orderTaxi+'</button></div>';
 
     var infoWindow = new google.maps.InfoWindow({
         content: contentString
@@ -349,4 +370,8 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
     });
 }
 
+function precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+}
 

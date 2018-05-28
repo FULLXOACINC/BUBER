@@ -1,14 +1,18 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
 import by.zhuk.buber.receiver.DistanceReceiver;
+import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.CoordinateValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public class FindDistanceInfoCommand implements AJAXCommand {
@@ -16,6 +20,7 @@ public class FindDistanceInfoCommand implements AJAXCommand {
 
     private static final String DISTANCE = "distance";
     private static final String DURATION = "duration";
+    private static final String DISCOUNT = "discount";
 
     private static final String START_LNG = "startLng";
     private static final String START_LAT = "startLat";
@@ -39,14 +44,26 @@ public class FindDistanceInfoCommand implements AJAXCommand {
         }
 
         DistanceReceiver distanceReceiver = new DistanceReceiver();
-
+        HttpSession session = request.getSession();
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
             Optional<DistanceInfo> optionalDistanceInfo = distanceReceiver.findDistanceInfo(startLat, startLng, endLat, endLng);
             if (optionalDistanceInfo.isPresent()) {
                 DistanceInfo distanceInfo = optionalDistanceInfo.get();
+                UserReceiver userReceiver = new UserReceiver();
+                Optional<Float> discountOptional = userReceiver.findUserDiscount(login);
 
-                json.put(DISTANCE, distanceInfo.getDistance());
-                json.put(DURATION, distanceInfo.getDuration());
+                if (discountOptional.isPresent()) {
+                    Float discount = discountOptional.get();
+
+                    json.put(DISTANCE, distanceInfo.getDistance());
+                    json.put(DURATION, distanceInfo.getDuration());
+                    json.put(DISCOUNT, discount);
+                }else {
+                    logger.log(Level.WARN, "Unknown problem with tariff or discount");
+                    json.put(ERROR, ERROR);
+                }
+
             } else {
                 json.put(FIND_PROBLEM, FIND_PROBLEM);
             }

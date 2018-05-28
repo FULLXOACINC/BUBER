@@ -90,13 +90,16 @@ public class CreateRideCommand implements AJAXCommand {
                 if (json.length() == 0) {
                     BigDecimal bigDecimalDistance = new BigDecimal(distance);
                     Optional<BigDecimal> tariffOptional = driverReceiver.findDriverTariff(driver);
-                    if (tariffOptional.isPresent()) {
+                    Optional<Float> discountOptional = userReceiver.findUserDiscount(login);
+                    if (tariffOptional.isPresent() && discountOptional.isPresent()) {
                         BigDecimal tariff = tariffOptional.get();
-                        BigDecimal price = tariff.multiply(bigDecimalDistance).divide(THOUSAND,ROUND, BigDecimal.ROUND_HALF_UP);
+                        Float discount = discountOptional.get();
+                        BigDecimal bigDecimalDiscount=new BigDecimal(1-discount);
+                        BigDecimal price = tariff.multiply(bigDecimalDistance).multiply(bigDecimalDiscount).divide(THOUSAND, ROUND, BigDecimal.ROUND_HALF_UP);
                         rideReceiver.createRide(driver, login, startLat, startLng, endLat, endLng, price);
                         json.put(ALL_CORRECT, ALL_CORRECT);
-                    }else {
-                        logger.log(Level.WARN, "Unknown problem with tariff");
+                    } else {
+                        logger.log(Level.WARN, "Unknown problem with tariff or discount");
                         json.put(ERROR, ERROR);
                     }
                 }

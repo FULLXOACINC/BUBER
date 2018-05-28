@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindCurrentUserRideSpecification implements FindSpecification<Ride> {
-    private static final String SELECT_USER_BALANCE_BY_LOGIN = "SELECT ride_index FROM buber_db.ride WHERE ride_passenger_login=? AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
+    private static final String SELECT_USER_BALANCE_BY_LOGIN = "SELECT ride_index FROM buber_db.ride WHERE (ride_passenger_login=? OR ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
     private String login;
 
     public FindCurrentUserRideSpecification(String login) {
@@ -29,6 +29,7 @@ public class FindCurrentUserRideSpecification implements FindSpecification<Ride>
     public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
         try {
             statement.setString(1, login);
+            statement.setString(2, login);
         } catch (SQLException e) {
             throw new SpecificationException(e);
         }

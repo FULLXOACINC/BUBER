@@ -3,7 +3,7 @@ package by.zhuk.buber.model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Driver {
+public class Driver extends User{
     private String login;
     private String carNumber;
     private String documentId;

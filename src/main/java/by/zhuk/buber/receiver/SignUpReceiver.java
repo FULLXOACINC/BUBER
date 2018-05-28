@@ -17,7 +17,11 @@ import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,9 +31,15 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SignUpReceiver {
-    private static String MAIL_BUNDLE = "properties/mailContent";
-    private static String HEAD = "head";
-    private static String CONTENT = "content";
+    private static Logger logger = LogManager.getLogger(SignUpReceiver.class);
+    private static final String MAIL_BUNDLE = "properties/signUpMailContent";
+    private static final String HEAD = "head";
+    private static final String CONTENT = "content";
+
+    private static final String DEFAULT_HEAD = "Hello,%s %s , you are greeted by the employees of BUBER, click on the link to confirm registration, all the best.<br/><a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=%s\">Go to confirm</a> ";
+    private static final String DEFAULT_CONTENT = "BUBER sign up";
+    private static final String PROPERTIES_EXTENSION =".properties";
+
 
 
     public void saveUser(User user) throws ReceiverException {
@@ -47,10 +57,20 @@ public class SignUpReceiver {
     public void sendAcceptMail(String login, String firstName, String lastName, String password, String birthDay, String phoneNumber, String lang) {
         String hash = String.valueOf(login.concat(password).hashCode());
         Locale locale = new Locale(lang);
-        ResourceBundle bundle = ResourceBundle.getBundle(MAIL_BUNDLE, locale);
 
-        String head = bundle.getString(HEAD);
-        String content = bundle.getString(CONTENT);
+        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
+        File file = new File(propsPath, MAIL_BUNDLE + PROPERTIES_EXTENSION);
+        String head;
+        String content;
+        if (file.exists()) {
+            ResourceBundle bundle = ResourceBundle.getBundle(MAIL_BUNDLE, locale);
+            head = bundle.getString(HEAD);
+            content = bundle.getString(CONTENT);
+        } else {
+            head = DEFAULT_HEAD;
+            content = DEFAULT_CONTENT;
+            logger.log(Level.WARN,"bundle not found + "+MAIL_BUNDLE);
+        }
 
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
@@ -66,7 +86,7 @@ public class SignUpReceiver {
         pool.putInfo(hash, info);
     }
 
-    public void saveDriver(String login, String carNumber, String documentId, String carMarkName,BigDecimal tariff) throws ReceiverException {
+    public void saveDriver(String login, String carNumber, String documentId, String carMarkName, BigDecimal tariff) throws ReceiverException {
 
         Repository<Driver> driverRepository = new Repository<>();
         Repository<CarMark> carMarkRepository = new Repository<>();

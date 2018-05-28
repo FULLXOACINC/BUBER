@@ -14,6 +14,14 @@
 <fmt:message bundle="${locale}" key="text.clearMap" var="clearMap"/>
 <fmt:message bundle="${locale}" key="text.distance" var="distance"/>
 <fmt:message bundle="${locale}" key="text.duration" var="duration"/>
+<fmt:message bundle="${locale}" key="text.carNumber" var="carNumber"/>
+<fmt:message bundle="${locale}" key="text.carMark" var="carMark"/>
+<fmt:message bundle="${locale}" key="text.tariff" var="tariff"/>
+<fmt:message bundle="${locale}" key="text.price" var="price"/>
+<fmt:message bundle="${locale}" key="text.positiveMark" var="positiveMark"/>
+<fmt:message bundle="${locale}" key="text.negativeMark" var="negativeMark"/>
+<fmt:message bundle="${locale}" key="text.withDiscount" var="withDiscount"/>
+<fmt:message bundle="${locale}" key="text.orderTaxi" var="orderTaxi"/>
 
 <fmt:message bundle="${locale}" key="text.negativeBalance" var="negativeBalance"/>
 <fmt:message bundle="${locale}" key="text.coordinateNotValid" var="coordinateNotValid"/>
@@ -36,10 +44,23 @@
     </script>
 </head>
 <body>
+<div class="constant">
+    <input type="hidden" id="car-number" value="${carNumber}"/>
+    <input type="hidden" id="car-mark" value="${carMark}"/>
+    <input type="hidden" id="tariff" value="${tariff}"/>
+    <input type="hidden" id="positive-mark" value="${positiveMark}"/>
+    <input type="hidden" id="negative-mark" value="${negativeMark}"/>
+    <input type="hidden" id="price" value="${price}"/>
+    <input type="hidden" id="with-discount" value="${withDiscount}"/>
+    <input type="hidden" id="distance-mess" value="${distance}"/>
+    <input type="hidden" id="duration-mess" value="${duration}"/>
+    <input type="hidden" id="order-taxi" value="${orderTaxi}"/>
+
+</div>
 <div class="back">
     <div class="container">
         <div class="form-input">
-            <h2 class="form-input-heading">Заказать такси</h2>
+            <h2 class="form-input-heading">${orderTaxi}</h2>
             <input type="text" id="start-address" class="form-control" placeholder="${startAddress}"/>
             <input type="text" id="end-address" class="form-control" placeholder="${endAddress}"/>
 

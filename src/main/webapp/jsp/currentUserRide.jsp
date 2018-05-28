@@ -15,16 +15,6 @@
 <fmt:message bundle="${locale}" key="text.distance" var="distance"/>
 <fmt:message bundle="${locale}" key="text.duration" var="duration"/>
 
-<fmt:message bundle="${locale}" key="text.negativeBalance" var="negativeBalance"/>
-<fmt:message bundle="${locale}" key="text.coordinateNotValid" var="coordinateNotValid"/>
-<fmt:message bundle="${locale}" key="text.wrongDistance" var="wrongDistance"/>
-<fmt:message bundle="${locale}" key="text.orderExist" var="orderExist"/>
-<fmt:message bundle="${locale}" key="text.orderCorrect" var="orderCorrect"/>
-<fmt:message bundle="${locale}" key="text.driverNotExist" var="driverNotExist"/>
-<fmt:message bundle="${locale}" key="text.driverNotSuitable" var="driverNotSuitable"/>
-<fmt:message bundle="${locale}" key="text.driverEqPassenger" var="driverEqPassenger"/>
-
-
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>

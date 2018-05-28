@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -10,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class FindSuitableDriversCommand implements AJAXCommand {
@@ -34,14 +36,15 @@ public class FindSuitableDriversCommand implements AJAXCommand {
         }
 
         DriverReceiver driverReceiver = new DriverReceiver();
-
+        HttpSession session = request.getSession();
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
-            List<Driver> drivers = driverReceiver.findSuitableDrivers(Float.parseFloat(lat), Float.parseFloat(lng));
+            List<Driver> drivers = driverReceiver.findSuitableDrivers(Float.parseFloat(lat), Float.parseFloat(lng),login);
             JSONArray array = new JSONArray();
             for (Driver driver : drivers) {
                 JSONObject object = new JSONObject();
-                object.put("firstName", "TEST");
-                object.put("lastName", "TEST");
+                object.put("firstName", driver.getFirstName());
+                object.put("lastName", driver.getLastName());
                 object.put("lat", driver.getCurrentLatCoordinate());
                 object.put("lng", driver.getCurrentLngCoordinate());
                 object.put("login", driver.getLogin());

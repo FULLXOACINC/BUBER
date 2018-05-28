@@ -86,8 +86,8 @@ public class DriverReceiver {
         return driver;
     }
 
-    public List<Driver> findSuitableDrivers(float lat, float lng) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng);
+    public List<Driver> findSuitableDrivers(float lat, float lng,String login) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng,login);
         Finder<Driver> finder = new Finder<>();
         return finder.findBySpecification(specification);
     }

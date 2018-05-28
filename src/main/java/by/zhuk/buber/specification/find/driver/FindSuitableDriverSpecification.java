@@ -12,13 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindSuitableDriverSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_SUITABLE_DRIVER = "SELECT driver_login,driver_car_number,car_mark_id,car_mark_name,driver_positive_mark,driver_negative_mark,driver_tariff,driver_current_lat_coordinate,driver_current_lng_coordinate FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate- ?,2))<10 AND driver_is_working=1 ORDER BY driver_positive_mark DESC LIMIT 3";
+    private static final String SELECT_SUITABLE_DRIVER = "SELECT driver_login,driver_car_number,car_mark_id,car_mark_name,driver_positive_mark,driver_negative_mark,driver_tariff,driver_current_lat_coordinate,driver_current_lng_coordinate,user_name,user_second_name FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark INNER JOIN buber_db.user ON buber_db.driver.driver_login=buber_db.user.user_login WHERE SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate- ?,2))<10 AND driver_is_working=1 AND driver_login!=? ORDER BY driver_positive_mark DESC LIMIT 3";
     private float lat;
     private float lng;
+    private String login;
 
-    public FindSuitableDriverSpecification(float lat, float lng) {
+    public FindSuitableDriverSpecification(float lat, float lng, String login) {
         this.lat = lat;
         this.lng = lng;
+        this.login = login;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class FindSuitableDriverSpecification implements FindSpecification<Driver
         try {
             statement.setFloat(1, lat);
             statement.setFloat(2, lng);
+            statement.setString(3, login);
         } catch (SQLException e) {
             throw new SpecificationException(e);
         }
@@ -53,8 +56,13 @@ public class FindSuitableDriverSpecification implements FindSpecification<Driver
                 driver.setNegativeMark(resultSet.getInt(6));
                 driver.setTariff(resultSet.getBigDecimal(7));
 
+
                 driver.setCurrentLatCoordinate(resultSet.getFloat(8));
                 driver.setCurrentLngCoordinate(resultSet.getFloat(9));
+
+                driver.setFirstName(resultSet.getString(10));
+                driver.setLastName(resultSet.getString(11));
+
 
                 drivers.add(driver);
             }
