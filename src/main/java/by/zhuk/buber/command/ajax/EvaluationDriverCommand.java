@@ -43,7 +43,7 @@ public class EvaluationDriverCommand implements AJAXCommand {
                 } else {
                     driverReceiver.incrementNegativeMark(driver);
                 }
-                json.put(ALL_CORRECT,ALL_CORRECT);
+                json.put(ALL_CORRECT, ALL_CORRECT);
                 session.removeAttribute(UserConstant.EVALUATION_TOKEN);
             } else {
                 json.put("driverNotFound", "driverNotFound");

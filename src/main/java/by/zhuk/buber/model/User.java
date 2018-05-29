@@ -2,7 +2,6 @@ package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class User {
     private String login;
@@ -15,7 +14,6 @@ public class User {
     private BigDecimal balance;
     private UserType type;
     private float discount;
-
 
 
     public User() {

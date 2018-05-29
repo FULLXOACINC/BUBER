@@ -26,12 +26,12 @@
     </filter-mapping>
 
 
-    <!--<error-page>-->
-    <!--<location>/jsp/error/errorDB.jsp</location>-->
-    <!--</error-page>-->
-    <!--<error-page>-->
-    <!--<error-code>404</error-code>-->
-    <!--<location>/jsp/error/error404.jsp</location>-->
-    <!--</error-page>-->
+    <error-page>
+        <!--<location>/jsp/error/errorDB.jsp</location>-->
+        <!--</error-page>-->
+        <!--<error-page>-->
+        <error-code>404</error-code>
+        <location>/jsp/error/error404.jsp</location>
+    </error-page>
 
 </web-app>

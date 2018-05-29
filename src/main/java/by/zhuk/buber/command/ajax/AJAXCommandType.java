@@ -21,8 +21,8 @@ public enum AJAXCommandType {
     EVALUATION_DRIVER(new EvaluationDriverCommand()),
     COMPLAINT_PASSENGER(new ComplaintPassengerCommand()),
     REFUSE_RIDE_PASSENGER(new RefuseRidePassengerCommand()),
-
-
+    DRIVER_SET_NOT_WORKING_STATUS(new DriverSetNotWorkingStatusCommand()),
+    DRIVER_SET_WORKING_STATUS(new DriverSetWorkingStatusCommand()),
     CHANGE_DISCOUNT(new ChangeDiscountCommand());
 
     private AJAXCommand command;

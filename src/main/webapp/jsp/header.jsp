@@ -18,11 +18,16 @@
 <fmt:message bundle="${locale}" key="text.admin.findUsers" var="findUsers"/>
 <fmt:message bundle="${locale}" key="text.currentRide" var="currentRide"/>
 <fmt:message bundle="${locale}" key="text.signInHeading" var="signIn"/>
+
+<fmt:message bundle="${locale}" key="text.setStatusWorking" var="setStatusWorking"/>
+<fmt:message bundle="${locale}" key="text.setStatusNotWorking" var="setStatusNotWorking"/>
 <html>
 <head>
     <title>${buber}</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/header.js"></script>
+
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
@@ -111,10 +116,24 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
-                                        <input class="dropdown-item" type="submit" value="currentRaid">
+                                    <form action="${pageContext.request.contextPath}/jsp/currentDriverRide.jsp">
+                                        <input class="dropdown-item" type="submit" value="${currentRide}">
                                     </form>
                                 </div>
+                                <div>
+                                    <input class="dropdown-item" type="submit" id="is-working"
+                                           value="${setStatusWorking}">
+                                </div>
+                                <div>
+                                    <input class="dropdown-item" type="submit" id="is-not-working"
+                                           value="${setStatusNotWorking}">
+                                </div>
+                                <div>
+                                    <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
+                                        <input class="dropdown-item" type="submit" value="viewHistory">
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </c:if>

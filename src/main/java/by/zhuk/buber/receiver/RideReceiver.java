@@ -55,8 +55,8 @@ public class RideReceiver {
     private static final String DEFAULT_DRIVER_HEAD = "BUBER ride(driver).";
     private static final String PROPERTIES_EXTENSION = ".properties";
 
-    private static final BigDecimal DRIVER_PERCENT =new BigDecimal("0.85");
-    private static final BigDecimal FINE_PRICE =new BigDecimal("2.50");
+    private static final BigDecimal DRIVER_PERCENT = new BigDecimal("0.85");
+    private static final BigDecimal FINE_PRICE = new BigDecimal("2.50");
 
     public void createRide(String driver, String passenger, float startLat, float startLng, float endLat, float endLng, BigDecimal price) throws ReceiverException {
         Repository<Ride> rideRepository = new Repository<>();
@@ -159,13 +159,13 @@ public class RideReceiver {
     }
 
     public void passengerAcceptEnd(Ride ride) throws ReceiverException {
-        String passengerLogin=ride.getPassenger().getLogin();
-        String driverLogin=ride.getDriver().getLogin();
+        String passengerLogin = ride.getPassenger().getLogin();
+        String driverLogin = ride.getDriver().getLogin();
 
         Repository<Ride> rideRepository = new Repository<>();
         Repository<Driver> driverRepository = new Repository<>();
         Repository<User> userRepository = new Repository<>();
-        RepositoryController controller = new RepositoryController(rideRepository,driverRepository,userRepository);
+        RepositoryController controller = new RepositoryController(rideRepository, driverRepository, userRepository);
         try {
             controller.startTransaction();
             Specification rideUpdateSpecification = new UpdateRideUserAcceptEndSpecification(ride.getRideId());
@@ -174,23 +174,23 @@ public class RideReceiver {
             BigDecimal price = ride.getPrice();
 
             FindSpecification<User> findUserBalanceSpecification = new FindUserBalanceSpecification(passengerLogin);
-            List<User> users=userRepository.find(findUserBalanceSpecification);
+            List<User> users = userRepository.find(findUserBalanceSpecification);
             User passenger = users.get(0);
             BigDecimal balance = passenger.getBalance();
             BigDecimal newPassengerBalance = balance.subtract(price);
-            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin,newPassengerBalance);
+            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin, newPassengerBalance);
             userRepository.update(updateUserSpecification);
 
             FindSpecification<Driver> findDriverEarnedMoneySpecification = new FindDriverEarnedMoneySpecification(driverLogin);
-            List<Driver> drivers=driverRepository.find(findDriverEarnedMoneySpecification);
+            List<Driver> drivers = driverRepository.find(findDriverEarnedMoneySpecification);
             Driver driver = drivers.get(0);
             BigDecimal earnedMoney = driver.getEarnedMoney();
             BigDecimal newDriverEarnedMoney = price.multiply(DRIVER_PERCENT).add(earnedMoney);
-            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin,newDriverEarnedMoney);
+            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin, newDriverEarnedMoney);
             driverRepository.update(updateDriverEarnedMoneySpecification);
 
 
-            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true,driverLogin);
+            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true, driverLogin);
             driverRepository.update(updateDriverIsWorkingSpecification);
 
             controller.commit();
@@ -213,36 +213,36 @@ public class RideReceiver {
     }
 
     public void passengerRefuse(Ride ride) throws ReceiverException {
-        String passengerLogin=ride.getPassenger().getLogin();
-        String driverLogin=ride.getDriver().getLogin();
+        String passengerLogin = ride.getPassenger().getLogin();
+        String driverLogin = ride.getDriver().getLogin();
 
         Repository<Ride> rideRepository = new Repository<>();
         Repository<Driver> driverRepository = new Repository<>();
         Repository<User> userRepository = new Repository<>();
-        RepositoryController controller = new RepositoryController(rideRepository,driverRepository,userRepository);
+        RepositoryController controller = new RepositoryController(rideRepository, driverRepository, userRepository);
         try {
             controller.startTransaction();
             Specification rideUpdateSpecification = new UpdateRideAllAcceptSpecification(ride.getRideId());
             rideRepository.update(rideUpdateSpecification);
 
             FindSpecification<User> findUserBalanceSpecification = new FindUserBalanceSpecification(passengerLogin);
-            List<User> users=userRepository.find(findUserBalanceSpecification);
+            List<User> users = userRepository.find(findUserBalanceSpecification);
             User passenger = users.get(0);
             BigDecimal balance = passenger.getBalance();
             BigDecimal newPassengerBalance = balance.subtract(FINE_PRICE);
-            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin,newPassengerBalance);
+            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin, newPassengerBalance);
             userRepository.update(updateUserSpecification);
 
             FindSpecification<Driver> findDriverEarnedMoneySpecification = new FindDriverEarnedMoneySpecification(driverLogin);
-            List<Driver> drivers=driverRepository.find(findDriverEarnedMoneySpecification);
+            List<Driver> drivers = driverRepository.find(findDriverEarnedMoneySpecification);
             Driver driver = drivers.get(0);
             BigDecimal earnedMoney = driver.getEarnedMoney();
             BigDecimal newDriverEarnedMoney = FINE_PRICE.multiply(DRIVER_PERCENT).add(earnedMoney);
-            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin,newDriverEarnedMoney);
+            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin, newDriverEarnedMoney);
             driverRepository.update(updateDriverEarnedMoneySpecification);
 
 
-            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true,driverLogin);
+            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true, driverLogin);
             driverRepository.update(updateDriverIsWorkingSpecification);
 
 

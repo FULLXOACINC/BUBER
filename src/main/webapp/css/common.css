@@ -31,15 +31,19 @@
 .ride-accept {
     display: none;
 }
+
 #ride-not-found {
     display: none;
 }
-#evaluation{
+
+#evaluation {
     display: none;
 }
-#complaint-div{
+
+#complaint-div {
     display: none;
 }
+
 .back {
     min-height: 30rem;
     position: relative;

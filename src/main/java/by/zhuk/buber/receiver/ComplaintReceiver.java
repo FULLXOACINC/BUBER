@@ -3,12 +3,10 @@ package by.zhuk.buber.receiver;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.Complaint;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddComplaintSpecification;
-import by.zhuk.buber.specification.add.AddUserSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.complaint.FindComplaintByRideIdSpecification;
 import by.zhuk.buber.specification.find.complaint.FindUnacceptedComplaintsSpecification;
@@ -37,7 +35,7 @@ public class ComplaintReceiver {
     }
 
     public boolean isPassengerComplaintExist(int rideId, String login) throws ReceiverException {
-        FindSpecification<Complaint> specification = new FindComplaintByRideIdSpecification(login,rideId);
+        FindSpecification<Complaint> specification = new FindComplaintByRideIdSpecification(login, rideId);
         Finder<Complaint> complaintFinder = new Finder<>();
         List<Complaint> complaints = complaintFinder.findBySpecification(specification);
         return !complaints.isEmpty();

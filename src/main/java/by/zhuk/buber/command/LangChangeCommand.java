@@ -12,7 +12,7 @@ public class LangChangeCommand implements Command {
         String lang = request.getParameter(LANG);
         HttpSession session = request.getSession();
         session.setAttribute(LANG, lang);
-        String lastPage = (String)session.getAttribute(LAST_PAGE);
+        String lastPage = (String) session.getAttribute(LAST_PAGE);
         System.out.println(lastPage);
         return new Router(TransitionType.REDIRECT, lastPage);
     }
