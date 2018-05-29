@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-public class RefuseRidePassenger implements AJAXCommand {
-    private static Logger logger = LogManager.getLogger(RefuseRidePassenger.class);
+public class RefuseRidePassengerCommand implements AJAXCommand {
+    private static Logger logger = LogManager.getLogger(RefuseRidePassengerCommand.class);
     private static final String LANG = "lang";
+
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -43,7 +44,7 @@ public class RefuseRidePassenger implements AJAXCommand {
                     session.setAttribute(UserConstant.COMPLAINT_TOKEN, UserConstant.COMPLAINT_TOKEN);
                     json.put(ALL_CORRECT, ALL_CORRECT);
                     json.put("rideId", ride.getRideId());
-                    rideReceiver.sendRefuseUserMail(driver.getLogin(),lang);
+                    rideReceiver.sendRefuseUserMail(driver.getLogin(), lang);
                 } else {
                     json.put("driverNotAccept", "driverNotAccept");
                 }
@@ -57,5 +58,4 @@ public class RefuseRidePassenger implements AJAXCommand {
         return json;
 
     }
-}
 }

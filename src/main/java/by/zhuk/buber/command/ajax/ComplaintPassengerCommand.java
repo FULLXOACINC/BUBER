@@ -3,7 +3,6 @@ package by.zhuk.buber.command.ajax;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.receiver.ComplaintReceiver;
-import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.RideReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,21 +31,21 @@ public class ComplaintPassengerCommand implements AJAXCommand {
             json.put(ERROR, "notExistComplaintToken");
             return json;
         }
-        if (!rideId.matches(INTEGER_REGEX)) {
+        if (rideId == null || !rideId.matches(INTEGER_REGEX)) {
             json.put(ERROR, ERROR);
             return json;
         }
         try {
-            int intRideId= Integer.parseInt(rideId);
-            if(complaintReceiver.isPassengerComplaintExist(intRideId,login)){
+            int intRideId = Integer.parseInt(rideId);
+            if (complaintReceiver.isPassengerComplaintExist(intRideId, login)) {
                 json.put("complaintExist", "complaintExist");
                 return json;
             }
             Optional<String> driverLoginOptional = rideReceiver.findDriverLoginByRide(intRideId);
             if (driverLoginOptional.isPresent()) {
                 String driver = driverLoginOptional.get();
-                complaintReceiver.createComplaint(driver,intRideId,complaint);
-                json.put(ALL_CORRECT,ALL_CORRECT);
+                complaintReceiver.createComplaint(driver, intRideId, complaint);
+                json.put(ALL_CORRECT, ALL_CORRECT);
                 session.removeAttribute(UserConstant.COMPLAINT_TOKEN);
             } else {
                 json.put("driverNotFound", "driverNotFound");

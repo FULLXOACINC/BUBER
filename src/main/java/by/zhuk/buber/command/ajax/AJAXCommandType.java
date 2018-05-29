@@ -20,6 +20,7 @@ public enum AJAXCommandType {
     ACCEPT_END_RIDE_PASSENGER(new AcceptEndRidePassengerCommand()),
     EVALUATION_DRIVER(new EvaluationDriverCommand()),
     COMPLAINT_PASSENGER(new ComplaintPassengerCommand()),
+    REFUSE_RIDE_PASSENGER(new RefuseRidePassengerCommand()),
 
 
     CHANGE_DISCOUNT(new ChangeDiscountCommand());

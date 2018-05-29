@@ -26,7 +26,7 @@ public class AcceptStartRidePassengerCommand implements AJAXCommand {
             if (rideOptional.isPresent()) {
                 Ride ride = rideOptional.get();
                 if (ride.isDriverAcceptStart()) {
-                    rideReceiver.userAcceptStart(ride.getRideId());
+                    rideReceiver.passengerAcceptStart(ride.getRideId());
                     json.put(ALL_CORRECT, ALL_CORRECT);
                 } else {
                     json.put("driverNotAccept", "driverNotAccept");

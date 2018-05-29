@@ -19,6 +19,7 @@ import by.zhuk.buber.specification.find.ride.FindRideInfoPassengerSpecification;
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.UpdateDriverIsWorkingSpecification;
+import by.zhuk.buber.specification.update.UpdateRideAllAcceptSpecification;
 import by.zhuk.buber.specification.update.UpdateRideUserAcceptEndSpecification;
 import by.zhuk.buber.specification.update.UpdateRideUserAcceptStartSpecification;
 import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
@@ -37,18 +38,25 @@ import java.util.ResourceBundle;
 public class RideReceiver {
     private static Logger logger = LogManager.getLogger(SignUpReceiver.class);
     private static final String USER_MAIL_BUNDLE = "properties/rideUserMailContent";
+    private static final String USER_REFUSE_MAIL_BUNDLE = "properties/refuseUserMailContent";
+    private static final String DRIVER_REFUSE_MAIL_BUNDLE = "properties/refuseDriverMailContent";
     private static final String DRIVER_MAIL_BUNDLE = "properties/rideDriverMailContent";
     private static final String HEAD = "head";
     private static final String CONTENT = "content";
 
     private static final String DEFAULT_USER_CONTENT = "Your driver: %s %s <br/>. Machine number: %s <br/>.Mark of the machine: %s <br/>.Phone number: %s.<br/><a href=\"http://localhost:8080/controller?command=view-user-ride\">More information</a>";
     private static final String DEFAULT_USER_HEAD = "BUBER ride.";
+
+    private static final String DEFAULT_REFUSE_USER_CONTENT = "Your passenger refused to ride.";
+    private static final String DEFAULT_REFUSE_USER_HEAD = "BUBER passenger refuse.";
+    private static final String DEFAULT_REFUSE_DRIVER_CONTENT = "Your driver refused to ride.";
+    private static final String DEFAULT_REFUSE_DRIVER_HEAD = "BUBER driver refuse.";
     private static final String DEFAULT_DRIVER_CONTENT = "Your passenger: %s %s <br/>.Phone number: %s.<br/><a href=\"http://localhost:8080/controller?command=view-driver-ride\">More information</a>";
     private static final String DEFAULT_DRIVER_HEAD = "BUBER ride(driver).";
     private static final String PROPERTIES_EXTENSION = ".properties";
 
-    private static final BigDecimal DRIVER_PROCENT=new BigDecimal("0.85");
-
+    private static final BigDecimal DRIVER_PERCENT =new BigDecimal("0.85");
+    private static final BigDecimal FINE_PRICE =new BigDecimal("2.50");
 
     public void createRide(String driver, String passenger, float startLat, float startLng, float endLat, float endLng, BigDecimal price) throws ReceiverException {
         Repository<Ride> rideRepository = new Repository<>();
@@ -138,7 +146,7 @@ public class RideReceiver {
         return ride;
     }
 
-    public void userAcceptStart(int rideId) throws ReceiverException {
+    public void passengerAcceptStart(int rideId) throws ReceiverException {
         Repository<Ride> rideRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(rideRepository);
         try {
@@ -177,9 +185,13 @@ public class RideReceiver {
             List<Driver> drivers=driverRepository.find(findDriverEarnedMoneySpecification);
             Driver driver = drivers.get(0);
             BigDecimal earnedMoney = driver.getEarnedMoney();
-            BigDecimal newDriverEarnedMoney = price.multiply(DRIVER_PROCENT).add(earnedMoney);
+            BigDecimal newDriverEarnedMoney = price.multiply(DRIVER_PERCENT).add(earnedMoney);
             Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin,newDriverEarnedMoney);
-            userRepository.update(updateDriverEarnedMoneySpecification);
+            driverRepository.update(updateDriverEarnedMoneySpecification);
+
+
+            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true,driverLogin);
+            driverRepository.update(updateDriverIsWorkingSpecification);
 
             controller.commit();
             controller.endTransaction();
@@ -198,5 +210,87 @@ public class RideReceiver {
             driverLogin = Optional.ofNullable(rides.get(0).getDriver().getLogin());
         }
         return driverLogin;
+    }
+
+    public void passengerRefuse(Ride ride) throws ReceiverException {
+        String passengerLogin=ride.getPassenger().getLogin();
+        String driverLogin=ride.getDriver().getLogin();
+
+        Repository<Ride> rideRepository = new Repository<>();
+        Repository<Driver> driverRepository = new Repository<>();
+        Repository<User> userRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository,driverRepository,userRepository);
+        try {
+            controller.startTransaction();
+            Specification rideUpdateSpecification = new UpdateRideAllAcceptSpecification(ride.getRideId());
+            rideRepository.update(rideUpdateSpecification);
+
+            FindSpecification<User> findUserBalanceSpecification = new FindUserBalanceSpecification(passengerLogin);
+            List<User> users=userRepository.find(findUserBalanceSpecification);
+            User passenger = users.get(0);
+            BigDecimal balance = passenger.getBalance();
+            BigDecimal newPassengerBalance = balance.subtract(FINE_PRICE);
+            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin,newPassengerBalance);
+            userRepository.update(updateUserSpecification);
+
+            FindSpecification<Driver> findDriverEarnedMoneySpecification = new FindDriverEarnedMoneySpecification(driverLogin);
+            List<Driver> drivers=driverRepository.find(findDriverEarnedMoneySpecification);
+            Driver driver = drivers.get(0);
+            BigDecimal earnedMoney = driver.getEarnedMoney();
+            BigDecimal newDriverEarnedMoney = FINE_PRICE.multiply(DRIVER_PERCENT).add(earnedMoney);
+            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin,newDriverEarnedMoney);
+            driverRepository.update(updateDriverEarnedMoneySpecification);
+
+
+            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true,driverLogin);
+            driverRepository.update(updateDriverIsWorkingSpecification);
+
+
+            controller.commit();
+            controller.endTransaction();
+        } catch (RepositoryException e) {
+            controller.rollBack();
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void sendRefuseUserMail(String login, String lang) {
+        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
+        Locale locale = new Locale(lang);
+        File file = new File(propsPath, USER_REFUSE_MAIL_BUNDLE + PROPERTIES_EXTENSION);
+        String head;
+        String content;
+        if (file.exists()) {
+            ResourceBundle bundle = ResourceBundle.getBundle(USER_REFUSE_MAIL_BUNDLE, locale);
+            head = bundle.getString(HEAD);
+            content = bundle.getString(CONTENT);
+        } else {
+            head = DEFAULT_REFUSE_USER_HEAD;
+            content = DEFAULT_REFUSE_USER_CONTENT;
+            logger.log(Level.WARN, "bundle not found + " + USER_REFUSE_MAIL_BUNDLE);
+        }
+
+        MailThread thread = new MailThread(login, head, content, MailProperty.getInstance().getProperties());
+        thread.start();
+    }
+
+    public void sendRefuseDriverMail(String login, String lang) {
+        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
+        Locale locale = new Locale(lang);
+        File file = new File(propsPath, DRIVER_REFUSE_MAIL_BUNDLE + PROPERTIES_EXTENSION);
+        String head;
+        String content;
+        if (file.exists()) {
+            ResourceBundle bundle = ResourceBundle.getBundle(DRIVER_REFUSE_MAIL_BUNDLE, locale);
+            head = bundle.getString(HEAD);
+            content = bundle.getString(CONTENT);
+        } else {
+            head = DEFAULT_REFUSE_DRIVER_HEAD;
+            content = DEFAULT_REFUSE_DRIVER_CONTENT;
+            logger.log(Level.WARN, "bundle not found + " + DRIVER_REFUSE_MAIL_BUNDLE);
+        }
+
+        MailThread thread = new MailThread(login, head, content, MailProperty.getInstance().getProperties());
+        thread.start();
     }
 }

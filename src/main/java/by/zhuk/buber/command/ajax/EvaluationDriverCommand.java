@@ -29,7 +29,7 @@ public class EvaluationDriverCommand implements AJAXCommand {
             json.put("notExistEvaluationToken", "notExistEvaluationToken");
             return json;
         }
-        if (!rideId.matches(INTEGER_REGEX)) {
+        if (rideId == null || !rideId.matches(INTEGER_REGEX)) {
             json.put(ERROR, ERROR);
             return json;
         }

@@ -16,7 +16,7 @@
 <fmt:message bundle="${locale}" key="text.waitDriverStart" var="waitDriverStart"/>
 <fmt:message bundle="${locale}" key="text.rideNotFound" var="rideNotFound"/>
 <fmt:message bundle="${locale}" key="text.waitDriverEnd" var="waitDriverEnd"/>
-<fmt:message bundle="${locale}" key="text.refuse" var="refuse"/>
+<fmt:message bundle="${locale}" key="text.refuseUser" var="refuseUser"/>
 <fmt:message bundle="${locale}" key="text.rideId" var="rideId"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.rideEndCorrect" var="rideEndCorrect"/>
@@ -67,7 +67,7 @@
                        readonly/>
                 <input type="text" class="form-control ride-accept" id="wait-end" value="${waitDriverEnd}"
                        readonly/>
-                <input type="submit" class="btn btn-lg btn-primary btn-block" id="refuse" value="${refuse}"/>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="refuse" value="${refuseUser}"/>
 
                 <div id="map"></div>
             </div>

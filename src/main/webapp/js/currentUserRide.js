@@ -28,6 +28,7 @@ $(document).ready(function () {
                     $('#evaluation').show();
                     $('#complaint-div').show();
                     $('#ride-not-found').hide();
+                    rideId = response['rideId'];
                 } else {
                     console.log(response);
                 }
@@ -85,6 +86,9 @@ $(document).ready(function () {
         });
     };
     var sendComplaintFun = function () {
+        if (rideId == null) {
+            return;
+        }
         if ($('#complaint').val() === '') {
             return;
         }
