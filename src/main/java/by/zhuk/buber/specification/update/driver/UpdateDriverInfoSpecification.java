@@ -1,4 +1,4 @@
-package by.zhuk.buber.specification.update;
+package by.zhuk.buber.specification.update.driver;
 
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.model.Driver;

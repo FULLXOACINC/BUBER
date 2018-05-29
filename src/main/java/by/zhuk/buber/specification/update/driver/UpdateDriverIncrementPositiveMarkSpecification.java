@@ -1,4 +1,4 @@
-package by.zhuk.buber.specification.update;
+package by.zhuk.buber.specification.update.driver;
 
 import by.zhuk.buber.exeption.SpecificationException;
 import by.zhuk.buber.specification.Specification;
@@ -6,18 +6,18 @@ import by.zhuk.buber.specification.Specification;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UpdateDriverIncrementNegativeMarkSpecification implements Specification {
-    private static final String UPDATE_DRIVER_INCREMENT_NEGATIVE_MARK = "UPDATE buber_db.driver SET driver_negative_mark=driver_negative_mark + 1 WHERE driver_login=?;";
+public class UpdateDriverIncrementPositiveMarkSpecification implements Specification {
+    private static final String UPDATE_DRIVER_INCREMENT_POSITIVE_MARK = "UPDATE buber_db.driver SET driver_positive_mark=driver_positive_mark + 1 WHERE driver_login=?;";
     private String login;
 
 
-    public UpdateDriverIncrementNegativeMarkSpecification(String login) {
+    public UpdateDriverIncrementPositiveMarkSpecification(String login) {
         this.login = login;
     }
 
     @Override
     public String takePrepareQuery() {
-        return UPDATE_DRIVER_INCREMENT_NEGATIVE_MARK;
+        return UPDATE_DRIVER_INCREMENT_POSITIVE_MARK;
     }
 
     @Override

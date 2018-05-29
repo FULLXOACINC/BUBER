@@ -14,7 +14,7 @@ import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
 import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
 import by.zhuk.buber.specification.find.user.FindUserInfoForRideSpecification;
-import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

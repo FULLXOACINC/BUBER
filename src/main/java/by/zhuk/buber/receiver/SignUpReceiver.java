@@ -16,7 +16,7 @@ import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
-import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserTypeSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

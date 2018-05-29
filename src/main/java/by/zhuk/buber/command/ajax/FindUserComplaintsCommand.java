@@ -13,7 +13,7 @@ import java.util.List;
 
 public class FindUserComplaintsCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
-    private static final String COMPLAINTS = "complaints";
+    private static final String COMPLAINTS = "complaint";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {

@@ -10,7 +10,7 @@ import by.zhuk.buber.specification.add.AddComplaintSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.complaint.FindComplaintByRideIdSpecification;
 import by.zhuk.buber.specification.find.complaint.FindUnacceptedComplaintsSpecification;
-import by.zhuk.buber.specification.update.UpdateComplaintAcceptSpecification;
+import by.zhuk.buber.specification.update.complaint.UpdateComplaintAcceptSpecification;
 
 import java.util.List;
 

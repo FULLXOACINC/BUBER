@@ -22,19 +22,19 @@ $(document).ready(function () {
         });
     };
     var viewComplaintsFun = function () {
-        $('#complaints').empty();
+        $('#complaint').empty();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
-                command: "find-user-complaints",
+                command: "find-user-complaint",
                 login: $('#login').val()
             },
             success: function (response) {
                 if (!response['error']) {
-                    response['complaints'].forEach(function (complaint) {
+                    response['complaint'].forEach(function (complaint) {
                         if (!complaint.accept) {
-                            $('#complaints').append("<div id='complaint-" + complaint.complaintId + "'>" +
+                            $('#complaint').append("<div id='complaint-" + complaint.complaintId + "'>" +
                                 "<div>ID: " + complaint.complaintId + "</div>\n" +
                                 "<div>RAID ID: " + complaint.raidId + "</div>\n" +
                                 "<div id='" + complaint.complaintId + "-text'></div>\n" +
@@ -66,7 +66,7 @@ $(document).ready(function () {
                             };
                             $('#' + complaint.complaintId).click(acceptComplaintFun);
                         } else {
-                            $('#complaints').append("<div id='complaint-" + complaint.complaintId + "'>" +
+                            $('#complaint').append("<div id='complaint-" + complaint.complaintId + "'>" +
                                 "<div>ID: " + complaint.complaintId + "</div>\n" +
                                 "<div>RAID ID: " + complaint.raidId + "</div>\n" +
                                 "<div id='" + complaint.complaintId + "-text'></div>\n" +
@@ -84,6 +84,6 @@ $(document).ready(function () {
             }
         });
     };
-    $('#view-complaints').click(viewComplaintsFun);
+    $('#view-complaint').click(viewComplaintsFun);
     $('#change-discount').click(changeDiscountFun);
 });

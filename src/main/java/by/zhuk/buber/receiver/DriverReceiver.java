@@ -16,11 +16,11 @@ import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverCurrentCoordinateSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverIncrementNegativeMarkSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverIncrementPositiveMarkSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverInfoSpecification;
-import by.zhuk.buber.specification.update.UpdateDriverIsWorkingSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverCurrentCoordinateSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMarkSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverInfoSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;

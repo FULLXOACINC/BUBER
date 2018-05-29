@@ -9,9 +9,9 @@ import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPatternSpecification;
-import by.zhuk.buber.specification.update.UpdateUserBanStatusSpecification;
-import by.zhuk.buber.specification.update.UpdateUserDiscountSpecification;
-import by.zhuk.buber.specification.update.UpdateUserTypeSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserBanStatusSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserDiscountSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserTypeSpecification;
 
 import java.util.List;
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ViewUnacceptedComplaintsCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUnacceptedComplaintsCommand.class);
-    private static final String COMPLAINTS = "complaints";
+    private static final String COMPLAINTS = "complaint";
 
     @Override
     public Router execute(HttpServletRequest request) {
