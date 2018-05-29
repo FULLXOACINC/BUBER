@@ -7,12 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UpdateDriverIsWorkingSpecification implements Specification {
-    private static final String UPDATE_IS_WORKING="UPDATE buber_db.driver SET driver_is_working=? WHERE driver_login=?";
+    private static final String UPDATE_IS_WORKING = "UPDATE buber_db.driver SET driver_is_working=? WHERE driver_login=?";
     private boolean isWorking;
     private String driver;
-    public UpdateDriverIsWorkingSpecification(boolean isWorking,String driver) {
-        this.isWorking=isWorking;
-        this.driver=driver;
+
+    public UpdateDriverIsWorkingSpecification(boolean isWorking, String driver) {
+        this.isWorking = isWorking;
+        this.driver = driver;
     }
 
     @Override

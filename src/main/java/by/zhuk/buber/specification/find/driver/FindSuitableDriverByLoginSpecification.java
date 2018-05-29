@@ -16,7 +16,7 @@ public class FindSuitableDriverByLoginSpecification implements FindSpecification
     private float lng;
     private String driver;
 
-    public FindSuitableDriverByLoginSpecification(float lat, float lng,String driver) {
+    public FindSuitableDriverByLoginSpecification(float lat, float lng, String driver) {
         this.lat = lat;
         this.lng = lng;
         this.driver = driver;

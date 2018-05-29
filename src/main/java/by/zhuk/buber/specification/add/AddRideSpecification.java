@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AddRideSpecification implements Specification {
-    private static final String INSERT_RIDE = "INSERT INTO buber_db.ride (ride_driver_login, ride_passenger_login, ride_start_lat_coordinate, ride_start_lng_coordinate, ride_end_lat_coordinate, ride_end_lng_coordinate, ride_price,  ride_is_passenger_start_accept, ride_is_driver_start_accept, ride_is_passenger_end_accept, ride_is_driver_end_accept) VALUES ( ?, ?, ?, ?, ?, ?, ?, '0', '0', '0', '0')";
+    private static final String INSERT_RIDE = "INSERT INTO buber_db.ride (ride_driver_login, ride_passenger_login, ride_start_lat_coordinate, ride_start_lng_coordinate, ride_end_lat_coordinate, ride_end_lng_coordinate, ride_price,ride_data,  ride_is_passenger_start_accept, ride_is_driver_start_accept, ride_is_passenger_end_accept, ride_is_driver_end_accept) VALUES ( ?, ?, ?, ?, ?, ?, ?,NOW(), '0', '0', '0', '0')";
     private String driver;
     private String passenger;
     private float startLat;

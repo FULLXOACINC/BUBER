@@ -11,7 +11,7 @@
 <fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
 <fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
 <fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
-<fmt:message bundle="${locale}" key="text.admin.raidId" var="raidId"/>
+<fmt:message bundle="${locale}" key="text.rideId" var="raidId"/>
 <fmt:message bundle="${locale}" key="text.admin.complaintId" var="complaintId"/>
 <fmt:message bundle="${locale}" key="text.admin.acceptComplaint" var="acceptComplaint"/>
 <html>

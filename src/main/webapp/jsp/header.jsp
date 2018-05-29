@@ -16,6 +16,7 @@
 <fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
 <fmt:message bundle="${locale}" key="text.admin.viewUnacceptedComplaints" var="viewUnacceptedComplaints"/>
 <fmt:message bundle="${locale}" key="text.admin.findUsers" var="findUsers"/>
+<fmt:message bundle="${locale}" key="text.currentRide" var="currentRide"/>
 <html>
 <head>
     <title>${buber}</title>
@@ -53,6 +54,11 @@
                             </form>
                         </div>
                         <div>
+                            <form action="${pageContext.request.contextPath}/jsp/currentUserRide.jsp">
+                                <input class="dropdown-item" type="submit" value="${currentRide}">
+                            </form>
+                        </div>
+                        <div>
                             <form action="${ pageContext.request.contextPath }/controller" method="post">
                                 <input type="hidden" name="command" value="sign-out">
                                 <input class="dropdown-item" type="submit" value="${signOut}">
@@ -60,7 +66,6 @@
                         </div>
                     </div>
                 </div>
-
 
 
                 <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
@@ -113,12 +118,12 @@
 
             </ul>
         </c:if>
-        <form action="${ pageContext.request.contextPath }/controller" method="post">
+        <form action="${ pageContext.request.contextPath }/controller">
             <input type="hidden" name="command" value="lang">
             <input type="hidden" name="lang" value="ru">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="RU">
         </form>
-        <form action="${ pageContext.request.contextPath }/controller" method="post">
+        <form action="${ pageContext.request.contextPath }/controller">
             <input type="hidden" name="command" value="lang">
             <input type="hidden" name="lang" value="en">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="EN">

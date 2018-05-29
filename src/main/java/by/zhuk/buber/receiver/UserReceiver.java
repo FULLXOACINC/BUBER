@@ -13,6 +13,7 @@ import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
 import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
+import by.zhuk.buber.specification.find.user.FindUserInfoForRideSpecification;
 import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -99,10 +100,10 @@ public class UserReceiver {
         FindSpecification<User> specification = new FindUserBalanceSpecification(login);
         Finder<User> userFinder = new Finder<>();
         List<User> users = userFinder.findBySpecification(specification);
-        if(users.isEmpty()){
+        if (users.isEmpty()) {
             return false;
         }
-        BigDecimal balance=users.get(0).getBalance();
+        BigDecimal balance = users.get(0).getBalance();
         return balance.signum() == -1;
     }
 
@@ -115,5 +116,16 @@ public class UserReceiver {
             discount = Optional.of(users.get(0).getDiscount());
         }
         return discount;
+    }
+
+    public Optional<User> findUserInfoForRide(String login) throws ReceiverException {
+        FindSpecification<User> specification = new FindUserInfoForRideSpecification(login);
+        Finder<User> finder = new Finder<>();
+        List<User> users = finder.findBySpecification(specification);
+        Optional<User> user = Optional.empty();
+        if (!users.isEmpty()) {
+            user = Optional.ofNullable(users.get(0));
+        }
+        return user;
     }
 }

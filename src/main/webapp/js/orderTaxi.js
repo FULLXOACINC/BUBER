@@ -21,6 +21,8 @@ var negativeMarkMessage;
 var tariffMessage;
 var priceMessage;
 var positiveMarkMessage;
+var distanceMessage;
+var durationMessage;
 var withDiscount;
 var orderTaxi;
 
@@ -37,14 +39,16 @@ function hideAllMessage() {
 
 
 $(document).ready(function () {
-    carNumberMessage=$('#car-number').val();
-    carMarkMessage=$('#car-mark').val();
-    negativeMarkMessage=$('#negative-mark').val();
-    tariffMessage=$('#tariff').val();
-    priceMessage=$('#price').val();
-    positiveMarkMessage=$('#positive-mark').val();
-    withDiscount=$('#with-discount').val();
-    orderTaxi=$('#order-taxi').val();
+    carNumberMessage = $('#car-number').val();
+    carMarkMessage = $('#car-mark').val();
+    negativeMarkMessage = $('#negative-mark').val();
+    tariffMessage = $('#tariff').val();
+    priceMessage = $('#price').val();
+    positiveMarkMessage = $('#positive-mark').val();
+    withDiscount = $('#with-discount').val();
+    orderTaxi = $('#order-taxi').val();
+    distanceMessage = $('#distance-mess').val();
+    durationMessage = $('#duration-mess').val();
     hideAllMessage();
     $('#duration').hide();
     $('#distance').hide();
@@ -141,8 +145,8 @@ function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
                 var duration = response['duration'];
                 distance = response['distance'];
                 discount = response['discount'];
-                $('#distance-val').val("Растояние: " + distance);
-                $('#duration-val').val("Продолжительность: " + duration);
+                $('#distance-val').val(distanceMessage + ": " + distance);
+                $('#duration-val').val(durationMessage + ": " + duration);
                 $('#duration').show();
                 $('#distance').show();
 
@@ -280,7 +284,7 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
         map: map,
         icon: '/img/carMarker.svg'
     });
-    var price = precisionRound(distance * tariff/1000, 2);
+    var price = precisionRound(distance * tariff / 1000, 2);
     var priceWithDiscount = precisionRound(price * (1 - discount), 2);
 
     var contentString = '<div id="content">' +
@@ -288,13 +292,13 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
         // '</div>' +
         '<div id="bodyContent">' +
         '<div>' + firstName + ' ' + LastName + '</div>' +
-        '<div>' +carNumberMessage+' '+ carNumber + '</div>' +
-        '<div>' +carMarkMessage+' '+ carMark + '</div>' +
-        '<div>' +positiveMarkMessage+' '+ positiveMark + '</div>' +
-        '<div>' +negativeMarkMessage+' '+ negativeMark + '</div>' +
-        '<div>' +tariffMessage+' '+ tariff + '</div>' +
-        '<div>' +priceMessage+' '+ price +' ('+withDiscount+' '+priceWithDiscount+ ')</div>' +
-        '<button class="btn btn-lg btn-primary btn-block" id="' + carNumber + '">'+orderTaxi+'</button></div>';
+        '<div>' + carNumberMessage + ' ' + carNumber + '</div>' +
+        '<div>' + carMarkMessage + ' ' + carMark + '</div>' +
+        '<div>' + positiveMarkMessage + ' ' + positiveMark + '</div>' +
+        '<div>' + negativeMarkMessage + ' ' + negativeMark + '</div>' +
+        '<div>' + tariffMessage + ' ' + tariff + '</div>' +
+        '<div>' + priceMessage + ' ' + price + ' (' + withDiscount + ' ' + priceWithDiscount + ')</div>' +
+        '<button class="btn btn-lg btn-primary btn-block" id="' + carNumber + '">' + orderTaxi + '</button></div>';
 
     var infoWindow = new google.maps.InfoWindow({
         content: contentString

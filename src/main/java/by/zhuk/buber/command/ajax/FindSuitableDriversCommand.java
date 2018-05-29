@@ -39,7 +39,7 @@ public class FindSuitableDriversCommand implements AJAXCommand {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
-            List<Driver> drivers = driverReceiver.findSuitableDrivers(Float.parseFloat(lat), Float.parseFloat(lng),login);
+            List<Driver> drivers = driverReceiver.findSuitableDrivers(Float.parseFloat(lat), Float.parseFloat(lng), login);
             JSONArray array = new JSONArray();
             for (Driver driver : drivers) {
                 JSONObject object = new JSONObject();

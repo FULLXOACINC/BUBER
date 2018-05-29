@@ -3,6 +3,8 @@ package by.zhuk.buber.command.ajax;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
+import by.zhuk.buber.model.Driver;
+import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.DistanceReceiver;
 import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.RideReceiver;
@@ -29,6 +31,7 @@ public class CreateRideCommand implements AJAXCommand {
     private static final String END_LAT = "endLat";
 
     private static final String DRIVER = "driver";
+    private static final String LANG = "lang";
 
     private static final String DRIVER_NOT_EXIST = "driverNotExist";
     private static final String BALANCE_NEGATIVE = "balanceNegative";
@@ -44,7 +47,7 @@ public class CreateRideCommand implements AJAXCommand {
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String driver = request.getParameter(DRIVER);
+        String driverLogin = request.getParameter(DRIVER);
         String startLatString = request.getParameter(START_LAT);
         String startLngString = request.getParameter(START_LNG);
         String endLatString = request.getParameter(END_LAT);
@@ -60,12 +63,13 @@ public class CreateRideCommand implements AJAXCommand {
 
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
+        String lang = (String) session.getAttribute(LANG);
         try {
             float startLat = Float.parseFloat(startLatString);
             float startLng = Float.parseFloat(startLngString);
             float endLat = Float.parseFloat(endLatString);
             float endLng = Float.parseFloat(endLngString);
-            if (!driverReceiver.isDriverExist(driver)) {
+            if (!driverReceiver.isDriverExist(driverLogin)) {
                 json.put(DRIVER_NOT_EXIST, DRIVER_NOT_EXIST);
             }
             if (userReceiver.isBalanceNegative(login)) {
@@ -74,10 +78,10 @@ public class CreateRideCommand implements AJAXCommand {
             if (rideReceiver.isRideExist(login)) {
                 json.put(RIDE_EXIST, RIDE_EXIST);
             }
-            if (!driverReceiver.isDriverSuitable(startLat, startLng, driver)) {
+            if (!driverReceiver.isDriverSuitable(startLat, startLng, driverLogin)) {
                 json.put(DRIVER_NOT_SUITABLE, DRIVER_NOT_SUITABLE);
             }
-            if (driver.equals(login)) {
+            if (driverLogin.equals(login)) {
                 json.put(DRIVER_EQ_PASSENGER, DRIVER_EQ_PASSENGER);
             }
             Optional<DistanceInfo> distanceInfoOptional = distanceReceiver.findDistanceInfo(startLatString, startLngString, endLatString, endLngString);
@@ -89,14 +93,22 @@ public class CreateRideCommand implements AJAXCommand {
                 }
                 if (json.length() == 0) {
                     BigDecimal bigDecimalDistance = new BigDecimal(distance);
-                    Optional<BigDecimal> tariffOptional = driverReceiver.findDriverTariff(driver);
+                    Optional<BigDecimal> tariffOptional = driverReceiver.findDriverTariff(driverLogin);
                     Optional<Float> discountOptional = userReceiver.findUserDiscount(login);
-                    if (tariffOptional.isPresent() && discountOptional.isPresent()) {
+                    Optional<Driver> driverOptional = driverReceiver.findDriverInfoForRide(driverLogin);
+                    Optional<User> userOptional = userReceiver.findUserInfoForRide(login);
+                    if (tariffOptional.isPresent() && discountOptional.isPresent() && userOptional.isPresent() && driverOptional.isPresent()) {
                         BigDecimal tariff = tariffOptional.get();
                         Float discount = discountOptional.get();
-                        BigDecimal bigDecimalDiscount=new BigDecimal(1-discount);
+                        Driver driver = driverOptional.get();
+                        User user = userOptional.get();
+                        BigDecimal bigDecimalDiscount = new BigDecimal(1 - discount);
                         BigDecimal price = tariff.multiply(bigDecimalDistance).multiply(bigDecimalDiscount).divide(THOUSAND, ROUND, BigDecimal.ROUND_HALF_UP);
-                        rideReceiver.createRide(driver, login, startLat, startLng, endLat, endLng, price);
+                        rideReceiver.createRide(driverLogin, login, startLat, startLng, endLat, endLng, price);
+
+                        rideReceiver.sendDriverMail(driverLogin, user.getFirstName(), user.getLastName(), user.getPhoneNumber(), lang);
+                        rideReceiver.sendUserMail(login, driver.getFirstName(), driver.getLastName(), driver.getCarNumber(), driver.getCarMark().getMarkName(), user.getPhoneNumber(), lang);
+
                         json.put(ALL_CORRECT, ALL_CORRECT);
                     } else {
                         logger.log(Level.WARN, "Unknown problem with tariff or discount");

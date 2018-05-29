@@ -3,8 +3,7 @@ package by.zhuk.buber.model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-public class Driver extends User{
-    private String login;
+public class Driver extends User {
     private String carNumber;
     private String documentId;
     private CarMark carMark;
@@ -14,15 +13,6 @@ public class Driver extends User{
     private int positiveMark;
     private int negativeMark;
     private BigDecimal tariff;
-
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getCarNumber() {
         return carNumber;
@@ -111,7 +101,6 @@ public class Driver extends User{
                 isWorking == driver.isWorking &&
                 positiveMark == driver.positiveMark &&
                 negativeMark == driver.negativeMark &&
-                Objects.equals(login, driver.login) &&
                 Objects.equals(carNumber, driver.carNumber) &&
                 Objects.equals(documentId, driver.documentId) &&
                 Objects.equals(carMark, driver.carMark) &&
@@ -121,13 +110,12 @@ public class Driver extends User{
     @Override
     public int hashCode() {
 
-        return Objects.hash(login, carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, positiveMark, negativeMark, tariff);
+        return Objects.hash(carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, positiveMark, negativeMark, tariff);
     }
 
     @Override
     public String toString() {
         return "Driver{" +
-                "login='" + login + '\'' +
                 ", carNumber='" + carNumber + '\'' +
                 ", documentId='" + documentId + '\'' +
                 ", carMark=" + carMark +

@@ -1,9 +1,7 @@
 package by.zhuk.buber.specification.find.ride;
 
 import by.zhuk.buber.exeption.SpecificationException;
-import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.specification.find.FindSpecification;
 
 import java.sql.PreparedStatement;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindCurrentUserRideSpecification implements FindSpecification<Ride> {
-    private static final String SELECT_USER_BALANCE_BY_LOGIN = "SELECT ride_index FROM buber_db.ride WHERE (ride_passenger_login=? OR ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
+    private static final String SELECT_CURRENT_USER_RIDE = "SELECT ride_index FROM buber_db.ride WHERE (ride_passenger_login=? OR ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
     private String login;
 
     public FindCurrentUserRideSpecification(String login) {
@@ -22,7 +20,7 @@ public class FindCurrentUserRideSpecification implements FindSpecification<Ride>
 
     @Override
     public String takePrepareQuery() {
-        return SELECT_USER_BALANCE_BY_LOGIN;
+        return SELECT_CURRENT_USER_RIDE;
     }
 
     @Override

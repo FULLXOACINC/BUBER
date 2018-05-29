@@ -31,6 +31,7 @@ public class SignInFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
+
         if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().equals(PagesConstant.SING_UP_PAGE) || request.getRequestURI().equals(PagesConstant.SIGN_IN_PAGE) || requestFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
@@ -46,7 +47,7 @@ public class SignInFilter implements Filter {
     }
 
     private boolean requestFile(String requestURI) {
-        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION)|| requestURI.endsWith(JPG_FILE_EXPANSION);
+        return requestURI.endsWith(CSS_FILE_EXPANSION) || requestURI.endsWith(JS_FILE_EXPANSION) || requestURI.endsWith(JPG_FILE_EXPANSION);
     }
 
     private boolean isLoginCommand(String command) {

@@ -24,7 +24,7 @@ $(document).ready(function () {
                 carNumber: $('#car-number').val(),
                 documentId: $('#document-id').val(),
                 carMark: $('#car-mark').val(),
-                tariff:$('#tariff').val()
+                tariff: $('#tariff').val()
             },
             success: function (response) {
 

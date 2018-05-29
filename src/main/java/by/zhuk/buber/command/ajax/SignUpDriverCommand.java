@@ -28,6 +28,7 @@ public class SignUpDriverCommand implements AJAXCommand {
     private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
     private static final String TARIFF_ERROR = "tariffError";
     private static final String TARIFF = "tariff";
+
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -67,7 +68,7 @@ public class SignUpDriverCommand implements AJAXCommand {
             if (json.length() == 0) {
                 SignUpReceiver signUpReceiver = new SignUpReceiver();
                 BigDecimal tariffBigDecimal = new BigDecimal(tariff);
-                signUpReceiver.saveDriver(login, carNumber, documentId, carMark,tariffBigDecimal);
+                signUpReceiver.saveDriver(login, carNumber, documentId, carMark, tariffBigDecimal);
                 json.put(ALL_CORRECT, ALL_CORRECT);
             }
         } catch (ReceiverException e) {

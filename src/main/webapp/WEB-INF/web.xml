@@ -9,6 +9,10 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>lastPage</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>signIn</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>

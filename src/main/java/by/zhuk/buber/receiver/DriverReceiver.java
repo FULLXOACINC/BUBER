@@ -8,12 +8,13 @@ import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
-import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
-import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverInfoForRideSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
+import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverCurrentCoordinateSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverInfoSpecification;
@@ -86,18 +87,19 @@ public class DriverReceiver {
         return driver;
     }
 
-    public List<Driver> findSuitableDrivers(float lat, float lng,String login) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng,login);
+    public List<Driver> findSuitableDrivers(float lat, float lng, String login) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng, login);
         Finder<Driver> finder = new Finder<>();
         return finder.findBySpecification(specification);
     }
 
-    public boolean isDriverSuitable(float lat, float lng,String driverLogin) throws ReceiverException {
-        FindSpecification<Driver> specification = new FindSuitableDriverByLoginSpecification(lat, lng,driverLogin);
+    public boolean isDriverSuitable(float lat, float lng, String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindSuitableDriverByLoginSpecification(lat, lng, driverLogin);
         Finder<Driver> finder = new Finder<>();
         List<Driver> drivers = finder.findBySpecification(specification);
         return !drivers.isEmpty();
     }
+
     public Optional<BigDecimal> findDriverTariff(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverTariffSpecification(driverLogin);
         Finder<Driver> finder = new Finder<>();
@@ -108,6 +110,7 @@ public class DriverReceiver {
         }
         return tariff;
     }
+
     public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);
@@ -119,5 +122,16 @@ public class DriverReceiver {
         } catch (RepositoryException e) {
             throw new ReceiverException(e);
         }
+    }
+
+    public Optional<Driver> findDriverInfoForRide(String driverLogin) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindDriverInfoForRideSpecification(driverLogin);
+        Finder<Driver> finder = new Finder<>();
+        List<Driver> drivers = finder.findBySpecification(specification);
+        Optional<Driver> driver = Optional.empty();
+        if (!drivers.isEmpty()) {
+            driver = Optional.ofNullable(drivers.get(0));
+        }
+        return driver;
     }
 }

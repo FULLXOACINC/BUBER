@@ -36,10 +36,9 @@ public class SignUpReceiver {
     private static final String HEAD = "head";
     private static final String CONTENT = "content";
 
-    private static final String DEFAULT_HEAD = "Hello,%s %s , you are greeted by the employees of BUBER, click on the link to confirm registration, all the best.<br/><a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=%s\">Go to confirm</a> ";
-    private static final String DEFAULT_CONTENT = "BUBER sign up";
-    private static final String PROPERTIES_EXTENSION =".properties";
-
+    private static final String DEFAULT_CONTENT = "Hello,%s %s , you are greeted by the employees of BUBER, click on the link to confirm registration, all the best.<br/><a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=%s\">Go to confirm</a> ";
+    private static final String DEFAULT_HEAD = "BUBER sign up";
+    private static final String PROPERTIES_EXTENSION = ".properties";
 
 
     public void saveUser(User user) throws ReceiverException {
@@ -69,7 +68,7 @@ public class SignUpReceiver {
         } else {
             head = DEFAULT_HEAD;
             content = DEFAULT_CONTENT;
-            logger.log(Level.WARN,"bundle not found + "+MAIL_BUNDLE);
+            logger.log(Level.WARN, "bundle not found + " + MAIL_BUNDLE);
         }
 
         StringBuilder stringBuilder = new StringBuilder();

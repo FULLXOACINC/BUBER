@@ -59,7 +59,7 @@ public class FindDistanceInfoCommand implements AJAXCommand {
                     json.put(DISTANCE, distanceInfo.getDistance());
                     json.put(DURATION, distanceInfo.getDuration());
                     json.put(DISCOUNT, discount);
-                }else {
+                } else {
                     logger.log(Level.WARN, "Unknown problem with tariff or discount");
                     json.put(ERROR, ERROR);
                 }
