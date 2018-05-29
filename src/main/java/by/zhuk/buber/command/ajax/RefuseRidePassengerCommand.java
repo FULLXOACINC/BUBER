@@ -17,12 +17,13 @@ import java.util.Optional;
 
 public class RefuseRidePassenger implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RefuseRidePassenger.class);
-
+    private static final String LANG = "lang";
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
+        String lang = (String) session.getAttribute(LANG);
         RideReceiver rideReceiver = new RideReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
@@ -42,7 +43,7 @@ public class RefuseRidePassenger implements AJAXCommand {
                     session.setAttribute(UserConstant.COMPLAINT_TOKEN, UserConstant.COMPLAINT_TOKEN);
                     json.put(ALL_CORRECT, ALL_CORRECT);
                     json.put("rideId", ride.getRideId());
-                    rideReceiver.sendRefuseUserMail();
+                    rideReceiver.sendRefuseUserMail(driver.getLogin(),lang);
                 } else {
                     json.put("driverNotAccept", "driverNotAccept");
                 }
