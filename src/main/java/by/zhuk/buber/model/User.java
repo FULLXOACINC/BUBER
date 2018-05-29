@@ -17,6 +17,7 @@ public class User {
     private float discount;
 
 
+
     public User() {
     }
 
@@ -117,44 +118,5 @@ public class User {
         balance = balance.add(moneyAmount);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        User user = (User) o;
-        return isBaned == user.isBaned &&
-                Float.compare(user.discount, discount) == 0 &&
-                Objects.equals(login, user.login) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(birthDay, user.birthDay) &&
-                Objects.equals(phoneNumber, user.phoneNumber) &&
-                Objects.equals(balance, user.balance) &&
-                type == user.type;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(login, firstName, lastName, password, birthDay, isBaned, phoneNumber, balance, type, discount);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDay=" + birthDay +
-                ", isBaned=" + isBaned +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", balance=" + balance +
-                ", type=" + type +
-                ", discount=" + discount +
-                '}';
-    }
 }

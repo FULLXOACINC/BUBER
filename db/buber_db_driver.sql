@@ -30,10 +30,9 @@ CREATE TABLE `driver` (
   `driver_current_lat_coordinate` float(10,6) NOT NULL,
   `driver_current_lng_coordinate` float(10,6) NOT NULL,
   `driver_is_working` tinyint(1) NOT NULL DEFAULT '1',
-  `driver_achieve_fast_and_furious` mediumint(9) NOT NULL,
-  `driver_achieve_narrator` mediumint(9) NOT NULL,
-  `driver_achieve_clear_car` mediumint(9) NOT NULL,
-  `driver_achieve_bad` mediumint(9) NOT NULL,
+  `driver_positive_mark` mediumint(9) NOT NULL,
+  `driver_negative_mark` mediumint(9) NOT NULL,
+  `driver_tariff` decimal(3,2) NOT NULL,
   PRIMARY KEY (`driver_login`),
   UNIQUE KEY `driver_car_number_UNIQUE` (`driver_car_number`),
   UNIQUE KEY `driver_document_id_UNIQUE` (`driver_document_id`),
@@ -48,7 +47,7 @@ CREATE TABLE `driver` (
 
 LOCK TABLES `driver` WRITE;
 /*!40000 ALTER TABLE `driver` DISABLE KEYS */;
-INSERT INTO `driver` VALUES ('bobkov@gmail.com','7511AT7','7AB203315',13,54.238991,35.238991,1,0,0,0,0),('fun@gmail.com','7522AT1','7AD123132',25,54.238991,35.238991,0,0,0,0,0),('golvol@gmail.com','7534AT7','7AB204115',13,54.238991,35.238991,1,0,0,0,0),('popov@gmail.com','4312FF5','7AB204225',12,54.238987,35.238934,1,0,0,0,0),('san91130324@gmail.com','7522AT2','7AD123139',12,54.238991,35.238991,0,0,0,0,0),('vlad@gmail.com','4323FF5','7AB204955',14,54.234432,34.238445,1,0,0,0,0),('void@yandex.ru','4312DD5','5AB205225',15,54.233212,35.332935,1,0,0,0,0);
+INSERT INTO `driver` VALUES ('bobkov@gmail.com','7511AT7','7AB203315',13,53.904537,27.561535,1,0,0,3.98),('fun@gmail.com','7522AT1','7AD123132',25,53.904537,27.561535,1,0,0,0.65),('golvol@gmail.com','7534AT7','7AB204115',13,53.904537,27.561535,1,0,0,1.23),('popov@gmail.com','4312FF5','7AB204225',12,53.905537,27.571535,1,2,0,0.94),('san91130324@gmail.com','7522AT7','7AD123188',17,53.949036,27.714005,0,3,0,0.98),('vlad@gmail.com','4323FF5','7AB204955',14,53.914536,27.561535,1,3,0,0.99),('void@yandex.ru','4312DD5','5AB205225',15,53.904537,27.561535,1,0,0,0.97);
 /*!40000 ALTER TABLE `driver` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16  3:11:14
+-- Dump completed on 2018-05-29  3:29:19

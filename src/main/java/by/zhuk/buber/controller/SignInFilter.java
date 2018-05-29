@@ -43,7 +43,6 @@ public class SignInFilter implements Filter {
             filterChain.doFilter(request, response);
         }
 
-
     }
 
     private boolean requestFile(String requestURI) {

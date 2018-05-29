@@ -1,9 +1,12 @@
 package by.zhuk.buber.model;
 
+import java.math.BigDecimal;
+
 public class Ride {
     private int rideId;
     private Driver driver;
     private User passenger;
+    private BigDecimal price;
     private Coordinate startCoordinate;
     private Coordinate endCoordinate;
     private boolean isDriverAcceptStart;
@@ -81,5 +84,13 @@ public class Ride {
 
     public void setPassengerAcceptEnd(boolean passengerAcceptEnd) {
         isPassengerAcceptEnd = passengerAcceptEnd;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

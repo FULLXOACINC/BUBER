@@ -3,10 +3,14 @@ package by.zhuk.buber.receiver;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.Complaint;
+import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
+import by.zhuk.buber.specification.add.AddComplaintSpecification;
+import by.zhuk.buber.specification.add.AddUserSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.complaint.FindComplaintByRideIdSpecification;
 import by.zhuk.buber.specification.find.complaint.FindUnacceptedComplaintsSpecification;
 import by.zhuk.buber.specification.update.UpdateComplaintAcceptSpecification;
 
@@ -30,5 +34,18 @@ public class ComplaintReceiver {
         } catch (RepositoryException e) {
             throw new ReceiverException(e);
         }
+    }
+
+    public boolean isPassengerComplaintExist(int rideId, String login) throws ReceiverException {
+        FindSpecification<Complaint> specification = new FindComplaintByRideIdSpecification(login,rideId);
+        Finder<Complaint> complaintFinder = new Finder<>();
+        List<Complaint> complaints = complaintFinder.findBySpecification(specification);
+        return !complaints.isEmpty();
+    }
+
+    public void createComplaint(String login, int intRideId, String complaint) throws ReceiverException {
+        Specification complaintAddSpecification = new AddComplaintSpecification(login, intRideId, complaint);
+        Adder<Complaint> adder = new Adder<>();
+        adder.addBySpecification(complaintAddSpecification);
     }
 }

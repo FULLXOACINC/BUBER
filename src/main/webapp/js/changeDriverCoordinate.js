@@ -4,7 +4,6 @@ var point;
 
 function changeCurrentCoordinateFun() {
     if (point == null) {
-        //TODO view error
         return;
     }
     $.ajax({

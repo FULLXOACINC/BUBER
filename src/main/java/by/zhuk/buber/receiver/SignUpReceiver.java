@@ -42,15 +42,9 @@ public class SignUpReceiver {
 
 
     public void saveUser(User user) throws ReceiverException {
-        Repository<User> repository = new Repository<>();
-        RepositoryController controller = new RepositoryController(repository);
-        try {
-            Specification carAddSpecification = new AddUserSpecification(user);
-            repository.add(carAddSpecification);
-            controller.end();
-        } catch (RepositoryException e) {
-            throw new ReceiverException(e);
-        }
+        Specification userAddSpecification = new AddUserSpecification(user);
+        Adder<User> adder = new Adder<>();
+        adder.addBySpecification(userAddSpecification);
     }
 
     public void sendAcceptMail(String login, String firstName, String lastName, String password, String birthDay, String phoneNumber, String lang) {

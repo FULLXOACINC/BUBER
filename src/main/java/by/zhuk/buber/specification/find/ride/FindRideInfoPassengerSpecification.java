@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindRideInfoPassengerSpecification implements FindSpecification<Ride> {
-    private static final String SELECT_PASSENGER_RIDE_INFO = "SELECT ride_index,ride_start_lat_coordinate,ride_start_lng_coordinate,ride_end_lat_coordinate,ride_end_lng_coordinate,ride_driver_login,ride_is_driver_start_accept,ride_is_driver_end_accept,ride_is_passenger_start_accept,ride_is_passenger_end_accept FROM buber_db.ride WHERE (ride_passenger_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
+    private static final String SELECT_PASSENGER_RIDE_INFO = "SELECT ride_index,ride_start_lat_coordinate,ride_start_lng_coordinate,ride_end_lat_coordinate,ride_end_lng_coordinate,ride_driver_login,ride_is_driver_start_accept,ride_is_driver_end_accept,ride_is_passenger_start_accept,ride_is_passenger_end_accept,ride_price FROM buber_db.ride WHERE (ride_passenger_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
     private String login;
 
     public FindRideInfoPassengerSpecification(String login) {
@@ -54,6 +54,7 @@ public class FindRideInfoPassengerSpecification implements FindSpecification<Rid
                 ride.setDriverAcceptEnd(resultSet.getBoolean(8));
                 ride.setPassengerAcceptStart(resultSet.getBoolean(9));
                 ride.setPassengerAcceptEnd(resultSet.getBoolean(10));
+                ride.setPrice(resultSet.getBigDecimal(11));
                 rides.add(ride);
             }
         } catch (SQLException e) {

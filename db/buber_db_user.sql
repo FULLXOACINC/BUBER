@@ -44,7 +44,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('bobkov@gmail.com','Filip','Funov','8c2442bc0d2443e69616fe0918ea5490c17d4407','admin',12.00,'+375291713223',1,'2018-01-01',0.10),('fun@gmail.com','Dima','Bobr','011c945f30ce2cbafc452f39840f025693339c42','driver',12.00,'+375291713226',0,'2018-01-01',0.30),('golvol@gmail.com','Bob','Sergeev','dbdc014496f6ebc404cdd1fe1da93061a1f8ff97','user',12.00,'+375292223312',0,'2018-01-01',0.10),('popov@gmail.com','Alex','Popov','fea7f657f56a2a448da7d4b535ee5e279caf3d9a','driver',15.00,'+375783212323',0,'2018-01-01',0.30),('root@gmail.com','Alex','Zhuk','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','root_admin',99999.00,'+375291713227',0,'2018-01-01',0.20),('san91130324@gmail.com','Alex','Zhuk','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',100.00,'+375291713299',0,'1998-04-13',0.99),('vlad@gmail.com','Vladislav','Voidov','011c945f30ce2cbafc452f39840f025693339c42','driver',12.00,'+375291842322',0,'2018-01-01',0.20),('void@yandex.ru','Keril','Dubov','cb990257247b592eaaed54b84b32d96b7904fd95','driver',12.00,'+375291713225',0,'2018-01-01',0.20);
+INSERT INTO `user` VALUES ('bobkov@gmail.com','Filip','Funov','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','admin',-12.00,'+375291713223',1,'1998-04-13',0.10),('buberteam@gmail.com','Alex','Zhuk','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','root_admin',99999.00,'+375291713227',0,'1998-04-13',0.20),('fun@gmail.com','Dima','Bobr','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',12.00,'+375291713226',0,'1998-04-13',0.30),('golvol@gmail.com','Bob','Sergeev','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','user',12.00,'+375292223312',0,'1998-04-13',0.10),('popov@gmail.com','Alex','Popov','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',15.00,'+375783212323',0,'1998-04-13',0.30),('san91130324@gmail.com','Alexander','Zhuk','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',1065.00,'+375291713299',0,'1998-04-13',0.99),('san91130324@mail.ru','Alex','Zhuk','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','user',0.00,'+375291713244',0,'1998-04-13',0.00),('vlad@gmail.com','Vladislav','Voidov','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',12.00,'+375291842322',0,'1998-04-13',0.20),('void@yandex.ru','Keril','Dubov','b1d8eca521bb2d7cb93812f0d4247caea1a15a9c','driver',12.00,'+375291713225',0,'1998-04-13',0.20);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16  3:11:14
+-- Dump completed on 2018-05-29  3:29:19

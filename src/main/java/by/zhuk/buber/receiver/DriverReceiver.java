@@ -3,6 +3,7 @@ package by.zhuk.buber.receiver;
 import by.zhuk.buber.exeption.ReceiverException;
 import by.zhuk.buber.exeption.RepositoryException;
 import by.zhuk.buber.model.CarMark;
+import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
@@ -16,7 +17,10 @@ import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
+import by.zhuk.buber.specification.update.UpdateComplaintAcceptSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverCurrentCoordinateSpecification;
+import by.zhuk.buber.specification.update.UpdateDriverIncrementNegativeMarkSpecification;
+import by.zhuk.buber.specification.update.UpdateDriverIncrementPositiveMarkSpecification;
 import by.zhuk.buber.specification.update.UpdateDriverInfoSpecification;
 
 import java.math.BigDecimal;
@@ -133,5 +137,28 @@ public class DriverReceiver {
             driver = Optional.ofNullable(drivers.get(0));
         }
         return driver;
+    }
+
+    public void incrementPositiveMark(String driver) throws ReceiverException {
+        Repository<Driver> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+        try {
+            Specification updateSpecification = new UpdateDriverIncrementPositiveMarkSpecification(driver);
+            repository.update(updateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+    public void incrementNegativeMark(String driver) throws ReceiverException {
+        Repository<Driver> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+        try {
+            Specification updateSpecification = new UpdateDriverIncrementNegativeMarkSpecification(driver);
+            repository.update(updateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
     }
 }

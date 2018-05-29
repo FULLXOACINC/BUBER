@@ -26,19 +26,22 @@ CREATE TABLE `ride` (
   `ride_index` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ride_driver_login` varchar(45) NOT NULL,
   `ride_passenger_login` varchar(45) NOT NULL,
-  `ride_begin_ lat_coordinate` float(10,6) NOT NULL,
-  `ride_begin_ lng_coordinate` float(10,6) NOT NULL,
-  `ride_end_ lat_coordinate` float(10,6) NOT NULL,
-  `ride_end_ lng_coordinate` float(10,6) NOT NULL,
-  `ride_cost` decimal(5,2) unsigned NOT NULL,
-  `ride_data_and_time_start` datetime NOT NULL,
-  `ride_data_and_time_end` varchar(45) DEFAULT NULL,
+  `ride_start_lat_coordinate` float(10,6) NOT NULL,
+  `ride_start_lng_coordinate` float(10,6) NOT NULL,
+  `ride_end_lat_coordinate` float(10,6) NOT NULL,
+  `ride_end_lng_coordinate` float(10,6) NOT NULL,
+  `ride_price` decimal(7,2) unsigned NOT NULL,
+  `ride_data` date DEFAULT NULL,
+  `ride_is_passenger_start_accept` tinyint(1) NOT NULL,
+  `ride_is_driver_start_accept` tinyint(1) NOT NULL,
+  `ride_is_passenger_end_accept` tinyint(1) NOT NULL,
+  `ride_is_driver_end_accept` tinyint(1) NOT NULL,
   PRIMARY KEY (`ride_index`),
   KEY `ride_passenger_login_idx` (`ride_passenger_login`,`ride_driver_login`),
   KEY `ride_driver_login_idx` (`ride_driver_login`),
-  CONSTRAINT `ride_driver_login` FOREIGN KEY (`ride_driver_login`) REFERENCES `user` (`user_login`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ride_driver_login` FOREIGN KEY (`ride_driver_login`) REFERENCES `driver` (`driver_login`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ride_passenger_login` FOREIGN KEY (`ride_passenger_login`) REFERENCES `user` (`user_login`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +50,7 @@ CREATE TABLE `ride` (
 
 LOCK TABLES `ride` WRITE;
 /*!40000 ALTER TABLE `ride` DISABLE KEYS */;
-INSERT INTO `ride` VALUES (2,'bobkov@gmail.com','fun@gmail.com',54.238991,35.238110,54.238125,35.238312,24.00,'2018-04-09 14:03:28','2018-04-09 14:43:28'),(3,'bobkov@gmail.com','void@yandex.ru',54.238323,35.234211,54.238422,35.238232,20.00,'2018-04-09 14:03:03','2018-04-09 14:43:28'),(4,'bobkov@gmail.com','root@gmail.com',54.238312,35.238422,54.232311,35.238319,10.00,'2018-04-09 14:03:03','2018-04-09 14:43:28'),(5,'vlad@gmail.com','golvol@gmail.com',54.238232,35.238865,54.233112,35.238319,13.00,'2018-04-09 14:03:03','2018-04-09 14:23:28'),(6,'void@yandex.ru','bobkov@gmail.com',54.238422,35.238743,54.238232,35.238319,18.00,'2018-04-09 14:03:03','2018-04-09 14:12:28');
+INSERT INTO `ride` VALUES (2,'bobkov@gmail.com','fun@gmail.com',54.238991,35.238110,54.238125,35.238312,24.00,'2018-04-09',1,1,1,1),(3,'bobkov@gmail.com','void@yandex.ru',54.238323,35.234211,54.238422,35.238232,20.00,'2018-04-09',1,1,1,1),(5,'vlad@gmail.com','golvol@gmail.com',54.238232,35.238865,54.233112,35.238319,13.00,'2018-04-09',1,1,1,1),(6,'void@yandex.ru','bobkov@gmail.com',54.238422,35.238743,54.238232,35.238319,18.00,'2018-04-09',1,1,1,1),(13,'san91130324@gmail.com','buberteam@gmail.com',53.941120,27.655682,53.900581,27.624460,4.84,'2018-05-29',0,0,0,0);
 /*!40000 ALTER TABLE `ride` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16  3:11:14
+-- Dump completed on 2018-05-29  3:29:18

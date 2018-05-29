@@ -6,14 +6,22 @@ import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
+import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddRideSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.find.ride.FindCurrentUserRideSpecification;
+import by.zhuk.buber.specification.find.ride.FindRideDriverLoginByRideIdSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideInfoPassengerSpecification;
+import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
+import by.zhuk.buber.specification.update.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.UpdateDriverIsWorkingSpecification;
+import by.zhuk.buber.specification.update.UpdateRideUserAcceptEndSpecification;
+import by.zhuk.buber.specification.update.UpdateRideUserAcceptStartSpecification;
+import by.zhuk.buber.specification.update.UpdateUserBalanceSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,6 +47,8 @@ public class RideReceiver {
     private static final String DEFAULT_DRIVER_HEAD = "BUBER ride(driver).";
     private static final String PROPERTIES_EXTENSION = ".properties";
 
+    private static final BigDecimal DRIVER_PROCENT=new BigDecimal("0.85");
+
 
     public void createRide(String driver, String passenger, float startLat, float startLng, float endLat, float endLng, BigDecimal price) throws ReceiverException {
         Repository<Ride> rideRepository = new Repository<>();
@@ -50,6 +60,7 @@ public class RideReceiver {
             rideRepository.add(rideAddSpecification);
             Specification updateDriverSpecification = new UpdateDriverIsWorkingSpecification(false, driver);
             driverRepository.update(updateDriverSpecification);
+            controller.commit();
             controller.endTransaction();
         } catch (RepositoryException e) {
             controller.rollBack();
@@ -125,5 +136,67 @@ public class RideReceiver {
             ride = Optional.ofNullable(rides.get(0));
         }
         return ride;
+    }
+
+    public void userAcceptStart(int rideId) throws ReceiverException {
+        Repository<Ride> rideRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository);
+        try {
+            Specification rideUpdateSpecification = new UpdateRideUserAcceptStartSpecification(rideId);
+            rideRepository.update(rideUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void passengerAcceptEnd(Ride ride) throws ReceiverException {
+        String passengerLogin=ride.getPassenger().getLogin();
+        String driverLogin=ride.getDriver().getLogin();
+
+        Repository<Ride> rideRepository = new Repository<>();
+        Repository<Driver> driverRepository = new Repository<>();
+        Repository<User> userRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository,driverRepository,userRepository);
+        try {
+            controller.startTransaction();
+            Specification rideUpdateSpecification = new UpdateRideUserAcceptEndSpecification(ride.getRideId());
+            rideRepository.update(rideUpdateSpecification);
+
+            BigDecimal price = ride.getPrice();
+
+            FindSpecification<User> findUserBalanceSpecification = new FindUserBalanceSpecification(passengerLogin);
+            List<User> users=userRepository.find(findUserBalanceSpecification);
+            User passenger = users.get(0);
+            BigDecimal balance = passenger.getBalance();
+            BigDecimal newPassengerBalance = balance.subtract(price);
+            Specification updateUserSpecification = new UpdateUserBalanceSpecification(passengerLogin,newPassengerBalance);
+            userRepository.update(updateUserSpecification);
+
+            FindSpecification<Driver> findDriverEarnedMoneySpecification = new FindDriverEarnedMoneySpecification(driverLogin);
+            List<Driver> drivers=driverRepository.find(findDriverEarnedMoneySpecification);
+            Driver driver = drivers.get(0);
+            BigDecimal earnedMoney = driver.getEarnedMoney();
+            BigDecimal newDriverEarnedMoney = price.multiply(DRIVER_PROCENT).add(earnedMoney);
+            Specification updateDriverEarnedMoneySpecification = new UpdateDriverEarnedMoneySpecification(driverLogin,newDriverEarnedMoney);
+            userRepository.update(updateDriverEarnedMoneySpecification);
+
+            controller.commit();
+            controller.endTransaction();
+        } catch (RepositoryException e) {
+            controller.rollBack();
+            throw new ReceiverException(e);
+        }
+    }
+
+    public Optional<String> findDriverLoginByRide(int rideId) throws ReceiverException {
+        FindSpecification<Ride> specification = new FindRideDriverLoginByRideIdSpecification(rideId);
+        Finder<Ride> finder = new Finder<>();
+        List<Ride> rides = finder.findBySpecification(specification);
+        Optional<String> driverLogin = Optional.empty();
+        if (!rides.isEmpty()) {
+            driverLogin = Optional.ofNullable(rides.get(0).getDriver().getLogin());
+        }
+        return driverLogin;
     }
 }

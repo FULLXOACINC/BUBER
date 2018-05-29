@@ -5,6 +5,9 @@ var carMarkMessage;
 var rideIdMessage;
 var phoneNumberMessage;
 
+var rideId;
+var type;
+
 $(document).ready(function () {
     $('#ride-end-correct').hide();
     carNumberMessage = $('#car-number-mess').val();
@@ -22,7 +25,9 @@ $(document).ready(function () {
             success: function (response) {
                 if (response['allCorrect']) {
                     $('#ride').hide();
-                    $('#ride-not-found').show();
+                    $('#evaluation').show();
+                    $('#complaint-div').show();
+                    $('#ride-not-found').hide();
                 } else {
                     console.log(response);
                 }
@@ -64,7 +69,37 @@ $(document).ready(function () {
             success: function (response) {
                 if (response['allCorrect']) {
                     $('#ride').hide();
-                    $('#ride-not-found').show();
+                    $('#evaluation').show();
+                    $('#complaint-div').show();
+
+                    $('#ride-not-found').hide();
+                    rideId = response['rideId'];
+                } else {
+                    console.log(response);
+                }
+
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+        });
+    };
+    var sendComplaintFun = function () {
+        if ($('#complaint').val() === '') {
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/AJAXController',
+            data: {
+                command: "complaint-passenger",
+                rideId: rideId,
+                complaint: $('#complaint').val()
+            },
+            success: function (response) {
+                if (response['allCorrect']) {
+                    $('#complaint-div').hide();
+                    rideId = response['rideId'];
                 } else {
                     console.log(response);
                 }
@@ -78,7 +113,15 @@ $(document).ready(function () {
     $('#refuse').click(refuseRideFun);
     $('#accept-start').click(acceptStartRideFun);
     $('#accept-end').click(acceptEndRideFun);
-
+    $('#positive-mark').click(function () {
+        type = "positive";
+        evaluationDriver();
+    });
+    $('#negative-mark').click(function () {
+        type = "negative";
+        evaluationDriver();
+    });
+    $('#send-complaint').click(sendComplaintFun);
 });
 
 
@@ -114,22 +157,22 @@ function initMap() {
                     var endLat = response['end']['lat'];
                     var endLng = response['end']['lng'];
 
-                    $('#ride-id').val(rideIdMessage+ ": " + response['rideId']);
+                    $('#ride-id').val(rideIdMessage + ": " + response['rideId']);
                     $('#driver-name').val(response['firstName'] + " " + response['lastName']);
                     $('#car-number').val(carNumberMessage + ": " + response['carNumber']);
                     $('#car-mark').val(carMarkMessage + ": " + response['carMark']);
                     $('#phone-number').val(phoneNumberMessage + ": " + response['phoneNumber']);
 
 
-                    if(!response['isDriverStart']){
+                    if (!response['isDriverStart']) {
                         $('#wait-start').show();
-                    }else{
-                        if(!response['isPassengerStart']){
+                    } else {
+                        if (!response['isPassengerStart']) {
                             $('#accept-start').show();
-                        }else{
-                            if(!response['isDriverEnd']){
+                        } else {
+                            if (!response['isDriverEnd']) {
                                 $('#wait-end').show();
-                            }else{
+                            } else {
                                 $('#accept-end').show();
                             }
                         }
@@ -202,3 +245,29 @@ function initMap() {
 
 }
 
+function evaluationDriver() {
+    if (rideId == null) {
+        return;
+    }
+    $.ajax({
+        type: "POST",
+        url: '/AJAXController',
+        data: {
+            command: "evaluation-driver",
+            rideId: rideId,
+            type: type
+        },
+        success: function (response) {
+            if (response['allCorrect']) {
+                $('#evaluation').hide();
+
+            } else {
+                console.log(response);
+            }
+
+        },
+        error: function (exception) {
+            console.log(exception);
+        }
+    });
+}

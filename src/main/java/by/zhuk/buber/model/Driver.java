@@ -1,7 +1,6 @@
 package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Driver extends User {
     private String carNumber;
@@ -13,6 +12,7 @@ public class Driver extends User {
     private int positiveMark;
     private int negativeMark;
     private BigDecimal tariff;
+    private BigDecimal earnedMoney;
 
     public String getCarNumber() {
         return carNumber;
@@ -87,44 +87,11 @@ public class Driver extends User {
         this.negativeMark = negativeMark;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Driver driver = (Driver) o;
-        return Float.compare(driver.currentLatCoordinate, currentLatCoordinate) == 0 &&
-                Float.compare(driver.currentLngCoordinate, currentLngCoordinate) == 0 &&
-                isWorking == driver.isWorking &&
-                positiveMark == driver.positiveMark &&
-                negativeMark == driver.negativeMark &&
-                Objects.equals(carNumber, driver.carNumber) &&
-                Objects.equals(documentId, driver.documentId) &&
-                Objects.equals(carMark, driver.carMark) &&
-                Objects.equals(tariff, driver.tariff);
+    public BigDecimal getEarnedMoney() {
+        return earnedMoney;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, positiveMark, negativeMark, tariff);
-    }
-
-    @Override
-    public String toString() {
-        return "Driver{" +
-                ", carNumber='" + carNumber + '\'' +
-                ", documentId='" + documentId + '\'' +
-                ", carMark=" + carMark +
-                ", currentLatCoordinate=" + currentLatCoordinate +
-                ", currentLngCoordinate=" + currentLngCoordinate +
-                ", isWorking=" + isWorking +
-                ", positiveMark=" + positiveMark +
-                ", negativeMark=" + negativeMark +
-                ", tariff=" + tariff +
-                '}';
+    public void setEarnedMoney(BigDecimal earnedMoney) {
+        this.earnedMoney = earnedMoney;
     }
 }

@@ -27,6 +27,7 @@ CREATE TABLE `complaint` (
   `complaint_person_login` varchar(45) NOT NULL,
   `complaint_raid_id` int(10) unsigned NOT NULL,
   `complaint_text` tinytext NOT NULL,
+  `complaint_is_accept` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`complaint_id`),
   KEY `fk_complaint_1_idx` (`complaint_person_login`),
   KEY `raid_id_idx` (`complaint_raid_id`),
@@ -41,7 +42,7 @@ CREATE TABLE `complaint` (
 
 LOCK TABLES `complaint` WRITE;
 /*!40000 ALTER TABLE `complaint` DISABLE KEYS */;
-INSERT INTO `complaint` VALUES (1,'void@yandex.ru',6,'Все было очень плохо'),(2,'bobkov@gmail.com',6,'Он козел');
+INSERT INTO `complaint` VALUES (1,'void@yandex.ru',6,'Все было очень плохо',1),(2,'bobkov@gmail.com',6,'<script>alert(\"тест\");</script>',1);
 /*!40000 ALTER TABLE `complaint` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-16  3:11:14
+-- Dump completed on 2018-05-29  3:29:18

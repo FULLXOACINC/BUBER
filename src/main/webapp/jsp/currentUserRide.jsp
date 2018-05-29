@@ -21,6 +21,12 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.rideEndCorrect" var="rideEndCorrect"/>
 
+<fmt:message bundle="${locale}" key="text.positiveEvaluation" var="positiveEvaluation"/>
+<fmt:message bundle="${locale}" key="text.negativeEvaluation" var="negativeEvaluation"/>
+<fmt:message bundle="${locale}" key="text.complaint" var="complaint"/>
+<fmt:message bundle="${locale}" key="text.error.evaluationExist" var="evaluationExist"/>
+<fmt:message bundle="${locale}" key="text.sendComplaint" var="sendComplaint"/>
+
 
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
@@ -65,6 +71,22 @@
 
                 <div id="map"></div>
             </div>
+            <div id="evaluation">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="positive-mark"
+                       value="${positiveEvaluation}"/>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="negative-mark"
+                       value="${negativeEvaluation}"/>
+                <div class="error" id="mark-exist">
+                    <p>${evaluationExist}</p>
+                </div>
+            </div>
+            <div id="complaint-div">
+                <input type="text" class="form-control" value="${complaint}" readonly/>
+                <textarea class="form-control" rows="5" id="complaint"></textarea>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="send-complaint"
+                       value="${sendComplaint}"/>
+            </div>
+
             <div id="ride-not-found">
                 <input type="text" class="form-control" value="${rideNotFound}" readonly/>
             </div>

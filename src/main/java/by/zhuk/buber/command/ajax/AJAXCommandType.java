@@ -15,7 +15,13 @@ public enum AJAXCommandType {
     UPDATE_CURRENT_DRIVER_COORDINATE(new UpdateCurrentDriverCoordinateCommand()),
     FIND_USER_COMPLAINTS(new FindUserComplaintsCommand()),
     CREATE_RIDE(new CreateRideCommand()),
+    ACCEPT_START_RIDE_PASSENGER(new AcceptStartRidePassengerCommand()),
     FIND_RIDE_INFO_PASSENGER(new FindRideInfoPassengerCommand()),
+    ACCEPT_END_RIDE_PASSENGER(new AcceptEndRidePassengerCommand()),
+    EVALUATION_DRIVER(new EvaluationDriverCommand()),
+    COMPLAINT_PASSENGER(new ComplaintPassengerCommand()),
+
+
     CHANGE_DISCOUNT(new ChangeDiscountCommand());
 
     private AJAXCommand command;
