@@ -5,17 +5,17 @@ import java.util.Objects;
 public class Complaint {
     private int complaintId;
     private String complaintPersonLogin;
-    private int raidId;
+    private int rideId;
     private String complaintText;
     private boolean isAccept;
 
     public Complaint() {
     }
 
-    public Complaint(int complaintId, String complaintPersonLogin, int raidId, String complaintText, boolean isAccept) {
+    public Complaint(int complaintId, String complaintPersonLogin, int rideId, String complaintText, boolean isAccept) {
         this.complaintId = complaintId;
         this.complaintPersonLogin = complaintPersonLogin;
-        this.raidId = raidId;
+        this.rideId = rideId;
         this.complaintText = complaintText;
         this.isAccept = isAccept;
     }
@@ -36,12 +36,12 @@ public class Complaint {
         this.complaintPersonLogin = complaintPersonLogin;
     }
 
-    public int getRaidId() {
-        return raidId;
+    public int getRideId() {
+        return rideId;
     }
 
-    public void setRaidId(int raidId) {
-        this.raidId = raidId;
+    public void setRideId(int rideId) {
+        this.rideId = rideId;
     }
 
     public String getComplaintText() {
@@ -70,7 +70,7 @@ public class Complaint {
         }
         Complaint complaint = (Complaint) o;
         return complaintId == complaint.complaintId &&
-                raidId == complaint.raidId &&
+                rideId == complaint.rideId &&
                 isAccept == complaint.isAccept &&
                 Objects.equals(complaintPersonLogin, complaint.complaintPersonLogin) &&
                 Objects.equals(complaintText, complaint.complaintText);
@@ -79,7 +79,7 @@ public class Complaint {
     @Override
     public int hashCode() {
 
-        return Objects.hash(complaintId, complaintPersonLogin, raidId, complaintText, isAccept);
+        return Objects.hash(complaintId, complaintPersonLogin, rideId, complaintText, isAccept);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Complaint {
         return "Complaint{" +
                 "complaintId=" + complaintId +
                 ", complaintPersonLogin='" + complaintPersonLogin + '\'' +
-                ", raidId=" + raidId +
+                ", rideId=" + rideId +
                 ", complaintText='" + complaintText + '\'' +
                 ", isAccept=" + isAccept +
                 '}';

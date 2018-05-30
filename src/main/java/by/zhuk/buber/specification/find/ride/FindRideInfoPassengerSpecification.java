@@ -1,6 +1,6 @@
 package by.zhuk.buber.specification.find.ride;
 
-import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.model.Coordinate;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;

@@ -1,6 +1,6 @@
 package by.zhuk.buber.specification;
 
-import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.exception.SpecificationException;
 
 import java.sql.PreparedStatement;
 

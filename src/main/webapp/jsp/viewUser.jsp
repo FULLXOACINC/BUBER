@@ -13,11 +13,11 @@
 <fmt:message bundle="${locale}" key="text.admin.unBan" var="unBan"/>
 <fmt:message bundle="${locale}" key="text.admin.removeAdminStatus" var="removeAdminStatus"/>
 <fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
-<fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
 <fmt:message bundle="${locale}" key="text.admin.viewUserComplaints" var="viewUserComplaints"/>
-<fmt:message bundle="${locale}" key="text.notFound" var="notFound"/>
+<fmt:message bundle="${locale}" key="text.userNotFound" var="userNotFound"/>
 <fmt:message bundle="${locale}" key="text.change" var="change"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
+
 <html>
 <head>
     <title>${buber}</title>
@@ -27,67 +27,72 @@
 
 </head>
 <body>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
-        <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-        <c:choose>
-            <c:when test="${notFound}">
-                notFound
-            </c:when>
-            <c:otherwise>
-                <c:out value="${user.login}" escapeXml="true"/>
-                <c:out value="${user.firstName}" escapeXml="true"/>
-                <c:out value="${user.lastName}" escapeXml="true"/>
-                <c:out value="${user.phoneNumber}" escapeXml="true"/>
+        <div class="form-input">
+            <c:choose>
+                <c:when test="${notFound}">
+                    ${userNotFound}
+                </c:when>
+                <c:otherwise>
+                    <input type="text" id="login" value="${user.login}" class="form-control" readonly/>
+                    <input type="text" value="${user.firstName}" class="form-control" readonly/>
+                    <input type="text" value="${user.lastName}" class="form-control" readonly/>
+                    <input type="text" value="${user.phoneNumber}" class="form-control" readonly/>
 
-                <c:set var="banView"/>
-                <c:choose>
-                    <c:when test="${!user.isBaned()}">
-                        <c:set var="banView" value="${ban}"/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="banView" value="${unBan}"/>
-                    </c:otherwise>
-                </c:choose>
+                    <c:set var="banView"/>
+                    <c:choose>
+                        <c:when test="${!user.isBaned()}">
+                            <c:set var="banView" value="${ban}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="banView" value="${unBan}"/>
+                        </c:otherwise>
+                    </c:choose>
 
-                <c:set var="adminStatusView"/>
-                <c:choose>
-                    <c:when test="${user.type == 'ADMIN'}">
-                        <c:set var="adminStatusView" value="${removeAdminStatus}"/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="adminStatusView" value="${takeAdminStatus}"/>
-                    </c:otherwise>
-                </c:choose>
-                <c:if test="${user.type != 'ROOT_ADMIN' && !(user.login eq sessionScope.login)}">
-                    <form action="${ pageContext.request.contextPath }/controller" method="post">
-                        <input type="hidden" name="command" value="switch-ban">
-                        <input type="hidden" name="user" value="${user.login}">
-                        <input type="submit" value="${banView}">
-                    </form>
+                    <c:set var="adminStatusView"/>
+                    <c:choose>
+                        <c:when test="${user.type == 'ADMIN'}">
+                            <c:set var="adminStatusView" value="${removeAdminStatus}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="adminStatusView" value="${takeAdminStatus}"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:if test="${user.type != 'ROOT_ADMIN' && !(user.login eq sessionScope.login)}">
+                        <form action="${ pageContext.request.contextPath }/controller" method="post">
+                            <input type="hidden" name="command" value="switch-ban">
+                            <input type="hidden" name="user" value="${user.login}">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="${banView}">
+                        </form>
 
-                    <form action="${ pageContext.request.contextPath }/controller" method="post">
-                        <input type="hidden" name="command" value="switch-admin-status">
-                        <input type="hidden" name="user" value="${user.login}">
-                        <input type="submit" value="${adminStatusView}">
-                    </form>
-                </c:if>
-                <c:if test="${user.type == 'DRIVER'}">
-                    <form action="${ pageContext.request.contextPath }/controller" method="post">
-                        <input type="hidden" name="command" value="find-driver">
-                        <input type="hidden" name="driver" value="${user.login}">
-                        <input type="submit" value="${updateDriver}">
-                    </form>
-                </c:if>
-                <input id="discount" type="text" value="${user.discount}">
-                <input id="login" type="hidden" value="${user.login}">
-                <input id="change-discount" type="submit" value="${change}">
-                <div>
-                    <input id="view-complaints" type="submit" value="${viewUserComplaints}">
-                    <div id="complaints"></div>
-                </div>
-            </c:otherwise>
-        </c:choose>
+                        <form action="${ pageContext.request.contextPath }/controller" method="post">
+                            <input type="hidden" name="command" value="switch-admin-status">
+                            <input type="hidden" name="user" value="${user.login}">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="${adminStatusView}">
+                        </form>
+                    </c:if>
+                    <c:if test="${user.type == 'DRIVER'}">
+                        <form action="${ pageContext.request.contextPath }/controller">
+                            <input type="hidden" name="command" value="find-driver">
+                            <input type="hidden" name="driver" value="${user.login}">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="${updateDriver}">
+                        </form>
+                    </c:if>
+                    <input id="discount" class="form-control" type="text" value="${user.discount}">
+                    <input id="change-discount" class="btn btn-lg btn-primary btn-block" type="submit"
+                           value="${change}">
+                    <div>
+                        <form action="${ pageContext.request.contextPath }/jsp/viewUserComplaints.jsp">
+                            <input name="userLogin" type="hidden" value="${user.login}">
+                            <input id="view-complaints" class="btn btn-lg btn-primary btn-block" type="submit"
+                                   value="${viewUserComplaints}">
+                        </form>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
 </div>
 <ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>

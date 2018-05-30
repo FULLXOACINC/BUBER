@@ -33,11 +33,11 @@
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <%--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"--%>
+            <%--data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"--%>
+            <%--aria-label="Toggle navigation">--%>
+        <%--<span class="navbar-toggler-icon"></span>--%>
+    <%--</button>--%>
     <div class="navbar-brand">${buber}</div>
 
     <div class="collapse navbar-collapse">
@@ -89,8 +89,7 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="${pageContext.request.contextPath}/controller">
-                                        <input type="hidden" name="command" value="view-unaccepted-complaints">
+                                    <form action="${pageContext.request.contextPath}/jsp/viewComplaints.jsp">
                                         <input class="dropdown-item" type="submit" value="${viewUnacceptedComplaints}">
                                     </form>
                                 </div>

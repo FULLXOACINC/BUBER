@@ -1,7 +1,7 @@
 package by.zhuk.buber.repository;
 
-import by.zhuk.buber.exeption.RepositoryException;
-import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.exception.RepositoryException;
+import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.find.FindSpecification;
 

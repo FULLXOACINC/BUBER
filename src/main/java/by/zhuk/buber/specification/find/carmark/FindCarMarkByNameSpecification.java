@@ -1,6 +1,6 @@
 package by.zhuk.buber.specification.find.carmark;
 
-import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.model.CarMark;
 import by.zhuk.buber.specification.find.FindSpecification;
 

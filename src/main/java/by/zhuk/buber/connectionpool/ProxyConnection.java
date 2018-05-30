@@ -1,6 +1,6 @@
 package by.zhuk.buber.connectionpool;
 
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.RepositoryException;
 
 import java.sql.Array;
 import java.sql.Blob;

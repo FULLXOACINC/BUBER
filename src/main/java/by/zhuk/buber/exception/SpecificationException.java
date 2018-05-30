@@ -1,4 +1,4 @@
-package by.zhuk.buber.exeption;
+package by.zhuk.buber.exception;
 
 import java.sql.SQLException;
 

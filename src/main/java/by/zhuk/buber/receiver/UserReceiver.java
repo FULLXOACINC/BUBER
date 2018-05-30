@@ -1,7 +1,7 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.ReceiverException;
+import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
@@ -104,7 +104,7 @@ public class UserReceiver {
             return false;
         }
         BigDecimal balance = users.get(0).getBalance();
-        return balance.signum() == -1;
+        return balance.signum() <= 0;
     }
 
     public Optional<Float> findUserDiscount(String login) throws ReceiverException {

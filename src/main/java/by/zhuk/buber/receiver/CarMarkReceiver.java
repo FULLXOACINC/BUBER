@@ -1,6 +1,6 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.model.CarMark;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.specification.Specification;

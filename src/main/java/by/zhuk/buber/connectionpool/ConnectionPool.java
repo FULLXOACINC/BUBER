@@ -1,7 +1,7 @@
 package by.zhuk.buber.connectionpool;
 
 
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.RepositoryException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

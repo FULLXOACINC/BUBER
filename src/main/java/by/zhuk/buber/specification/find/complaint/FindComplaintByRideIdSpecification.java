@@ -1,6 +1,6 @@
 package by.zhuk.buber.specification.find.complaint;
 
-import by.zhuk.buber.exeption.SpecificationException;
+import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.specification.find.FindSpecification;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindComplaintByRideIdSpecification implements FindSpecification<Complaint> {
-    private static final String SELECT_COMPLAINTS_BY_LOGIN = "SELECT complaint_id FROM buber_db.complaint WHERE complaint_person_login!=? AND complaint_raid_id=?";
+    private static final String SELECT_COMPLAINTS_BY_LOGIN = "SELECT complaint_id FROM buber_db.complaint WHERE complaint_person_login!=? AND complaint_ride_id=?";
     private String login;
     private int rideId;
 

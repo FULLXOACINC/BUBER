@@ -1,7 +1,7 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.ReceiverException;
+import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
 import by.zhuk.buber.model.CarMark;

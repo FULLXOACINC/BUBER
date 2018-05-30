@@ -1,0 +1,65 @@
+package by.zhuk.buber.specification.find.ride;
+
+import by.zhuk.buber.exception.SpecificationException;
+import by.zhuk.buber.model.Coordinate;
+import by.zhuk.buber.model.Ride;
+import by.zhuk.buber.model.User;
+import by.zhuk.buber.specification.find.FindSpecification;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindRideInfoDriverSpecification implements FindSpecification<Ride> {
+    private static final String SELECT_PASSENGER_RIDE_INFO = "SELECT ride_index,ride_start_lat_coordinate,ride_start_lng_coordinate,ride_end_lat_coordinate,ride_end_lng_coordinate,ride_passenger_login,ride_is_driver_start_accept,ride_is_driver_end_accept,ride_is_passenger_start_accept,ride_is_passenger_end_accept,ride_price FROM buber_db.ride WHERE (ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
+    private String login;
+
+    public FindRideInfoDriverSpecification(String login) {
+        this.login = login;
+    }
+
+    @Override
+    public String takePrepareQuery() {
+        return SELECT_PASSENGER_RIDE_INFO;
+    }
+
+    @Override
+    public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
+        try {
+            statement.setString(1, login);
+        } catch (SQLException e) {
+            throw new SpecificationException(e);
+        }
+
+    }
+
+    @Override
+    public List<Ride> createEntities(ResultSet resultSet) throws SpecificationException {
+        List<Ride> rides = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                Ride ride = new Ride();
+                ride.setRideId(resultSet.getInt(1));
+                Coordinate startCoordinate = new Coordinate(resultSet.getFloat(2), resultSet.getFloat(3));
+                Coordinate endCoordinate = new Coordinate(resultSet.getFloat(4), resultSet.getFloat(5));
+                ride.setStartCoordinate(startCoordinate);
+                ride.setEndCoordinate(endCoordinate);
+
+                User passenger = new User();
+                passenger.setLogin(resultSet.getString(6));
+                ride.setPassenger(passenger);
+                ride.setDriverAcceptStart(resultSet.getBoolean(7));
+                ride.setDriverAcceptEnd(resultSet.getBoolean(8));
+                ride.setPassengerAcceptStart(resultSet.getBoolean(9));
+                ride.setPassengerAcceptEnd(resultSet.getBoolean(10));
+                ride.setPrice(resultSet.getBigDecimal(11));
+                rides.add(ride);
+            }
+        } catch (SQLException e) {
+            throw new SpecificationException(e);
+        }
+        return rides;
+    }
+}

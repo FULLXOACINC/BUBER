@@ -28,7 +28,6 @@ $(document).ready(function () {
                     $('#evaluation').show();
                     $('#complaint-div').show();
                     $('#ride-not-found').hide();
-                    rideId = response['rideId'];
                 } else {
                     console.log(response);
                 }
@@ -74,7 +73,6 @@ $(document).ready(function () {
                     $('#complaint-div').show();
 
                     $('#ride-not-found').hide();
-                    rideId = response['rideId'];
                 } else {
                     console.log(response);
                 }
@@ -103,7 +101,6 @@ $(document).ready(function () {
             success: function (response) {
                 if (response['allCorrect']) {
                     $('#complaint-div').hide();
-                    rideId = response['rideId'];
                 } else {
                     console.log(response);
                 }
@@ -127,7 +124,6 @@ $(document).ready(function () {
     });
     $('#send-complaint').click(sendComplaintFun);
 });
-
 
 function initMap() {
     $.ajax({
@@ -166,7 +162,7 @@ function initMap() {
                     $('#car-number').val(carNumberMessage + ": " + response['carNumber']);
                     $('#car-mark').val(carMarkMessage + ": " + response['carMark']);
                     $('#phone-number').val(phoneNumberMessage + ": " + response['phoneNumber']);
-
+                    rideId=response['rideId'];
 
                     if (!response['isDriverStart']) {
                         $('#wait-start').show();

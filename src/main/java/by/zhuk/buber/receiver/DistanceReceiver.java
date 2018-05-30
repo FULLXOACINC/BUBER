@@ -1,7 +1,7 @@
 package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.constant.CommandConstant;
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
 import by.zhuk.buber.validator.JSONValidator;
 import org.apache.commons.httpclient.HttpClient;

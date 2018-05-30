@@ -1,6 +1,6 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
 import org.testng.Assert;
 import org.testng.annotations.Test;

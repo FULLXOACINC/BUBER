@@ -1,6 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.ComplaintReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

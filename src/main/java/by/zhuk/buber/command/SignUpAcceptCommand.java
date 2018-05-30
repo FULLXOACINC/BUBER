@@ -2,7 +2,7 @@ package by.zhuk.buber.command;
 
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.signuppool.SignUpUserInfo;

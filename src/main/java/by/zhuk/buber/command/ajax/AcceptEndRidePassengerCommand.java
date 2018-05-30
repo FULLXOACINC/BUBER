@@ -1,7 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.UserConstant;
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
 import by.zhuk.buber.model.User;
@@ -41,7 +41,6 @@ public class AcceptEndRidePassengerCommand implements AJAXCommand {
                     session.setAttribute(UserConstant.EVALUATION_TOKEN, UserConstant.EVALUATION_TOKEN);
                     session.setAttribute(UserConstant.COMPLAINT_TOKEN, UserConstant.COMPLAINT_TOKEN);
                     json.put(ALL_CORRECT, ALL_CORRECT);
-                    json.put("rideId", ride.getRideId());
                 } else {
                     json.put("driverNotAccept", "driverNotAccept");
                 }

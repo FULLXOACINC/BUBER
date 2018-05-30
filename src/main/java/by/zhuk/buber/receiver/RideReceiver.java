@@ -1,7 +1,7 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exeption.ReceiverException;
-import by.zhuk.buber.exeption.RepositoryException;
+import by.zhuk.buber.exception.ReceiverException;
+import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
 import by.zhuk.buber.model.Driver;
@@ -15,11 +15,15 @@ import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.find.ride.FindCurrentUserRideSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideDriverLoginByRideIdSpecification;
+import by.zhuk.buber.specification.find.ride.FindRideInfoDriverSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideInfoPassengerSpecification;
+import by.zhuk.buber.specification.find.ride.FindRidePassengerLoginByRideIdSpecification;
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideAllAcceptSpecification;
+import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptEndSpecification;
+import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptStartSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptEndSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptStartSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
@@ -292,5 +296,74 @@ public class RideReceiver {
 
         MailThread thread = new MailThread(login, head, content, MailProperty.getInstance().getProperties());
         thread.start();
+    }
+
+    public Optional<Ride> findCurrentDriverRide(String login) throws ReceiverException {
+        FindSpecification<Ride> specification = new FindRideInfoDriverSpecification(login);
+        Finder<Ride> finder = new Finder<>();
+        List<Ride> rides = finder.findBySpecification(specification);
+        Optional<Ride> ride = Optional.empty();
+        if (!rides.isEmpty()) {
+            ride = Optional.ofNullable(rides.get(0));
+        }
+        return ride;
+    }
+
+    public void driverAcceptStart(int rideId) throws ReceiverException {
+        Repository<Ride> rideRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository);
+        try {
+            Specification rideUpdateSpecification = new UpdateRideDriverAcceptStartSpecification(rideId);
+            rideRepository.update(rideUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void driverAcceptEnd(int rideId) throws ReceiverException {
+        Repository<Ride> rideRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository);
+        try {
+            Specification rideUpdateSpecification = new UpdateRideDriverAcceptEndSpecification(rideId);
+            rideRepository.update(rideUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public Optional<String> findPassengerLoginByRide(int rideId) throws ReceiverException {
+        FindSpecification<Ride> specification = new FindRidePassengerLoginByRideIdSpecification(rideId);
+        Finder<Ride> finder = new Finder<>();
+        List<Ride> rides = finder.findBySpecification(specification);
+        Optional<String> driverLogin = Optional.empty();
+        if (!rides.isEmpty()) {
+            driverLogin = Optional.ofNullable(rides.get(0).getPassenger().getLogin());
+        }
+        return driverLogin;
+    }
+
+    public void driverRefuse(Ride ride) throws ReceiverException {
+        String driverLogin = ride.getDriver().getLogin();
+
+        Repository<Ride> rideRepository = new Repository<>();
+        Repository<Driver> driverRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(rideRepository, driverRepository);
+        try {
+            controller.startTransaction();
+            Specification rideUpdateSpecification = new UpdateRideAllAcceptSpecification(ride.getRideId());
+            rideRepository.update(rideUpdateSpecification);
+
+            Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true, driverLogin);
+            driverRepository.update(updateDriverIsWorkingSpecification);
+
+
+            controller.commit();
+            controller.endTransaction();
+        } catch (RepositoryException e) {
+            controller.rollBack();
+            throw new ReceiverException(e);
+        }
     }
 }

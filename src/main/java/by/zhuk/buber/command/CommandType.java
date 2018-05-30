@@ -5,7 +5,6 @@ public enum CommandType {
     OAUTH(new OAuthCommand()),
     SIGN_UP_ACCEPT(new SignUpAcceptCommand()),
     SIGN_OUT(new SignOutCommand()),
-    VIEW_UNACCEPTED_COMPLAINTS(new ViewUnacceptedComplaintsCommand()),
     FIND_DRIVER(new FindDriverCommand()),
     OAUTH_ACCEPT(new OAuthAcceptCommand()),
     SWITCH_ADMIN_STATUS(new SwitchAdminStatusCommand()),

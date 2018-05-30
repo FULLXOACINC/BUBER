@@ -7,13 +7,16 @@
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
-<fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
-<fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
-<fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
-<fmt:message bundle="${locale}" key="text.admin.console" var="console"/>
-<fmt:message bundle="${locale}" key="text.rideId" var="raidId"/>
+<fmt:message bundle="${locale}" key="text.rideId" var="rideId"/>
 <fmt:message bundle="${locale}" key="text.admin.complaintId" var="complaintId"/>
 <fmt:message bundle="${locale}" key="text.admin.acceptComplaint" var="acceptComplaint"/>
+
+<fmt:message bundle="${locale}" key="text.noComplaints" var="noComplaints"/>
+<fmt:message bundle="${locale}" key="text.moreAboutUser" var="moreAboutUser"/>
+
+<fmt:message bundle="${locale}" key="text.next" var="next"/>
+<fmt:message bundle="${locale}" key="text.previous" var="previous"/>
+
 <html>
 <head>
     <title>${buber}</title>
@@ -23,25 +26,33 @@
 
 </head>
 <body>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
-        <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
-        <c:forEach var="complaint" items="${complaints}">
-            <div id="complaint-${complaint.complaintId}">
-                <p>${raidId}: ${complaint.complaintId}</p>
+        <div class="form-input">
+            <div id="complaint">
+                <input type='hidden' id="ride-id-mess" value='${rideId}'>
+                <input type='hidden' id="complaint-id-mess" value='${complaintId}'>
+
+
+                <ul class="pagination">
+                    <input type='submit' class="page-link" id='prev' value="${previous}">
+                    <input type='submit' class="page-link" id='next' value="${next}">
+                </ul>
+                <input type="text" id="complaint-id" class="form-control" readonly/>
                 <form action='${pageContext.request.contextPath}/controller'>
                     <input type='hidden' name='command' value='view-user'>
-                    <input type='hidden' name='user' value='${complaint.complaintPersonLogin}'>
-                    <input type='submit' value='${complaint.complaintPersonLogin}'>
+                    <input type='hidden' id="person-login" name='user'>
+                    <input type='submit' class="btn btn-lg btn-primary btn-block" value="${moreAboutUser}">
                 </form>
-                <p>${complaintId}: ${complaint.raidId}</p>
-                <p><c:out value="${complaint.complaintText}" escapeXml="true"/></p>
-                <p><input type='submit' class="accept" id='${complaint.complaintId}' value="${acceptComplaint}"></p>
-                <hr/>
+                <input type="text" class="form-control" id="ride-id" readonly/>
+                <textarea class="form-control" rows="5" id="complaint-text" readonly></textarea>
+                <input type='submit' class="btn btn-lg btn-primary btn-block" id='accept' value="${acceptComplaint}">
             </div>
-
-        </c:forEach>
-
+            <div id="no-complaint">
+                <input type="text" class="form-control" value="${noComplaints}" readonly/>
+            </div>
+        </div>
     </div>
 </div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>

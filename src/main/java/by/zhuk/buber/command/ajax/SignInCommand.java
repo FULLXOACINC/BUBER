@@ -2,7 +2,7 @@ package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
-import by.zhuk.buber.exeption.ReceiverException;
+import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
