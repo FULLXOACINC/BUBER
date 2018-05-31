@@ -1,5 +1,6 @@
 package by.zhuk.buber.command;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -14,7 +15,6 @@ import java.util.Optional;
 
 public class ViewDriverProfileCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewDriverProfileCommand.class);
-    private static final String DRIVER = "driver";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -24,7 +24,7 @@ public class ViewDriverProfileCommand implements Command {
         try {
 
             Optional<Driver> optionalDriver = driverReceiver.findDriverByLogin(login);
-            optionalDriver.ifPresent(driver -> request.setAttribute(DRIVER, driver));
+            optionalDriver.ifPresent(driver -> request.setAttribute(DriverConstant.DRIVER, driver));
             return new Router(TransitionType.FORWARD, PagesConstant.DRIVER_PROFILE_VIEW_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

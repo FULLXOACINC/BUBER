@@ -12,9 +12,9 @@ public class UpdateUserBanStatusSpecification implements Specification {
     private String login;
     private boolean isBan;
 
-    public UpdateUserBanStatusSpecification(User user) {
-        login = user.getLogin();
-        isBan = user.isBaned();
+    public UpdateUserBanStatusSpecification(String login,boolean isBan) {
+        this.login = login;
+        this.isBan = isBan;
     }
 
     @Override

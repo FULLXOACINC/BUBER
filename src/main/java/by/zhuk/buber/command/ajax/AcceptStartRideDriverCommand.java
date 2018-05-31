@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Ride;
@@ -28,7 +29,7 @@ public class AcceptStartRideDriverCommand implements AJAXCommand {
                 rideReceiver.driverAcceptStart(ride.getRideId());
                 json.put(ALL_CORRECT, ALL_CORRECT);
             } else {
-                json.put("notFoundRide", "notFoundRide");
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
             }
         } catch (ReceiverException e) {
             logger.catching(e);

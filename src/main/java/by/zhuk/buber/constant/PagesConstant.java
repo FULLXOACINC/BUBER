@@ -13,7 +13,5 @@ public class PagesConstant {
     public static final String UPDATE_DRIVER_PAGE = "/jsp/updateDriver.jsp";
     public static final String UPDATE_USER_PAGE = "/jsp/updateUser.jsp";
     public static final String CHANGE_DRIVER_COORDINATE_PAGE = "/jsp/changeDriverCoordinate.jsp";
-
     public static final String ERROR_PAGE = "/jsp/error/errorDB.jsp";
-
 }

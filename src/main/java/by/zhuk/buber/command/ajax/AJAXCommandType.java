@@ -33,6 +33,7 @@ public enum AJAXCommandType {
     FIND_USER_RIDE_HISTORY(new FindUserRideHistoryCommand()),
     CHANGE_DISCOUNT(new ChangeDiscountCommand()),
     FIND_DRIVER_EARNED_MONEY(new FindDriverEarnedMoneyCommand()),
+    UPDATE_USER(new UpdateUserCommand()),
     WITHDRAW_EARNING_DRIVER_MONEY(new WithdrawEarningDriverMoneyCommand());
 
     private AJAXCommand command;

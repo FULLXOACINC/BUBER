@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -15,9 +16,6 @@ import java.math.BigDecimal;
 
 public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
-    private static final String CAR_NUMBER = "carNumber";
-    private static final String DOCUMENT_ID = "documentId";
-    private static final String CAR_MARK = "carMark";
 
     private static final String CAR_NUMBER_ERROR = "carNumberError";
     private static final String DOCUMENT_ID_ERROR = "documentIdError";
@@ -34,9 +32,9 @@ public class SignUpDriverCommand implements AJAXCommand {
         JSONObject json = new JSONObject();
 
         String login = request.getParameter(UserConstant.LOGIN);
-        String carNumber = request.getParameter(CAR_NUMBER);
-        String documentId = request.getParameter(DOCUMENT_ID);
-        String carMark = request.getParameter(CAR_MARK);
+        String carNumber = request.getParameter(DriverConstant.CAR_NUMBER);
+        String documentId = request.getParameter(DriverConstant.DOCUMENT_ID);
+        String carMark = request.getParameter(DriverConstant.CAR_MARK);
         String tariff = request.getParameter(TARIFF);
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);

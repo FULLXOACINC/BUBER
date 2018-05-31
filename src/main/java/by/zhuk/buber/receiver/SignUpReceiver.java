@@ -103,13 +103,11 @@ public class SignUpReceiver {
             List<User> users = userRepository.find(new FindUserByLoginSpecification(login));
             if (!users.isEmpty()) {
                 User user = users.get(0);
-                user.setType(UserType.DRIVER);
-                Specification updateUserTypeSpecification = new UpdateUserTypeSpecification(user);
+                Specification updateUserTypeSpecification = new UpdateUserTypeSpecification(user.getLogin(),UserType.DRIVER);
                 userRepository.update(updateUserTypeSpecification);
             }
             controller.commit();
             controller.endTransaction();
-
 
         } catch (RepositoryException e) {
             controller.rollBack();

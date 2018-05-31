@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class FindUserUpdateCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
-    private static final String USER = "user";
+
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -25,7 +25,7 @@ public class FindUserUpdateCommand implements Command {
         UserReceiver userReceiver = new UserReceiver();
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(login);
-            optionalUser.ifPresent(user -> request.setAttribute(USER, user));
+            optionalUser.ifPresent(user -> request.setAttribute(UserConstant.USER, user));
             return new Router(TransitionType.FORWARD, PagesConstant.UPDATE_USER_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

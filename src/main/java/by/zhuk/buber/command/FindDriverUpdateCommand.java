@@ -1,5 +1,6 @@
 package by.zhuk.buber.command;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
@@ -12,15 +13,15 @@ import java.util.Optional;
 
 public class FindDriverUpdateCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
-    private static final String DRIVER = "driver";
+
 
     @Override
     public Router execute(HttpServletRequest request) {
-        String login = request.getParameter(DRIVER);
+        String login = request.getParameter(DriverConstant.DRIVER);
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
             Optional<Driver> optionalUser = driverReceiver.findDriverByLogin(login);
-            optionalUser.ifPresent(driver -> request.setAttribute(DRIVER, driver));
+            optionalUser.ifPresent(driver -> request.setAttribute(DriverConstant.DRIVER, driver));
             return new Router(TransitionType.FORWARD, PagesConstant.UPDATE_DRIVER_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

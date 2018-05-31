@@ -72,7 +72,7 @@ public class UpdateDriverCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ERROR, ERROR);
         }
 
         return json;

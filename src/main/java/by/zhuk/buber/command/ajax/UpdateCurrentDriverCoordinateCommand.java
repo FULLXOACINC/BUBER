@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -14,18 +15,16 @@ import javax.servlet.http.HttpSession;
 public class UpdateCurrentDriverCoordinateCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(UpdateCurrentDriverCoordinateCommand.class);
 
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-    private static final String NOT_VALID_COORDINATE = "notValidCoordinate";
+
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String lng = request.getParameter(LNG);
-        String lat = request.getParameter(LAT);
+        String lng = request.getParameter(GeoConstant.LNG);
+        String lat = request.getParameter(GeoConstant.LAT);
 
         if (!CoordinateValidator.isCoordinateValid(lat) || !CoordinateValidator.isCoordinateValid(lng)) {
-            json.put(NOT_VALID_COORDINATE, NOT_VALID_COORDINATE);
+            json.put(GeoConstant.NOT_VALID_COORDINATE, GeoConstant.NOT_VALID_COORDINATE);
             return json;
         }
 

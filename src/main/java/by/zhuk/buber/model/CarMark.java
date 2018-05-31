@@ -4,14 +4,6 @@ public class CarMark {
     private int index;
     private String markName;
 
-    public CarMark() {
-    }
-
-    public CarMark(int index, String markName) {
-        this.index = index;
-        this.markName = markName;
-    }
-
     public int getIndex() {
         return index;
     }

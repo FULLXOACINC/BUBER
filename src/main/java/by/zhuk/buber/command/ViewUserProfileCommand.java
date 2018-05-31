@@ -14,7 +14,6 @@ import java.util.Optional;
 
 public class ViewUserProfileCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserProfileCommand.class);
-    private static final String USER = "user";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -23,9 +22,7 @@ public class ViewUserProfileCommand implements Command {
         String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(login);
-            if (optionalUser.isPresent()) {
-                request.setAttribute(USER, optionalUser.get());
-            }
+            optionalUser.ifPresent(user -> request.setAttribute(UserConstant.USER, user));
             return new Router(TransitionType.FORWARD, PagesConstant.USER_PROFILE_VIEW_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

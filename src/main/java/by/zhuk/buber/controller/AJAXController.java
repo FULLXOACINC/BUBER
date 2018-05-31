@@ -22,28 +22,24 @@ public class AJAXController extends HttpServlet {
     private static String CHARACTER_ENCODING = "UTF-8";
     private static String CONTENT_TYPE = "application/json";
     private static String ERROR = "error";
+    private static String UNKNOWN_COMMAND = "Unknown command";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        processRequest(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        processRequest(request, response);
-    }
-
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
         response.setCharacterEncoding(CHARACTER_ENCODING);
         response.setContentType(CONTENT_TYPE);
+
         Optional<AJAXCommand> commandOptional = AJAXCommandFactory.findCommand(command);
         JSONObject result;
         if (commandOptional.isPresent()) {
             result = commandOptional.get().execute(request);
         } else {
-            logger.log(Level.WARN, "Unknown command");
+            logger.log(Level.WARN, UNKNOWN_COMMAND);
             result = new JSONObject();
-            result.put(ERROR, "Unknown command");
+            result.put(ERROR, UNKNOWN_COMMAND);
         }
         response.getWriter().print(result);
     }
+
+
 }

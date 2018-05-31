@@ -25,26 +25,17 @@ $(document).ready(function () {
                 if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {
-                    if (response['carNumberNotValid']) {
-                        $('#car-number-not-valid').show();
+                    if (response['phoneNumberExist']) {
+                        $('#phone-number-exist').show();
                     }
-                    if (response['documentIdNotValid']) {
-                        $('#document-id-not-valid').show();
+                    if (response['firstNameNotValid']) {
+                        $('#first-name-not-valid').show();
                     }
-                    if (response['carMarkNotValid']) {
-                        $('#car-mark-not-valid').show();
+                    if (response['lastNameNotValid']) {
+                        $('#last-name-not-valid').show();
                     }
-                    if (response['driverNotExist']) {
-                        $('#driver-not-exist').show();
-                    }
-                    if (response['carNumberExist']) {
-                        $('#car-number-exist').show();
-                    }
-                    if (response['documentIdExist']) {
-                        $('#document-id-exist').show();
-                    }
-                    if (response['tariffNotValid']) {
-                        $('#tariff-not-valid').show();
+                    if (response['phoneNumberNotValid']) {
+                        $('#phone-number-not-valid').show();
                     }
 
                 }

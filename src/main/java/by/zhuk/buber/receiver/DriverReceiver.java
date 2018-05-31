@@ -17,7 +17,7 @@ import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
-import by.zhuk.buber.specification.update.driver.UpdateDriverCurrentCoordinateSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
@@ -62,20 +62,11 @@ public class DriverReceiver {
             CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
             CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Driver driver = new Driver();
-            driver.setLogin(driverLogin);
-            driver.setCarNumber(carNumber);
-            driver.setDocumentId(documentId);
-            driver.setTariff(tariff);
-
-            driver.setCarMark(carMark);
-            Specification driverUpdateSpecification = new UpdateDriverInfoSpecification(driver);
+            Specification driverUpdateSpecification = new UpdateDriverInfoSpecification(driverLogin,carNumber,documentId,carMark.getIndex(),tariff);
             driverRepository.update(driverUpdateSpecification);
 
             controller.commit();
             controller.endTransaction();
-
-
         } catch (RepositoryException e) {
             controller.rollBack();
             throw new ReceiverException(e);
@@ -121,7 +112,7 @@ public class DriverReceiver {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);
 
-        Specification driverUpdateSpecification = new UpdateDriverCurrentCoordinateSpecification(lat, lng, driverLogin);
+        Specification driverUpdateSpecification = new UpdateUserProfileCoordinateSpecification(lat, lng, driverLogin);
         try {
             driverRepository.update(driverUpdateSpecification);
             controller.end();

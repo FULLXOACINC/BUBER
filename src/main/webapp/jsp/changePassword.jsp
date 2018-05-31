@@ -10,10 +10,6 @@
 <fmt:message bundle="${locale}" key="text.signUp" var="signUp"/>
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
 <fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
-<fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
-<fmt:message bundle="${locale}" key="text.birthDay" var="birthDay"/>
-<fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
 <fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
@@ -28,25 +24,19 @@
 
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${signUp}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/signUp.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <script src="${pageContext.request.contextPath}/js/changePassword.js"></script>
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
         <div class="form-input">
-            <h2 class="form-input-heading">${signUp}</h2>
+            <h2 class="form-input-heading">${changePassword}</h2>
             <input type="text" id="login" class="form-control" placeholder="${login}"/>
             <input type="password" class="form-control" id="password" placeholder="${password}"/>
             <input type="password" class="form-control" id="repeatPassword" placeholder="${repeatPassword}"/>
-            <input type="text" class="form-control" id="firstName" placeholder="${firstName}"/>
-            <input type="text" class="form-control" id="secondName" placeholder="${secondName}"/>
-            <input type="date" class="form-control" id="birthDay" placeholder="${birthDay}">
-            <input type="text" class="form-control" id="phoneNumber" placeholder="${phoneNumber}"/>
             <div>
                 <input class="btn btn-lg btn-primary btn-block" type="submit" id="sign-up" value="${signUp}">
             </div>

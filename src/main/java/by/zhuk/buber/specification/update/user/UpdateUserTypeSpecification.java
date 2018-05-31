@@ -13,9 +13,9 @@ public class UpdateUserTypeSpecification implements Specification {
     private UserType type;
     private String login;
 
-    public UpdateUserTypeSpecification(User user) {
-        type = user.getType();
-        login = user.getLogin();
+    public UpdateUserTypeSpecification(String login,UserType type) {
+        this.type = type;
+        this.login = login;
     }
 
     @Override

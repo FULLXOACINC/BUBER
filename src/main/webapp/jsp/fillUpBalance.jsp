@@ -54,6 +54,6 @@
         </div>
     </div>
 </div>
-<ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>
+<c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>
 </body>
 </html>

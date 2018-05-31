@@ -1,6 +1,7 @@
 package by.zhuk.buber.command;
 
 import by.zhuk.buber.constant.PagesConstant;
+import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.UserReceiver;
@@ -12,15 +13,14 @@ import java.util.Optional;
 
 public class ViewUserCommand implements Command {
     private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
-    private static final String USER = "user";
 
     @Override
     public Router execute(HttpServletRequest request) {
-        String login = request.getParameter(USER);
+        String login = request.getParameter(UserConstant.USER);
         UserReceiver userReceiver = new UserReceiver();
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(login);
-            optionalUser.ifPresent(user -> request.setAttribute(USER, user));
+            optionalUser.ifPresent(user -> request.setAttribute(UserConstant.USER, user));
             return new Router(TransitionType.FORWARD, PagesConstant.USER_PAGE);
         } catch (ReceiverException e) {
             logger.catching(e);

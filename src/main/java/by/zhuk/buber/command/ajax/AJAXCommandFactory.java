@@ -4,7 +4,6 @@ import java.util.Optional;
 
 public class AJAXCommandFactory {
 
-
     public static Optional<AJAXCommand> findCommand(String commandName) {
         try {
             AJAXCommandType type = AJAXCommandType.valueOf(commandName.toUpperCase());

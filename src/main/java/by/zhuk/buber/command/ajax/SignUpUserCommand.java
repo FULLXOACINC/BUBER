@@ -16,15 +16,6 @@ import javax.servlet.http.HttpSession;
 
 public class SignUpUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
-    private static final String FIRST_NAME = "firstName";
-    private static final String SECOND_NAME = "secondName";
-    private static final String PASSWORD = "password";
-    private static final String REPEAT_PASSWORD = "repeatPassword";
-    private static final String BIRTH_DAY = "birthDay";
-    private static final String PHONE_NUMBER = "phoneNumber";
-
-    private static final String LANG = "lang";
-
 
     private static final String NOT_VALID_LOGIN_ERROR = "notValidLoginError";
     private static final String LOGIN_EXIST_ERROR = "loginExistError";
@@ -41,15 +32,15 @@ public class SignUpUserCommand implements AJAXCommand {
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         String login = request.getParameter(UserConstant.LOGIN);
-        String firstName = request.getParameter(FIRST_NAME);
-        String secondName = request.getParameter(SECOND_NAME);
-        String password = request.getParameter(PASSWORD);
-        String repeatPassword = request.getParameter(REPEAT_PASSWORD);
-        String birthDay = request.getParameter(BIRTH_DAY);
-        String phoneNumber = request.getParameter(PHONE_NUMBER);
+        String firstName = request.getParameter(UserConstant.FIRST_NAME);
+        String secondName = request.getParameter(UserConstant.SECOND_NAME);
+        String password = request.getParameter(UserConstant.PASSWORD);
+        String repeatPassword = request.getParameter(UserConstant.REPEAT_PASSWORD);
+        String birthDay = request.getParameter(UserConstant.BIRTH_DAY);
+        String phoneNumber = request.getParameter(UserConstant.PHONE_NUMBER);
 
         HttpSession session = request.getSession();
-        String lang = (String) session.getAttribute(LANG);
+        String lang = (String) session.getAttribute(UserConstant.LANG);
 
         UserReceiver userReceiver = new UserReceiver();
         SignInReceiver signInReceiver = new SignInReceiver();

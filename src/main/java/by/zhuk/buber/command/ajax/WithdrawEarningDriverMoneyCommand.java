@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -14,17 +15,15 @@ import java.util.Optional;
 
 public class WithdrawEarningDriverMoneyCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(WithdrawEarningDriverMoneyCommand.class);
-    private static final String CARD_NUMBER = "cardNumber";
-    private static final String NO_EARNED_MONEY = "noEarnedMoney";
-    private static final String CARD_NUMBER_NOT_VALID = "cardNumberNotValid";
+
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String cardNumber = request.getParameter(CARD_NUMBER);
+        String cardNumber = request.getParameter(DriverConstant.CARD_NUMBER);
         String login = (String) request.getSession().getAttribute(UserConstant.LOGIN);
         if (!FillUpBalanceValidator.isCardNumberValid(cardNumber)) {
-            json.put(CARD_NUMBER_NOT_VALID, CARD_NUMBER_NOT_VALID);
+            json.put(DriverConstant.CARD_NUMBER_NOT_VALID, DriverConstant.CARD_NUMBER_NOT_VALID);
             return json;
         }
         try {
@@ -34,7 +33,7 @@ public class WithdrawEarningDriverMoneyCommand implements AJAXCommand {
             if (earnedMoneyOptional.isPresent()) {
                 BigDecimal earnedMoney = earnedMoneyOptional.get();
                 if (earnedMoney.signum() != 1) {
-                    json.put(NO_EARNED_MONEY, NO_EARNED_MONEY);
+                    json.put(DriverConstant.NO_EARNED_MONEY, DriverConstant.NO_EARNED_MONEY);
                 }
             }
             if (json.length() == 0) {

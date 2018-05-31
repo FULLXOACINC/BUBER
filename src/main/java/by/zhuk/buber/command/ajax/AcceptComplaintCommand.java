@@ -17,7 +17,6 @@ public class AcceptComplaintCommand implements AJAXCommand {
         JSONObject json = new JSONObject();
         String complaintId = request.getParameter(ID);
         ComplaintReceiver complaintReceiver = new ComplaintReceiver();
-        //TODO add check
         try {
             complaintReceiver.acceptComplaint(complaintId);
             json.put(ALL_CORRECT, ALL_CORRECT);

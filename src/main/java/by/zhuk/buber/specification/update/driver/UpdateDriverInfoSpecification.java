@@ -10,18 +10,18 @@ import java.sql.SQLException;
 
 public class UpdateDriverInfoSpecification implements Specification {
     private static final String UPDATE_DRIVER_BY_LOGIN = "UPDATE buber_db.driver SET driver_car_number=? , driver_document_id=?, driver_car_mark=?,driver_tariff=? WHERE driver_login=?";
+    private String login;
     private String carNumber;
     private String documentId;
-    private String login;
     private int carMark;
     private BigDecimal tariff;
 
-    public UpdateDriverInfoSpecification(Driver driver) {
-        carNumber = driver.getCarNumber();
-        documentId = driver.getDocumentId();
-        carMark = driver.getCarMark().getIndex();
-        login = driver.getLogin();
-        tariff = driver.getTariff();
+    public UpdateDriverInfoSpecification(String login, String carNumber, String documentId, int carMark, BigDecimal tariff) {
+        this.login = login;
+        this.carNumber = carNumber;
+        this.documentId = documentId;
+        this.carMark = carMark;
+        this.tariff = tariff;
     }
 
     @Override

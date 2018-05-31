@@ -23,8 +23,7 @@
         <h1 class="mb-1">${pageNotFound}</h1>
     </div>
 </div>
-
-<ctg:footer auth="Alex Zhuk" description="Created fo EPAM System java traning"/>
+<c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>
 </body>
 </html>
 

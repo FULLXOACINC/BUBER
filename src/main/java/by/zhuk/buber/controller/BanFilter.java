@@ -1,5 +1,6 @@
 package by.zhuk.buber.controller;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -25,7 +26,6 @@ import java.util.Optional;
 @WebFilter(urlPatterns = {"/*"}, filterName = "ban")
 public class BanFilter implements Filter {
     private static Logger logger = LogManager.getLogger(BanFilter.class);
-    private static final String BANNED_ERROR = "bannedError";
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -55,7 +55,7 @@ public class BanFilter implements Filter {
             } else {
                 session.removeAttribute(UserConstant.LOGIN);
                 session.removeAttribute(UserConstant.TYPE);
-                request.setAttribute(BANNED_ERROR, true);
+                request.setAttribute(ErrorConstant.BANNED_ERROR, true);
                 request.getRequestDispatcher(PagesConstant.SIGN_IN_PAGE).forward(request, response);
             }
         } else {
