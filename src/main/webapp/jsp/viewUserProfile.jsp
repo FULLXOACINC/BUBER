@@ -25,7 +25,7 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
+    <script src="${pageContext.request.contextPath}/js/user.js"></script>
 </head>
 <body>
 <div class="back">
@@ -40,8 +40,11 @@
                     <input type="text" value="${balance}: ${user.balance} BYN" class="form-control" readonly/>
                     <input type="text" value="${discount}: ${user.discount}" class="form-control" readonly/>
 
-                    <input id="change-discount" class="btn btn-lg btn-primary btn-block" type="submit"
-                           value="${updateProfile}">
+                    <form action="${ pageContext.request.contextPath }/controller">
+                        <input type="hidden" name="command" value="find-user-update">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="${updateProfile}">
+                    </form>
+
                 </c:when>
                 <c:otherwise>
                     <input type="text" value="${userNotFound}" class="form-control" readonly/>

@@ -26,15 +26,12 @@
 
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
-
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
+
 <div class="back">
     <div class="container">
         <div class="form-input">

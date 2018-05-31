@@ -7,6 +7,6 @@ public class JSONValidator {
     private static final String ERROR_MESSAGE = "error_message";
 
     public static boolean isJSONHasError(JSONObject json) {
-        return json.has(ERROR) || json.has(ERROR_MESSAGE);
+        return json != null && (json.has(ERROR) || json.has(ERROR_MESSAGE));
     }
 }

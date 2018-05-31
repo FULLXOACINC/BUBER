@@ -4,9 +4,7 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.DriverReceiver;
-import by.zhuk.buber.receiver.UserReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,11 +20,10 @@ public class ViewDriverProfileCommand implements Command {
     public Router execute(HttpServletRequest request) {
         DriverReceiver driverReceiver = new DriverReceiver();
         HttpSession session = request.getSession();
-        String login=(String)session.getAttribute(UserConstant.LOGIN);
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
 
             Optional<Driver> optionalDriver = driverReceiver.findDriverByLogin(login);
-            optionalDriver.get();
             optionalDriver.ifPresent(driver -> request.setAttribute(DRIVER, driver));
             return new Router(TransitionType.FORWARD, PagesConstant.DRIVER_PROFILE_VIEW_PAGE);
         } catch (ReceiverException e) {

@@ -7,7 +7,6 @@
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
-<fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.currentAddress" var="currentAddress"/>
 <fmt:message bundle="${locale}" key="text.selectAddress" var="selectAddress"/>
 <fmt:message bundle="${locale}" key="text.clearMap" var="clearMap"/>
@@ -18,7 +17,6 @@
 <head>
     <title>${buber}</title>
     <script src="${pageContext.request.contextPath}/js/changeDriverCoordinate.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>

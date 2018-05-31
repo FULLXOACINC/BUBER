@@ -1,11 +1,8 @@
 function hideAllMessage() {
-    $('#car-number-not-valid').hide();
-    $('#document-id-not-valid').hide();
-    $('#car-mark-not-valid').hide();
-    $('#driver-not-exist').hide();
-    $('#car-number-exist').hide();
-    $('#document-id-exist').hide();
-    $('#tariff-not-valid').hide();
+    $('#phone-number-exist').hide();
+    $('#phone-number-not-valid').hide();
+    $('#first-name-not-valid').hide();
+    $('#last-name-not-valid').hide();
     $('#all-correct').hide();
 
 }
@@ -18,12 +15,10 @@ $(document).ready(function () {
             type: "POST",
             url: '/AJAXController',
             data: {
-                command: "update-driver",
-                login: $('#login').val(),
-                carNumber: $('#car-number').val(),
-                documentId: $('#document-id').val(),
-                carMark: $('#car-mark').val(),
-                tariff: $('#tariff').val()
+                command: "update-user",
+                firstName: $('#first-name').val(),
+                lastName: $('#last-name').val(),
+                phoneNumber: $('#phone-number').val()
             },
             success: function (response) {
 
@@ -60,5 +55,5 @@ $(document).ready(function () {
             }
         });
     };
-    $('#update-driver').click(updateFun);
+    $('#update-user').click(updateFun);
 });

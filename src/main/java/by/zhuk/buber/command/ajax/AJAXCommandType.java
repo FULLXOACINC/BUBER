@@ -30,10 +30,10 @@ public enum AJAXCommandType {
     DRIVER_SET_WORKING_STATUS(new DriverSetWorkingStatusCommand()),
     FIND_UNACCEPTED_COMPLAINT(new FindUnacceptedComplaintCommand()),
     FIND_DRIVER_RIDE_HISTORY(new FindDriverRideHistoryCommand()),
-
-
-    CHANGE_DISCOUNT(new ChangeDiscountCommand());
-
+    FIND_USER_RIDE_HISTORY(new FindUserRideHistoryCommand()),
+    CHANGE_DISCOUNT(new ChangeDiscountCommand()),
+    FIND_DRIVER_EARNED_MONEY(new FindDriverEarnedMoneyCommand()),
+    WITHDRAW_EARNING_DRIVER_MONEY(new WithdrawEarningDriverMoneyCommand());
 
     private AJAXCommand command;
 

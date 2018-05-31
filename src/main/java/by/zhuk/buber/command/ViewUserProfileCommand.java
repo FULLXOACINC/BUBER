@@ -20,7 +20,7 @@ public class ViewUserProfileCommand implements Command {
     public Router execute(HttpServletRequest request) {
         UserReceiver userReceiver = new UserReceiver();
         HttpSession session = request.getSession();
-        String login=(String)session.getAttribute(UserConstant.LOGIN);
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(login);
             if (optionalUser.isPresent()) {

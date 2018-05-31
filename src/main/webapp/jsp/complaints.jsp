@@ -18,15 +18,12 @@
 <fmt:message bundle="${locale}" key="text.previous" var="previous"/>
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/viewComplaints.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
-
+    <script src="${pageContext.request.contextPath}/js/complaints.js"></script>
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
         <div class="form-input">

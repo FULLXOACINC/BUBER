@@ -53,7 +53,7 @@ public class AdminFilter implements Filter {
     }
 
     private boolean isAdminPages(String requestURI) {
-        return requestURI.startsWith(PagesConstant.ADMIN_PAGE) || requestURI.startsWith(PagesConstant.USER_VIEW_PAGE) || requestURI.startsWith(PagesConstant.SING_UP_DRIVER_PAGE);
+        return requestURI.startsWith(PagesConstant.ADMIN_PAGE) || requestURI.startsWith(PagesConstant.USER_PAGE) || requestURI.startsWith(PagesConstant.SING_UP_DRIVER_PAGE);
     }
 
     private boolean isAdminCommand(String command) {
@@ -66,7 +66,7 @@ public class AdminFilter implements Filter {
         boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isUpdateDriverCommand = command.equals(AJAXCommandType.UPDATE_DRIVER.name());
-        boolean isFindDriverCommand = command.equals(CommandType.FIND_DRIVER.name());
+        boolean isFindDriverCommand = command.equals(CommandType.FIND_DRIVER_UPDATE.name());
         boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
 
         return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount || isUpdateDriverCommand || isFindDriverCommand;

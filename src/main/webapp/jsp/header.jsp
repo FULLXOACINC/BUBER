@@ -20,6 +20,7 @@
 <fmt:message bundle="${locale}" key="text.signInHeading" var="signIn"/>
 <fmt:message bundle="${locale}" key="text.profile" var="profile"/>
 <fmt:message bundle="${locale}" key="text.rideHistory" var="rideHistory"/>
+<fmt:message bundle="${locale}" key="text.withdrawEarnings" var="withdrawEarnings"/>
 
 <fmt:message bundle="${locale}" key="text.setStatusWorking" var="setStatusWorking"/>
 <fmt:message bundle="${locale}" key="text.setStatusNotWorking" var="setStatusNotWorking"/>
@@ -50,6 +51,11 @@
                             <div>
                                 <form action="${pageContext.request.contextPath}/jsp/fillUpBalance.jsp">
                                     <input class="dropdown-item" type="submit" value="${fillUp}">
+                                </form>
+                            </div>
+                            <div>
+                                <form action="${pageContext.request.contextPath}/jsp/viewUserRideHistory.jsp">
+                                    <input class="dropdown-item" type="submit" value="${rideHistory}">
                                 </form>
                             </div>
                             <div>
@@ -90,7 +96,7 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="${pageContext.request.contextPath}/jsp/viewComplaints.jsp">
+                                    <form action="${pageContext.request.contextPath}/jsp/complaints.jsp">
                                         <input class="dropdown-item" type="submit" value="${viewUnacceptedComplaints}">
                                     </form>
                                 </div>
@@ -113,6 +119,11 @@
                                 <div>
                                     <form action="${pageContext.request.contextPath}/jsp/changeDriverCoordinate.jsp">
                                         <input class="dropdown-item" type="submit" value="${changeCurrentCoordinate}">
+                                    </form>
+                                </div>
+                                <div>
+                                    <form action="${pageContext.request.contextPath}/jsp/withdrawEarnings.jsp">
+                                        <input class="dropdown-item" type="submit" value="${withdrawEarnings}">
                                     </form>
                                 </div>
                                 <div>

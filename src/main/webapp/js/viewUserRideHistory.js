@@ -1,7 +1,7 @@
 var rideIdMessage;
-var passengerLoginMessage;
+var driverLoginMessage;
 var phoneNumberMessage;
-var earnedMoneyMessage;
+var priceMessage;
 
 var directionsDisplay;
 var startMarker;
@@ -14,7 +14,7 @@ function findCurrentRide(id) {
         type: "POST",
         url: '/AJAXController',
         data: {
-            command: "find-driver-ride-history",
+            command: "find-user-ride-history",
             index: id
         },
         success: function (response) {
@@ -27,10 +27,11 @@ function findCurrentRide(id) {
                     var endLng = response['end']['lng'];
 
                     $('#ride-id').val(rideIdMessage + ": " + response['rideId']);
-                    $('#passenger-name').val(response['firstName'] + " " + response['lastName']);
-                    $('#passenger-login').val(passengerLoginMessage + ": " + response['passengerLogin']);
-                    $('#passenger-phone-number').val(phoneNumberMessage + ": " + response['passengerPhoneNumber']);
-                    $('#earned-money').val(earnedMoneyMessage + ": " + response['earnedMoney']);
+                    $('#driver-login').val(driverLoginMessage + ": " + response['driverLogin']);
+                    $('#driver-name').val(response['firstName'] + " " + response['lastName']);
+
+                    $('#driver-phone-number').val(phoneNumberMessage + ": " + response['driverPhoneNumber']);
+                    $('#price').val(priceMessage + ": " + response['price']);
 
 
                     var startCoordinate = new google.maps.LatLng(startLat, startLng);
@@ -102,9 +103,9 @@ function findCurrentRide(id) {
 $(document).ready(function () {
     $('#no-ride').hide();
     rideIdMessage = $('#ride-id-mess').val();
-    passengerLoginMessage = $('#passenger-login-mess').val();
-    phoneNumberMessage = $('#passenger-phone-number-mess').val();
-    earnedMoneyMessage = $('#earned-money-mess').val();
+    driverLoginMessage = $('#driver-login-mess').val();
+    phoneNumberMessage = $('#driver-phone-number-mess').val();
+    priceMessage = $('#price-mess').val();
 
     var nextComplaintFun = function () {
         findCurrentRide(index + 1);

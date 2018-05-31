@@ -22,10 +22,6 @@ public class Repository<T> {
         updateQueryExecute(specification);
     }
 
-    public void delete(Specification specification) throws RepositoryException {
-        updateQueryExecute(specification);
-    }
-
     public void setConnection(Connection connection) {
         this.connection = connection;
     }

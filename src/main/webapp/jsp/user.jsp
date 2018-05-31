@@ -24,15 +24,12 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/viewUser.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
-
+    <script src="${pageContext.request.contextPath}/js/user.js"></script>
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
         <div class="form-input">
@@ -77,7 +74,7 @@
                     </c:if>
                     <c:if test="${user.type == 'DRIVER'}">
                         <form action="${ pageContext.request.contextPath }/controller">
-                            <input type="hidden" name="command" value="find-driver">
+                            <input type="hidden" name="command" value="find-driver-update">
                             <input type="hidden" name="driver" value="${user.login}">
                             <input type="submit" class="btn btn-lg btn-primary btn-block" value="${updateDriver}">
                         </form>

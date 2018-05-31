@@ -11,12 +11,14 @@ import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByCarNumberSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByDocumentIdSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
+import by.zhuk.buber.specification.find.driver.FindDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverInfoForRideSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverCurrentCoordinateSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverInfoSpecification;
@@ -27,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class DriverReceiver {
+    private static final BigDecimal EMPTY_BALANCE = new BigDecimal("0.00");
 
     public boolean isDriverExist(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverByLoginSpecification(driverLogin);
@@ -167,6 +170,31 @@ public class DriverReceiver {
         RepositoryController controller = new RepositoryController(driverRepository);
 
         Specification driverUpdateSpecification = new UpdateDriverIsWorkingSpecification(isWorking, login);
+        try {
+            driverRepository.update(driverUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public Optional<BigDecimal> findDriverEarnedMoney(String login) throws ReceiverException {
+        FindSpecification<Driver> specification = new FindDriverEarnedMoneySpecification(login);
+        Finder<Driver> finder = new Finder<>();
+        List<Driver> drivers = finder.findBySpecification(specification);
+        Optional<BigDecimal> earnedMoney = Optional.empty();
+        if (!drivers.isEmpty()) {
+            earnedMoney = Optional.ofNullable(drivers.get(0).getEarnedMoney());
+        }
+        return earnedMoney;
+    }
+
+
+    public void withdrawEarningMoney(String login) throws ReceiverException {
+        Repository<Driver> driverRepository = new Repository<>();
+        RepositoryController controller = new RepositoryController(driverRepository);
+
+        Specification driverUpdateSpecification = new UpdateDriverEarnedMoneySpecification(login, EMPTY_BALANCE);
         try {
             driverRepository.update(driverUpdateSpecification);
             controller.end();

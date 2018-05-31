@@ -20,13 +20,13 @@ public class UpdateDriverCommand implements AJAXCommand {
     private static final String CAR_MARK = "carMark";
     private static final String TARIFF = "tariff";
 
-    private static final String CAR_NUMBER_ERROR = "carNumberError";
-    private static final String DOCUMENT_ID_ERROR = "documentIdError";
-    private static final String CAR_MARK_ERROR = "carMarkError";
-    private static final String DRIVER_NOT_EXIST_ERROR = "driverNotExistError";
-    private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
-    private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
-    private static final String TARIFF_ERROR = "tariffError";
+    private static final String CAR_NUMBER_NOT_VALID = "carNumberNotValid";
+    private static final String DOCUMENT_ID_NOT_VALID = "documentIdNotValid";
+    private static final String CAR_MARK_NOT_VALID = "carMarkNotValid";
+    private static final String DRIVER_NOT_EXIST = "driverNotExist";
+    private static final String CAR_NUMBER_EXIST = "carNumberExist";
+    private static final String DOCUMENT_ID_EXIST = "documentIdExist";
+    private static final String TARIFF_NOT_VALID = "tariffNotValid";
 
 
     @Override
@@ -40,30 +40,30 @@ public class UpdateDriverCommand implements AJAXCommand {
         String tariff = request.getParameter(TARIFF);
 
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
-            json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
+            json.put(CAR_NUMBER_NOT_VALID, CAR_NUMBER_NOT_VALID);
         }
         if (!SignUpDriverValidator.isDocIdValid(documentId)) {
-            json.put(DOCUMENT_ID_ERROR, DOCUMENT_ID_ERROR);
+            json.put(DOCUMENT_ID_NOT_VALID, DOCUMENT_ID_NOT_VALID);
         }
         if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
-            json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
+            json.put(CAR_MARK_NOT_VALID, CAR_MARK_NOT_VALID);
         }
         if (!SignUpDriverValidator.isTariffValid(tariff)) {
-            json.put(TARIFF_ERROR, TARIFF_ERROR);
+            json.put(TARIFF_NOT_VALID, TARIFF_NOT_VALID);
         }
         DriverReceiver driverReceiver = new DriverReceiver();
 
         try {
             if (!driverReceiver.isDriverExist(login)) {
-                json.put(DRIVER_NOT_EXIST_ERROR, DRIVER_NOT_EXIST_ERROR);
+                json.put(DRIVER_NOT_EXIST, DRIVER_NOT_EXIST);
             }
             Optional<Driver> driverOptional = driverReceiver.findDriverByLogin(login);
             Driver driver = driverOptional.get();
             if (driverReceiver.isCarNumberExist(carNumber) && !driver.getCarNumber().equals(carNumber)) {
-                json.put(CAR_NUMBER_EXIST_ERROR, CAR_NUMBER_EXIST_ERROR);
+                json.put(CAR_NUMBER_EXIST, CAR_NUMBER_EXIST);
             }
             if (driverReceiver.isDriverDocumentIdExist(documentId) && !driver.getDocumentId().equals(documentId)) {
-                json.put(DOCUMENT_ID_EXIST_ERROR, DOCUMENT_ID_EXIST_ERROR);
+                json.put(DOCUMENT_ID_EXIST, DOCUMENT_ID_EXIST);
             }
             if (json.length() == 0) {
                 BigDecimal tariffBigDecimal = new BigDecimal(tariff);

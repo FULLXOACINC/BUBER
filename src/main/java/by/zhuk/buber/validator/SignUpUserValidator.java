@@ -13,23 +13,25 @@ public class SignUpUserValidator {
     private static final int MAX_AGE = 255;
 
     public static boolean isPasswordValid(String password) {
-        return password.matches(PASSWORD_REGEXP);
+        return password != null && password.matches(PASSWORD_REGEXP);
     }
 
     public static boolean isBirthDayValid(String birthDay) {
-        if (!birthDay.matches(DAY_REGEXP)) {
+        if (birthDay != null && birthDay.matches(DAY_REGEXP)) {
+            LocalDate birthDayDate = LocalDate.parse(birthDay);
+            int age = Period.between(birthDayDate, LocalDate.now()).getYears();
+            return age >= MIN_AGE && age <= MAX_AGE;
+        } else {
             return false;
         }
-        LocalDate birthDayDate = LocalDate.parse(birthDay);
-        int age = Period.between(birthDayDate, LocalDate.now()).getYears();
-        return age >= MIN_AGE && age <= MAX_AGE;
+
     }
 
     public static boolean isPhoneNumberValid(String phoneNumber) {
-        return phoneNumber.matches(PHONE_NUMBER_REGEXP);
+        return phoneNumber != null && phoneNumber.matches(PHONE_NUMBER_REGEXP);
     }
 
     public static boolean isNameValid(String name) {
-        return name.matches(NAME_REGEXP);
+        return name != null && name.matches(NAME_REGEXP);
     }
 }

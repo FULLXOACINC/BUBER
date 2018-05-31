@@ -9,9 +9,9 @@
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.rideId" var="rideId"/>
 
-<fmt:message bundle="${locale}" key="text.passengerLogin" var="passengerLogin"/>
+<fmt:message bundle="${locale}" key="text.driverLogin" var="driverLogin"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
-<fmt:message bundle="${locale}" key="text.earnedMoney" var="earnedMoney"/>
+<fmt:message bundle="${locale}" key="text.price" var="price"/>
 <fmt:message bundle="${locale}" key="text.noRide" var="noRide"/>
 
 <fmt:message bundle="${locale}" key="text.next" var="next"/>
@@ -21,7 +21,7 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script src="${pageContext.request.contextPath}/js/viewDriverRideHistory.js"></script>
+    <script src="${pageContext.request.contextPath}/js/viewUserRideHistory.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>
@@ -33,9 +33,9 @@
         <div class="form-input">
             <div id="ride">
                 <input type='hidden' id="ride-id-mess" value='${rideId}'>
-                <input type='hidden' id="passenger-login-mess" value='${passengerLogin}'>
-                <input type='hidden' id="passenger-phone-number-mess" value='${phoneNumber}'>
-                <input type='hidden' id="earned-money-mess" value='${earnedMoney}'>
+                <input type='hidden' id="driver-login-mess" value='${driverLogin}'>
+                <input type='hidden' id="driver-phone-number-mess" value='${phoneNumber}'>
+                <input type='hidden' id="price-mess" value='${price}'>
 
                 <ul class="pagination">
                     <input type='submit' class="page-link" id='prev' value="${previous}">
@@ -43,10 +43,10 @@
                 </ul>
 
                 <input type="text" id="ride-id" class="form-control" readonly/>
-                <input type="text" id="passenger-login" class="form-control" readonly/>
-                <input type="text" id="passenger-name" class="form-control" readonly/>
-                <input type="text" id="passenger-phone-number" class="form-control" readonly/>
-                <input type="text" id="earned-money" class="form-control" readonly/>
+                <input type="text" id="driver-login" class="form-control" readonly/>
+                <input type="text" id="driver-name" class="form-control" readonly/>
+                <input type="text" id="driver-phone-number" class="form-control" readonly/>
+                <input type="text" id="price" class="form-control" readonly/>
 
                 <div id="map"></div>
             </div>

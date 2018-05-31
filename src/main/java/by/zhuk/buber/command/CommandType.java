@@ -5,14 +5,14 @@ public enum CommandType {
     OAUTH(new OAuthCommand()),
     SIGN_UP_ACCEPT(new SignUpAcceptCommand()),
     SIGN_OUT(new SignOutCommand()),
-    FIND_DRIVER(new FindDriverCommand()),
+    FIND_DRIVER_UPDATE(new FindDriverUpdateCommand()),
     OAUTH_ACCEPT(new OAuthAcceptCommand()),
     SWITCH_ADMIN_STATUS(new SwitchAdminStatusCommand()),
     VIEW_USER(new ViewUserCommand()),
     VIEW_USER_PROFILE(new ViewUserProfileCommand()),
     VIEW_DRIVER_PROFILE(new ViewDriverProfileCommand()),
+    FIND_USER_UPDATE(new FindUserUpdateCommand()),
     SWITCH_BAN(new SwitchBanCommand());
-
 
     private Command command;
 

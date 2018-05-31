@@ -144,7 +144,7 @@ function initMap() {
                     var endLat = response['end']['lat'];
                     var endLng = response['end']['lng'];
 
-                    rideId=response['rideId'];
+                    rideId = response['rideId'];
                     $('#ride-id').val(rideIdMessage + ": " + response['rideId']);
                     $('#passenger-name').val(response['firstName'] + " " + response['lastName']);
                     $('#phone-number').val(phoneNumberMessage + ": " + response['phoneNumber']);

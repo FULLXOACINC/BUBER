@@ -7,18 +7,18 @@ public class SignUpDriverValidator {
     private static final String TARIFF_REGEXP = "\\d\\.\\d{2}";
 
     public static boolean isCarNumberValid(String carNumber) {
-        return carNumber.matches(CAR_NUMBER_REGEXP);
+        return carNumber != null && carNumber.matches(CAR_NUMBER_REGEXP);
     }
 
     public static boolean isDocIdValid(String docId) {
-        return docId.matches(DOC_ID_REGEXP);
+        return docId != null && docId.matches(DOC_ID_REGEXP);
     }
 
     public static boolean isCarMarkValid(String carMark) {
-        return carMark.matches(CAR_MARK_REGEXP);
+        return carMark != null && carMark.matches(CAR_MARK_REGEXP);
     }
 
     public static boolean isTariffValid(String tariff) {
-        return tariff.matches(TARIFF_REGEXP);
+        return tariff != null && tariff.matches(TARIFF_REGEXP);
     }
 }

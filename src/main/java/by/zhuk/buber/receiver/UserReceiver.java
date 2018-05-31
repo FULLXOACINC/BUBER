@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserReceiver {
+    private static Logger logger = LogManager.getLogger(UserReceiver.class);
     private static final BigDecimal MAX_USER_BALANCE = new BigDecimal("100000.00");
 
-    private static Logger logger = LogManager.getLogger(UserReceiver.class);
 
     public Optional<User> findUserByLogin(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
@@ -127,5 +127,9 @@ public class UserReceiver {
             user = Optional.ofNullable(users.get(0));
         }
         return user;
+    }
+
+    public void updateUser(String login, String firstName, String lastName, String phoneNumber) {
+
     }
 }

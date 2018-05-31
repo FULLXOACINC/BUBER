@@ -11,6 +11,9 @@ public class SignInValidator {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     public static boolean isLoginValid(String login) {
+        if (login == null) {
+            return false;
+        }
         Matcher matcher = VALID_LOGIN_REGEX.matcher(login);
         return matcher.find();
     }

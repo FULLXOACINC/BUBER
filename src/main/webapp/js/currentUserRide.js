@@ -162,7 +162,7 @@ function initMap() {
                     $('#car-number').val(carNumberMessage + ": " + response['carNumber']);
                     $('#car-mark').val(carMarkMessage + ": " + response['carMark']);
                     $('#phone-number').val(phoneNumberMessage + ": " + response['phoneNumber']);
-                    rideId=response['rideId'];
+                    rideId = response['rideId'];
 
                     if (!response['isDriverStart']) {
                         $('#wait-start').show();

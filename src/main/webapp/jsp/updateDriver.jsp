@@ -30,63 +30,81 @@
 
 <fmt:message bundle="${locale}" key="text.error.driverNotFound" var="driverNotFound"/>
 
+<fmt:message bundle="${locale}" key="text.carNumber" var="carNumber"/>
+<fmt:message bundle="${locale}" key="text.documentId" var="documentId"/>
+<fmt:message bundle="${locale}" key="text.carMark" var="carMark"/>
+<fmt:message bundle="${locale}" key="text.tariff" var="tariff"/>
+<fmt:message bundle="${locale}" key="text.updateDriverCorrect" var="updateDriverCorrect"/>
+
+
+<fmt:message bundle="${locale}" key="text.error.driverNotExistError" var="driverNotExistError"/>
+
+<fmt:message bundle="${locale}" key="text.error.carNumberError" var="carNumberError"/>
+<fmt:message bundle="${locale}" key="text.error.documentIdError" var="documentIdError"/>
+<fmt:message bundle="${locale}" key="text.error.carMarkError" var="carMarkError"/>
+<fmt:message bundle="${locale}" key="text.error.driverExistError" var="driverExistError"/>
+<fmt:message bundle="${locale}" key="text.error.loginNotExistError" var="loginNotExistError"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberExistError" var="carNumberExistError"/>
+<fmt:message bundle="${locale}" key="text.error.documentIdExistError" var="documentIdExistError"/>
+<fmt:message bundle="${locale}" key="text.error.tariffError" var="tariffError"/>
+
 
 <html>
+<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
     <script src="${pageContext.request.contextPath}/js/updateDriver.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 </head>
 <body>
-<c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
-        <c:choose>
-            <c:when test="${not empty driver}">
-                <p>${driver.login}</p>
-                <input type="hidden" id="login" value="${driver.login}">
-                <p>${carNumber}<input type="text" id="car-number" value="${driver.carNumber}"/></p>
-                <p>${documentId}<input type="text" id="document-id" value="${driver.documentId}"/></p>
-                <p>${carMark}<input type="text" id="car-mark" value="${driver.carMark.markName}"/></p>
-                <p>${tariff}<input type="text" id="tariff" value="${driver.tariff}"/></p>
-                <p><input type="submit" id="update-driver" value="${updateDriver}"></p>
+        <div class="form-input">
 
-                <div class="error" id="car-number-error">
-                    <p>carNumberError</p>
-                </div>
+            <c:choose>
+                <c:when test="${not empty driver}">
+                    <h2 class="form-input-heading">${updateDriver}</h2>
 
-                <div class="error" id="document-id-error">
-                    <p>documentIdError</p>
-                </div>
+                    <h2 class="form-input-heading">${driver.login}</h2>
 
-                <div class="error" id="car-mark-error">
-                    <p>carMarkError</p>
-                </div>
+                    <input type="hidden" id="login" value="${driver.login}">
 
-                <div class="error" id="login-not-exist-error">
-                    <p>loginNotExistError</p>
-                </div>
+                    <input type="text" class="form-control" id="car-number" value="${driver.carNumber}" placeholder="${carNumber}"/>
+                    <input type="text" class="form-control" id="document-id" value="${driver.documentId}" placeholder="${documentId}"/>
+                    <input type="text" class="form-control" id="car-mark" value="${driver.carMark.markName}" placeholder="${carMark}"/>
+                    <input type="text" class="form-control" id="tariff" value="${driver.tariff}" placeholder="${tariff}"/>
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="update-driver" value="${updateDriver}">
 
-                <div class="error" id="driver-exist-error">
-                    <p>driverExistError</p>
-                </div>
+                    <div class="error"   id="car-number-not-valid">
+                        <p>${carNumberError}</p>
+                    </div>
+                    <div class="error"   id="document-id-not-valid">
+                        <p>${documentIdError}</p>
+                    </div>
+                    <div class="error"   id="car-mark-not-valid">
+                        <p>${carMarkError}</p>
+                    </div>
+                    <div class="error"   id="driver-not-exist">
+                        <p>${driverNotExistError}</p>
+                    </div>
+                    <div class="error"   id="car-number-exist">
+                        <p>${carNumberExistError}</p>
+                    </div>
+                    <div class="error"   id="document-id-exist">
+                        <p>${documentIdExistError}</p>
+                    </div>
+                    <div class="error" id="tariff-not-valid">
+                        <p>${tariffError}</p>
+                    </div>
+                    <div class="correct" id="all-correct">
+                        <p>${updateDriverCorrect}</p>
+                    </div>
 
-                <div class="error" id="car-number-exist-error">
-                    <p>carNumberExistError</p>
-                </div>
-
-                <div class="error" id="document-id-exist-error">
-                    <p>documentIdExistError</p>
-                </div>
-
-                <div class="correct" id="all-correct">
-                    <p>allCorrectMessage</p>
-                </div>
-            </c:when>
-            <c:otherwise>
-                ${driverNotFound}
-            </c:otherwise>
-        </c:choose>
+                </c:when>
+                <c:otherwise>
+                    <input type="text" value="${driverNotFound}" class="form-control" readonly/>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
 </div>
 

@@ -4,7 +4,6 @@ import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
-import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
 import by.zhuk.buber.model.User;
@@ -17,6 +16,7 @@ import by.zhuk.buber.specification.find.driver.FindDriverEarnedMoneySpecificatio
 import by.zhuk.buber.specification.find.ride.FindCurrentUserRideSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideDriverLoginByRideIdSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideHistoryDriverSpecification;
+import by.zhuk.buber.specification.find.ride.FindRideHistoryUserSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideInfoDriverSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideInfoPassengerSpecification;
 import by.zhuk.buber.specification.find.ride.FindRidePassengerLoginByRideIdSpecification;
@@ -32,7 +32,6 @@ import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -373,7 +372,18 @@ public class RideReceiver {
     public List<Ride> findDriverRideHistory(String login) throws ReceiverException {
         FindSpecification<Ride> specification = new FindRideHistoryDriverSpecification(login);
         Finder<Ride> finder = new Finder<>();
+        List<Ride> rides = finder.findBySpecification(specification);
+        for (Ride ride : rides) {
+            Driver driver = ride.getDriver();
+            driver.setEarnedMoney(driver.getEarnedMoney().multiply(DRIVER_PERCENT));
+        }
         return finder.findBySpecification(specification);
+
     }
 
+    public List<Ride> findUserRideHistory(String login) throws ReceiverException {
+        FindSpecification<Ride> specification = new FindRideHistoryUserSpecification(login);
+        Finder<Ride> finder = new Finder<>();
+        return finder.findBySpecification(specification);
+    }
 }
