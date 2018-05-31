@@ -20,11 +20,12 @@
 <body>
 <div class="back">
     <div class="container">
-
-        <input id="pattern" type="text" value="">
-        <input id="find-users" type="submit" value="${find}">
-        <br/>
-        <div id="searched"></div>
+        <div class="form-input">
+            <input id="pattern" class="form-control" type="text" value="">
+            <input id="find-users" class="btn btn-lg btn-primary btn-block" type="submit" value="${find}">
+            <br/>
+            <div id="searched"></div>
+        </div>
     </div>
 </div>
 <ctg:footer auth="Alex Zhuk" description="Created for EPAM System java traning"/>

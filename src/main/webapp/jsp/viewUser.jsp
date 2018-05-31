@@ -18,6 +18,11 @@
 <fmt:message bundle="${locale}" key="text.change" var="change"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
 
+<fmt:message bundle="${locale}" key="text.login" var="login"/>
+<fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
+<fmt:message bundle="${locale}" key="text.secondName" var="lastName"/>
+<fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
+
 <html>
 <head>
     <title>${buber}</title>
@@ -32,14 +37,11 @@
     <div class="container">
         <div class="form-input">
             <c:choose>
-                <c:when test="${notFound}">
-                    ${userNotFound}
-                </c:when>
-                <c:otherwise>
-                    <input type="text" id="login" value="${user.login}" class="form-control" readonly/>
-                    <input type="text" value="${user.firstName}" class="form-control" readonly/>
-                    <input type="text" value="${user.lastName}" class="form-control" readonly/>
-                    <input type="text" value="${user.phoneNumber}" class="form-control" readonly/>
+                <c:when test="${not empty user}">
+                    <input type="text" id="login" value="${login}: ${user.login}" class="form-control" readonly/>
+                    <input type="text" value="${firstName}: ${user.firstName}" class="form-control" readonly/>
+                    <input type="text" value="${lastName}: ${user.lastName}" class="form-control" readonly/>
+                    <input type="text" value="${phoneNumber}: ${user.phoneNumber}" class="form-control" readonly/>
 
                     <c:set var="banView"/>
                     <c:choose>
@@ -90,6 +92,9 @@
                                    value="${viewUserComplaints}">
                         </form>
                     </div>
+                </c:when>
+                <c:otherwise>
+                    <input type="text" value="${userNotFound}" class="form-control" readonly/>
                 </c:otherwise>
             </c:choose>
         </div>

@@ -36,9 +36,8 @@ public class SwitchAdminStatusCommand implements Command {
                 logger.log(Level.INFO, "Admin:" + adminLogin + " switch admin status " + userLogin);
             }
         } catch (ReceiverException e) {
-            //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
         }
         return new Router(TransitionType.REDIRECT, request.getRequestURI() + "?command=view-user&user=" + userLogin);
     }

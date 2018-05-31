@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindDriverToUpdateSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_id,car_mark_name,driver_tariff FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
+    private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_login,driver_car_number,driver_document_id,car_mark_id,car_mark_name,driver_tariff,driver_earned_money,driver_positive_mark,driver_negative_mark,driver_is_working FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark WHERE driver_login=?";
     private String login;
 
     public FindDriverToUpdateSpecification(String login) {
@@ -48,6 +48,11 @@ public class FindDriverToUpdateSpecification implements FindSpecification<Driver
                 carMark.setMarkName(resultSet.getString(5));
                 driver.setCarMark(carMark);
                 driver.setTariff(resultSet.getBigDecimal(6));
+                driver.setEarnedMoney(resultSet.getBigDecimal(7));
+
+                driver.setPositiveMark(resultSet.getInt(8));
+                driver.setNegativeMark(resultSet.getInt(9));
+                driver.setWorking(resultSet.getBoolean(10));
                 drivers.add(driver);
             }
         } catch (SQLException e) {

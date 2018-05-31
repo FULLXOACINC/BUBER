@@ -18,6 +18,8 @@
 <fmt:message bundle="${locale}" key="text.admin.findUsers" var="findUsers"/>
 <fmt:message bundle="${locale}" key="text.currentRide" var="currentRide"/>
 <fmt:message bundle="${locale}" key="text.signInHeading" var="signIn"/>
+<fmt:message bundle="${locale}" key="text.profile" var="profile"/>
+<fmt:message bundle="${locale}" key="text.rideHistory" var="rideHistory"/>
 
 <fmt:message bundle="${locale}" key="text.setStatusWorking" var="setStatusWorking"/>
 <fmt:message bundle="${locale}" key="text.setStatusNotWorking" var="setStatusNotWorking"/>
@@ -33,11 +35,6 @@
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-    <%--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"--%>
-            <%--data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"--%>
-            <%--aria-label="Toggle navigation">--%>
-        <%--<span class="navbar-toggler-icon"></span>--%>
-    <%--</button>--%>
     <div class="navbar-brand">${buber}</div>
 
     <div class="collapse navbar-collapse">
@@ -66,6 +63,12 @@
                                 </form>
                             </div>
                             <div>
+                                <form action="${ pageContext.request.contextPath }/controller">
+                                    <input type="hidden" name="command" value="view-user-profile">
+                                    <input class="dropdown-item" type="submit" value="${profile}">
+                                </form>
+                            </div>
+                            <div>
                                 <form action="${ pageContext.request.contextPath }/controller" method="post">
                                     <input type="hidden" name="command" value="sign-out">
                                     <input class="dropdown-item" type="submit" value="${signOut}">
@@ -73,8 +76,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <c:if test="${sessionScope.type == 'ADMIN' || sessionScope.type == 'ROOT_ADMIN'}">
                         <div class="dropdown">
 
@@ -115,6 +116,17 @@
                                     </form>
                                 </div>
                                 <div>
+                                    <form action="${ pageContext.request.contextPath }/controller">
+                                        <input type="hidden" name="command" value="view-driver-profile">
+                                        <input class="dropdown-item" type="submit" value="${profile}">
+                                    </form>
+                                </div>
+                                <div>
+                                    <form action="${pageContext.request.contextPath}/jsp/viewDriverRideHistory.jsp">
+                                        <input class="dropdown-item" type="submit" value="${rideHistory}">
+                                    </form>
+                                </div>
+                                <div>
                                     <form action="${pageContext.request.contextPath}/jsp/currentDriverRide.jsp">
                                         <input class="dropdown-item" type="submit" value="${currentRide}">
                                     </form>
@@ -127,11 +139,7 @@
                                     <input class="dropdown-item" type="submit" id="is-not-working"
                                            value="${setStatusNotWorking}">
                                 </div>
-                                <div>
-                                    <form action="${pageContext.request.contextPath}/jsp/signUpDriver.jsp">
-                                        <input class="dropdown-item" type="submit" value="viewHistory">
-                                    </form>
-                                </div>
+
 
                             </div>
                         </div>

@@ -1,0 +1,37 @@
+package by.zhuk.buber.command;
+
+import by.zhuk.buber.constant.PagesConstant;
+import by.zhuk.buber.constant.UserConstant;
+import by.zhuk.buber.exception.ReceiverException;
+import by.zhuk.buber.model.Driver;
+import by.zhuk.buber.model.User;
+import by.zhuk.buber.receiver.DriverReceiver;
+import by.zhuk.buber.receiver.UserReceiver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Optional;
+
+public class ViewDriverProfileCommand implements Command {
+    private static Logger logger = LogManager.getLogger(ViewDriverProfileCommand.class);
+    private static final String DRIVER = "driver";
+
+    @Override
+    public Router execute(HttpServletRequest request) {
+        DriverReceiver driverReceiver = new DriverReceiver();
+        HttpSession session = request.getSession();
+        String login=(String)session.getAttribute(UserConstant.LOGIN);
+        try {
+
+            Optional<Driver> optionalDriver = driverReceiver.findDriverByLogin(login);
+            optionalDriver.get();
+            optionalDriver.ifPresent(driver -> request.setAttribute(DRIVER, driver));
+            return new Router(TransitionType.FORWARD, PagesConstant.DRIVER_PROFILE_VIEW_PAGE);
+        } catch (ReceiverException e) {
+            logger.catching(e);
+            return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
+        }
+    }
+}

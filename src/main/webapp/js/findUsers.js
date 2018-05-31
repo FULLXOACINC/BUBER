@@ -14,7 +14,7 @@ $(document).ready(function () {
                         $("#searched").append("<form action='/controller'>" +
                             "<input type='hidden' name='command' value='view-user'>\n" +
                             "<input type='hidden' name='user' value='" + user.login + "'>\n" +
-                            "<input type='submit' value='" + user.login + "'></form>");
+                            "<input type='submit' class='btn btn-lg btn-primary btn-block' value='" + user.login + "'></form>");
                     });
                 } else {
                     console.log(response['error']);

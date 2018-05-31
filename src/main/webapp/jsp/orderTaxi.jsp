@@ -38,7 +38,6 @@
 <head>
     <title>${buber}</title>
     <script src="${pageContext.request.contextPath}/js/orderTaxi.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>

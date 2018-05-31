@@ -9,6 +9,8 @@ public enum CommandType {
     OAUTH_ACCEPT(new OAuthAcceptCommand()),
     SWITCH_ADMIN_STATUS(new SwitchAdminStatusCommand()),
     VIEW_USER(new ViewUserCommand()),
+    VIEW_USER_PROFILE(new ViewUserProfileCommand()),
+    VIEW_DRIVER_PROFILE(new ViewDriverProfileCommand()),
     SWITCH_BAN(new SwitchBanCommand());
 
 

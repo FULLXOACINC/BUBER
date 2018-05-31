@@ -3,6 +3,7 @@ function hideAllMessage() {
     $('#out-of-bound-balance').hide();
     $('#full-balance').hide();
     $('#fill-up-balance-correct').hide();
+    $('#card-number').hide();
 }
 
 $(document).ready(function () {
@@ -14,7 +15,8 @@ $(document).ready(function () {
             url: '/AJAXController',
             data: {
                 command: "fill-up-balance",
-                moneyAmount: $('input[name=money-amount]:checked').val()
+                cardNumber: $('#card-number-input').val(),
+                moneyAmount: $('#amount').val()
             },
             success: function (response) {
                 if (response['allCorrect']) {
@@ -28,6 +30,9 @@ $(document).ready(function () {
                     }
                     if (response['unknownMoneyFormat']) {
                         $('#unknown-money-format').show();
+                    }
+                    if (response['cardNumberNotValid']) {
+                        $('#card-number').show();
                     }
 
                 }

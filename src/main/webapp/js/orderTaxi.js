@@ -288,8 +288,6 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
     var priceWithDiscount = precisionRound(price * (1 - discount), 2);
 
     var contentString = '<div id="content">' +
-        // '<div id="siteNotice">' +
-        // '</div>' +
         '<div id="bodyContent">' +
         '<div>' + firstName + ' ' + LastName + '</div>' +
         '<div>' + carNumberMessage + ' ' + carNumber + '</div>' +

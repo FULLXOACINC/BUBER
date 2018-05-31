@@ -33,9 +33,8 @@ public class SignUpAcceptCommand implements Command {
             session.setAttribute(UserConstant.TYPE, UserType.USER.name());
             pool.removeInfo(hash);
         } catch (ReceiverException e) {
-            //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
         }
         return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
     }

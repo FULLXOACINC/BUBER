@@ -12,14 +12,8 @@ import java.util.List;
 
 public class FindUnacceptedComplaintCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUnacceptedComplaintCommand.class);
-    private static final String COMPLAINT_ID = "complaintId";
-    private static final String COMPLAINT_PERSON_LOGIN = "complaintPersonLogin";
-    private static final String COMPLAINT_TEXT = "complaintText";
-    private static final String RIDE_ID = "rideId";
-
 
     private static final String INDEX = "index";
-    private static final String COMPLAINTS_EMPTY = "complaintsEmpty";
     private static final String INTEGER_REGEX = "\\d+";
 
     @Override
@@ -28,7 +22,7 @@ public class FindUnacceptedComplaintCommand implements AJAXCommand {
         ComplaintReceiver complaintReceiver = new ComplaintReceiver();
         String stringIndex = request.getParameter(INDEX);
         int index;
-        if (stringIndex == null || !stringIndex.matches(INTEGER_REGEX)) {
+        if (!(stringIndex != null && stringIndex.matches(INTEGER_REGEX))) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);

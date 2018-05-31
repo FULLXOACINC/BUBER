@@ -37,9 +37,8 @@ public class SwitchBanCommand implements Command {
                 logger.log(Level.INFO, "Admin:" + adminLogin + " switch ban status " + userLogin);
             }
         } catch (ReceiverException e) {
-            //TODO error page
             logger.catching(e);
-            return new Router(TransitionType.REDIRECT, PagesConstant.ADMIN_PAGE);
+            return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
         }
 
 

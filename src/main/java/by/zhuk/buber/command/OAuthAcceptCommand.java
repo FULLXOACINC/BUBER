@@ -58,9 +58,8 @@ public class OAuthAcceptCommand implements Command {
                 }
 
             } catch (ReceiverException e) {
-                //TODO error page
                 logger.catching(e);
-                new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
+                return new Router(TransitionType.REDIRECT, PagesConstant.ERROR_PAGE);
             }
 
             return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);

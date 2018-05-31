@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindUserByLoginSpecification implements FindSpecification<User> {
-    private static final String SELECT_BY_LOGIN = "SELECT user_name, user_second_name, user_password, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
+    private static final String SELECT_BY_LOGIN = "SELECT user_name, user_second_name, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
     private String login;
 
     public FindUserByLoginSpecification(String login) {
@@ -43,15 +43,14 @@ public class FindUserByLoginSpecification implements FindSpecification<User> {
                 user.setLogin(login);
                 user.setFirstName(resultSet.getString(1));
                 user.setLastName(resultSet.getString(2));
-                user.setPassword(resultSet.getString(3));
-                UserType type = UserType.valueOf(resultSet.getString(4).toUpperCase());
+                UserType type = UserType.valueOf(resultSet.getString(3).toUpperCase());
                 user.setType(type);
-                user.setBalance(resultSet.getBigDecimal(5));
-                user.setBirthDay(resultSet.getDate(6).toLocalDate());
-                user.setPhoneNumber(resultSet.getString(7));
-                boolean isBaned = resultSet.getBoolean(8);
+                user.setBalance(resultSet.getBigDecimal(4));
+                user.setBirthDay(resultSet.getDate(5).toLocalDate());
+                user.setPhoneNumber(resultSet.getString(6));
+                boolean isBaned = resultSet.getBoolean(7);
                 user.setBaned(isBaned);
-                user.setDiscount(resultSet.getFloat(9));
+                user.setDiscount(resultSet.getFloat(8));
                 users.add(user);
             }
         } catch (SQLException e) {

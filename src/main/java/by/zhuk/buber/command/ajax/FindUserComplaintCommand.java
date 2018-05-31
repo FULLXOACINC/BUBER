@@ -26,7 +26,7 @@ public class FindUserComplaintCommand implements AJAXCommand {
         UserReceiver userReceiver = new UserReceiver();
         String stringIndex = request.getParameter(INDEX);
         int index;
-        if (stringIndex == null || !stringIndex.matches(INTEGER_REGEX)) {
+        if (!(stringIndex != null && stringIndex.matches(INTEGER_REGEX))) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);
