@@ -2,7 +2,7 @@ package by.zhuk.buber.controller;
 
 import by.zhuk.buber.connectionpool.ConnectionPool;
 import by.zhuk.buber.mail.MailProperty;
-import by.zhuk.buber.signuppool.SingUpPoolCleaner;
+import by.zhuk.buber.userpool.PoolCleaner;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -16,7 +16,7 @@ public class ControllerListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ConnectionPool.getInstance();
         MailProperty.getInstance();
-        Thread cleaner = new Thread(new SingUpPoolCleaner(SIGN_UP_CLEAR_TIME));
+        Thread cleaner = new Thread(new PoolCleaner(SIGN_UP_CLEAR_TIME));
         cleaner.setDaemon(true);
         cleaner.start();
 

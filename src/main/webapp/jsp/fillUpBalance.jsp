@@ -9,15 +9,15 @@
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.fillUp" var="fillUpBalance"/>
 
-<fmt:message bundle="${locale}" key="text.fillUp.cardNumber" var="cardNumber"/>
-<fmt:message bundle="${locale}" key="text.fillUp.moneyAmount" var="moneyAmount"/>
-<fmt:message bundle="${locale}" key="text.fillUp.cardNumberMessage" var="cardNumberMessage"/>
+<fmt:message bundle="${locale}" key="text.cardNumber" var="cardNumber"/>
+<fmt:message bundle="${locale}" key="text.moneyAmount" var="moneyAmount"/>
+<fmt:message bundle="${locale}" key="text.cardNumberMessage" var="cardNumberMessage"/>
 
-<fmt:message bundle="${locale}" key="text.fillUp.fillUpBalanceCorrectMessage" var="fillUpBalanceCorrectMessage"/>
-<fmt:message bundle="${locale}" key="text.fillUp.fullBalanceMessage" var="fullBalanceMessage"/>
-<fmt:message bundle="${locale}" key="text.fillUp.outOfBoundBalanceMessage" var="outOfBoundBalanceMessage"/>
-<fmt:message bundle="${locale}" key="text.fillUp.unknownMoneyFormatMessage" var="unknownMoneyFormatMessage"/>
-<fmt:message bundle="${locale}" key="text.fillUp.unknownMoneyFormatMessage" var="unknownMoneyFormatMessage"/>
+<fmt:message bundle="${locale}" key="text.fillUpBalanceCorrect" var="fillUpBalanceCorrectMessage"/>
+<fmt:message bundle="${locale}" key="text.fullBalance" var="fullBalanceMessage"/>
+<fmt:message bundle="${locale}" key="text.outOfBoundBalance" var="outOfBoundBalanceMessage"/>
+<fmt:message bundle="${locale}" key="text.unknownMoneyFormat" var="unknownMoneyFormatMessage"/>
+<fmt:message bundle="${locale}" key="text.unknownMoneyFormat" var="unknownMoneyFormatMessage"/>
 
 <html>
 <head>

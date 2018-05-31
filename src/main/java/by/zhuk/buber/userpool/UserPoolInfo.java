@@ -1,14 +1,14 @@
-package by.zhuk.buber.signuppool;
+package by.zhuk.buber.userpool;
 
 import by.zhuk.buber.model.User;
 
 import java.time.LocalTime;
 
-public class SignUpUserInfo {
+public class UserPoolInfo {
     private User user;
     private LocalTime time;
 
-    public SignUpUserInfo(User user, LocalTime time) {
+    public UserPoolInfo(User user, LocalTime time) {
         this.user = user;
         this.time = time;
     }

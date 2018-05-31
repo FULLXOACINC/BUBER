@@ -9,18 +9,18 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
-<fmt:message bundle="${locale}" key="text.admin.ban" var="ban"/>
-<fmt:message bundle="${locale}" key="text.admin.unBan" var="unBan"/>
-<fmt:message bundle="${locale}" key="text.admin.removeAdminStatus" var="removeAdminStatus"/>
-<fmt:message bundle="${locale}" key="text.admin.takeAdminStatus" var="takeAdminStatus"/>
-<fmt:message bundle="${locale}" key="text.admin.viewUserComplaints" var="viewUserComplaints"/>
+<fmt:message bundle="${locale}" key="text.ban" var="ban"/>
+<fmt:message bundle="${locale}" key="text.unBan" var="unBan"/>
+<fmt:message bundle="${locale}" key="text.removeAdminStatus" var="removeAdminStatus"/>
+<fmt:message bundle="${locale}" key="text.takeAdminStatus" var="takeAdminStatus"/>
+<fmt:message bundle="${locale}" key="text.viewUserComplaints" var="viewUserComplaints"/>
 <fmt:message bundle="${locale}" key="text.userNotFound" var="userNotFound"/>
 <fmt:message bundle="${locale}" key="text.change" var="change"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
 
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="lastName"/>
+<fmt:message bundle="${locale}" key="text.lastName" var="lastName"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 
 <html>

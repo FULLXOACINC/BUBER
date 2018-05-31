@@ -14,10 +14,11 @@
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
 <fmt:message bundle="${locale}" key="text.signInHeading" var="signInHeading"/>
 <fmt:message bundle="${locale}" key="text.enter" var="enter"/>
-<fmt:message bundle="${locale}" key="text.errors.loginNotValid" var="loginNotValidMessage"/>
-<fmt:message bundle="${locale}" key="text.errors.loginNotExist" var="loginNotExistMessage"/>
-<fmt:message bundle="${locale}" key="text.errors.loginPasswordNotEq" var="loginPasswordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.errors.bannedError" var="bannedErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.loginNotValid" var="loginNotValidMessage"/>
+<fmt:message bundle="${locale}" key="text.loginNotExist" var="loginNotExistMessage"/>
+<fmt:message bundle="${locale}" key="text.passwordLoginNotEq" var="loginPasswordNotEqMessage"/>
+<fmt:message bundle="${locale}" key="text.banned" var="bannedErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.restorePassword" var="restorePassword"/>
 <html>
 <head>
     <title>${login}</title>
@@ -70,6 +71,9 @@
             </form>
             <form action="${pageContext.request.contextPath}/jsp/signUp.jsp">
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="${singUp}">
+            </form>
+            <form action="${pageContext.request.contextPath}/jsp/restorePassword.jsp">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="${restorePassword}">
             </form>
         </div>
 

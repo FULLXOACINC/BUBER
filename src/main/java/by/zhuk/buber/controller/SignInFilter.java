@@ -32,7 +32,7 @@ public class SignInFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
 
-        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().equals(PagesConstant.SING_UP_PAGE) || request.getRequestURI().equals(PagesConstant.SIGN_IN_PAGE) || requestFile(request.getRequestURI())) {
+        if (isLoginCommand(request.getParameter(CommandConstant.COMMAND)) || request.getRequestURI().equals(PagesConstant.SING_UP_PAGE) || request.getRequestURI().equals(PagesConstant.RESTORE_PASSWORD) || request.getRequestURI().equals(PagesConstant.SIGN_IN_PAGE) || requestFile(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -58,10 +58,13 @@ public class SignInFilter implements Filter {
         boolean isLangCommand = command.equals(CommandType.LANG.name());
         boolean isSignInCommand = command.equals(AJAXCommandType.SIGN_IN.name());
         boolean isSignUpAcceptCommand = command.equals(CommandType.SIGN_UP_ACCEPT.name());
+        boolean isRestorePasswordCommand = command.equals(AJAXCommandType.RESTORE_PASSWORD.name());
+        boolean isRestorePasswordAcceptCommand = command.equals(CommandType.RESTORE_PASSWORD_ACCEPT.name());
+
         boolean isSignUpUserCommand = command.equals(AJAXCommandType.SIGN_UP_USER.name());
         boolean isOAuthCommand = command.equals(CommandType.OAUTH.name()) || command.equals(CommandType.OAUTH_ACCEPT.name());
 
-        return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand || isLangCommand;
+        return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand || isLangCommand || isRestorePasswordAcceptCommand || isRestorePasswordCommand;
     }
 
     @Override

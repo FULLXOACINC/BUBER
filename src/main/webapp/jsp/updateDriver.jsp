@@ -11,24 +11,24 @@
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
 <fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
+<fmt:message bundle="${locale}" key="text.lastName" var="secondName"/>
 <fmt:message bundle="${locale}" key="text.birthDay" var="age"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
 
 <fmt:message bundle="${locale}" key="text.driverCorrectMessage" var="driverUpdateCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.loginExistErrorMessage" var="loginExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.phoneNumberExistErrorMessage" var="phoneNumberExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.firstNameErrorMessage" var="firstNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="secondNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPasswordErrorMessage" var="notValidPasswordErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.passwordNotEqMessage" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.error.birthDayErrorMessage" var="birthDayErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="notValidPhoneNumberErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.notValidLogin" var="notValidLoginErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.loginExist" var="loginExistErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberExist" var="phoneNumberExistErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.firstNameNotValid" var="firstNameErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.lastNameNotValid" var="secondNameErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.notValidPassword" var="notValidPasswordErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.passwordNotEq" var="passwordNotEqMessage"/>
+<fmt:message bundle="${locale}" key="text.birthDayErrorNotValid" var="birthDayErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="notValidPhoneNumberErrorMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.driverNotFound" var="driverNotFound"/>
+<fmt:message bundle="${locale}" key="text.driverNotFound" var="driverNotFound"/>
 
 <fmt:message bundle="${locale}" key="text.carNumber" var="carNumber"/>
 <fmt:message bundle="${locale}" key="text.documentId" var="documentId"/>
@@ -37,16 +37,16 @@
 <fmt:message bundle="${locale}" key="text.updateDriverCorrect" var="updateDriverCorrect"/>
 
 
-<fmt:message bundle="${locale}" key="text.error.driverNotExistError" var="driverNotExistError"/>
+<fmt:message bundle="${locale}" key="text.driverNotExist" var="driverNotExistError"/>
 
-<fmt:message bundle="${locale}" key="text.error.carNumberError" var="carNumberError"/>
-<fmt:message bundle="${locale}" key="text.error.documentIdError" var="documentIdError"/>
-<fmt:message bundle="${locale}" key="text.error.carMarkError" var="carMarkError"/>
-<fmt:message bundle="${locale}" key="text.error.driverExistError" var="driverExistError"/>
-<fmt:message bundle="${locale}" key="text.error.loginNotExistError" var="loginNotExistError"/>
-<fmt:message bundle="${locale}" key="text.error.carNumberExistError" var="carNumberExistError"/>
-<fmt:message bundle="${locale}" key="text.error.documentIdExistError" var="documentIdExistError"/>
-<fmt:message bundle="${locale}" key="text.error.tariffError" var="tariffError"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberNotValid" var="carNumberError"/>
+<fmt:message bundle="${locale}" key="text.documentIdNotValid" var="documentIdError"/>
+<fmt:message bundle="${locale}" key="text.carMarkNotValid" var="carMarkError"/>
+<fmt:message bundle="${locale}" key="text.driverExist" var="driverExistError"/>
+<fmt:message bundle="${locale}" key="text.loginNotExist" var="loginNotExistError"/>
+<fmt:message bundle="${locale}" key="text.carNumberExist" var="carNumberExistError"/>
+<fmt:message bundle="${locale}" key="text.documentIdExist" var="documentIdExistError"/>
+<fmt:message bundle="${locale}" key="text.tariffNotValid" var="tariffError"/>
 
 
 <html>

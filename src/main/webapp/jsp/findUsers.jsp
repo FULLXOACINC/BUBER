@@ -8,9 +8,9 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
-<fmt:message bundle="${locale}" key="text.admin.find" var="find"/>
-<fmt:message bundle="${locale}" key="text.admin.signUpDriver" var="signUpDriver"/>
-<fmt:message bundle="${locale}" key="text.admin.viewUnacceptedComplaints" var="viewUnacceptedComplaints"/>
+<fmt:message bundle="${locale}" key="text.find" var="find"/>
+<fmt:message bundle="${locale}" key="text.signUpDriver" var="signUpDriver"/>
+<fmt:message bundle="${locale}" key="text.viewUnacceptedComplaints" var="viewUnacceptedComplaints"/>
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>

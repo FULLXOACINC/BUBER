@@ -1,4 +1,4 @@
-package by.zhuk.buber.signuppool;
+package by.zhuk.buber.userpool;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +13,7 @@ public class SignUpUserPool {
     private static SignUpUserPool instance;
     private static AtomicBoolean instanceCreated = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
-    private static ConcurrentHashMap<String, SignUpUserInfo> signUpMap;
+    private static ConcurrentHashMap<String, UserPoolInfo> signUpMap;
 
     private SignUpUserPool() {
         if (instanceCreated.get()) {
@@ -37,7 +37,7 @@ public class SignUpUserPool {
         return instance;
     }
 
-    public void putInfo(String hash, SignUpUserInfo info) {
+    public void putInfo(String hash, UserPoolInfo info) {
         signUpMap.put(hash, info);
     }
 
@@ -45,11 +45,11 @@ public class SignUpUserPool {
         signUpMap.remove(hash);
     }
 
-    public SignUpUserInfo find(String hash) {
+    public UserPoolInfo find(String hash) {
         return signUpMap.get(hash);
     }
 
-    public ConcurrentHashMap<String, SignUpUserInfo> takeSignUpMap() {
+    public ConcurrentHashMap<String, UserPoolInfo> takeSignUpMap() {
         return signUpMap;
     }
 }

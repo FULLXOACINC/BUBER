@@ -11,36 +11,36 @@
 <fmt:message bundle="${locale}" key="text.password" var="password"/>
 <fmt:message bundle="${locale}" key="text.repeatPassword" var="repeatPassword"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="secondName"/>
+<fmt:message bundle="${locale}" key="text.lastName" var="secondName"/>
 <fmt:message bundle="${locale}" key="text.birthDay" var="age"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.updateDriver" var="updateDriver"/>
 
 <fmt:message bundle="${locale}" key="text.driverCorrectMessage" var="driverUpdateCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.notValidLoginErrorMessage" var="notValidLoginErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.loginExistErrorMessage" var="loginExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.phoneNumberExistErrorMessage" var="phoneNumberExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.firstNameErrorMessage" var="firstNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="secondNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPasswordErrorMessage" var="notValidPasswordErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.passwordNotEqMessage" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.error.birthDayErrorMessage" var="birthDayErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="notValidPhoneNumberErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.notValidLogin" var="notValidLoginErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.loginExist" var="loginExistErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberExist" var="phoneNumberExistErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.firstNameNotValid" var="firstNameErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.lastNameNotValid" var="secondNameErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.notValidPassword" var="notValidPasswordErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.passwordNotEq" var="passwordNotEqMessage"/>
+<fmt:message bundle="${locale}" key="text.birthDayErrorNotValid" var="birthDayErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="notValidPhoneNumberErrorMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.driverNotFound" var="driverNotFound"/>
+<fmt:message bundle="${locale}" key="text.driverNotFound" var="driverNotFound"/>
 
-<fmt:message bundle="${locale}" key="text.secondName" var="lastName"/>
+<fmt:message bundle="${locale}" key="text.lastName" var="lastName"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.updateUserCorrect" var="updateUserCorrect"/>
 <fmt:message bundle="${locale}" key="text.updateUser" var="updateUser"/>
 <fmt:message bundle="${locale}" key="text.userNotFound" var="userNotFound"/>
 
-<fmt:message bundle="${locale}" key="text.error.firstNameErrorMessage" var="firstNameNotValidMessage"/>
-<fmt:message bundle="${locale}" key="text.error.secondNameErrorMessage" var="lastNameNotValidMessage"/>
-<fmt:message bundle="${locale}" key="text.error.phoneNumberExistErrorMessage" var="phoneNumberExistMessage"/>
-<fmt:message bundle="${locale}" key="text.error.notValidPhoneNumberErrorMessage" var="phoneNumberNotValidMessage"/>
+<fmt:message bundle="${locale}" key="text.firstNameNotValid" var="firstNameNotValidMessage"/>
+<fmt:message bundle="${locale}" key="text.lastNameNotValid" var="lastNameNotValidMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberExist" var="phoneNumberExistMessage"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="phoneNumberNotValidMessage"/>
 
 
 

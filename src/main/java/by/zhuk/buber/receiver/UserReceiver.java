@@ -16,6 +16,7 @@ import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
 import by.zhuk.buber.specification.find.user.FindUserInfoForRideSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserPasswordSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserProfileSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -136,6 +137,19 @@ public class UserReceiver {
         RepositoryController controller = new RepositoryController(repository);
 
         Specification userUpdateSpecification = new UpdateUserProfileSpecification(login, firstName, lastName, phoneNumber);
+        try {
+            repository.update(userUpdateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void changePassword(User user) throws ReceiverException {
+        Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+
+        Specification userUpdateSpecification = new UpdateUserPasswordSpecification(user.getLogin(),user.getPassword());
         try {
             repository.update(userUpdateSpecification);
             controller.end();

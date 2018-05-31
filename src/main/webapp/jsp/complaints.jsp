@@ -8,8 +8,8 @@
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.rideId" var="rideId"/>
-<fmt:message bundle="${locale}" key="text.admin.complaintId" var="complaintId"/>
-<fmt:message bundle="${locale}" key="text.admin.acceptComplaint" var="acceptComplaint"/>
+<fmt:message bundle="${locale}" key="text.complaintId" var="complaintId"/>
+<fmt:message bundle="${locale}" key="text.acceptComplaint" var="acceptComplaint"/>
 
 <fmt:message bundle="${locale}" key="text.noComplaints" var="noComplaints"/>
 <fmt:message bundle="${locale}" key="text.moreAboutUser" var="moreAboutUser"/>

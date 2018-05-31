@@ -12,6 +12,7 @@ public enum CommandType {
     VIEW_USER_PROFILE(new ViewUserProfileCommand()),
     VIEW_DRIVER_PROFILE(new ViewDriverProfileCommand()),
     FIND_USER_UPDATE(new FindUserUpdateCommand()),
+    RESTORE_PASSWORD_ACCEPT(new RestorePasswordAcceptCommand()),
     SWITCH_BAN(new SwitchBanCommand());
 
     private Command command;

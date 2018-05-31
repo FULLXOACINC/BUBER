@@ -34,6 +34,7 @@ public enum AJAXCommandType {
     CHANGE_DISCOUNT(new ChangeDiscountCommand()),
     FIND_DRIVER_EARNED_MONEY(new FindDriverEarnedMoneyCommand()),
     UPDATE_USER(new UpdateUserCommand()),
+    RESTORE_PASSWORD(new RestorePasswordCommand()),
     WITHDRAW_EARNING_DRIVER_MONEY(new WithdrawEarningDriverMoneyCommand());
 
     private AJAXCommand command;

@@ -1,4 +1,4 @@
-package by.zhuk.buber.signuppool;
+package by.zhuk.buber.userpool;
 
 import by.zhuk.buber.model.User;
 import org.testng.Assert;
@@ -9,17 +9,17 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class SingUpPoolCleanerTest {
+public class PoolCleanerTest {
 
     @Test
     public void userCorrectSingUpTest() {
-        Thread cleaner = new Thread(new SingUpPoolCleaner(100));
+        Thread cleaner = new Thread(new PoolCleaner(100));
         cleaner.setDaemon(true);
         cleaner.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
-        pool.putInfo("1", new SignUpUserInfo(new User(), LocalTime.now()));
+        pool.putInfo("1", new UserPoolInfo(new User(), LocalTime.now()));
 
-        SignUpUserInfo info = pool.find("1");
+        UserPoolInfo info = pool.find("1");
         Assert.assertNotNull(info);
         cleaner.interrupt();
 
@@ -28,8 +28,8 @@ public class SingUpPoolCleanerTest {
     @Test
     public void singUpTimeOutTest() {
         SignUpUserPool pool = SignUpUserPool.getInstance();
-        pool.putInfo("1", new SignUpUserInfo(new User(), LocalTime.now()));
-        Thread cleaner = new Thread(new SingUpPoolCleaner(5));
+        pool.putInfo("1", new UserPoolInfo(new User(), LocalTime.now()));
+        Thread cleaner = new Thread(new PoolCleaner(5));
         cleaner.setDaemon(true);
         cleaner.start();
         try {
@@ -37,7 +37,7 @@ public class SingUpPoolCleanerTest {
         } catch (InterruptedException e) {
             fail("Test does not throws InterruptedException");
         }
-        SignUpUserInfo info = pool.find("1");
+        UserPoolInfo info = pool.find("1");
         Assert.assertNull(info);
         cleaner.interrupt();
 

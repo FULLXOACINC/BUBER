@@ -24,7 +24,7 @@
 <fmt:message bundle="${locale}" key="text.positiveEvaluation" var="positiveEvaluation"/>
 <fmt:message bundle="${locale}" key="text.negativeEvaluation" var="negativeEvaluation"/>
 <fmt:message bundle="${locale}" key="text.complaint" var="complaint"/>
-<fmt:message bundle="${locale}" key="text.error.evaluationExist" var="evaluationExist"/>
+<fmt:message bundle="${locale}" key="text.evaluationExist" var="evaluationExist"/>
 <fmt:message bundle="${locale}" key="text.sendComplaint" var="sendComplaint"/>
 
 

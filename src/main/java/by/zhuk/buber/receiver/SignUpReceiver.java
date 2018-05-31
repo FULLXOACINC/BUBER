@@ -10,8 +10,9 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
-import by.zhuk.buber.signuppool.SignUpUserInfo;
-import by.zhuk.buber.signuppool.SignUpUserPool;
+import by.zhuk.buber.userpool.RestorePasswordUserPool;
+import by.zhuk.buber.userpool.UserPoolInfo;
+import by.zhuk.buber.userpool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
@@ -32,13 +33,16 @@ import java.util.ResourceBundle;
 
 public class SignUpReceiver {
     private static Logger logger = LogManager.getLogger(SignUpReceiver.class);
-    private static final String MAIL_BUNDLE = "properties/signUpMailContent";
     private static final String HEAD = "head";
     private static final String CONTENT = "content";
 
+    private static final String MAIL_BUNDLE = "properties/signUpMailContent";
     private static final String DEFAULT_CONTENT = "Hello,%s %s , you are greeted by the employees of BUBER, click on the link to confirm registration, all the best.<br/><a href=\"http://localhost:8080/controller?command=sign-up-accept&hash=%s\">Go to confirm</a> ";
     private static final String DEFAULT_HEAD = "BUBER sign up";
+
     private static final String PROPERTIES_EXTENSION = ".properties";
+
+
 
 
     public void saveUser(User user) throws ReceiverException {
@@ -75,7 +79,7 @@ public class SignUpReceiver {
         thread.start();
         SignUpUserPool pool = SignUpUserPool.getInstance();
         User user = new User(login, firstName, lastName, password, LocalDate.parse(birthDay), false, phoneNumber, new BigDecimal(0), UserType.USER, (float) 0.0);
-        SignUpUserInfo info = new SignUpUserInfo(user, LocalTime.now());
+        UserPoolInfo info = new UserPoolInfo(user, LocalTime.now());
         pool.putInfo(hash, info);
     }
 
@@ -116,4 +120,5 @@ public class SignUpReceiver {
 
 
     }
+
 }

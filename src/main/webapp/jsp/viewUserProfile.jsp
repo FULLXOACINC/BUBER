@@ -15,7 +15,7 @@
 
 <fmt:message bundle="${locale}" key="text.login" var="login"/>
 <fmt:message bundle="${locale}" key="text.firstName" var="firstName"/>
-<fmt:message bundle="${locale}" key="text.secondName" var="lastName"/>
+<fmt:message bundle="${locale}" key="text.lastName" var="lastName"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.balance" var="balance"/>
 <fmt:message bundle="${locale}" key="text.discount" var="discount"/>

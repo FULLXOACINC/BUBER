@@ -15,14 +15,14 @@
 
 <fmt:message bundle="${locale}" key="text.driverCorrectMessage" var="driverSignUpCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.carNumberError" var="carNumberError"/>
-<fmt:message bundle="${locale}" key="text.error.documentIdError" var="documentIdError"/>
-<fmt:message bundle="${locale}" key="text.error.carMarkError" var="carMarkError"/>
-<fmt:message bundle="${locale}" key="text.error.driverExistError" var="driverExistError"/>
-<fmt:message bundle="${locale}" key="text.error.loginNotExistError" var="loginNotExistError"/>
-<fmt:message bundle="${locale}" key="text.error.carNumberExistError" var="carNumberExistError"/>
-<fmt:message bundle="${locale}" key="text.error.documentIdExistError" var="documentIdExistError"/>
-<fmt:message bundle="${locale}" key="text.error.tariffError" var="tariffError"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberNotValid" var="carNumberError"/>
+<fmt:message bundle="${locale}" key="text.documentIdNotValid" var="documentIdError"/>
+<fmt:message bundle="${locale}" key="text.carMarkNotValid" var="carMarkError"/>
+<fmt:message bundle="${locale}" key="text.driverExist" var="driverExistError"/>
+<fmt:message bundle="${locale}" key="text.loginNotExist" var="loginNotExistError"/>
+<fmt:message bundle="${locale}" key="text.carNumberExist" var="carNumberExistError"/>
+<fmt:message bundle="${locale}" key="text.documentIdExist" var="documentIdExistError"/>
+<fmt:message bundle="${locale}" key="text.tariffNotValid" var="tariffError"/>
 
 
 <html>

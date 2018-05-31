@@ -9,9 +9,9 @@
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.fillUp" var="fillUpBalance"/>
 
-<fmt:message bundle="${locale}" key="text.fillUp.cardNumber" var="cardNumber"/>
-<fmt:message bundle="${locale}" key="text.fillUp.moneyAmount" var="moneyAmount"/>
-<fmt:message bundle="${locale}" key="text.fillUp.cardNumberMessage" var="cardNumberMessage"/>
+<fmt:message bundle="${locale}" key="text.cardNumber" var="cardNumber"/>
+<fmt:message bundle="${locale}" key="text.moneyAmount" var="moneyAmount"/>
+<fmt:message bundle="${locale}" key="text.cardNumberMessage" var="cardNumberMessage"/>
 <fmt:message bundle="${locale}" key="text.earnedMoney" var="earnedMoney"/>
 
 <fmt:message bundle="${locale}" key="text.noMoneyEarned" var="noMoneyEarned"/>
