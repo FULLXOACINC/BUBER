@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
@@ -19,10 +21,6 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String INDEX = "index";
     private static final String INTEGER_REGEX = "\\d+";
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-    private static final String START = "start";
-    private static final String END = "end";
 
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
@@ -65,15 +63,15 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
                 Coordinate endCoordinate = ride.getEndCoordinate();
 
                 JSONObject startJSONObject = new JSONObject();
-                startJSONObject.put(LNG, startCoordinate.getLng());
-                startJSONObject.put(LAT, startCoordinate.getLat());
+                startJSONObject.put(GeoConstant.LNG, startCoordinate.getLng());
+                startJSONObject.put(GeoConstant.LAT, startCoordinate.getLat());
 
                 JSONObject endJSONObject = new JSONObject();
-                endJSONObject.put(LNG, endCoordinate.getLng());
-                endJSONObject.put(LAT, endCoordinate.getLat());
+                endJSONObject.put(GeoConstant.LNG, endCoordinate.getLng());
+                endJSONObject.put(GeoConstant.LAT, endCoordinate.getLat());
 
-                json.put(START, startJSONObject);
-                json.put(END, endJSONObject);
+                json.put(GeoConstant.START, startJSONObject);
+                json.put(GeoConstant.END, endJSONObject);
             } else {
                 json.put(RIDE_NOT_FOUND, RIDE_NOT_FOUND);
                 index = 0;
@@ -81,7 +79,7 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
             json.put(INDEX, index);
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

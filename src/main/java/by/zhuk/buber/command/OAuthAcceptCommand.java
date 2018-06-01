@@ -1,5 +1,6 @@
 package by.zhuk.buber.command;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -19,7 +20,6 @@ import java.util.Optional;
 public class OAuthAcceptCommand implements Command {
     private static Logger logger = LogManager.getLogger(OAuthAcceptCommand.class);
     private static final String LOGIN_TYPE = "loginType";
-    private static final String ERROR_PARAM = "error";
     private static final String CODE_PARAM = "code";
 
     @Override
@@ -39,7 +39,7 @@ public class OAuthAcceptCommand implements Command {
 
         AbstractOAuth oAuth = oAuthOptional.get();
 
-        if (oAuth.isHasError(request.getParameter(ERROR_PARAM))) {
+        if (oAuth.isHasError(request.getParameter(ErrorConstant.ERROR))) {
             return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         } else {
 

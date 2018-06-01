@@ -70,7 +70,7 @@
                             </div>
                             <div>
                                 <form action="${ pageContext.request.contextPath }/controller">
-                                    <input type="hidden" name="command" value="view-user-profile">
+                                    <input type="hidden" name="command" value="find-user-profile">
                                     <input class="dropdown-item" type="submit" value="${profile}">
                                 </form>
                             </div>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div>
                                     <form action="${ pageContext.request.contextPath }/controller">
-                                        <input type="hidden" name="command" value="view-driver-profile">
+                                        <input type="hidden" name="command" value="find-driver-profile">
                                         <input class="dropdown-item" type="submit" value="${profile}">
                                     </form>
                                 </div>

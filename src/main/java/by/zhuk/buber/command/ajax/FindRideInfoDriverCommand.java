@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
@@ -62,7 +63,7 @@ public class FindRideInfoDriverCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

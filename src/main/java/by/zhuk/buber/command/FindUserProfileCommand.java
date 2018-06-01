@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-public class ViewUserProfileCommand implements Command {
-    private static Logger logger = LogManager.getLogger(ViewUserProfileCommand.class);
+public class FindUserProfileCommand implements Command {
+    private static Logger logger = LogManager.getLogger(FindUserProfileCommand.class);
 
     @Override
     public Router execute(HttpServletRequest request) {

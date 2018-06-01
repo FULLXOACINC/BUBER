@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter(urlPatterns = {"/*"}, filterName = "ban")
+@WebFilter(urlPatterns = {"/*"}, filterName = "banFilter")
 public class BanFilter implements Filter {
     private static Logger logger = LogManager.getLogger(BanFilter.class);
 
@@ -55,7 +55,7 @@ public class BanFilter implements Filter {
             } else {
                 session.removeAttribute(UserConstant.LOGIN);
                 session.removeAttribute(UserConstant.TYPE);
-                request.setAttribute(ErrorConstant.BANNED_ERROR, true);
+                request.setAttribute(ErrorConstant.BANNED, true);
                 request.getRequestDispatcher(PagesConstant.SIGN_IN_PAGE).forward(request, response);
             }
         } else {

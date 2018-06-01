@@ -1,12 +1,11 @@
 package by.zhuk.buber.validator;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import org.json.JSONObject;
 
 public class JSONValidator {
-    private static final String ERROR = "error";
-    private static final String ERROR_MESSAGE = "error_message";
 
     public static boolean isJSONHasError(JSONObject json) {
-        return json != null && (json.has(ERROR) || json.has(ERROR_MESSAGE));
+        return json != null && (json.has(ErrorConstant.ERROR) || json.has(ErrorConstant.ERROR_MESSAGE));
     }
 }

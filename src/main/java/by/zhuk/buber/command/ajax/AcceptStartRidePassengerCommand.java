@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -37,7 +38,7 @@ public class AcceptStartRidePassengerCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
 

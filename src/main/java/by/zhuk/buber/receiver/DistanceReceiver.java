@@ -1,6 +1,7 @@
 package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.constant.CommandConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
 import by.zhuk.buber.validator.JSONValidator;
@@ -21,8 +22,6 @@ public class DistanceReceiver {
     private static final String DISTANCE_INFO_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=%s,%s&destination=%s,%s&key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY";
     private static final String ROUTES = "routes";
     private static final String LEGS = "legs";
-    private static final String DISTANCE = "distance";
-    private static final String DURATION = "duration";
     private static final String VALUE = "value";
     private static final String TEXT = "text";
 
@@ -38,6 +37,9 @@ public class DistanceReceiver {
 
             httpClient.executeMethod(getMethod);
             JSONObject jsonObject = parseResult(getMethod);
+            if(JSONValidator.isJSONHasError(jsonObject)){
+                throw new ReceiverException("JSON has error");
+            }
             Optional<DistanceInfo> optionalDistanceInfo = Optional.empty();
 
             if (JSONValidator.isJSONHasError(jsonObject)) {
@@ -51,8 +53,8 @@ public class DistanceReceiver {
             JSONObject routeObject = (JSONObject) jsonArray.get(0);
             JSONArray legsJSONArray = (JSONArray) routeObject.get(LEGS);
             JSONObject legsJSON = (JSONObject) legsJSONArray.get(0);
-            JSONObject distanceJSON = (JSONObject) legsJSON.get(DISTANCE);
-            JSONObject durationJSON = (JSONObject) legsJSON.get(DURATION);
+            JSONObject distanceJSON = (JSONObject) legsJSON.get(GeoConstant.DISTANCE);
+            JSONObject durationJSON = (JSONObject) legsJSON.get(GeoConstant.DURATION);
 
             DistanceInfo distanceInfo = new DistanceInfo();
             distanceInfo.setDistance(distanceJSON.getInt(VALUE));

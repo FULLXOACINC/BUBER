@@ -1,6 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -25,7 +26,6 @@ public class SignUpDriverCommand implements AJAXCommand {
     private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
     private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
     private static final String TARIFF_ERROR = "tariffError";
-    private static final String TARIFF = "tariff";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -35,7 +35,7 @@ public class SignUpDriverCommand implements AJAXCommand {
         String carNumber = request.getParameter(DriverConstant.CAR_NUMBER);
         String documentId = request.getParameter(DriverConstant.DOCUMENT_ID);
         String carMark = request.getParameter(DriverConstant.CAR_MARK);
-        String tariff = request.getParameter(TARIFF);
+        String tariff = request.getParameter(DriverConstant.TARIFF);
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
         }
@@ -71,7 +71,7 @@ public class SignUpDriverCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
 
         return json;

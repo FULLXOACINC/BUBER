@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.UserReceiver;
@@ -13,16 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 public class FillUpBalanceCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FillUpBalanceCommand.class);
     private static final String MONEY_AMOUNT = "moneyAmount";
-    private static final String CARD_NUMBER = "cardNumber";
     private static final String FULL_BALANCE = "fullBalance";
     private static final String OUT_OF_BOUND_BALANCE = "outOfBoundBalance";
     private static final String UNKNOWN_MONEY_FORMAT = "unknownMoneyFormat";
-    private static final String CARD_NUMBER_NOT_VALID = "cardNumberNotValid";
+
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String cardNumber = request.getParameter(CARD_NUMBER);
+        String cardNumber = request.getParameter(UserConstant.CARD_NUMBER);
         String moneyAmount = request.getParameter(MONEY_AMOUNT);
         String login = (String) request.getSession().getAttribute(UserConstant.LOGIN);
         if (!FillUpBalanceValidator.isMoneyFormatValid(moneyAmount)) {
@@ -30,7 +30,7 @@ public class FillUpBalanceCommand implements AJAXCommand {
             return json;
         }
         if (!FillUpBalanceValidator.isCardNumberValid(cardNumber)) {
-            json.put(CARD_NUMBER_NOT_VALID, CARD_NUMBER_NOT_VALID);
+            json.put(UserConstant.CARD_NUMBER_NOT_VALID, UserConstant.CARD_NUMBER_NOT_VALID);
             return json;
         }
         if (!FillUpBalanceValidator.isMoneyAmountInBoundValid(moneyAmount)) {
@@ -49,7 +49,7 @@ public class FillUpBalanceCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
 

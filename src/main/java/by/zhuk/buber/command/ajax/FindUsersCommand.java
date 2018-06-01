@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.AdminReceiver;
@@ -27,7 +28,7 @@ public class FindUsersCommand implements AJAXCommand {
             return json;
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
             return json;
 
         }

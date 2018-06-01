@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"}, filterName = "signIn")
+@WebFilter(urlPatterns = {"/*"}, filterName = "signInFilter")
 public class SignInFilter implements Filter {
     private static final String JS_FILE_EXPANSION = ".js";
     private static final String CSS_FILE_EXPANSION = ".css";

@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -12,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 public class DriverSetNotWorkingStatusCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
-    private static final String DRIVER_NOT_EXIST_ERROR = "driverNotExistError";
 
 
     @Override
@@ -21,10 +22,9 @@ public class DriverSetNotWorkingStatusCommand implements AJAXCommand {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
         DriverReceiver driverReceiver = new DriverReceiver();
-
         try {
             if (!driverReceiver.isDriverExist(login)) {
-                json.put(DRIVER_NOT_EXIST_ERROR, DRIVER_NOT_EXIST_ERROR);
+                json.put(DriverConstant.DRIVER_NOT_EXIST, DriverConstant.DRIVER_NOT_EXIST);
             }
             if (json.length() == 0) {
                 driverReceiver.updateDriverWorkingStatus(login, false);
@@ -32,7 +32,7 @@ public class DriverSetNotWorkingStatusCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
 
         return json;

@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
@@ -15,15 +17,10 @@ import java.util.Optional;
 
 public class UpdateDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
-    private static final String CAR_NUMBER = "carNumber";
-    private static final String DOCUMENT_ID = "documentId";
-    private static final String CAR_MARK = "carMark";
-    private static final String TARIFF = "tariff";
 
     private static final String CAR_NUMBER_NOT_VALID = "carNumberNotValid";
     private static final String DOCUMENT_ID_NOT_VALID = "documentIdNotValid";
     private static final String CAR_MARK_NOT_VALID = "carMarkNotValid";
-    private static final String DRIVER_NOT_EXIST = "driverNotExist";
     private static final String CAR_NUMBER_EXIST = "carNumberExist";
     private static final String DOCUMENT_ID_EXIST = "documentIdExist";
     private static final String TARIFF_NOT_VALID = "tariffNotValid";
@@ -34,10 +31,10 @@ public class UpdateDriverCommand implements AJAXCommand {
         JSONObject json = new JSONObject();
 
         String login = request.getParameter(UserConstant.LOGIN);
-        String carNumber = request.getParameter(CAR_NUMBER);
-        String documentId = request.getParameter(DOCUMENT_ID);
-        String carMark = request.getParameter(CAR_MARK);
-        String tariff = request.getParameter(TARIFF);
+        String carNumber = request.getParameter(DriverConstant.CAR_NUMBER);
+        String documentId = request.getParameter(DriverConstant.DOCUMENT_ID);
+        String carMark = request.getParameter(DriverConstant.CAR_MARK);
+        String tariff = request.getParameter(DriverConstant.TARIFF);
 
         if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_NOT_VALID, CAR_NUMBER_NOT_VALID);
@@ -55,7 +52,7 @@ public class UpdateDriverCommand implements AJAXCommand {
 
         try {
             if (!driverReceiver.isDriverExist(login)) {
-                json.put(DRIVER_NOT_EXIST, DRIVER_NOT_EXIST);
+                json.put(DriverConstant.DRIVER_NOT_EXIST,DriverConstant.DRIVER_NOT_EXIST);
             }
             Optional<Driver> driverOptional = driverReceiver.findDriverByLogin(login);
             Driver driver = driverOptional.get();
@@ -72,7 +69,7 @@ public class UpdateDriverCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
 
         return json;

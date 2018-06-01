@@ -1,5 +1,8 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
@@ -25,19 +28,9 @@ public class CreateRideCommand implements AJAXCommand {
 
     private static Logger logger = LogManager.getLogger(CreateRideCommand.class);
 
-    private static final String START_LNG = "startLng";
-    private static final String START_LAT = "startLat";
-    private static final String END_LNG = "endLng";
-    private static final String END_LAT = "endLat";
-
-    private static final String DRIVER = "driver";
-    private static final String LANG = "lang";
-
-    private static final String DRIVER_NOT_EXIST = "driverNotExist";
     private static final String BALANCE_NEGATIVE = "balanceNegative";
     private static final String DISTANCE_NOT_IN_RANGE = "distanceNotInRange";
     private static final String DRIVER_NOT_SUITABLE = "driverNotSuitable";
-    private static final String NOT_VALID_COORDINATE = "notValidCoordinate";
     private static final String RIDE_EXIST = "rideExist";
     private static final String DRIVER_EQ_PASSENGER = "driverEqPassenger";
 
@@ -47,14 +40,14 @@ public class CreateRideCommand implements AJAXCommand {
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String driverLogin = request.getParameter(DRIVER);
-        String startLatString = request.getParameter(START_LAT);
-        String startLngString = request.getParameter(START_LNG);
-        String endLatString = request.getParameter(END_LAT);
-        String endLngString = request.getParameter(END_LNG);
+        String driverLogin = request.getParameter(DriverConstant.DRIVER);
+        String startLatString = request.getParameter(GeoConstant.START_LAT);
+        String startLngString = request.getParameter(GeoConstant.START_LNG);
+        String endLatString = request.getParameter(GeoConstant.END_LAT);
+        String endLngString = request.getParameter(GeoConstant.END_LNG);
 
         if (!CoordinateValidator.isCoordinateValid(startLngString) || !CoordinateValidator.isCoordinateValid(startLatString) || !CoordinateValidator.isCoordinateValid(endLngString) || !CoordinateValidator.isCoordinateValid(endLatString)) {
-            json.put(NOT_VALID_COORDINATE, NOT_VALID_COORDINATE);
+            json.put(GeoConstant.NOT_VALID_COORDINATE, GeoConstant.NOT_VALID_COORDINATE);
         }
         RideReceiver rideReceiver = new RideReceiver();
         UserReceiver userReceiver = new UserReceiver();
@@ -63,14 +56,14 @@ public class CreateRideCommand implements AJAXCommand {
 
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
-        String lang = (String) session.getAttribute(LANG);
+        String lang = (String) session.getAttribute(UserConstant.LANG);
         try {
             float startLat = Float.parseFloat(startLatString);
             float startLng = Float.parseFloat(startLngString);
             float endLat = Float.parseFloat(endLatString);
             float endLng = Float.parseFloat(endLngString);
             if (!driverReceiver.isDriverExist(driverLogin)) {
-                json.put(DRIVER_NOT_EXIST, DRIVER_NOT_EXIST);
+                json.put(DriverConstant.DRIVER_NOT_EXIST, DriverConstant.DRIVER_NOT_EXIST);
             }
             if (userReceiver.isBalanceNegative(login)) {
                 json.put(BALANCE_NEGATIVE, BALANCE_NEGATIVE);
@@ -112,18 +105,18 @@ public class CreateRideCommand implements AJAXCommand {
                         json.put(ALL_CORRECT, ALL_CORRECT);
                     } else {
                         logger.log(Level.WARN, "Unknown problem with tariff or discount");
-                        json.put(ERROR, ERROR);
+                        json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
                     }
                 }
             } else {
                 logger.log(Level.WARN, "Unknown problem with DistanceInfo");
-                json.put(ERROR, ERROR);
+                json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
             }
 
 
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

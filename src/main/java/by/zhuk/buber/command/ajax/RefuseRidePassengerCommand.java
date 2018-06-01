@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
@@ -17,14 +19,13 @@ import java.util.Optional;
 
 public class RefuseRidePassengerCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RefuseRidePassengerCommand.class);
-    private static final String LANG = "lang";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
-        String lang = (String) session.getAttribute(LANG);
+        String lang = (String) session.getAttribute(UserConstant.LANG);
         RideReceiver rideReceiver = new RideReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
@@ -43,15 +44,15 @@ public class RefuseRidePassengerCommand implements AJAXCommand {
                 session.setAttribute(UserConstant.EVALUATION_TOKEN, UserConstant.EVALUATION_TOKEN);
                 session.setAttribute(UserConstant.COMPLAINT_TOKEN, UserConstant.COMPLAINT_TOKEN);
                 json.put(ALL_CORRECT, ALL_CORRECT);
-                json.put("rideId", ride.getRideId());
+                json.put(RideConstant.RIDE_ID, ride.getRideId());
                 rideReceiver.sendRefuseUserMail(driver.getLogin(), lang);
 
             } else {
-                json.put("notFoundRide", "notFoundRide");
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
 

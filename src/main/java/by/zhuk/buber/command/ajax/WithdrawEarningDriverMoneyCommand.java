@@ -1,6 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
 import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
@@ -20,10 +21,10 @@ public class WithdrawEarningDriverMoneyCommand implements AJAXCommand {
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String cardNumber = request.getParameter(DriverConstant.CARD_NUMBER);
+        String cardNumber = request.getParameter(UserConstant.CARD_NUMBER);
         String login = (String) request.getSession().getAttribute(UserConstant.LOGIN);
         if (!FillUpBalanceValidator.isCardNumberValid(cardNumber)) {
-            json.put(DriverConstant.CARD_NUMBER_NOT_VALID, DriverConstant.CARD_NUMBER_NOT_VALID);
+            json.put(UserConstant.CARD_NUMBER_NOT_VALID, UserConstant.CARD_NUMBER_NOT_VALID);
             return json;
         }
         try {
@@ -42,7 +43,7 @@ public class WithdrawEarningDriverMoneyCommand implements AJAXCommand {
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
 

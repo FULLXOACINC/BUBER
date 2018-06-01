@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"}, filterName = "lastPage")
+@WebFilter(urlPatterns = {"/*"}, filterName = "lastPageFilter")
 public class LastPageFilter implements Filter {
     private static final String LAST_PAGE = "lastPage";
     private static final String JSP = "/jsp";

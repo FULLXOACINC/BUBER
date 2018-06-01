@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.DistanceInfo;
@@ -18,28 +20,16 @@ import java.util.Optional;
 public class FindDistanceInfoCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindDistanceInfoCommand.class);
 
-    private static final String DISTANCE = "distance";
-    private static final String DURATION = "duration";
-    private static final String DISCOUNT = "discount";
-
-    private static final String START_LNG = "startLng";
-    private static final String START_LAT = "startLat";
-    private static final String END_LNG = "endLng";
-    private static final String END_LAT = "endLat";
-
-    private static final String FIND_PROBLEM = "findProblem";
-    private static final String NOT_VALID_COORDINATE = "notValidCoordinate";
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
-        String startLng = request.getParameter(START_LNG);
-        String startLat = request.getParameter(START_LAT);
-        String endLng = request.getParameter(END_LNG);
-        String endLat = request.getParameter(END_LAT);
+        String startLng = request.getParameter(GeoConstant.START_LNG);
+        String startLat = request.getParameter(GeoConstant.START_LAT);
+        String endLng = request.getParameter(GeoConstant.END_LNG);
+        String endLat = request.getParameter(GeoConstant.END_LAT);
 
         if (!CoordinateValidator.isCoordinateValid(startLng) || !CoordinateValidator.isCoordinateValid(startLat) || !CoordinateValidator.isCoordinateValid(endLng) || !CoordinateValidator.isCoordinateValid(endLat)) {
-            json.put(NOT_VALID_COORDINATE, NOT_VALID_COORDINATE);
+            json.put(GeoConstant.NOT_VALID_COORDINATE, GeoConstant.NOT_VALID_COORDINATE);
             return json;
         }
 
@@ -56,20 +46,20 @@ public class FindDistanceInfoCommand implements AJAXCommand {
                 if (discountOptional.isPresent()) {
                     Float discount = discountOptional.get();
 
-                    json.put(DISTANCE, distanceInfo.getDistance());
-                    json.put(DURATION, distanceInfo.getDuration());
-                    json.put(DISCOUNT, discount);
+                    json.put(GeoConstant.DISTANCE, distanceInfo.getDistance());
+                    json.put(GeoConstant.DURATION, distanceInfo.getDuration());
+                    json.put(UserConstant.DISCOUNT, discount);
                 } else {
                     logger.log(Level.WARN, "Unknown problem with tariff or discount");
-                    json.put(ERROR, ERROR);
+                    json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
                 }
 
             } else {
-                json.put(FIND_PROBLEM, FIND_PROBLEM);
+                json.put(GeoConstant.FIND_PROBLEM, GeoConstant.FIND_PROBLEM);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

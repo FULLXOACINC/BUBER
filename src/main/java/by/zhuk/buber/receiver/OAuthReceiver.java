@@ -23,14 +23,14 @@ public class OAuthReceiver {
             httpClient.executeMethod(post);
             JSONObject jsonPostResult = parseResult(post);
             if (JSONValidator.isJSONHasError(jsonPostResult)) {
-                throw new ReceiverException("jsonPostResult has error " + jsonPostResult.get("error"));
+                throw new ReceiverException("jsonPostResult has error ");
             }
             GetMethod get = new GetMethod(oAuth.takeInfoUrl(jsonPostResult));
             httpClient.executeMethod(get);
             JSONObject jsonGetResult = parseResult(get);
 
             if (JSONValidator.isJSONHasError(jsonGetResult)) {
-                throw new ReceiverException("jsonGetResult has error " + jsonPostResult.get("error"));
+                throw new ReceiverException("jsonGetResult has error ");
             }
 
             return oAuth.takeEmail(jsonGetResult);

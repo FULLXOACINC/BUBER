@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -17,10 +18,8 @@ import java.util.Optional;
 
 public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
-    private static final String LOGIN = "login";
-    private static final String PASSWORD = "password";
 
-    private static final String SIGN_IN_VLIDE_ERROR = "signInValidError";
+    private static final String SIGN_IN_VALID_ERROR = "signInValidError";
     private static final String SIGN_IN_EXIST_ERROR = "signInExistError";
     private static final String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
 
@@ -28,12 +27,12 @@ public class SignInCommand implements AJAXCommand {
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
-        String login = request.getParameter(LOGIN);
-        String password = request.getParameter(PASSWORD);
+        String login = request.getParameter(UserConstant.LOGIN);
+        String password = request.getParameter(UserConstant.PASSWORD);
 
         JSONObject json = new JSONObject();
         if (!SignInValidator.isLoginValid(login)) {
-            json.put(SIGN_IN_VLIDE_ERROR, SIGN_IN_VLIDE_ERROR);
+            json.put(SIGN_IN_VALID_ERROR, SIGN_IN_VALID_ERROR);
             return json;
         }
         SignInReceiver signInReceiver = new SignInReceiver();
@@ -60,9 +59,8 @@ public class SignInCommand implements AJAXCommand {
 
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
-
     }
 }

@@ -1,5 +1,9 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
@@ -18,12 +22,6 @@ import java.util.Optional;
 public class FindRideInfoPassengerCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindRideInfoPassengerCommand.class);
 
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-    private static final String START = "start";
-    private static final String END = "end";
-
-    private static final String RIDE_NOT_FOUND = "rideNotFound";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -43,32 +41,32 @@ public class FindRideInfoPassengerCommand implements AJAXCommand {
                 Coordinate endCoordinate = ride.getEndCoordinate();
 
                 JSONObject startJSONObject = new JSONObject();
-                startJSONObject.put(LNG, startCoordinate.getLng());
-                startJSONObject.put(LAT, startCoordinate.getLat());
+                startJSONObject.put(GeoConstant.LNG, startCoordinate.getLng());
+                startJSONObject.put(GeoConstant.LAT, startCoordinate.getLat());
 
                 JSONObject endJSONObject = new JSONObject();
-                endJSONObject.put(LNG, endCoordinate.getLng());
-                endJSONObject.put(LAT, endCoordinate.getLat());
+                endJSONObject.put(GeoConstant.LNG, endCoordinate.getLng());
+                endJSONObject.put(GeoConstant.LAT, endCoordinate.getLat());
 
-                json.put(START, startJSONObject);
-                json.put(END, endJSONObject);
-                json.put("firstName", driver.getFirstName());
-                json.put("lastName", driver.getLastName());
-                json.put("carNumber", driver.getCarNumber());
-                json.put("carMark", driver.getCarMark().getMarkName());
-                json.put("phoneNumber", driver.getPhoneNumber());
-                json.put("rideId", ride.getRideId());
-                json.put("isDriverStart", ride.isDriverAcceptStart());
-                json.put("isDriverEnd", ride.isDriverAcceptEnd());
-                json.put("isPassengerStart", ride.isPassengerAcceptStart());
-                json.put("isPassengerEnd", ride.isPassengerAcceptEnd());
+                json.put(GeoConstant.START, startJSONObject);
+                json.put(GeoConstant.END, endJSONObject);
+                json.put(UserConstant.FIRST_NAME, driver.getFirstName());
+                json.put(UserConstant.LAST_NAME, driver.getLastName());
+                json.put(DriverConstant.CAR_NUMBER, driver.getCarNumber());
+                json.put(DriverConstant.CAR_MARK, driver.getCarMark().getMarkName());
+                json.put(UserConstant.PHONE_NUMBER, driver.getPhoneNumber());
+                json.put(RideConstant.RIDE_ID, ride.getRideId());
+                json.put(RideConstant.IS_DRIVER_START, ride.isDriverAcceptStart());
+                json.put(RideConstant.IS_DRIVER_END, ride.isDriverAcceptEnd());
+                json.put(RideConstant.IS_PASSENGER_START, ride.isPassengerAcceptStart());
+                json.put(RideConstant.IS_PASSENGER_END, ride.isPassengerAcceptEnd());
 
             } else {
-                json.put(RIDE_NOT_FOUND, RIDE_NOT_FOUND);
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

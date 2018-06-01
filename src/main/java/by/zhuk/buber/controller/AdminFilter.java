@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"}, filterName = "admin")
+@WebFilter(urlPatterns = {"/*"}, filterName = "adminFilter")
 public class AdminFilter implements Filter {
     private static Logger logger = LogManager.getLogger(AdminFilter.class);
 

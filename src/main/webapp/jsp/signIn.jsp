@@ -53,7 +53,7 @@
                 <p>${loginPasswordNotEqMessage}</p>
             </div>
 
-            <c:if test="${bannedError}">
+            <c:if test="${banned}">
                 <div class="error" id="banned-error">
                     <p>${bannedErrorMessage}</p>
                 </div>

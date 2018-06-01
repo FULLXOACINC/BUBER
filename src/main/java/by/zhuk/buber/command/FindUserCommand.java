@@ -11,8 +11,8 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class ViewUserCommand implements Command {
-    private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
+public class FindUserCommand implements Command {
+    private static Logger logger = LogManager.getLogger(FindUserCommand.class);
 
     @Override
     public Router execute(HttpServletRequest request) {

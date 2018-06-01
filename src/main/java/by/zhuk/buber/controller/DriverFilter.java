@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"}, filterName = "driver")
+@WebFilter(urlPatterns = {"/*"}, filterName = "driverFilter")
 public class DriverFilter implements Filter {
     private static Logger logger = LogManager.getLogger(DriverFilter.class);
 

@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.ComplaintReceiver;
 import org.apache.logging.log4j.LogManager;
@@ -25,7 +26,7 @@ public class AcceptComplaintCommand implements AJAXCommand {
             json.put(ALL_CORRECT, ALL_CORRECT);
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, e.getMessage());
+            json.put(ErrorConstant.ERROR, e.getMessage());
         }
         return json;
     }

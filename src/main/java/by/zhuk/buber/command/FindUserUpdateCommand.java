@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public class FindUserUpdateCommand implements Command {
-    private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
+    private static Logger logger = LogManager.getLogger(FindUserCommand.class);
 
 
     @Override

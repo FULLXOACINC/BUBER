@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
@@ -18,7 +20,6 @@ import java.util.Optional;
 
 public class RefuseRideDiverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RefuseRideDiverCommand.class);
-    private static final String LANG = "lang";
     private static final String DEFAULT_DRIVER_REFUSE_COMPLAINT = "DEFAULT_DRIVER_REFUSE_COMPLAINT";
 
     @Override
@@ -26,7 +27,7 @@ public class RefuseRideDiverCommand implements AJAXCommand {
         JSONObject json = new JSONObject();
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
-        String lang = (String) session.getAttribute(LANG);
+        String lang = (String) session.getAttribute(UserConstant.LANG);
         RideReceiver rideReceiver = new RideReceiver();
         UserReceiver userReceiver = new UserReceiver();
         ComplaintReceiver complaintReceiver = new ComplaintReceiver();
@@ -48,11 +49,11 @@ public class RefuseRideDiverCommand implements AJAXCommand {
                 rideReceiver.sendRefuseDriverMail(passenger.getLogin(), lang);
 
             } else {
-                json.put("notFoundRide", "notFoundRide");
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
 

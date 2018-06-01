@@ -5,23 +5,23 @@
          version="3.1">
 
     <filter-mapping>
-        <filter-name>encoding</filter-name>
+        <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>lastPage</filter-name>
+        <filter-name>lastPageFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>signIn</filter-name>
+        <filter-name>signInFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>ban</filter-name>
+        <filter-name>banFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>admin</filter-name>
+        <filter-name>adminFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 

@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
 import by.zhuk.buber.receiver.GeoDecoder;
@@ -15,11 +17,6 @@ public class GeoDecodeAddressCommand implements AJAXCommand {
     private static final String CURRENT_ADDRESS = "currentAddress";
     private static final String CURRENT = "current";
 
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-
-    private static final String DECODE_PROBLEM = "decodeProblem";
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -31,16 +28,16 @@ public class GeoDecodeAddressCommand implements AJAXCommand {
                 Coordinate currentCoordinate = optionalCurrentCoordinate.get();
 
                 JSONObject coordinateJSON = new JSONObject();
-                coordinateJSON.put(LNG, currentCoordinate.getLng());
-                coordinateJSON.put(LAT, currentCoordinate.getLat());
+                coordinateJSON.put(GeoConstant.LNG, currentCoordinate.getLng());
+                coordinateJSON.put(GeoConstant.LAT, currentCoordinate.getLat());
 
                 json.put(CURRENT, coordinateJSON);
             } else {
-                json.put(DECODE_PROBLEM, DECODE_PROBLEM);
+                json.put(GeoConstant.DECODE_PROBLEM, GeoConstant.DECODE_PROBLEM);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

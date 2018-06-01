@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
-public class ViewDriverProfileCommand implements Command {
-    private static Logger logger = LogManager.getLogger(ViewDriverProfileCommand.class);
+public class FindDriverProfileCommand implements Command {
+    private static Logger logger = LogManager.getLogger(FindDriverProfileCommand.class);
 
     @Override
     public Router execute(HttpServletRequest request) {

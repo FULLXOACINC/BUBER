@@ -34,7 +34,6 @@ public class RestorePasswordAcceptCommand implements Command {
             session.setAttribute(UserConstant.LOGIN, login);
             Optional<User> userOptional = receiver.findUserByLogin(login);
             userOptional.ifPresent(user -> session.setAttribute(UserConstant.TYPE, user.getType()));
-
             pool.removeInfo(hash);
         } catch (ReceiverException e) {
             logger.catching(e);

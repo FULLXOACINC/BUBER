@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 public class FindDriverUpdateCommand implements Command {
-    private static Logger logger = LogManager.getLogger(ViewUserCommand.class);
+    private static Logger logger = LogManager.getLogger(FindUserCommand.class);
 
 
     @Override

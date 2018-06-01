@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
 import by.zhuk.buber.receiver.GeoDecoder;
@@ -15,14 +17,6 @@ public class GeoDecodeRideStartEndCommand implements AJAXCommand {
     private static final String START_ADDRESS = "startAddress";
     private static final String END_ADDRESS = "endAddress";
 
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-
-    private static final String START = "start";
-    private static final String END = "end";
-
-    private static final String DECODE_PROBLEM = "decodeProblem";
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -37,21 +31,21 @@ public class GeoDecodeRideStartEndCommand implements AJAXCommand {
                 Coordinate endCoordinate = optionalEndCoordinate.get();
 
                 JSONObject startJSONObject = new JSONObject();
-                startJSONObject.put(LNG, startCoordinate.getLng());
-                startJSONObject.put(LAT, startCoordinate.getLat());
+                startJSONObject.put(GeoConstant.LNG, startCoordinate.getLng());
+                startJSONObject.put(GeoConstant.LAT, startCoordinate.getLat());
 
                 JSONObject endJSONObject = new JSONObject();
-                endJSONObject.put(LNG, endCoordinate.getLng());
-                endJSONObject.put(LAT, endCoordinate.getLat());
+                endJSONObject.put(GeoConstant.LNG, endCoordinate.getLng());
+                endJSONObject.put(GeoConstant.LAT, endCoordinate.getLat());
 
-                json.put(START, startJSONObject);
-                json.put(END, endJSONObject);
+                json.put(GeoConstant.START, startJSONObject);
+                json.put(GeoConstant.END, endJSONObject);
             } else {
-                json.put(DECODE_PROBLEM, DECODE_PROBLEM);
+                json.put(GeoConstant.DECODE_PROBLEM, GeoConstant.DECODE_PROBLEM);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }

@@ -1,11 +1,15 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.ErrorConstant;
+import by.zhuk.buber.constant.GeoConstant;
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
 import by.zhuk.buber.receiver.RideReceiver;
+import by.zhuk.buber.validator.IntegerValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -16,20 +20,11 @@ import java.util.List;
 
 public class FindUserRideHistoryCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
-    private static final String INDEX = "index";
-    private static final String INTEGER_REGEX = "\\d+";
-    private static final String LNG = "lng";
-    private static final String LAT = "lat";
-    private static final String START = "start";
-    private static final String END = "end";
 
-    private static final String RIDE_ID = "rideId";
     private static final String DRIVER_LOGIN = "driverLogin";
     private static final String DRIVER_PHONE_NUMBER = "driverPhoneNumber";
     private static final String PRICE = "price";
-    private static final String FIRST_NAME = "firstName";
-    private static final String LAST_NAME = "lastName";
-    private static final String RIDE_NOT_FOUND = "rideNotFound";
+
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -37,9 +32,9 @@ public class FindUserRideHistoryCommand implements AJAXCommand {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
         RideReceiver rideReceiver = new RideReceiver();
-        String stringIndex = request.getParameter(INDEX);
+        String stringIndex = request.getParameter(UserConstant.INDEX);
         int index;
-        if (!(stringIndex != null && stringIndex.matches(INTEGER_REGEX))) {
+        if (!IntegerValidator.isInteger(stringIndex)) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);
@@ -52,9 +47,9 @@ public class FindUserRideHistoryCommand implements AJAXCommand {
                 }
                 Ride ride = rides.get(index);
                 Driver driver = ride.getDriver();
-                json.put(RIDE_ID, ride.getRideId());
-                json.put(FIRST_NAME, driver.getFirstName());
-                json.put(LAST_NAME, driver.getLastName());
+                json.put(RideConstant.RIDE_ID, ride.getRideId());
+                json.put(UserConstant.FIRST_NAME, driver.getFirstName());
+                json.put(UserConstant.LAST_NAME, driver.getLastName());
                 json.put(DRIVER_LOGIN, driver.getLogin());
                 json.put(DRIVER_PHONE_NUMBER, driver.getPhoneNumber());
                 json.put(PRICE, ride.getPrice());
@@ -63,23 +58,23 @@ public class FindUserRideHistoryCommand implements AJAXCommand {
                 Coordinate endCoordinate = ride.getEndCoordinate();
 
                 JSONObject startJSONObject = new JSONObject();
-                startJSONObject.put(LNG, startCoordinate.getLng());
-                startJSONObject.put(LAT, startCoordinate.getLat());
+                startJSONObject.put(GeoConstant.LNG, startCoordinate.getLng());
+                startJSONObject.put(GeoConstant.LAT, startCoordinate.getLat());
 
                 JSONObject endJSONObject = new JSONObject();
-                endJSONObject.put(LNG, endCoordinate.getLng());
-                endJSONObject.put(LAT, endCoordinate.getLat());
+                endJSONObject.put(GeoConstant.LNG, endCoordinate.getLng());
+                endJSONObject.put(GeoConstant.LAT, endCoordinate.getLat());
 
-                json.put(START, startJSONObject);
-                json.put(END, endJSONObject);
+                json.put(GeoConstant.START, startJSONObject);
+                json.put(GeoConstant.END, endJSONObject);
             } else {
-                json.put(RIDE_NOT_FOUND, RIDE_NOT_FOUND);
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
                 index = 0;
             }
-            json.put(INDEX, index);
+            json.put(UserConstant.INDEX, index);
         } catch (ReceiverException e) {
             logger.catching(e);
-            json.put(ERROR, ERROR);
+            json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
         }
         return json;
     }
