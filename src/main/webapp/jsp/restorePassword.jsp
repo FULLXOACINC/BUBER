@@ -19,7 +19,6 @@
 <fmt:message bundle="${locale}" key="text.passwordNotEq" var="passwordNotEq"/>
 
 
-
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
@@ -31,11 +30,12 @@
     <div class="container">
         <div class="form-input">
             <h2 class="form-input-heading">${restorePassword}</h2>
-            <input type="text"     class="form-control" id="login"  placeholder="${login}"/>
+            <input type="text" class="form-control" id="login" placeholder="${login}"/>
             <input type="password" class="form-control" id="password" placeholder="${password}"/>
             <input type="password" class="form-control" id="repeatPassword" placeholder="${repeatPassword}"/>
             <div>
-                <input class="btn btn-lg btn-primary btn-block" type="submit" id="restore-password" value="${restorePassword}">
+                <input class="btn btn-lg btn-primary btn-block" type="submit" id="restore-password"
+                       value="${restorePassword}">
             </div>
 
             <div class="error" id="not-valid-login">

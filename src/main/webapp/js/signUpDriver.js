@@ -13,6 +13,7 @@ function hideAllMessage() {
 }
 
 $(document).ready(function () {
+    hideAllMessage();
     var signUpFun = function () {
         hideAllMessage();
         $.ajax({

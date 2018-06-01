@@ -17,12 +17,12 @@ import by.zhuk.buber.specification.find.driver.FindDriverTariffSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverToUpdateSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverByLoginSpecification;
 import by.zhuk.buber.specification.find.driver.FindSuitableDriverSpecification;
-import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverInfoSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -62,7 +62,7 @@ public class DriverReceiver {
             CarMarkReceiver carMarkReceiver = new CarMarkReceiver();
             CarMark carMark = carMarkReceiver.saveCarMark(carMarkName, carMarkRepository);
 
-            Specification driverUpdateSpecification = new UpdateDriverInfoSpecification(driverLogin,carNumber,documentId,carMark.getIndex(),tariff);
+            Specification driverUpdateSpecification = new UpdateDriverInfoSpecification(driverLogin, carNumber, documentId, carMark.getIndex(), tariff);
             driverRepository.update(driverUpdateSpecification);
 
             controller.commit();

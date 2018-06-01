@@ -25,16 +25,17 @@
 
 <div class="back">
     <div class="container">
-        <div>
-            <div>${currentAddress}:</div>
-            <input type="text" id="current-address" value="ул 50 лет победы 23 29,Минск"/>
+        <div class="form-input">
+            <div>
+                <input type="text" class="form-control" id="current-address" placeholder="${currentAddress}"/>
+            </div>
+
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="select-address" value="${selectAddress}"/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="clear-map" value="${clearMap}"/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="accept-coordinate" value="${acceptCoordinate}"/>
+
+            <div id="map"></div>
         </div>
-
-        <input type="submit" id="select-address" value="${selectAddress}"/>
-        <input type="submit" id="clear-map" value="${clearMap}"/>
-        <input type="submit" id="accept-coordinate" value="${acceptCoordinate}"/>
-
-        <div id="map"></div>
     </div>
 </div>
 <c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>

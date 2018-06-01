@@ -43,7 +43,6 @@
 <fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="phoneNumberNotValidMessage"/>
 
 
-
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
@@ -59,10 +58,14 @@
                     <h2 class="form-input-heading">${updateUser}</h2>
                     <h2 class="form-input-heading">${user.login}</h2>
 
-                    <input type="text" class="form-control" id="first-name" value="${user.firstName}" placeholder="${firstName}"/>
-                    <input type="text" class="form-control" id="last-name" value="${user.lastName}" placeholder="${lastName}"/>
-                    <input type="text" class="form-control" id="phone-number" value="${user.phoneNumber}" placeholder="${phoneNumber}"/>
-                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="update-user" value="${updateUser}">
+                    <input type="text" class="form-control" id="first-name" value="${user.firstName}"
+                           placeholder="${firstName}"/>
+                    <input type="text" class="form-control" id="last-name" value="${user.lastName}"
+                           placeholder="${lastName}"/>
+                    <input type="text" class="form-control" id="phone-number" value="${user.phoneNumber}"
+                           placeholder="${phoneNumber}"/>
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="update-user"
+                           value="${updateUser}">
 
 
                     <div class="error" id="phone-number-exist">

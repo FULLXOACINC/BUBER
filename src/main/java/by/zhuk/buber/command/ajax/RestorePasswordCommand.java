@@ -4,7 +4,6 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.RestorePasswordReceiver;
 import by.zhuk.buber.receiver.SignInReceiver;
-import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.validator.SignInValidator;
 import by.zhuk.buber.validator.SignUpUserValidator;
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +20,6 @@ public class RestorePasswordCommand implements AJAXCommand {
     private static final String LOGIN_NOT_EXIST = "loginNotExist";
     private static final String NOT_VALID_PASSWORD = "notValidPassword";
     private static final String PASSWORD_NOT_EQ = "passwordNotEq";
-
 
 
     @Override
@@ -59,7 +57,7 @@ public class RestorePasswordCommand implements AJAXCommand {
         }
 
         if (json.length() == 0) {
-            restorePasswordReceiver.sendRestorePasswordMail(login,password,lang);
+            restorePasswordReceiver.sendRestorePasswordMail(login, password, lang);
             json.put(ALL_CORRECT, ALL_CORRECT);
         }
         return json;

@@ -1,33 +1,17 @@
 package by.zhuk.buber.receiver;
 
-import by.zhuk.buber.exception.ReceiverException;
-import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
-import by.zhuk.buber.model.CarMark;
-import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.repository.Repository;
-import by.zhuk.buber.repository.RepositoryController;
-import by.zhuk.buber.specification.Specification;
-import by.zhuk.buber.specification.add.AddDriverSpecification;
-import by.zhuk.buber.specification.add.AddUserSpecification;
-import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
-import by.zhuk.buber.specification.update.user.UpdateUserTypeSpecification;
 import by.zhuk.buber.userpool.RestorePasswordUserPool;
-import by.zhuk.buber.userpool.SignUpUserPool;
 import by.zhuk.buber.userpool.UserPoolInfo;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -64,7 +48,7 @@ public class RestorePasswordReceiver {
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
 
-        formatter.format(content,hash);
+        formatter.format(content, hash);
 
 
         MailThread thread = new MailThread(login, head, stringBuilder.toString(), MailProperty.getInstance().getProperties());

@@ -49,7 +49,7 @@ public class RestorePasswordUserPool {
         return restorePasswordMap.get(hash);
     }
 
-    public ConcurrentHashMap<String, UserPoolInfo> takeSignUpMap() {
+    public ConcurrentHashMap<String, UserPoolInfo> takeRestorePasswordMap() {
         return restorePasswordMap;
     }
 }

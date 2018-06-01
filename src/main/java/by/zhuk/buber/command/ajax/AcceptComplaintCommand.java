@@ -8,6 +8,9 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * au
+ */
 public class AcceptComplaintCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String ID = "id";

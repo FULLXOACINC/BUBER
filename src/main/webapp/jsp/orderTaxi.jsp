@@ -100,9 +100,9 @@
             <input type="submit" class="btn btn-lg btn-primary btn-block" id="select-addresses"
                    value="${selectAddresses}"/>
             <input type="submit" class="btn btn-lg btn-primary btn-block" id="clear-map" value="${clearMap}"/>
-
+            <div id="map"></div>
         </div>
-        <div id="map"></div>
+
     </div>
 </div>
 <c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>

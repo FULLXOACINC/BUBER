@@ -29,7 +29,7 @@ public class PoolCleaner implements Runnable {
                     return Math.abs(currentSecond - signUpSecond) > timeOut;
                 });
                 logger.log(Level.INFO, "Clear sing up pool");
-                ConcurrentHashMap<String, UserPoolInfo> restorePasswordMap = SignUpUserPool.getInstance().takeSignUpMap();
+                ConcurrentHashMap<String, UserPoolInfo> restorePasswordMap = RestorePasswordUserPool.getInstance().takeRestorePasswordMap();
                 restorePasswordMap.values().removeIf((UserPoolInfo info) -> {
                     int currentSecond = LocalTime.now().getSecond();
                     int signUpSecond = info.getTime().getSecond();

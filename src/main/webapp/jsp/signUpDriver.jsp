@@ -36,50 +36,52 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <div class="back">
     <div class="container">
-        <p>${login}<input type="text" id="login"/></p>
-        <p>${carNumber}<input type="text" id="car-number" value="7522AT1"/></p>
-        <p>${documentId}<input type="text" id="document-id" value="7AD123132"/></p>
-        <p>${carMark}<input type="text" id="car-mark"/></p>
-        <p>${tariff}<input type="text" id="tariff"/></p>
+        <div class="form-input">
 
-        <p><input type="submit" id="sign-up-driver" value="${signUp}"></p>
+            <input type="text" class="form-control" id="login" placeholder="${login}"/>
+            <input type="text" class="form-control" id="car-number" value="7522AT1" placeholder="${carNumber}"/>
+            <input type="text" class="form-control" id="document-id" value="7AD123132" placeholder="${documentId}"/>
+            <input type="text" class="form-control" id="car-mark" placeholder="${carMark}"/>
+            <input type="text" class="form-control" id="tariff" placeholder="${tariff}"/>
 
-        <div class="error" id="car-number-error">
-            <p>${carNumberError}</p>
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="sign-up-driver" value="${signUp}">
+
+            <div class="error" id="car-number-error">
+                <p>${carNumberError}</p>
+            </div>
+
+            <div class="error" id="document-id-error">
+                <p>${documentIdError}</p>
+            </div>
+
+            <div class="error" id="car-mark-error">
+                <p>${carMarkError}</p>
+            </div>
+
+            <div class="error" id="login-not-exist-error">
+                <p>${loginNotExistError}</p>
+            </div>
+
+            <div class="error" id="driver-exist-error">
+                <p>${driverExistError}</p>
+            </div>
+
+            <div class="error" id="car-number-exist-error">
+                <p>${carNumberExistError}</p>
+            </div>
+
+            <div class="error" id="document-id-exist-error">
+                <p>${documentIdExistError}</p>
+            </div>
+
+            <div class="error" id="tariff-error">
+                <p>${tariffError}</p>
+            </div>
+
+            <div class="correct" id="all-correct">
+                <p>${driverSignUpCorrectMessage}</p>
+            </div>
         </div>
-
-        <div class="error" id="document-id-error">
-            <p>${documentIdError}</p>
-        </div>
-
-        <div class="error" id="car-mark-error">
-            <p>${carMarkError}</p>
-        </div>
-
-        <div class="error" id="login-not-exist-error">
-            <p>${loginNotExistError}</p>
-        </div>
-
-        <div class="error" id="driver-exist-error">
-            <p>${driverExistError}</p>
-        </div>
-
-        <div class="error" id="car-number-exist-error">
-            <p>${carNumberExistError}</p>
-        </div>
-
-        <div class="error" id="document-id-exist-error">
-            <p>${documentIdExistError}</p>
-        </div>
-
-        <div class="error" id="tariff-error">
-            <p>${tariffError}</p>
-        </div>
-
-        <div class="correct" id="all-correct">
-            <p>${driverSignUpCorrectMessage}</p>
-        </div>
-
     </div>
 </div>
 <c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>

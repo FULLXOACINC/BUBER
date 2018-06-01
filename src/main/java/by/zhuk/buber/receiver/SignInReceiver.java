@@ -2,11 +2,11 @@ package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.userpool.UserPoolInfo;
-import by.zhuk.buber.userpool.SignUpUserPool;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginAndPasswordSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
+import by.zhuk.buber.userpool.SignUpUserPool;
+import by.zhuk.buber.userpool.UserPoolInfo;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;

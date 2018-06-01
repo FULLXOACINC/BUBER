@@ -68,28 +68,33 @@
 
                     <input type="hidden" id="login" value="${driver.login}">
 
-                    <input type="text" class="form-control" id="car-number" value="${driver.carNumber}" placeholder="${carNumber}"/>
-                    <input type="text" class="form-control" id="document-id" value="${driver.documentId}" placeholder="${documentId}"/>
-                    <input type="text" class="form-control" id="car-mark" value="${driver.carMark.markName}" placeholder="${carMark}"/>
-                    <input type="text" class="form-control" id="tariff" value="${driver.tariff}" placeholder="${tariff}"/>
-                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="update-driver" value="${updateDriver}">
+                    <input type="text" class="form-control" id="car-number" value="${driver.carNumber}"
+                           placeholder="${carNumber}"/>
+                    <input type="text" class="form-control" id="document-id" value="${driver.documentId}"
+                           placeholder="${documentId}"/>
+                    <input type="text" class="form-control" id="car-mark" value="${driver.carMark.markName}"
+                           placeholder="${carMark}"/>
+                    <input type="text" class="form-control" id="tariff" value="${driver.tariff}"
+                           placeholder="${tariff}"/>
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="update-driver"
+                           value="${updateDriver}">
 
-                    <div class="error"   id="car-number-not-valid">
+                    <div class="error" id="car-number-not-valid">
                         <p>${carNumberError}</p>
                     </div>
-                    <div class="error"   id="document-id-not-valid">
+                    <div class="error" id="document-id-not-valid">
                         <p>${documentIdError}</p>
                     </div>
-                    <div class="error"   id="car-mark-not-valid">
+                    <div class="error" id="car-mark-not-valid">
                         <p>${carMarkError}</p>
                     </div>
-                    <div class="error"   id="driver-not-exist">
+                    <div class="error" id="driver-not-exist">
                         <p>${driverNotExistError}</p>
                     </div>
-                    <div class="error"   id="car-number-exist">
+                    <div class="error" id="car-number-exist">
                         <p>${carNumberExistError}</p>
                     </div>
-                    <div class="error"   id="document-id-exist">
+                    <div class="error" id="document-id-exist">
                         <p>${documentIdExistError}</p>
                     </div>
                     <div class="error" id="tariff-not-valid">

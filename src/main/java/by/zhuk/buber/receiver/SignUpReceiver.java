@@ -10,14 +10,13 @@ import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
-import by.zhuk.buber.userpool.RestorePasswordUserPool;
-import by.zhuk.buber.userpool.UserPoolInfo;
-import by.zhuk.buber.userpool.SignUpUserPool;
 import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddDriverSpecification;
 import by.zhuk.buber.specification.add.AddUserSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserTypeSpecification;
+import by.zhuk.buber.userpool.SignUpUserPool;
+import by.zhuk.buber.userpool.UserPoolInfo;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,8 +40,6 @@ public class SignUpReceiver {
     private static final String DEFAULT_HEAD = "BUBER sign up";
 
     private static final String PROPERTIES_EXTENSION = ".properties";
-
-
 
 
     public void saveUser(User user) throws ReceiverException {
@@ -107,7 +104,7 @@ public class SignUpReceiver {
             List<User> users = userRepository.find(new FindUserByLoginSpecification(login));
             if (!users.isEmpty()) {
                 User user = users.get(0);
-                Specification updateUserTypeSpecification = new UpdateUserTypeSpecification(user.getLogin(),UserType.DRIVER);
+                Specification updateUserTypeSpecification = new UpdateUserTypeSpecification(user.getLogin(), UserType.DRIVER);
                 userRepository.update(updateUserTypeSpecification);
             }
             controller.commit();

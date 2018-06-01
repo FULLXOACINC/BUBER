@@ -22,7 +22,7 @@ public class AdminReceiver {
         RepositoryController controller = new RepositoryController(repository);
         try {
             user.setBaned(!user.isBaned());
-            Specification updateSpecification = new UpdateUserBanStatusSpecification(user.getLogin(),user.isBaned());
+            Specification updateSpecification = new UpdateUserBanStatusSpecification(user.getLogin(), user.isBaned());
             repository.update(updateSpecification);
             controller.end();
         } catch (RepositoryException e) {
@@ -41,7 +41,7 @@ public class AdminReceiver {
                 } else {
                     user.setType(UserType.USER);
                 }
-                Specification updateSpecification = new UpdateUserTypeSpecification(user.getLogin(),user.getType());
+                Specification updateSpecification = new UpdateUserTypeSpecification(user.getLogin(), user.getType());
 
                 repository.update(updateSpecification);
             }

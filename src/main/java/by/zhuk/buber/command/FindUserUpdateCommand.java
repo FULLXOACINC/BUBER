@@ -3,9 +3,7 @@ package by.zhuk.buber.command;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
-import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +19,7 @@ public class FindUserUpdateCommand implements Command {
     @Override
     public Router execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String login = (String)session.getAttribute(UserConstant.LOGIN);
+        String login = (String) session.getAttribute(UserConstant.LOGIN);
         UserReceiver userReceiver = new UserReceiver();
         try {
             Optional<User> optionalUser = userReceiver.findUserByLogin(login);

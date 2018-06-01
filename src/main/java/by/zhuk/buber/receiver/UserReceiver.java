@@ -14,7 +14,6 @@ import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
 import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
 import by.zhuk.buber.specification.find.user.FindUserInfoForRideSpecification;
-import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserPasswordSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserProfileSpecification;
@@ -149,7 +148,7 @@ public class UserReceiver {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
 
-        Specification userUpdateSpecification = new UpdateUserPasswordSpecification(user.getLogin(),user.getPassword());
+        Specification userUpdateSpecification = new UpdateUserPasswordSpecification(user.getLogin(), user.getPassword());
         try {
             repository.update(userUpdateSpecification);
             controller.end();

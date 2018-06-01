@@ -5,8 +5,8 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignUpReceiver;
-import by.zhuk.buber.userpool.UserPoolInfo;
 import by.zhuk.buber.userpool.SignUpUserPool;
+import by.zhuk.buber.userpool.UserPoolInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

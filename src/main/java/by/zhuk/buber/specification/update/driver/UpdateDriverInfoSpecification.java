@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.update.driver;
 
 import by.zhuk.buber.exception.SpecificationException;
-import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.specification.Specification;
 
 import java.math.BigDecimal;

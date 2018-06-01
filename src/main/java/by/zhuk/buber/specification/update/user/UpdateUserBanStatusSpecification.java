@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.update.user;
 
 import by.zhuk.buber.exception.SpecificationException;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
@@ -12,7 +11,7 @@ public class UpdateUserBanStatusSpecification implements Specification {
     private String login;
     private boolean isBan;
 
-    public UpdateUserBanStatusSpecification(String login,boolean isBan) {
+    public UpdateUserBanStatusSpecification(String login, boolean isBan) {
         this.login = login;
         this.isBan = isBan;
     }

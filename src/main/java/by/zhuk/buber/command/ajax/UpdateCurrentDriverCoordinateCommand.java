@@ -16,7 +16,6 @@ public class UpdateCurrentDriverCoordinateCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(UpdateCurrentDriverCoordinateCommand.class);
 
 
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

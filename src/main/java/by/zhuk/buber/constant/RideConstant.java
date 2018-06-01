@@ -8,7 +8,7 @@ public class RideConstant {
     public static final String IS_DRIVER_END = "isDriverEnd";
 
     public static final String PASSENGER_NOT_ACCEPT = "passengerNotAccept";
-    public static final String DRIVER_NOT_ACCEPT ="driverNotAccept";
+    public static final String DRIVER_NOT_ACCEPT = "driverNotAccept";
 
     public static final String RIDE_NOT_FOUND = "rideNotFound";
 

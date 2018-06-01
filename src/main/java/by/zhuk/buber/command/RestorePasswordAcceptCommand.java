@@ -4,11 +4,8 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.model.UserType;
-import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.userpool.RestorePasswordUserPool;
-import by.zhuk.buber.userpool.SignUpUserPool;
 import by.zhuk.buber.userpool.UserPoolInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,9 +30,9 @@ public class RestorePasswordAcceptCommand implements Command {
         try {
             receiver.changePassword(info.getUser());
             HttpSession session = request.getSession();
-            String login =info.getUser().getLogin();
+            String login = info.getUser().getLogin();
             session.setAttribute(UserConstant.LOGIN, login);
-            Optional<User> userOptional=receiver.findUserByLogin(login);
+            Optional<User> userOptional = receiver.findUserByLogin(login);
             userOptional.ifPresent(user -> session.setAttribute(UserConstant.TYPE, user.getType()));
 
             pool.removeInfo(hash);

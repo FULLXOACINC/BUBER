@@ -1,7 +1,6 @@
 package by.zhuk.buber.specification.update.user;
 
 import by.zhuk.buber.exception.SpecificationException;
-import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.specification.Specification;
 
@@ -13,7 +12,7 @@ public class UpdateUserTypeSpecification implements Specification {
     private UserType type;
     private String login;
 
-    public UpdateUserTypeSpecification(String login,UserType type) {
+    public UpdateUserTypeSpecification(String login, UserType type) {
         this.type = type;
         this.login = login;
     }
