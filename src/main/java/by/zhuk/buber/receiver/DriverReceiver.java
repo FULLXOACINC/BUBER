@@ -180,7 +180,6 @@ public class DriverReceiver {
         return earnedMoney;
     }
 
-
     public void withdrawEarningMoney(String login) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);

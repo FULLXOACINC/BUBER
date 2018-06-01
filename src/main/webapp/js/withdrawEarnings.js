@@ -20,7 +20,7 @@ function findDriverEarnedMoney() {
             } else {
                 if (response['error']) {
                     viewServerError();
-                }else {
+                } else {
                     console.log(response);
                 }
             }

@@ -4,7 +4,7 @@ import by.zhuk.buber.command.CommandType;
 import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.validator.SignInValidator;
+import by.zhuk.buber.validator.UserValidator;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -37,7 +37,7 @@ public class SignInFilter implements Filter {
             return;
         }
 
-        if (!SignInValidator.isAuthorization(session)) {
+        if (!UserValidator.isAuthorization(session)) {
             response.sendRedirect(PagesConstant.SIGN_IN_PAGE);
         } else {
             filterChain.doFilter(request, response);

@@ -6,9 +6,6 @@ public class DistanceInfo {
     private int distance;
     private String duration;
 
-    public DistanceInfo() {
-    }
-
 
     public int getDistance() {
         return distance;
@@ -41,7 +38,6 @@ public class DistanceInfo {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(distance, duration);
     }
 

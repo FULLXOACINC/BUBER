@@ -7,7 +7,7 @@ import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.SignInValidator;
+import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -30,7 +30,7 @@ public class SignInCommand implements AJAXCommand {
         String password = request.getParameter(UserConstant.PASSWORD);
 
         JSONObject json = new JSONObject();
-        if (!SignInValidator.isLoginValid(login)) {
+        if (!UserValidator.isLoginValid(login)) {
             json.put(LOGIN_NOT_VALID, LOGIN_NOT_VALID);
             return json;
         }

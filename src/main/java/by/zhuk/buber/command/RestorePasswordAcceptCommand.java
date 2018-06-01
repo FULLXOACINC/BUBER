@@ -28,12 +28,13 @@ public class RestorePasswordAcceptCommand implements Command {
         }
         UserReceiver receiver = new UserReceiver();
         try {
-            receiver.changePassword(info.getUser());
+            User user = info.getUser();
+            receiver.changePassword(user.getLogin(), user.getPassword());
             HttpSession session = request.getSession();
             String login = info.getUser().getLogin();
             session.setAttribute(UserConstant.LOGIN, login);
             Optional<User> userOptional = receiver.findUserByLogin(login);
-            userOptional.ifPresent(user -> session.setAttribute(UserConstant.TYPE, user.getType()));
+            userOptional.ifPresent(findUser -> session.setAttribute(UserConstant.TYPE, findUser.getType()));
             pool.removeInfo(hash);
         } catch (ReceiverException e) {
             logger.catching(e);

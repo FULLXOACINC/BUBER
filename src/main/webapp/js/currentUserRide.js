@@ -31,7 +31,7 @@ $(document).ready(function () {
                 } else {
                     if (response['error']) {
                         viewServerError();
-                    }else {
+                    } else {
                         console.log(response);
                     }
                 }
@@ -56,7 +56,7 @@ $(document).ready(function () {
                 } else {
                     if (response['error']) {
                         viewServerError();
-                    }else {
+                    } else {
                         console.log(response);
                     }
                 }

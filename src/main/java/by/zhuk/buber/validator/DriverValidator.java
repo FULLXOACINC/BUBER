@@ -1,6 +1,6 @@
 package by.zhuk.buber.validator;
 
-public class SignUpDriverValidator {
+public class DriverValidator {
     private static final String CAR_NUMBER_REGEXP = "\\d{4}\\w{2}\\d";
     private static final String DOC_ID_REGEXP = "\\d\\w{2}\\d{6}";
     private static final String CAR_MARK_REGEXP = "[\\d\\w-']{2,30}";

@@ -37,7 +37,7 @@ public class DistanceReceiver {
 
             httpClient.executeMethod(getMethod);
             JSONObject jsonObject = parseResult(getMethod);
-            if(JSONValidator.isJSONHasError(jsonObject)){
+            if (JSONValidator.isJSONHasError(jsonObject)) {
                 throw new ReceiverException("JSON has error");
             }
             Optional<DistanceInfo> optionalDistanceInfo = Optional.empty();

@@ -15,20 +15,20 @@ $(document).ready(function () {
 
         var loginRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
         var passwordRegExp = /[\w\d!@#$%^&*+_-~]{6,35}/;
-        var hasProblem=false;
+        var hasProblem = false;
         if (!loginRegExp.test(login)) {
             $('#not-valid-login').show();
-            hasProblem=true;
+            hasProblem = true;
         }
         if (!passwordRegExp.test(password)) {
             $('#not-valid-password').show();
-            hasProblem=true;
+            hasProblem = true;
         }
         if (repeatPassword !== password) {
             $('#password-not-eq').show();
-            hasProblem=true;
+            hasProblem = true;
         }
-        if(hasProblem){
+        if (hasProblem) {
             return
         }
         $.ajax({

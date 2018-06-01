@@ -1,5 +1,6 @@
 package by.zhuk.buber.receiver;
 
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.model.Complaint;
@@ -19,7 +20,6 @@ public class ComplaintReceiver {
     private static final String COMPLAINT_ID = "complaintId";
     private static final String COMPLAINT_PERSON_LOGIN = "complaintPersonLogin";
     private static final String COMPLAINT_TEXT = "complaintText";
-    private static final String RIDE_ID = "rideId";
     private static final String COMPLAINTS_EMPTY = "complaintsEmpty";
 
 
@@ -63,7 +63,7 @@ public class ComplaintReceiver {
             json.put(COMPLAINT_ID, complaint.getComplaintId());
             json.put(COMPLAINT_PERSON_LOGIN, complaint.getComplaintPersonLogin());
             json.put(COMPLAINT_TEXT, complaint.getComplaintText());
-            json.put(RIDE_ID, complaint.getRideId());
+            json.put(RideConstant.RIDE_ID, complaint.getRideId());
         }
         return json;
     }

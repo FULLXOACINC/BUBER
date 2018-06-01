@@ -19,5 +19,5 @@ public class UserConstant {
     public static final String LAST_PAGE = "lastPage";
     public static final String EVALUATION_TOKEN = "evaluationToken";
     public static final String COMPLAINT_TOKEN = "complaintToken";
-    public static final String COMPLAINT_DRIVER_TOKEN = "complainDrivertToken";
+    public static final String COMPLAINT_DRIVER_TOKEN = "complainDriverToken";
 }

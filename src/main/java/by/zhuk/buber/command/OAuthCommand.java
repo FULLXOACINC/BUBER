@@ -3,7 +3,7 @@ package by.zhuk.buber.command;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.oauth.AbstractOAuth;
 import by.zhuk.buber.oauth.OAuthFactory;
-import by.zhuk.buber.validator.SignInValidator;
+import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +17,7 @@ public class OAuthCommand implements Command {
 
     @Override
     public Router execute(HttpServletRequest request) {
-        if (SignInValidator.isAuthorization(request.getSession())) {
+        if (UserValidator.isAuthorization(request.getSession())) {
             return new Router(TransitionType.REDIRECT, PagesConstant.WELCOME_PAGE);
         }
 

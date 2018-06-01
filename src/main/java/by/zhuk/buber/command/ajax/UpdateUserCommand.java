@@ -5,7 +5,7 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.SignUpUserValidator;
+import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -45,13 +45,13 @@ public class UpdateUserCommand implements AJAXCommand {
             }
 
 
-            if (!SignUpUserValidator.isNameValid(firstName)) {
+            if (!UserValidator.isNameValid(firstName)) {
                 json.put(FIRST_NAME_NOT_VALID, FIRST_NAME_NOT_VALID);
             }
-            if (!SignUpUserValidator.isNameValid(lastName)) {
+            if (!UserValidator.isNameValid(lastName)) {
                 json.put(LAST_NAME_NOT_VALID, LAST_NAME_NOT_VALID);
             }
-            if (!SignUpUserValidator.isPhoneNumberValid(phoneNumber)) {
+            if (!UserValidator.isPhoneNumberValid(phoneNumber)) {
                 json.put(PHONE_NUMBER_NOT_VALID, PHONE_NUMBER_NOT_VALID);
             }
 

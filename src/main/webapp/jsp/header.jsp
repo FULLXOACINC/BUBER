@@ -58,7 +58,7 @@
                                 </form>
                             </div>
                             <div>
-                                <form action="${pageContext.request.contextPath}/jsp/viewUserRideHistory.jsp">
+                                <form action="${pageContext.request.contextPath}/jsp/userRideHistory.jsp">
                                     <input class="dropdown-item" type="submit" value="${rideHistory}">
                                 </form>
                             </div>
@@ -137,7 +137,7 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="${pageContext.request.contextPath}/jsp/viewDriverRideHistory.jsp">
+                                    <form action="${pageContext.request.contextPath}/jsp/driverRideHistory.jsp">
                                         <input class="dropdown-item" type="submit" value="${rideHistory}">
                                     </form>
                                 </div>

@@ -21,7 +21,7 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script src="${pageContext.request.contextPath}/js/viewUserComplaints.js"></script>
+    <script src="${pageContext.request.contextPath}/js/userComplaints.js"></script>
 </head>
 <body>
 <div class="back">

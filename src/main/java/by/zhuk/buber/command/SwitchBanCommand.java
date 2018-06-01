@@ -4,7 +4,6 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.User;
-import by.zhuk.buber.receiver.AdminReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +15,7 @@ import java.util.Optional;
 
 public class SwitchBanCommand implements Command {
     private static Logger logger = LogManager.getLogger(SwitchBanCommand.class);
+    private static final String PART_USER_FIND_URL = "?command=find-user&user=";
 
     @Override
     public Router execute(HttpServletRequest request) {
@@ -25,14 +25,15 @@ public class SwitchBanCommand implements Command {
         String adminLogin = (String) session.getAttribute(UserConstant.LOGIN);
         if (adminLogin.equals(userLogin)) {
             logger.log(Level.INFO, "Can't do this operation on yourself ,Admin:" + adminLogin);
+            return new Router(TransitionType.REDIRECT, request.getRequestURI() + PART_USER_FIND_URL + userLogin);
         }
         UserReceiver userReceiver = new UserReceiver();
-        AdminReceiver adminReceiver = new AdminReceiver();
         try {
 
             Optional<User> userOptional = userReceiver.findUserByLogin(userLogin);
             if (userOptional.isPresent()) {
-                adminReceiver.switchBan(userOptional.get());
+                User user = userOptional.get();
+                userReceiver.switchBan(user.getLogin(), user.isBaned());
 
                 logger.log(Level.INFO, "Admin:" + adminLogin + " switch ban status " + userLogin);
             }
@@ -42,6 +43,6 @@ public class SwitchBanCommand implements Command {
         }
 
 
-        return new Router(TransitionType.REDIRECT, request.getRequestURI() + "?command=view-user&user=" + userLogin);
+        return new Router(TransitionType.REDIRECT, request.getRequestURI() + PART_USER_FIND_URL + userLogin);
     }
 }

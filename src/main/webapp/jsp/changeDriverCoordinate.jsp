@@ -30,9 +30,11 @@
                 <input type="text" class="form-control" id="current-address" placeholder="${currentAddress}"/>
             </div>
 
-            <input type="submit" class="btn btn-lg btn-primary btn-block " id="select-address" value="${selectAddress}"/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="select-address"
+                   value="${selectAddress}"/>
             <input type="submit" class="btn btn-lg btn-primary btn-block " id="clear-map" value="${clearMap}"/>
-            <input type="submit" class="btn btn-lg btn-primary btn-block " id="accept-coordinate" value="${acceptCoordinate}"/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block " id="accept-coordinate"
+                   value="${acceptCoordinate}"/>
 
             <div id="map"></div>
         </div>

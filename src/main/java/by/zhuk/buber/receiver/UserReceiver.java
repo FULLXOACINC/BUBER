@@ -4,6 +4,7 @@ import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.model.Complaint;
 import by.zhuk.buber.model.User;
+import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.repository.Repository;
 import by.zhuk.buber.repository.RepositoryController;
 import by.zhuk.buber.specification.Specification;
@@ -11,12 +12,16 @@ import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.complaint.FindUserComplaintsSpecification;
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByLoginSpecification;
+import by.zhuk.buber.specification.find.user.FindUserByPatternSpecification;
 import by.zhuk.buber.specification.find.user.FindUserByPhoneNumberSpecification;
 import by.zhuk.buber.specification.find.user.FindUserDiscountSpecification;
 import by.zhuk.buber.specification.find.user.FindUserInfoForRideSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserBanStatusSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserDiscountSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserPasswordSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserProfileSpecification;
+import by.zhuk.buber.specification.update.user.UpdateUserTypeSpecification;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -89,7 +94,7 @@ public class UserReceiver {
         }
         User user = users.get(0);
         user.fillUpBalance(money);
-        return user.getBalance().compareTo(MAX_USER_BALANCE) == -1;
+        return user.getBalance().compareTo(MAX_USER_BALANCE) < 0;
     }
 
     public List<Complaint> findUserComplaints(String login) throws ReceiverException {
@@ -144,16 +149,73 @@ public class UserReceiver {
         }
     }
 
-    public void changePassword(User user) throws ReceiverException {
+    public void changePassword(String login, String password) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
 
-        Specification userUpdateSpecification = new UpdateUserPasswordSpecification(user.getLogin(), user.getPassword());
+        Specification userUpdateSpecification = new UpdateUserPasswordSpecification(login, password);
         try {
             repository.update(userUpdateSpecification);
             controller.end();
         } catch (RepositoryException e) {
             throw new ReceiverException(e);
         }
+    }
+
+    public void switchBan(String login, boolean isBanned) throws ReceiverException {
+        Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+        try {
+            Specification updateSpecification = new UpdateUserBanStatusSpecification(login, !isBanned);
+            repository.update(updateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+
+    }
+
+    public void switchAdminStatus(String login, UserType type, boolean isExDriver) throws ReceiverException {
+        Repository repository = new Repository();
+        RepositoryController controller = new RepositoryController(repository);
+
+        try {
+            if (type != UserType.ROOT_ADMIN) {
+                if (type == UserType.USER || type == UserType.DRIVER) {
+                    type = UserType.ADMIN;
+                } else {
+                    if (isExDriver) {
+                        type = UserType.DRIVER;
+                    } else {
+                        type = UserType.USER;
+                    }
+
+                }
+                Specification updateSpecification = new UpdateUserTypeSpecification(login, type);
+
+                repository.update(updateSpecification);
+            }
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public void changeDiscount(float discount, String login) throws ReceiverException {
+        Repository<User> repository = new Repository<>();
+        RepositoryController controller = new RepositoryController(repository);
+        try {
+            Specification updateSpecification = new UpdateUserDiscountSpecification(login, discount);
+            repository.update(updateSpecification);
+            controller.end();
+        } catch (RepositoryException e) {
+            throw new ReceiverException(e);
+        }
+    }
+
+    public List<User> findUsersByPattern(String findPattern) throws ReceiverException {
+        FindSpecification<User> specification = new FindUserByPatternSpecification(findPattern);
+        Finder<User> userFinder = new Finder<>();
+        return userFinder.findBySpecification(specification);
     }
 }

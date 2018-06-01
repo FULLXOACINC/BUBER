@@ -5,6 +5,7 @@
     background-color: #000000;
     color: red;
 }
+
 .error {
     display: none;
     text-align: center;
@@ -13,6 +14,7 @@
     background-color: #000000;
     color: red;
 }
+
 .correct {
     display: none;
     text-align: center;

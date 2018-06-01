@@ -6,8 +6,7 @@ import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.SignInValidator;
-import by.zhuk.buber.validator.SignUpUserValidator;
+import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -47,7 +46,7 @@ public class SignUpUserCommand implements AJAXCommand {
         SignInReceiver signInReceiver = new SignInReceiver();
         SignUpReceiver signUpReceiver = new SignUpReceiver();
 
-        if (!SignInValidator.isLoginValid(login)) {
+        if (!UserValidator.isLoginValid(login)) {
             json.put(NOT_VALID_LOGIN_ERROR, NOT_VALID_LOGIN_ERROR);
         }
 
@@ -64,22 +63,22 @@ public class SignUpUserCommand implements AJAXCommand {
             return json;
         }
 
-        if (!SignUpUserValidator.isNameValid(firstName)) {
+        if (!UserValidator.isNameValid(firstName)) {
             json.put(FIRST_NAME_ERROR, FIRST_NAME_ERROR);
         }
-        if (!SignUpUserValidator.isNameValid(secondName)) {
+        if (!UserValidator.isNameValid(secondName)) {
             json.put(SECOND_NAME_ERROR, SECOND_NAME_ERROR);
         }
-        if (!SignUpUserValidator.isPasswordValid(password)) {
+        if (!UserValidator.isPasswordValid(password)) {
             json.put(NOT_VALID_PASSWORD_ERROR, NOT_VALID_PASSWORD_ERROR);
         }
         if (!password.equals(repeatPassword)) {
             json.put(PASSWORD_NOT_EQ_ERROR, PASSWORD_NOT_EQ_ERROR);
         }
-        if (!SignUpUserValidator.isBirthDayValid(birthDay)) {
+        if (!UserValidator.isBirthDayValid(birthDay)) {
             json.put(BIRTH_DAY_ERROR, BIRTH_DAY_ERROR);
         }
-        if (!SignUpUserValidator.isPhoneNumberValid(phoneNumber)) {
+        if (!UserValidator.isPhoneNumberValid(phoneNumber)) {
             json.put(NOT_VALID_PHONE_NUMBER_ERROR, NOT_VALID_PHONE_NUMBER_ERROR);
         }
 

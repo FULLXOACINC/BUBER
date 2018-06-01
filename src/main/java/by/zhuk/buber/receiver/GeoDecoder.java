@@ -3,6 +3,7 @@ package by.zhuk.buber.receiver;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
+import by.zhuk.buber.validator.JSONValidator;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -37,6 +38,9 @@ public class GeoDecoder {
 
             httpClient.executeMethod(getMethod);
             JSONObject jsonObject = parseResult(getMethod);
+            if (JSONValidator.isJSONHasError(jsonObject)) {
+                throw new ReceiverException("JSON has error");
+            }
             JSONArray jsonArray = (JSONArray) jsonObject.get(RESULTS);
             Optional<Coordinate> optionalCoordinate = Optional.empty();
             if (jsonArray.length() == 0) {

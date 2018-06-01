@@ -21,7 +21,7 @@
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
     <title>${buber}</title>
-    <script src="${pageContext.request.contextPath}/js/viewDriverRideHistory.js"></script>
+    <script src="${pageContext.request.contextPath}/js/driverRideHistory.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY&callback=initMap">
     </script>

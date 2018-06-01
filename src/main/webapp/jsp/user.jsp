@@ -83,7 +83,7 @@
                     <input id="change-discount" class="btn btn-lg btn-primary btn-block" type="submit"
                            value="${change}">
                     <div>
-                        <form action="${ pageContext.request.contextPath }/jsp/viewUserComplaints.jsp">
+                        <form action="${ pageContext.request.contextPath }/jsp/userComplaints.jsp">
                             <input name="userLogin" type="hidden" value="${user.login}">
                             <input class="btn btn-lg btn-primary btn-block" type="submit"
                                    value="${viewUserComplaints}">

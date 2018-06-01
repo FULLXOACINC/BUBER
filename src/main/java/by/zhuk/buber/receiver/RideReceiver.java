@@ -5,6 +5,7 @@ import by.zhuk.buber.exception.RepositoryException;
 import by.zhuk.buber.mail.MailProperty;
 import by.zhuk.buber.mail.MailThread;
 import by.zhuk.buber.model.Driver;
+import by.zhuk.buber.model.Mail;
 import by.zhuk.buber.model.Ride;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.repository.Repository;
@@ -29,26 +30,19 @@ import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptStartSpecif
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptEndSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptStartSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.math.BigDecimal;
 import java.util.Formatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class RideReceiver {
-    private static Logger logger = LogManager.getLogger(SignUpReceiver.class);
     private static final String USER_MAIL_BUNDLE = "properties/rideUserMailContent";
     private static final String USER_REFUSE_MAIL_BUNDLE = "properties/refuseUserMailContent";
     private static final String DRIVER_REFUSE_MAIL_BUNDLE = "properties/refuseDriverMailContent";
     private static final String DRIVER_MAIL_BUNDLE = "properties/rideDriverMailContent";
-    private static final String HEAD = "head";
-    private static final String CONTENT = "content";
 
     private static final String DEFAULT_USER_CONTENT = "Your driver: %s %s <br/>. Machine number: %s <br/>.Mark of the machine: %s <br/>.Phone number: %s.<br/><a href=\"http://localhost:8080/controller?command=view-user-ride\">More information</a>";
     private static final String DEFAULT_USER_HEAD = "BUBER ride.";
@@ -59,7 +53,6 @@ public class RideReceiver {
     private static final String DEFAULT_REFUSE_DRIVER_HEAD = "BUBER driver refuse.";
     private static final String DEFAULT_DRIVER_CONTENT = "Your passenger: %s %s <br/>.Phone number: %s.<br/><a href=\"http://localhost:8080/controller?command=view-driver-ride\">More information</a>";
     private static final String DEFAULT_DRIVER_HEAD = "BUBER ride(driver).";
-    private static final String PROPERTIES_EXTENSION = ".properties";
 
     private static final BigDecimal DRIVER_PERCENT = new BigDecimal("0.85");
     private static final BigDecimal FINE_PRICE = new BigDecimal("2.50");
@@ -90,54 +83,29 @@ public class RideReceiver {
     }
 
     public void sendUserMail(String userLogin, String driverFirstName, String driverLastName, String carNumber, String carMark, String phoneNumber, String lang) {
-        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
-        Locale locale = new Locale(lang);
-        File file = new File(propsPath, USER_MAIL_BUNDLE + PROPERTIES_EXTENSION);
-        String head;
-        String content;
-        if (file.exists()) {
-            ResourceBundle bundle = ResourceBundle.getBundle(USER_MAIL_BUNDLE, locale);
-            head = bundle.getString(HEAD);
-            content = bundle.getString(CONTENT);
-        } else {
-            head = DEFAULT_DRIVER_HEAD;
-            content = DEFAULT_DRIVER_CONTENT;
-            logger.log(Level.WARN, "bundle not found + " + USER_MAIL_BUNDLE);
-        }
+        MailReceiver mailReceiver = new MailReceiver();
+        Mail mail = mailReceiver.createMailFromBundle(USER_MAIL_BUNDLE, lang, DEFAULT_USER_HEAD, DEFAULT_USER_CONTENT);
 
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
 
-        formatter.format(content, driverFirstName, driverLastName, carNumber, carMark, phoneNumber);
+        formatter.format(mail.getContent(), driverFirstName, driverLastName, carNumber, carMark, phoneNumber);
 
-
-        MailThread thread = new MailThread(userLogin, head, stringBuilder.toString(), MailProperty.getInstance().getProperties());
+        MailThread thread = new MailThread(userLogin, mail.getHead(), stringBuilder.toString(), MailProperty.getInstance().getProperties());
         thread.start();
     }
 
     public void sendDriverMail(String driverLogin, String userFirstName, String userLastName, String phoneNumber, String lang) {
-        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
-        Locale locale = new Locale(lang);
-        File file = new File(propsPath, DRIVER_MAIL_BUNDLE + PROPERTIES_EXTENSION);
-        String head;
-        String content;
-        if (file.exists()) {
-            ResourceBundle bundle = ResourceBundle.getBundle(DRIVER_MAIL_BUNDLE, locale);
-            head = bundle.getString(HEAD);
-            content = bundle.getString(CONTENT);
-        } else {
-            head = DEFAULT_USER_HEAD;
-            content = DEFAULT_USER_CONTENT;
-            logger.log(Level.WARN, "bundle not found + " + DRIVER_MAIL_BUNDLE);
-        }
+        MailReceiver mailReceiver = new MailReceiver();
+        Mail mail = mailReceiver.createMailFromBundle(DRIVER_MAIL_BUNDLE, lang, DEFAULT_DRIVER_HEAD, DEFAULT_DRIVER_CONTENT);
 
         StringBuilder stringBuilder = new StringBuilder();
         Formatter formatter = new Formatter(stringBuilder);
 
-        formatter.format(content, userFirstName, userLastName, phoneNumber);
+        formatter.format(mail.getContent(), userFirstName, userLastName, phoneNumber);
 
 
-        MailThread thread = new MailThread(driverLogin, head, stringBuilder.toString(), MailProperty.getInstance().getProperties());
+        MailThread thread = new MailThread(driverLogin, mail.getHead(), stringBuilder.toString(), MailProperty.getInstance().getProperties());
         thread.start();
     }
 
@@ -261,42 +229,18 @@ public class RideReceiver {
     }
 
     public void sendRefuseUserMail(String login, String lang) {
-        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
-        Locale locale = new Locale(lang);
-        File file = new File(propsPath, USER_REFUSE_MAIL_BUNDLE + PROPERTIES_EXTENSION);
-        String head;
-        String content;
-        if (file.exists()) {
-            ResourceBundle bundle = ResourceBundle.getBundle(USER_REFUSE_MAIL_BUNDLE, locale);
-            head = bundle.getString(HEAD);
-            content = bundle.getString(CONTENT);
-        } else {
-            head = DEFAULT_REFUSE_USER_HEAD;
-            content = DEFAULT_REFUSE_USER_CONTENT;
-            logger.log(Level.WARN, "bundle not found + " + USER_REFUSE_MAIL_BUNDLE);
-        }
+        MailReceiver mailReceiver = new MailReceiver();
+        Mail mail = mailReceiver.createMailFromBundle(USER_REFUSE_MAIL_BUNDLE, lang, DEFAULT_REFUSE_USER_HEAD, DEFAULT_REFUSE_USER_CONTENT);
 
-        MailThread thread = new MailThread(login, head, content, MailProperty.getInstance().getProperties());
+        MailThread thread = new MailThread(login, mail.getHead(), mail.getContent(), MailProperty.getInstance().getProperties());
         thread.start();
     }
 
     public void sendRefuseDriverMail(String login, String lang) {
-        String propsPath = this.getClass().getClassLoader().getResource(".").getPath();
-        Locale locale = new Locale(lang);
-        File file = new File(propsPath, DRIVER_REFUSE_MAIL_BUNDLE + PROPERTIES_EXTENSION);
-        String head;
-        String content;
-        if (file.exists()) {
-            ResourceBundle bundle = ResourceBundle.getBundle(DRIVER_REFUSE_MAIL_BUNDLE, locale);
-            head = bundle.getString(HEAD);
-            content = bundle.getString(CONTENT);
-        } else {
-            head = DEFAULT_REFUSE_DRIVER_HEAD;
-            content = DEFAULT_REFUSE_DRIVER_CONTENT;
-            logger.log(Level.WARN, "bundle not found + " + DRIVER_REFUSE_MAIL_BUNDLE);
-        }
+        MailReceiver mailReceiver = new MailReceiver();
+        Mail mail = mailReceiver.createMailFromBundle(DRIVER_REFUSE_MAIL_BUNDLE, lang, DEFAULT_REFUSE_DRIVER_HEAD, DEFAULT_REFUSE_DRIVER_CONTENT);
 
-        MailThread thread = new MailThread(login, head, content, MailProperty.getInstance().getProperties());
+        MailThread thread = new MailThread(login, mail.getHead(), mail.getContent(), MailProperty.getInstance().getProperties());
         thread.start();
     }
 

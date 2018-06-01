@@ -6,7 +6,7 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.receiver.DriverReceiver;
-import by.zhuk.buber.validator.SignUpDriverValidator;
+import by.zhuk.buber.validator.DriverValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -36,23 +36,23 @@ public class UpdateDriverCommand implements AJAXCommand {
         String carMark = request.getParameter(DriverConstant.CAR_MARK);
         String tariff = request.getParameter(DriverConstant.TARIFF);
 
-        if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
+        if (!DriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_NOT_VALID, CAR_NUMBER_NOT_VALID);
         }
-        if (!SignUpDriverValidator.isDocIdValid(documentId)) {
+        if (!DriverValidator.isDocIdValid(documentId)) {
             json.put(DOCUMENT_ID_NOT_VALID, DOCUMENT_ID_NOT_VALID);
         }
-        if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
+        if (!DriverValidator.isCarMarkValid(carMark)) {
             json.put(CAR_MARK_NOT_VALID, CAR_MARK_NOT_VALID);
         }
-        if (!SignUpDriverValidator.isTariffValid(tariff)) {
+        if (!DriverValidator.isTariffValid(tariff)) {
             json.put(TARIFF_NOT_VALID, TARIFF_NOT_VALID);
         }
         DriverReceiver driverReceiver = new DriverReceiver();
 
         try {
             if (!driverReceiver.isDriverExist(login)) {
-                json.put(DriverConstant.DRIVER_NOT_EXIST,DriverConstant.DRIVER_NOT_EXIST);
+                json.put(DriverConstant.DRIVER_NOT_EXIST, DriverConstant.DRIVER_NOT_EXIST);
             }
             Optional<Driver> driverOptional = driverReceiver.findDriverByLogin(login);
             Driver driver = driverOptional.get();

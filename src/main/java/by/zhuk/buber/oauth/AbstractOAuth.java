@@ -24,6 +24,16 @@ public abstract class AbstractOAuth {
     private final static String CLIENT_SECRET = "client_secret";
     private final static String REDIRECT_URI = "redirect_uri";
 
+    private final static String PROPERTIES = "properties/";
+    private final static String DOT_CLIENT_ID = ".clientId";
+    private final static String DOT_CLIENT_SECRET = ".clientSecret";
+    private final static String DOT_REDIRECT_URI = ".redirectUri";
+    private final static String AUTH_URL = ".authUrl";
+    private final static String DOT_TOKEN_URL = ".tokenUrl";
+    private final static String DOT_INFO_URL = ".infoUrl";
+
+    private final static String INVALID_REQUEST = "invalid_request";
+
     private String clientId;
     private String redirectUri;
     private String clientSecret;
@@ -31,7 +41,9 @@ public abstract class AbstractOAuth {
     private String infoUrl;
     private String tokenUrl;
 
-    public abstract boolean isHasError(String request);
+    public boolean isHasError(String error) {
+        return error != null && error.equals(INVALID_REQUEST);
+    }
 
     public String getAuthUrl() {
         return authUrl;
@@ -55,13 +67,13 @@ public abstract class AbstractOAuth {
     }
 
     void setupOAuth(String type) {
-        final String PROPERTY = "properties/" + type;
-        final String CLIENT_ID = type + ".clientId";
-        final String CLIENT_SECRET = type + ".clientSecret";
-        final String REDIRECT_URI = type + ".redirectUri";
-        final String AUTH_URI = type + ".authUrl";
-        final String TOKEN_URL = type + ".tokenUrl";
-        final String INFO_URL = type + ".infoUrl";
+        final String PROPERTY = PROPERTIES + type;
+        final String CLIENT_ID = type + DOT_CLIENT_ID;
+        final String CLIENT_SECRET = type + DOT_CLIENT_SECRET;
+        final String REDIRECT_URI = type + DOT_REDIRECT_URI;
+        final String AUTH_URI = type + AUTH_URL;
+        final String TOKEN_URL = type + DOT_TOKEN_URL;
+        final String INFO_URL = type + DOT_INFO_URL;
 
         ResourceBundle resourceBundle;
 

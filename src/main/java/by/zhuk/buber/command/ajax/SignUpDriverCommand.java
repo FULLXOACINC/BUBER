@@ -7,7 +7,7 @@ import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.DriverReceiver;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
-import by.zhuk.buber.validator.SignUpDriverValidator;
+import by.zhuk.buber.validator.DriverValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -36,16 +36,16 @@ public class SignUpDriverCommand implements AJAXCommand {
         String documentId = request.getParameter(DriverConstant.DOCUMENT_ID);
         String carMark = request.getParameter(DriverConstant.CAR_MARK);
         String tariff = request.getParameter(DriverConstant.TARIFF);
-        if (!SignUpDriverValidator.isCarNumberValid(carNumber)) {
+        if (!DriverValidator.isCarNumberValid(carNumber)) {
             json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
         }
-        if (!SignUpDriverValidator.isDocIdValid(documentId)) {
+        if (!DriverValidator.isDocIdValid(documentId)) {
             json.put(DOCUMENT_ID_ERROR, DOCUMENT_ID_ERROR);
         }
-        if (!SignUpDriverValidator.isCarMarkValid(carMark)) {
+        if (!DriverValidator.isCarMarkValid(carMark)) {
             json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
         }
-        if (!SignUpDriverValidator.isTariffValid(tariff)) {
+        if (!DriverValidator.isTariffValid(tariff)) {
             json.put(TARIFF_ERROR, TARIFF_ERROR);
         }
         UserReceiver userReceiver = new UserReceiver();
