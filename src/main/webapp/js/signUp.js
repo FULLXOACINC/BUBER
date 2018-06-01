@@ -12,7 +12,6 @@ function hideAllMessage() {
 }
 
 $(document).ready(function () {
-    hideAllMessage();
     var signUpFun = function () {
         hideAllMessage();
         $.ajax({
@@ -59,12 +58,14 @@ $(document).ready(function () {
                     if (response['notValidPhoneNumberError']) {
                         $('#not-valid-phone-number-error').show();
                     }
-
+                    if (response['error']) {
+                        viewServerError();
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

@@ -32,7 +32,7 @@
             <h2 class="form-input-heading">${restorePassword}</h2>
             <input type="text" class="form-control" id="login" placeholder="${login}"/>
             <input type="password" class="form-control" id="password" placeholder="${password}"/>
-            <input type="password" class="form-control" id="repeatPassword" placeholder="${repeatPassword}"/>
+            <input type="password" class="form-control" id="repeat-password" placeholder="${repeatPassword}"/>
             <div>
                 <input class="btn btn-lg btn-primary btn-block" type="submit" id="restore-password"
                        value="${restorePassword}">

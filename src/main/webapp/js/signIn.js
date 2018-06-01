@@ -1,21 +1,27 @@
 function hideAllMessage() {
-    $('#login-not-valid-error').hide();
-    $('#login-not-exist-error').hide();
-    $('#login-password-not-eq-error').hide();
+    $('#login-not-valid').hide();
+    $('#login-not-exist').hide();
+    $('#login-password-not-eq').hide();
 }
 
 $(document).ready(function () {
-    hideAllMessage();
     var signInFun = function () {
         hideAllMessage();
         $('#banned-error').hide();
-        console.log($('#login').val() + " " + $('#password').val());
+
+        var login = $('#login').val();
+        var loginRegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/i;
+        if (!loginRegExp.test(login)) {
+            $('#login-not-valid').show();
+            return;
+        }
+
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
                 command: "sign-in",
-                login: $('#login').val(),
+                login: login,
                 password: $('#password').val()
             },
             success: function (response) {
@@ -23,20 +29,23 @@ $(document).ready(function () {
                     $(location).attr('href', response['redirectPage']);
                 }
                 $('#password').val('');
-                if (response['signInValidError']) {
-                    $('#login-not-valid-error').show();
+                if (response['loginNotValid']) {
+                    $('#login-not-valid').show();
                 }
-                if (response['signInExistError']) {
-                    $('#login-not-exist-error').show();
+                if (response['loginNotExist']) {
+                    $('#login-not-exist').show();
                 }
-                if (response['signInPasswordError']) {
-                    $('#login-password-not-eq-error').show();
+                if (response['passwordNotMatchLogin']) {
+                    $('#login-password-not-eq').show();
+                }
+                if (response['error']) {
+                    viewServerError();
                 }
 
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

@@ -43,18 +43,18 @@
                 <input class="btn btn-lg btn-primary btn-block" type="submit" id="enter" value="${enter}">
             </div>
 
-            <div class="error" id="login-not-valid-error">
+            <div class="error" id="login-not-valid">
                 <p>${loginNotValidMessage}</p>
             </div>
-            <div class="error" id="login-not-exist-error">
+            <div class="error" id="login-not-exist">
                 <p>${loginNotExistMessage}</p>
             </div>
-            <div class="error" id="login-password-not-eq-error">
+            <div class="error" id="login-password-not-eq">
                 <p>${loginPasswordNotEqMessage}</p>
             </div>
 
             <c:if test="${banned}">
-                <div class="error" id="banned-error">
+                <div class="ban" id="banned-error">
                     <p>${bannedErrorMessage}</p>
                 </div>
             </c:if>

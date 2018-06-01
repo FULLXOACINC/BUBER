@@ -20,6 +20,10 @@
 <fmt:message bundle="${locale}" key="text.signInHeading" var="signIn"/>
 <fmt:message bundle="${locale}" key="text.profile" var="profile"/>
 <fmt:message bundle="${locale}" key="text.rideHistory" var="rideHistory"/>
+
+<fmt:message bundle="${locale}" key="text.serverError" var="serverError"/>
+<fmt:message bundle="${locale}" key="text.connectionError" var="connectionError"/>
+
 <fmt:message bundle="${locale}" key="text.withdrawEarnings" var="withdrawEarnings"/>
 
 <fmt:message bundle="${locale}" key="text.setStatusWorking" var="setStatusWorking"/>
@@ -180,6 +184,13 @@
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="EN">
         </form>
     </div>
+
 </nav>
+<div class="error" id="server-error">
+    ${serverError}
+</div>
+<div class="error" id="connection-error">
+    ${connectionError}
+</div>
 </body>
 </html>

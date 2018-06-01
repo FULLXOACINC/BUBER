@@ -37,12 +37,12 @@ function findCurrentComplaint(id) {
                     console.log(response['complaintsEmpty']);
                 }
             } else {
-                console.log(response['error']);
+                viewServerError();
             }
 
         },
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 }
@@ -73,8 +73,8 @@ $(document).ready(function () {
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

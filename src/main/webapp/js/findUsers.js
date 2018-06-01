@@ -17,12 +17,16 @@ $(document).ready(function () {
                             "<input type='submit' class='btn btn-lg btn-primary btn-block' value='" + user.login + "'></form>");
                     });
                 } else {
-                    console.log(response['error']);
+                    if (response['error']) {
+                        viewServerError();
+                    }else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

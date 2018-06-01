@@ -18,12 +18,16 @@ function changeCurrentCoordinateFun() {
             if (response['allCorrect']) {
                 console.log(response['allCorrect']);
             } else {
-                console.log(response);
+                if (response['error']) {
+                    viewServerError();
+                }else {
+                    console.log(response);
+                }
             }
 
         },
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 
@@ -66,8 +70,8 @@ $(document).ready(function () {
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

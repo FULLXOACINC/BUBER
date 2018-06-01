@@ -1,12 +1,20 @@
-.error {
+.ban {
     text-align: center;
     font-size: 20px;
     border: 2px solid red;
     background-color: #000000;
     color: red;
 }
-
+.error {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    border: 2px solid red;
+    background-color: #000000;
+    color: red;
+}
 .correct {
+    display: none;
     text-align: center;
     font-size: 20px;
     border: 2px solid green;

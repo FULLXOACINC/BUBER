@@ -25,12 +25,16 @@ $(document).ready(function () {
                     $('#complaint-div').show();
                     $('#ride-not-found').hide();
                 } else {
-                    console.log(response);
+                    if (response['error']) {
+                        viewServerError();
+                    }else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };
@@ -46,12 +50,16 @@ $(document).ready(function () {
                     $('#accept-start').hide();
                     $('#wait-end').show();
                 } else {
-                    console.log(response);
+                    if (response['error']) {
+                        viewServerError();
+                    }else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };
@@ -68,12 +76,16 @@ $(document).ready(function () {
                     $('#complaint-div').show();
                     $('#ride-not-found').hide();
                 } else {
-                    console.log(response);
+                    if (response['error']) {
+                        viewServerError();
+                    }else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };
@@ -96,12 +108,16 @@ $(document).ready(function () {
                 if (response['allCorrect']) {
                     $('#complaint-div').hide();
                 } else {
-                    console.log(response);
+                    if (response['error']) {
+                        viewServerError();
+                    }else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };
@@ -219,12 +235,16 @@ function initMap() {
                 }
 
             } else {
-                console.log(response);
+                if (response['error']) {
+                    viewServerError();
+                }else {
+                    console.log(response);
+                }
             }
 
         },
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 

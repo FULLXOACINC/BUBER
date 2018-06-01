@@ -18,29 +18,39 @@ function findDriverEarnedMoney() {
             if (response['allCorrect']) {
                 $('#earned-money').val(earnedMoneyMessage + ": " + response['earnedMoney']);
             } else {
-                console.log(response);
+                if (response['error']) {
+                    viewServerError();
+                }else {
+                    console.log(response);
+                }
             }
 
         },
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 }
 
 $(document).ready(function () {
-    hideAllMessage();
     earnedMoneyMessage = $('#earned-money-mess').val();
 
-    findDriverEarnedMoney()
+    findDriverEarnedMoney();
     var withdrawEarningsFun = function () {
         hideAllMessage();
+
+        var cardNumberRegExp = /\d{16}/;
+        var cardNumber = $('#card-number-input').val();
+        if (!cardNumberRegExp.test(cardNumber)) {
+            $('#card-number').show();
+            return;
+        }
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
                 command: "withdraw-earning-driver-money",
-                cardNumber: $('#card-number-input').val()
+                cardNumber: cardNumber
             },
             success: function (response) {
                 if (response['allCorrect']) {
@@ -57,8 +67,8 @@ $(document).ready(function () {
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

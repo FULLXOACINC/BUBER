@@ -8,7 +8,6 @@ function hideAllMessage() {
 }
 
 $(document).ready(function () {
-    hideAllMessage();
     var updateFun = function () {
         hideAllMessage();
         $.ajax({
@@ -37,12 +36,14 @@ $(document).ready(function () {
                     if (response['phoneNumberNotValid']) {
                         $('#phone-number-not-valid').show();
                     }
-
+                    if (response['error']) {
+                        viewServerError();
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

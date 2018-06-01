@@ -19,10 +19,9 @@ import java.util.Optional;
 public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
 
-    private static final String SIGN_IN_VALID_ERROR = "signInValidError";
-    private static final String SIGN_IN_EXIST_ERROR = "signInExistError";
-    private static final String SIGN_IN_PASSWORD_ERROR = "signInPasswordError";
-
+    private static final String LOGIN_NOT_VALID = "loginNotValid";
+    private static final String LOGIN_NOT_EXIST = "loginNotExist";
+    private static final String PASSWORD_NOT_MATCH_LOGIN = "passwordNotMatchLogin";
     private static final String REDIRECT_PAGE = "redirectPage";
 
     @Override
@@ -32,17 +31,17 @@ public class SignInCommand implements AJAXCommand {
 
         JSONObject json = new JSONObject();
         if (!SignInValidator.isLoginValid(login)) {
-            json.put(SIGN_IN_VALID_ERROR, SIGN_IN_VALID_ERROR);
+            json.put(LOGIN_NOT_VALID, LOGIN_NOT_VALID);
             return json;
         }
         SignInReceiver signInReceiver = new SignInReceiver();
         try {
             if (!signInReceiver.isLoginExist(login)) {
-                json.put(SIGN_IN_EXIST_ERROR, SIGN_IN_EXIST_ERROR);
+                json.put(LOGIN_NOT_EXIST, LOGIN_NOT_EXIST);
                 return json;
             }
             if (!signInReceiver.checkPassword(login, password)) {
-                json.put(SIGN_IN_PASSWORD_ERROR, SIGN_IN_PASSWORD_ERROR);
+                json.put(PASSWORD_NOT_MATCH_LOGIN, PASSWORD_NOT_MATCH_LOGIN);
                 return json;
             }
             UserReceiver userReceiver = new UserReceiver();

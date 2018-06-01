@@ -7,16 +7,31 @@ function hideAllMessage() {
 }
 
 $(document).ready(function () {
-    hideAllMessage();
     var fillUpBalanceFun = function () {
         hideAllMessage();
+        var moneyAmount = $('#amount').val();
+        var cardNumber = $('#card-number-input').val();
+        var moneyFormatRegExp = /[1-9]\d*\.\d{2}/;
+        if (!moneyFormatRegExp.test(moneyAmount)) {
+            $('#unknown-money-format').show();
+            return;
+        }
+        if (moneyAmount >= 100000) {
+            $('#out-of-bound-balance').show();
+            return;
+        }
+        var cardNumberRegExp = /\d{16}/;
+        if (!cardNumberRegExp.test(cardNumber)) {
+            $('#card-number').show();
+            return;
+        }
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
                 command: "fill-up-balance",
-                cardNumber: $('#card-number-input').val(),
-                moneyAmount: $('#amount').val()
+                cardNumber: cardNumber,
+                moneyAmount: moneyAmount
             },
             success: function (response) {
                 if (response['allCorrect']) {
@@ -34,12 +49,14 @@ $(document).ready(function () {
                     if (response['cardNumberNotValid']) {
                         $('#card-number').show();
                     }
-
+                    if (response['error']) {
+                        viewServerError();
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };

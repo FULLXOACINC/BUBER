@@ -49,7 +49,6 @@ $(document).ready(function () {
     orderTaxi = $('#order-taxi').val();
     distanceMessage = $('#distance-mess').val();
     durationMessage = $('#duration-mess').val();
-    hideAllMessage();
     $('#duration').hide();
     $('#distance').hide();
     var selectStartEndAddressFun = function () {
@@ -88,12 +87,16 @@ $(document).ready(function () {
 
 
                 } else {
-                    console.log(response['error']);
+                    if (response['error']) {
+                        viewServerError();
+                    } else {
+                        console.log(response);
+                    }
                 }
 
             },
-            error: function (exception) {
-                console.log(exception);
+            error: function () {
+                viewConnectionError();
             }
         });
     };
@@ -213,22 +216,30 @@ function addRaidAndDriversToMap(startLng, startLat, endLng, endLat) {
 
                             });
                         } else {
-                            console.log(response);
+                            if (response['error']) {
+                                viewServerError();
+                            } else {
+                                console.log(response);
+                            }
                         }
                     },
-                    error: function (exception) {
-                        console.log(exception);
+                    error: function () {
+                        viewConnectionError();
                     }
                 });
 
 
             } else {
-                console.log(response);
+                if (response['error']) {
+                    viewServerError();
+                } else {
+                    console.log(response);
+                }
             }
         }
         ,
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 }
@@ -356,11 +367,13 @@ function placeDriver(firstName, LastName, lat, lng, login, positiveMark, negativ
                             if (response['driverEqPassenger']) {
                                 $('#driver-eq-passenger').show();
                             }
-
+                            if (response['error']) {
+                                viewServerError();
+                            }
                         }
                     },
-                    error: function (exception) {
-                        console.log(exception);
+                    error: function () {
+                        viewConnectionError();
                     }
                 });
             });

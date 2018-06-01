@@ -89,12 +89,12 @@ function findCurrentRide(id) {
                     console.log(response['rideNotFound']);
                 }
             } else {
-                console.log(response['error']);
+                viewServerError();
             }
 
         },
-        error: function (exception) {
-            console.log(exception);
+        error: function () {
+            viewConnectionError();
         }
     });
 }

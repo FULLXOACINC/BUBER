@@ -85,7 +85,7 @@
                     <div>
                         <form action="${ pageContext.request.contextPath }/jsp/viewUserComplaints.jsp">
                             <input name="userLogin" type="hidden" value="${user.login}">
-                            <input id="view-complaints" class="btn btn-lg btn-primary btn-block" type="submit"
+                            <input class="btn btn-lg btn-primary btn-block" type="submit"
                                    value="${viewUserComplaints}">
                         </form>
                     </div>

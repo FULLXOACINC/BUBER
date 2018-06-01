@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var workingFun = function () {
         $.ajax({
             type: "POST",
@@ -37,3 +38,19 @@ $(document).ready(function () {
     $('#is-not-working').click(notWorkingFun);
 
 });
+
+function viewServerError() {
+    var $serverError = $("#server-error");
+    $serverError.show();
+    setTimeout(function () {
+        $serverError.hide();
+    }, 3000);
+}
+
+function viewConnectionError() {
+    var $connectionError = $("#connection-error");
+    $connectionError.show();
+    setTimeout(function () {
+        $connectionError.hide();
+    }, 3000);
+}

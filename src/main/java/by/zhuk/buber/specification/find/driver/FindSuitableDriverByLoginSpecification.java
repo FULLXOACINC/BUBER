@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindSuitableDriverByLoginSpecification implements FindSpecification<Driver> {
-    private static final String SELECT_SUITABLE_DRIVER = "SELECT driver_login FROM buber_db.driver WHERE SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate- ?,2))<10 AND driver_is_working=1 AND driver_login=? ORDER BY driver_positive_mark DESC LIMIT 3";
+    private static final String SELECT_SUITABLE_DRIVER = "SELECT driver_login FROM buber_db.driver WHERE SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate- ?,2))<5 AND driver_is_working=1 AND driver_login=? ORDER BY driver_positive_mark DESC LIMIT 3";
     private float lat;
     private float lng;
     private String driver;
