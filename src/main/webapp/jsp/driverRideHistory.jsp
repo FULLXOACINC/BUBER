@@ -13,6 +13,7 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.earnedMoney" var="earnedMoney"/>
 <fmt:message bundle="${locale}" key="text.noRide" var="noRide"/>
+<fmt:message bundle="${locale}" key="text.date" var="date"/>
 
 <fmt:message bundle="${locale}" key="text.next" var="next"/>
 <fmt:message bundle="${locale}" key="text.previous" var="previous"/>
@@ -33,6 +34,7 @@
         <div class="form-input">
             <div id="ride">
                 <input type='hidden' id="ride-id-mess" value='${rideId}'>
+                <input type='hidden' id="date-mess" value='${date}'>
                 <input type='hidden' id="passenger-login-mess" value='${passengerLogin}'>
                 <input type='hidden' id="passenger-phone-number-mess" value='${phoneNumber}'>
                 <input type='hidden' id="earned-money-mess" value='${earnedMoney}'>
@@ -43,6 +45,7 @@
                 </ul>
 
                 <input type="text" id="ride-id" class="form-control" readonly/>
+                <input type="text" id="date" class="form-control" readonly/>
                 <input type="text" id="passenger-login" class="form-control" readonly/>
                 <input type="text" id="passenger-name" class="form-control" readonly/>
                 <input type="text" id="passenger-phone-number" class="form-control" readonly/>

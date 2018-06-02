@@ -52,6 +52,7 @@ public class FindUserRideHistoryCommand implements AJAXCommand {
                 json.put(UserConstant.LAST_NAME, driver.getLastName());
                 json.put(DRIVER_LOGIN, driver.getLogin());
                 json.put(DRIVER_PHONE_NUMBER, driver.getPhoneNumber());
+                json.put(RideConstant.DATE, ride.getDate());
                 json.put(PRICE, ride.getPrice());
 
                 Coordinate startCoordinate = ride.getStartCoordinate();

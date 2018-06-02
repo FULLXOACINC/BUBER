@@ -5,12 +5,14 @@
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
-<fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
 <fmt:message bundle="${locale}" key="text.currentAddress" var="currentAddress"/>
 <fmt:message bundle="${locale}" key="text.selectAddress" var="selectAddress"/>
 <fmt:message bundle="${locale}" key="text.clearMap" var="clearMap"/>
 <fmt:message bundle="${locale}" key="text.acceptCoordinate" var="acceptCoordinate"/>
+
+<fmt:message bundle="${locale}" key="text.repeatPls" var="repeatPls"/>
+<fmt:message bundle="${locale}" key="text.changeCorrect" var="changeCorrect"/>
 
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
@@ -35,6 +37,13 @@
             <input type="submit" class="btn btn-lg btn-primary btn-block " id="clear-map" value="${clearMap}"/>
             <input type="submit" class="btn btn-lg btn-primary btn-block " id="accept-coordinate"
                    value="${acceptCoordinate}"/>
+
+            <div class="error" id="repeat-pls">
+                <p>${repeatPls}</p>
+            </div>
+            <div class="correct" id="all-correct">
+                <p>${changeCorrect}</p>
+            </div>
 
             <div id="map"></div>
         </div>

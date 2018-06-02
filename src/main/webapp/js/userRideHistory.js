@@ -2,6 +2,7 @@ var rideIdMessage;
 var driverLoginMessage;
 var phoneNumberMessage;
 var priceMessage;
+var dateMessage;
 
 var directionsDisplay;
 var startMarker;
@@ -27,6 +28,7 @@ function findCurrentRide(id) {
                     var endLng = response['end']['lng'];
 
                     $('#ride-id').val(rideIdMessage + ": " + response['rideId']);
+                    $('#date').val(dateMessage + ": " + response['date']);
                     $('#driver-login').val(driverLoginMessage + ": " + response['driverLogin']);
                     $('#driver-name').val(response['firstName'] + " " + response['lastName']);
 
@@ -106,6 +108,8 @@ $(document).ready(function () {
     driverLoginMessage = $('#driver-login-mess').val();
     phoneNumberMessage = $('#driver-phone-number-mess').val();
     priceMessage = $('#price-mess').val();
+    dateMessage=$('#date-mess').val();
+
 
     var nextComplaintFun = function () {
         findCurrentRide(index + 1);

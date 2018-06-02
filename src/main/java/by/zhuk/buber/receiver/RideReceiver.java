@@ -321,7 +321,7 @@ public class RideReceiver {
             Driver driver = ride.getDriver();
             driver.setEarnedMoney(driver.getEarnedMoney().multiply(DRIVER_PERCENT));
         }
-        return finder.findBySpecification(specification);
+        return rides;
 
     }
 

@@ -18,14 +18,9 @@ import java.math.BigDecimal;
 public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
 
-    private static final String CAR_NUMBER_ERROR = "carNumberError";
-    private static final String DOCUMENT_ID_ERROR = "documentIdError";
-    private static final String CAR_MARK_ERROR = "carMarkError";
-    private static final String USER_NOT_EXIST_ERROR = "userNotExistError";
-    private static final String DRIVER_EXIST_ERROR = "driverExistError";
-    private static final String CAR_NUMBER_EXIST_ERROR = "carNumberExistError";
-    private static final String DOCUMENT_ID_EXIST_ERROR = "documentIdExistError";
-    private static final String TARIFF_ERROR = "tariffError";
+    private static final String USER_NOT_EXIST_NOT_VALID = "userNotExist";
+    private static final String DRIVER_EXIST = "driverExist";
+
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -37,31 +32,31 @@ public class SignUpDriverCommand implements AJAXCommand {
         String carMark = request.getParameter(DriverConstant.CAR_MARK);
         String tariff = request.getParameter(DriverConstant.TARIFF);
         if (!DriverValidator.isCarNumberValid(carNumber)) {
-            json.put(CAR_NUMBER_ERROR, CAR_NUMBER_ERROR);
+            json.put(DriverConstant.CAR_NUMBER_NOT_VALID, DriverConstant.CAR_NUMBER_NOT_VALID);
         }
         if (!DriverValidator.isDocIdValid(documentId)) {
-            json.put(DOCUMENT_ID_ERROR, DOCUMENT_ID_ERROR);
+            json.put(DriverConstant.DOCUMENT_ID_NOT_VALID, DriverConstant.DOCUMENT_ID_NOT_VALID);
         }
         if (!DriverValidator.isCarMarkValid(carMark)) {
-            json.put(CAR_MARK_ERROR, CAR_MARK_ERROR);
+            json.put(DriverConstant.CAR_MARK_NOT_VALID, DriverConstant.CAR_MARK_NOT_VALID);
         }
         if (!DriverValidator.isTariffValid(tariff)) {
-            json.put(TARIFF_ERROR, TARIFF_ERROR);
+            json.put(DriverConstant.TARIFF_NOT_VALID, DriverConstant.TARIFF_NOT_VALID);
         }
         UserReceiver userReceiver = new UserReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
             if (!userReceiver.isUserExist(login)) {
-                json.put(USER_NOT_EXIST_ERROR, USER_NOT_EXIST_ERROR);
+                json.put(USER_NOT_EXIST_NOT_VALID, USER_NOT_EXIST_NOT_VALID);
             }
             if (driverReceiver.isDriverExist(login)) {
-                json.put(DRIVER_EXIST_ERROR, DRIVER_EXIST_ERROR);
+                json.put(DRIVER_EXIST, DRIVER_EXIST);
             }
             if (driverReceiver.isCarNumberExist(carNumber)) {
-                json.put(CAR_NUMBER_EXIST_ERROR, CAR_NUMBER_EXIST_ERROR);
+                json.put(DriverConstant.CAR_NUMBER_EXIST, DriverConstant.CAR_NUMBER_EXIST);
             }
             if (driverReceiver.isDriverDocumentIdExist(documentId)) {
-                json.put(DOCUMENT_ID_EXIST_ERROR, DOCUMENT_ID_EXIST_ERROR);
+                json.put(DriverConstant.DOCUMENT_ID_EXIST, DriverConstant.DOCUMENT_ID_EXIST);
             }
             if (json.length() == 0) {
                 SignUpReceiver signUpReceiver = new SignUpReceiver();

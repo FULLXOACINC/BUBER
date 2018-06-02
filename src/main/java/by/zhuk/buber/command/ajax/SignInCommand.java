@@ -20,7 +20,6 @@ public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
 
     private static final String LOGIN_NOT_VALID = "loginNotValid";
-    private static final String LOGIN_NOT_EXIST = "loginNotExist";
     private static final String PASSWORD_NOT_MATCH_LOGIN = "passwordNotMatchLogin";
     private static final String REDIRECT_PAGE = "redirectPage";
 
@@ -37,7 +36,7 @@ public class SignInCommand implements AJAXCommand {
         SignInReceiver signInReceiver = new SignInReceiver();
         try {
             if (!signInReceiver.isLoginExist(login)) {
-                json.put(LOGIN_NOT_EXIST, LOGIN_NOT_EXIST);
+                json.put(UserConstant.LOGIN_NOT_EXIST, UserConstant.LOGIN_NOT_EXIST);
                 return json;
             }
             if (!signInReceiver.checkPassword(login, password)) {

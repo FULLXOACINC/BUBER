@@ -15,14 +15,14 @@
 
 <fmt:message bundle="${locale}" key="text.driverCorrectMessage" var="driverSignUpCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.error.carNumberNotValid" var="carNumberError"/>
-<fmt:message bundle="${locale}" key="text.documentIdNotValid" var="documentIdError"/>
-<fmt:message bundle="${locale}" key="text.carMarkNotValid" var="carMarkError"/>
-<fmt:message bundle="${locale}" key="text.driverExist" var="driverExistError"/>
-<fmt:message bundle="${locale}" key="text.loginNotExist" var="loginNotExistError"/>
-<fmt:message bundle="${locale}" key="text.carNumberExist" var="carNumberExistError"/>
-<fmt:message bundle="${locale}" key="text.documentIdExist" var="documentIdExistError"/>
-<fmt:message bundle="${locale}" key="text.tariffNotValid" var="tariffError"/>
+<fmt:message bundle="${locale}" key="text.error.carNumberNotValid" var="carNumberNotValid"/>
+<fmt:message bundle="${locale}" key="text.documentIdNotValid" var="documentIdNotValid"/>
+<fmt:message bundle="${locale}" key="text.carMarkNotValid" var="carMarkNotValid"/>
+<fmt:message bundle="${locale}" key="text.driverExist" var="driverExist"/>
+<fmt:message bundle="${locale}" key="text.loginNotExist" var="loginNotExist"/>
+<fmt:message bundle="${locale}" key="text.carNumberExist" var="carNumberExist"/>
+<fmt:message bundle="${locale}" key="text.documentIdExist" var="documentIdExist"/>
+<fmt:message bundle="${locale}" key="text.tariffNotValid" var="tariffNotValid"/>
 
 
 <html>
@@ -46,36 +46,36 @@
 
             <input type="submit" class="btn btn-lg btn-primary btn-block " id="sign-up-driver" value="${signUp}">
 
-            <div class="error" id="car-number-error">
-                <p>${carNumberError}</p>
+            <div class="error" id="car-number-not-valid">
+                <p>${carNumberNotValid}</p>
             </div>
 
-            <div class="error" id="document-id-error">
-                <p>${documentIdError}</p>
+            <div class="error" id="document-id-not-valid">
+                <p>${documentIdNotValid}</p>
             </div>
 
-            <div class="error" id="car-mark-error">
-                <p>${carMarkError}</p>
+            <div class="error" id="car-mark-not-valid">
+                <p>${carMarkNotValid}</p>
             </div>
 
-            <div class="error" id="login-not-exist-error">
-                <p>${loginNotExistError}</p>
+            <div class="error" id="login-not-exist">
+                <p>${loginNotExist}</p>
             </div>
 
-            <div class="error" id="driver-exist-error">
-                <p>${driverExistError}</p>
+            <div class="error" id="driver-exist">
+                <p>${driverExist}</p>
             </div>
 
-            <div class="error" id="car-number-exist-error">
-                <p>${carNumberExistError}</p>
+            <div class="error" id="car-number-exist">
+                <p>${carNumberExist}</p>
             </div>
 
-            <div class="error" id="document-id-exist-error">
-                <p>${documentIdExistError}</p>
+            <div class="error" id="document-id-exist">
+                <p>${documentIdExist}</p>
             </div>
 
-            <div class="error" id="tariff-error">
-                <p>${tariffError}</p>
+            <div class="error" id="tariff-not-valid">
+                <p>${tariffNotValid}</p>
             </div>
 
             <div class="correct" id="all-correct">

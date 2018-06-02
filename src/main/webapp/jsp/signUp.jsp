@@ -16,15 +16,15 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.allCorrectMessage" var="allCorrectMessage"/>
 
-<fmt:message bundle="${locale}" key="text.notValidLogin" var="notValidLoginErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.loginExist" var="loginExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.phoneNumberExist" var="phoneNumberExistErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.firstNameNotValid" var="firstNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.lastNameNotValid" var="secondNameErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.notValidPassword" var="notValidPasswordErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.passwordNotEq" var="passwordNotEqMessage"/>
-<fmt:message bundle="${locale}" key="text.birthDayErrorNotValid" var="birthDayErrorMessage"/>
-<fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="notValidPhoneNumberErrorMessage"/>
+<fmt:message bundle="${locale}" key="text.notValidLogin" var="notValidLogin"/>
+<fmt:message bundle="${locale}" key="text.loginExist" var="loginExist"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberExist" var="phoneNumberExist"/>
+<fmt:message bundle="${locale}" key="text.firstNameNotValid" var="firstNameNotValid"/>
+<fmt:message bundle="${locale}" key="text.lastNameNotValid" var="lastNameNotValid"/>
+<fmt:message bundle="${locale}" key="text.notValidPassword" var="notValidPassword"/>
+<fmt:message bundle="${locale}" key="text.passwordNotEq" var="passwordNotEq"/>
+<fmt:message bundle="${locale}" key="text.birthDayErrorNotValid" var="birthDayNotValid"/>
+<fmt:message bundle="${locale}" key="text.phoneNumberNotValid" var="notValidPhoneNumber"/>
 
 
 <html>
@@ -42,49 +42,49 @@
             <h2 class="form-input-heading">${signUp}</h2>
             <input type="text" id="login" class="form-control" placeholder="${login}"/>
             <input type="password" class="form-control" id="password" placeholder="${password}"/>
-            <input type="password" class="form-control" id="repeatPassword" placeholder="${repeatPassword}"/>
-            <input type="text" class="form-control" id="firstName" placeholder="${firstName}"/>
-            <input type="text" class="form-control" id="secondName" placeholder="${secondName}"/>
-            <input type="date" class="form-control" id="birthDay" placeholder="${birthDay}">
-            <input type="text" class="form-control" id="phoneNumber" placeholder="${phoneNumber}"/>
+            <input type="password" class="form-control" id="repeat-password" placeholder="${repeatPassword}"/>
+            <input type="text" class="form-control" id="first-name" placeholder="${firstName}"/>
+            <input type="text" class="form-control" id="last-name" placeholder="${secondName}"/>
+            <input type="date" class="form-control" id="birth-day" placeholder="${birthDay}">
+            <input type="text" class="form-control" id="phone-number" placeholder="${phoneNumber}"/>
             <div>
                 <input class="btn btn-lg btn-primary btn-block" type="submit" id="sign-up" value="${signUp}">
             </div>
 
-            <div class="error" id="not-valid-login-error">
-                <p>${notValidLoginErrorMessage}</p>
+            <div class="error" id="not-valid-login">
+                <p>${notValidLogin}</p>
             </div>
 
-            <div class="error" id="login-exist-error">
-                <p>${loginExistErrorMessage}</p>
+            <div class="error" id="login-exist">
+                <p>${loginExist}</p>
             </div>
 
-            <div class="error" id="phone-number-exist-error">
-                <p>${phoneNumberExistErrorMessage}</p>
+            <div class="error" id="phone-number-exist">
+                <p>${phoneNumberExist}</p>
             </div>
 
-            <div class="error" id="first-name-error">
-                <p>${firstNameErrorMessage}</p>
+            <div class="error" id="first-name-not-valid">
+                <p>${firstNameNotValid}</p>
             </div>
 
-            <div class="error" id="second-name-error">
-                <p>${secondNameErrorMessage}</p>
+            <div class="error" id="last-name-not-valid">
+                <p>${lastNameNotValid}</p>
             </div>
 
-            <div class="error" id="not-valid-password-error">
-                <p>${notValidPasswordErrorMessage}</p>
+            <div class="error" id="not-valid-password">
+                <p>${notValidPassword}</p>
             </div>
 
-            <div class="error" id="password-not-eq-error">
-                <p>${passwordNotEqMessage}</p>
+            <div class="error" id="password-not-eq">
+                <p>${passwordNotEq}</p>
             </div>
 
-            <div class="error" id="birth-day-error">
-                <p>${birthDayErrorMessage}</p>
+            <div class="error" id="birth-day-not-valid">
+                <p>${birthDayNotValid}</p>
             </div>
 
-            <div class="error" id="not-valid-phone-number-error">
-                <p>${notValidPhoneNumberErrorMessage}</p>
+            <div class="error" id="not-valid-phone-number">
+                <p>${notValidPhoneNumber}</p>
             </div>
 
             <div class="correct" id="all-correct">

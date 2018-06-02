@@ -3,6 +3,7 @@ package by.zhuk.buber.command;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
+import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.receiver.SignUpReceiver;
 import by.zhuk.buber.userpool.SignUpUserPool;
@@ -27,7 +28,12 @@ public class SignUpAcceptCommand implements Command {
         }
         SignUpReceiver receiver = new SignUpReceiver();
         try {
-            receiver.saveUser(info.getUser());
+            User user = info.getUser();
+            if (user == null) {
+                return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
+            }
+            receiver.saveUser(user.getLogin(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getType(), user.getBalance(), user.getBirthDay(), user.getPhoneNumber());
+
             HttpSession session = request.getSession();
             session.setAttribute(UserConstant.LOGIN, info.getUser().getLogin());
             session.setAttribute(UserConstant.TYPE, UserType.USER.name());

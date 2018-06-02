@@ -1,12 +1,14 @@
 package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Ride {
     private int rideId;
     private Driver driver;
     private User passenger;
     private BigDecimal price;
+    private LocalDate date;
     private Coordinate startCoordinate;
     private Coordinate endCoordinate;
     private boolean isDriverAcceptStart;
@@ -92,5 +94,13 @@ public class Ride {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

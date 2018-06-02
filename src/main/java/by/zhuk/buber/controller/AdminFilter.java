@@ -68,9 +68,14 @@ public class AdminFilter implements Filter {
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isUpdateDriverCommand = command.equals(AJAXCommandType.UPDATE_DRIVER.name());
         boolean isFindDriverCommand = command.equals(GetCommandType.FIND_DRIVER_UPDATE.name());
+        boolean isFindUser = command.equals(GetCommandType.FIND_USER.name());
+        boolean isFindUsers = command.equals(AJAXCommandType.FIND_USERS.name());
+        boolean isAcceptComplaint = command.equals(AJAXCommandType.ACCEPT_COMPLAINT.name());
+        boolean isFindUserComplaint = command.equals(AJAXCommandType.FIND_USER_COMPLAINT.name());
+        boolean isFindUnaccepted = command.equals(AJAXCommandType.FIND_UNACCEPTED_COMPLAINT.name());
         boolean isSwitchAdminStatusCommand = command.equals(PostCommandType.SWITCH_ADMIN_STATUS.name());
 
-        return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount || isUpdateDriverCommand || isFindDriverCommand;
+        return isSwitchBanCommand || isFindUser || isFindUsers || isAcceptComplaint || isFindUserComplaint || isFindUnaccepted || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount || isUpdateDriverCommand || isFindDriverCommand;
     }
 
     @Override

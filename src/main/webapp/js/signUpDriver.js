@@ -1,13 +1,13 @@
 function hideAllMessage() {
     $('#all-correct').hide();
-    $('#car-number-error').hide();
-    $('#document-id-error').hide();
-    $('#car-mark-error').hide();
-    $('#login-not-exist-error').hide();
-    $('#driver-exist-error').hide();
-    $('#car-number-exist-error').hide();
-    $('#document-id-exist-error').hide();
-    $('#tariff-error').hide();
+    $('#car-number-not-valid').hide();
+    $('#document-id-not-valid').hide();
+    $('#car-mark-not-valid').hide();
+    $('#login-not-exist').hide();
+    $('#driver-exist').hide();
+    $('#car-number-exist').hide();
+    $('#document-id-exist').hide();
+    $('#tariff-not-valid').hide();
 
 
 }
@@ -31,29 +31,29 @@ $(document).ready(function () {
                 if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {
-                    if (response['carNumberError']) {
-                        $('#car-number-error').show();
+                    if (response['carNumberNotValid']) {
+                        $('#car-number-not-valid').show();
                     }
-                    if (response['documentIdError']) {
-                        $('#document-id-error').show();
+                    if (response['documentIdNotValid']) {
+                        $('#document-id-not-valid').show();
                     }
-                    if (response['carMarkError']) {
-                        $('#car-mark-error').show();
+                    if (response['carMarkNotValid']) {
+                        $('#car-mark-not-valid').show();
                     }
-                    if (response['loginNotExistError']) {
-                        $('#login-not-exist-error').show();
+                    if (response['loginNotExist']) {
+                        $('#login-not-exist').show();
                     }
-                    if (response['driverExistError']) {
-                        $('#driver-exist-error').show();
+                    if (response['driverExist']) {
+                        $('#driver-exist').show();
                     }
-                    if (response['carNumberExistError']) {
-                        $('#car-number-exist-error').show();
+                    if (response['carNumberExist']) {
+                        $('#car-number-exist').show();
                     }
-                    if (response['documentIdExistError']) {
-                        $('#document-id-exist-error').show();
+                    if (response['documentIdExist']) {
+                        $('#document-id-exist').show();
                     }
-                    if (response['tariffError']) {
-                        $('#tariff-error').show();
+                    if (response['tariffNotValid']) {
+                        $('#tariff-not-valid').show();
                     }
                     if (response['error']) {
                         viewServerError();

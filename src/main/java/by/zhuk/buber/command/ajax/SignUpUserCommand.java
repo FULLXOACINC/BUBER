@@ -17,23 +17,16 @@ import javax.servlet.http.HttpSession;
 public class SignUpUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
 
-    private static final String NOT_VALID_LOGIN_ERROR = "notValidLoginError";
-    private static final String LOGIN_EXIST_ERROR = "loginExistError";
-    private static final String PHONE_NUMBER_EXIST_ERROR = "phoneNumberExistError";
-    private static final String FIRST_NAME_ERROR = "firstNameError";
-    private static final String SECOND_NAME_ERROR = "secondNameError";
-    private static final String NOT_VALID_PASSWORD_ERROR = "notValidPasswordError";
-    private static final String PASSWORD_NOT_EQ_ERROR = "passwordNotEqError";
-    private static final String BIRTH_DAY_ERROR = "birthDayError";
-    private static final String NOT_VALID_PHONE_NUMBER_ERROR = "notValidPhoneNumberError";
-
+    private static final String NOT_VALID_LOGIN = "notValidLogin";
+    private static final String LOGIN_EXIST = "loginExist";
+    private static final String BIRTH_DAY_NOT_VALID = "birthDayNotValid";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         String login = request.getParameter(UserConstant.LOGIN);
         String firstName = request.getParameter(UserConstant.FIRST_NAME);
-        String secondName = request.getParameter(UserConstant.SECOND_NAME);
+        String lastName = request.getParameter(UserConstant.LAST_NAME);
         String password = request.getParameter(UserConstant.PASSWORD);
         String repeatPassword = request.getParameter(UserConstant.REPEAT_PASSWORD);
         String birthDay = request.getParameter(UserConstant.BIRTH_DAY);
@@ -47,15 +40,15 @@ public class SignUpUserCommand implements AJAXCommand {
         SignUpReceiver signUpReceiver = new SignUpReceiver();
 
         if (!UserValidator.isLoginValid(login)) {
-            json.put(NOT_VALID_LOGIN_ERROR, NOT_VALID_LOGIN_ERROR);
+            json.put(NOT_VALID_LOGIN, NOT_VALID_LOGIN);
         }
 
         try {
             if (signInReceiver.isLoginExist(login)) {
-                json.put(LOGIN_EXIST_ERROR, LOGIN_EXIST_ERROR);
+                json.put(LOGIN_EXIST, LOGIN_EXIST);
             }
             if (userReceiver.isPhoneNumberExist(phoneNumber)) {
-                json.put(PHONE_NUMBER_EXIST_ERROR, PHONE_NUMBER_EXIST_ERROR);
+                json.put(UserConstant.PHONE_NUMBER_EXIST, UserConstant.PHONE_NUMBER_EXIST);
             }
         } catch (ReceiverException e) {
             logger.catching(e);
@@ -64,27 +57,27 @@ public class SignUpUserCommand implements AJAXCommand {
         }
 
         if (!UserValidator.isNameValid(firstName)) {
-            json.put(FIRST_NAME_ERROR, FIRST_NAME_ERROR);
+            json.put(UserConstant.FIRST_NAME_NOT_VALID, UserConstant.FIRST_NAME_NOT_VALID);
         }
-        if (!UserValidator.isNameValid(secondName)) {
-            json.put(SECOND_NAME_ERROR, SECOND_NAME_ERROR);
+        if (!UserValidator.isNameValid(lastName)) {
+            json.put(UserConstant.LAST_NAME_NOT_VALID, UserConstant.LAST_NAME_NOT_VALID);
         }
         if (!UserValidator.isPasswordValid(password)) {
-            json.put(NOT_VALID_PASSWORD_ERROR, NOT_VALID_PASSWORD_ERROR);
+            json.put(UserConstant.NOT_VALID_PASSWORD, UserConstant.NOT_VALID_PASSWORD);
         }
         if (!password.equals(repeatPassword)) {
-            json.put(PASSWORD_NOT_EQ_ERROR, PASSWORD_NOT_EQ_ERROR);
+            json.put(UserConstant.PASSWORD_NOT_EQ, UserConstant.PASSWORD_NOT_EQ);
         }
         if (!UserValidator.isBirthDayValid(birthDay)) {
-            json.put(BIRTH_DAY_ERROR, BIRTH_DAY_ERROR);
+            json.put(BIRTH_DAY_NOT_VALID, BIRTH_DAY_NOT_VALID);
         }
         if (!UserValidator.isPhoneNumberValid(phoneNumber)) {
-            json.put(NOT_VALID_PHONE_NUMBER_ERROR, NOT_VALID_PHONE_NUMBER_ERROR);
+            json.put(UserConstant.PHONE_NUMBER_NOT_VALID, UserConstant.PHONE_NUMBER_NOT_VALID);
         }
 
 
         if (json.length() == 0) {
-            signUpReceiver.sendAcceptMail(login, firstName, secondName, password, birthDay, phoneNumber, lang);
+            signUpReceiver.sendAcceptMail(login, firstName, lastName, password, birthDay, phoneNumber, lang);
             json.put(ALL_CORRECT, ALL_CORRECT);
         }
         return json;

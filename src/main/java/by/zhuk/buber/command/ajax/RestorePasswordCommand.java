@@ -17,9 +17,7 @@ public class RestorePasswordCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RestorePasswordCommand.class);
 
     private static final String NOT_VALID_LOGIN = "notValidLogin";
-    private static final String LOGIN_NOT_EXIST = "loginNotExist";
-    private static final String NOT_VALID_PASSWORD = "notValidPassword";
-    private static final String PASSWORD_NOT_EQ = "passwordNotEq";
+
 
 
     @Override
@@ -40,7 +38,7 @@ public class RestorePasswordCommand implements AJAXCommand {
 
         try {
             if (!signInReceiver.isLoginExist(login)) {
-                json.put(LOGIN_NOT_EXIST, LOGIN_NOT_EXIST);
+                json.put(UserConstant.LOGIN_NOT_EXIST, UserConstant.LOGIN_NOT_EXIST);
             }
 
         } catch (ReceiverException e) {
@@ -50,10 +48,10 @@ public class RestorePasswordCommand implements AJAXCommand {
         }
 
         if (!UserValidator.isPasswordValid(password)) {
-            json.put(NOT_VALID_PASSWORD, NOT_VALID_PASSWORD);
+            json.put(UserConstant.NOT_VALID_PASSWORD, UserConstant.NOT_VALID_PASSWORD);
         }
         if (!password.equals(repeatPassword)) {
-            json.put(PASSWORD_NOT_EQ, PASSWORD_NOT_EQ);
+            json.put(UserConstant.PASSWORD_NOT_EQ, UserConstant.PASSWORD_NOT_EQ);
         }
 
         if (json.length() == 0) {

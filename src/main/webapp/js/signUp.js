@@ -1,14 +1,14 @@
 function hideAllMessage() {
     $('#all-correct').hide();
-    $('#not-valid-login-error').hide();
-    $('#login-exist-error').hide();
-    $('#phone-number-exist-error').hide();
-    $('#first-name-error').hide();
-    $('#second-name-error').hide();
-    $('#not-valid-password-error').hide();
-    $('#password-not-eq-error').hide();
-    $('#birth-day-error').hide();
-    $('#not-valid-phone-number-error').hide();
+    $('#not-valid-login').hide();
+    $('#login-exist').hide();
+    $('#phone-number-exist').hide();
+    $('#first-name-not-valid').hide();
+    $('#last-name-not-valid').hide();
+    $('#not-valid-password').hide();
+    $('#password-not-eq').hide();
+    $('#birth-day-not-valid').hide();
+    $('#not-valid-phone-number').hide();
 }
 
 $(document).ready(function () {
@@ -20,43 +20,43 @@ $(document).ready(function () {
             data: {
                 command: "sign-up-user",
                 login: $('#login').val(),
-                firstName: $('#firstName').val(),
-                secondName: $('#secondName').val(),
+                firstName: $('#first-name').val(),
+                lastName: $('#last-name').val(),
                 password: $('#password').val(),
-                repeatPassword: $('#repeatPassword').val(),
-                birthDay: $('#birthDay').val(),
-                phoneNumber: $('#phoneNumber').val()
+                repeatPassword: $('#repeat-password').val(),
+                birthDay: $('#birth-day').val(),
+                phoneNumber: $('#phone-number').val()
             },
             success: function (response) {
                 if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {
-                    if (response['notValidLoginError']) {
-                        $('#not-valid-login-error').show();
+                    if (response['notValidLogin']) {
+                        $('#not-valid-login').show();
                     }
-                    if (response['loginExistError']) {
-                        $('#login-exist-error').show();
+                    if (response['loginExist']) {
+                        $('#login-exist').show();
                     }
-                    if (response['phoneNumberExistError']) {
-                        $('#phone-number-exist-error').show();
+                    if (response['phoneNumberExist']) {
+                        $('#phone-number-exist').show();
                     }
-                    if (response['firstNameError']) {
-                        $('#first-name-error').show();
+                    if (response['firstNameNotValid']) {
+                        $('#first-name-not-valid').show();
                     }
-                    if (response['secondNameError']) {
-                        $('#second-name-error').show();
+                    if (response['lastNameNotValid']) {
+                        $('#last-name-not-valid').show();
                     }
-                    if (response['notValidPasswordError']) {
-                        $('#not-valid-password-error').show();
+                    if (response['notValidPassword']) {
+                        $('#not-valid-password').show();
                     }
-                    if (response['passwordNotEqError']) {
-                        $('#password-not-eq-error').show();
+                    if (response['passwordNotEq']) {
+                        $('#password-not-eq').show();
                     }
-                    if (response['birthDayError']) {
-                        $('#birth-day-error').show();
+                    if (response['birthDayNotValid']) {
+                        $('#birth-day-not-valid').show();
                     }
-                    if (response['notValidPhoneNumberError']) {
-                        $('#not-valid-phone-number-error').show();
+                    if (response['phoneNumberNotValid']) {
+                        $('#not-valid-phone-number').show();
                     }
                     if (response['error']) {
                         viewServerError();

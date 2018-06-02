@@ -12,4 +12,5 @@ public class RideConstant {
 
     public static final String RIDE_NOT_FOUND = "rideNotFound";
 
+    public static final String DATE = "date";
 }

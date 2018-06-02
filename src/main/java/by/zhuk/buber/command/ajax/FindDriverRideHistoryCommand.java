@@ -1,7 +1,9 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.GeoConstant;
+import by.zhuk.buber.constant.RideConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.model.Coordinate;
@@ -9,6 +11,7 @@ import by.zhuk.buber.model.Driver;
 import by.zhuk.buber.model.Ride;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.receiver.RideReceiver;
+import by.zhuk.buber.validator.IntegerValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -19,16 +22,9 @@ import java.util.List;
 
 public class FindDriverRideHistoryCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
-    private static final String INDEX = "index";
-    private static final String INTEGER_REGEX = "\\d+";
 
-    private static final String FIRST_NAME = "firstName";
-    private static final String LAST_NAME = "lastName";
-    private static final String RIDE_ID = "rideId";
     private static final String PASSENGER_LOGIN = "passengerLogin";
     private static final String PASSENGER_PHONE_NUMBER = "passengerPhoneNumber";
-    private static final String EARNED_MONEY = "earnedMoney";
-    private static final String RIDE_NOT_FOUND = "rideNotFound";
 
     @Override
     public JSONObject execute(HttpServletRequest request) {
@@ -36,9 +32,9 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute(UserConstant.LOGIN);
         RideReceiver rideReceiver = new RideReceiver();
-        String stringIndex = request.getParameter(INDEX);
+        String stringIndex = request.getParameter(UserConstant.INDEX);
         int index;
-        if (!(stringIndex != null && stringIndex.matches(INTEGER_REGEX))) {
+        if (!IntegerValidator.isInteger(stringIndex)) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);
@@ -52,12 +48,13 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
                 Ride ride = rides.get(index);
                 Driver driver = ride.getDriver();
                 User passenger = ride.getPassenger();
-                json.put(RIDE_ID, ride.getRideId());
-                json.put(FIRST_NAME, passenger.getFirstName());
-                json.put(LAST_NAME, passenger.getLastName());
+                json.put(RideConstant.RIDE_ID, ride.getRideId());
+                json.put(UserConstant.FIRST_NAME, passenger.getFirstName());
+                json.put(UserConstant.LAST_NAME, passenger.getLastName());
                 json.put(PASSENGER_LOGIN, passenger.getLogin());
                 json.put(PASSENGER_PHONE_NUMBER, passenger.getPhoneNumber());
-                json.put(EARNED_MONEY, driver.getEarnedMoney());
+                json.put(RideConstant.DATE, ride.getDate());
+                json.put(DriverConstant.EARNED_MONEY, driver.getEarnedMoney());
 
                 Coordinate startCoordinate = ride.getStartCoordinate();
                 Coordinate endCoordinate = ride.getEndCoordinate();
@@ -73,10 +70,10 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
                 json.put(GeoConstant.START, startJSONObject);
                 json.put(GeoConstant.END, endJSONObject);
             } else {
-                json.put(RIDE_NOT_FOUND, RIDE_NOT_FOUND);
+                json.put(RideConstant.RIDE_NOT_FOUND, RideConstant.RIDE_NOT_FOUND);
                 index = 0;
             }
-            json.put(INDEX, index);
+            json.put(UserConstant.INDEX, index);
         } catch (ReceiverException e) {
             logger.catching(e);
             json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);

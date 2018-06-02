@@ -33,8 +33,8 @@ public class SignUpReceiver {
     private static final String DEFAULT_HEAD = "BUBER sign up";
 
 
-    public void saveUser(User user) throws ReceiverException {
-        Specification userAddSpecification = new AddUserSpecification(user);
+    public void saveUser(String login, String firstName, String lastName, String password, UserType type, BigDecimal balance, LocalDate birthDay, String phoneNumber) throws ReceiverException {
+        Specification userAddSpecification = new AddUserSpecification(login, firstName, lastName, password, type, balance, birthDay, phoneNumber);
         Adder<User> adder = new Adder<>();
         adder.addBySpecification(userAddSpecification);
     }

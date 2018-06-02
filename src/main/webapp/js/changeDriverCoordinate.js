@@ -2,10 +2,15 @@ var map;
 var address;
 var point;
 
+function hideAllMessage() {
+    $('#all-correct').hide();
+    $('#repeat-pls').hide();
+}
 function changeCurrentCoordinateFun() {
     if (point == null) {
         return;
     }
+    hideAllMessage();
     $.ajax({
         type: "POST",
         url: '/AJAXController',
@@ -16,12 +21,12 @@ function changeCurrentCoordinateFun() {
         },
         success: function (response) {
             if (response['allCorrect']) {
-                console.log(response['allCorrect']);
+                $('#all-correct').show()
             } else {
                 if (response['error']) {
                     viewServerError();
                 } else {
-                    console.log(response);
+                    $('#repeat-pls').show();
                 }
             }
 

@@ -18,14 +18,6 @@ import java.util.Optional;
 public class UpdateDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
 
-    private static final String CAR_NUMBER_NOT_VALID = "carNumberNotValid";
-    private static final String DOCUMENT_ID_NOT_VALID = "documentIdNotValid";
-    private static final String CAR_MARK_NOT_VALID = "carMarkNotValid";
-    private static final String CAR_NUMBER_EXIST = "carNumberExist";
-    private static final String DOCUMENT_ID_EXIST = "documentIdExist";
-    private static final String TARIFF_NOT_VALID = "tariffNotValid";
-
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -37,16 +29,16 @@ public class UpdateDriverCommand implements AJAXCommand {
         String tariff = request.getParameter(DriverConstant.TARIFF);
 
         if (!DriverValidator.isCarNumberValid(carNumber)) {
-            json.put(CAR_NUMBER_NOT_VALID, CAR_NUMBER_NOT_VALID);
+            json.put(DriverConstant.CAR_NUMBER_NOT_VALID, DriverConstant.CAR_NUMBER_NOT_VALID);
         }
         if (!DriverValidator.isDocIdValid(documentId)) {
-            json.put(DOCUMENT_ID_NOT_VALID, DOCUMENT_ID_NOT_VALID);
+            json.put(DriverConstant.DOCUMENT_ID_NOT_VALID, DriverConstant.DOCUMENT_ID_NOT_VALID);
         }
         if (!DriverValidator.isCarMarkValid(carMark)) {
-            json.put(CAR_MARK_NOT_VALID, CAR_MARK_NOT_VALID);
+            json.put(DriverConstant.CAR_MARK_NOT_VALID, DriverConstant.CAR_MARK_NOT_VALID);
         }
         if (!DriverValidator.isTariffValid(tariff)) {
-            json.put(TARIFF_NOT_VALID, TARIFF_NOT_VALID);
+            json.put(DriverConstant.TARIFF_NOT_VALID, DriverConstant.TARIFF_NOT_VALID);
         }
         DriverReceiver driverReceiver = new DriverReceiver();
 
@@ -57,10 +49,10 @@ public class UpdateDriverCommand implements AJAXCommand {
             Optional<Driver> driverOptional = driverReceiver.findDriverByLogin(login);
             Driver driver = driverOptional.get();
             if (driverReceiver.isCarNumberExist(carNumber) && !driver.getCarNumber().equals(carNumber)) {
-                json.put(CAR_NUMBER_EXIST, CAR_NUMBER_EXIST);
+                json.put(DriverConstant.CAR_NUMBER_EXIST, DriverConstant.CAR_NUMBER_EXIST);
             }
             if (driverReceiver.isDriverDocumentIdExist(documentId) && !driver.getDocumentId().equals(documentId)) {
-                json.put(DOCUMENT_ID_EXIST, DOCUMENT_ID_EXIST);
+                json.put(DriverConstant.DOCUMENT_ID_EXIST, DriverConstant.DOCUMENT_ID_EXIST);
             }
             if (json.length() == 0) {
                 BigDecimal tariffBigDecimal = new BigDecimal(tariff);

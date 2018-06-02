@@ -13,7 +13,7 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 <fmt:message bundle="${locale}" key="text.price" var="price"/>
 <fmt:message bundle="${locale}" key="text.noRide" var="noRide"/>
-
+<fmt:message bundle="${locale}" key="text.date" var="date"/>
 <fmt:message bundle="${locale}" key="text.next" var="next"/>
 <fmt:message bundle="${locale}" key="text.previous" var="previous"/>
 
@@ -33,6 +33,7 @@
         <div class="form-input">
             <div id="ride">
                 <input type='hidden' id="ride-id-mess" value='${rideId}'>
+                <input type='hidden' id="date-mess" value='${date}'>
                 <input type='hidden' id="driver-login-mess" value='${driverLogin}'>
                 <input type='hidden' id="driver-phone-number-mess" value='${phoneNumber}'>
                 <input type='hidden' id="price-mess" value='${price}'>
@@ -43,6 +44,7 @@
                 </ul>
 
                 <input type="text" id="ride-id" class="form-control" readonly/>
+                <input type="text" id="date" class="form-control" readonly/>
                 <input type="text" id="driver-login" class="form-control" readonly/>
                 <input type="text" id="driver-name" class="form-control" readonly/>
                 <input type="text" id="driver-phone-number" class="form-control" readonly/>

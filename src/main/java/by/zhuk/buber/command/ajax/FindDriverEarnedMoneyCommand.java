@@ -1,5 +1,6 @@
 package by.zhuk.buber.command.ajax;
 
+import by.zhuk.buber.constant.DriverConstant;
 import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
@@ -15,7 +16,6 @@ import java.util.Optional;
 
 public class FindDriverEarnedMoneyCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindDriverEarnedMoneyCommand.class);
-    private static final String EARNED_MONEY = "earnedMoney";
 
 
     @Override
@@ -27,7 +27,7 @@ public class FindDriverEarnedMoneyCommand implements AJAXCommand {
         try {
             Optional<BigDecimal> optionalEarnedMoney = driverReceiver.findDriverEarnedMoney(login);
             optionalEarnedMoney.ifPresent(earnedMoney -> {
-                json.put(EARNED_MONEY, earnedMoney);
+                json.put(DriverConstant.EARNED_MONEY, earnedMoney);
                 json.put(ALL_CORRECT, ALL_CORRECT);
             });
 

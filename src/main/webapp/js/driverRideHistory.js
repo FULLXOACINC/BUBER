@@ -2,6 +2,7 @@ var rideIdMessage;
 var passengerLoginMessage;
 var phoneNumberMessage;
 var earnedMoneyMessage;
+var dateMessage;
 
 var directionsDisplay;
 var startMarker;
@@ -27,10 +28,11 @@ function findCurrentRide(id) {
                     var endLng = response['end']['lng'];
 
                     $('#ride-id').val(rideIdMessage + ": " + response['rideId']);
+                    $('#date').val(dateMessage + ": " + response['date']);
                     $('#passenger-name').val(response['firstName'] + " " + response['lastName']);
                     $('#passenger-login').val(passengerLoginMessage + ": " + response['passengerLogin']);
                     $('#passenger-phone-number').val(phoneNumberMessage + ": " + response['passengerPhoneNumber']);
-                    $('#earned-money').val(earnedMoneyMessage + ": " + response['earnedMoney']);
+                    $('#earned-money').val(earnedMoneyMessage + ": " + precisionRound(response['earnedMoney'],2));
 
                     index = response['index'];
                     var startCoordinate = new google.maps.LatLng(startLat, startLng);
@@ -105,6 +107,7 @@ $(document).ready(function () {
     passengerLoginMessage = $('#passenger-login-mess').val();
     phoneNumberMessage = $('#passenger-phone-number-mess').val();
     earnedMoneyMessage = $('#earned-money-mess').val();
+    dateMessage=$('#date-mess').val();
 
     var nextComplaintFun = function () {
         findCurrentRide(index + 1);
@@ -154,4 +157,9 @@ function clearMap() {
         directionsDisplay = null;
     }
 
+}
+
+function precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
 }

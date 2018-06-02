@@ -17,12 +17,6 @@ import java.util.Optional;
 public class UpdateUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(UpdateUserCommand.class);
 
-    private static final String PHONE_NUMBER_EXIST = "phoneNumberExist";
-    private static final String FIRST_NAME_NOT_VALID = "firstNameNotValid";
-    private static final String LAST_NAME_NOT_VALID = "lastNameNotValid";
-    private static final String PHONE_NUMBER_NOT_VALID = "phoneNumberNotValid";
-
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -41,18 +35,18 @@ public class UpdateUserCommand implements AJAXCommand {
             Optional<User> userOptional = userReceiver.findUserByLogin(login);
             User user = userOptional.get();
             if (userReceiver.isPhoneNumberExist(phoneNumber) && !user.getPhoneNumber().equals(phoneNumber)) {
-                json.put(PHONE_NUMBER_EXIST, PHONE_NUMBER_EXIST);
+                json.put(UserConstant.PHONE_NUMBER_EXIST, UserConstant.PHONE_NUMBER_EXIST);
             }
 
 
             if (!UserValidator.isNameValid(firstName)) {
-                json.put(FIRST_NAME_NOT_VALID, FIRST_NAME_NOT_VALID);
+                json.put(UserConstant.FIRST_NAME_NOT_VALID, UserConstant.FIRST_NAME_NOT_VALID);
             }
             if (!UserValidator.isNameValid(lastName)) {
-                json.put(LAST_NAME_NOT_VALID, LAST_NAME_NOT_VALID);
+                json.put(UserConstant.LAST_NAME_NOT_VALID, UserConstant.LAST_NAME_NOT_VALID);
             }
             if (!UserValidator.isPhoneNumberValid(phoneNumber)) {
-                json.put(PHONE_NUMBER_NOT_VALID, PHONE_NUMBER_NOT_VALID);
+                json.put(UserConstant.PHONE_NUMBER_NOT_VALID, UserConstant.PHONE_NUMBER_NOT_VALID);
             }
 
             if (json.length() == 0) {
