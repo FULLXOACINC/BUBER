@@ -7,7 +7,7 @@ public class CommandFactory {
 
     public static Optional<Command> findCommand(String commandName) {
         try {
-            CommandType type = CommandType.valueOf(commandName.toUpperCase());
+            GetCommandType type = GetCommandType.valueOf(commandName.toUpperCase());
             return Optional.of(type.getCommand());
         } catch (IllegalArgumentException e) {
             return Optional.empty();
