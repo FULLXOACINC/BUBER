@@ -1,5 +1,6 @@
 package by.zhuk.buber.command;
 
+import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.oauth.AbstractOAuth;
 import by.zhuk.buber.oauth.OAuthFactory;
@@ -31,7 +32,7 @@ public class OAuthCommand implements Command {
         oAuthOptional = OAuthFactory.findOAuth(loginType);
 
         if (!oAuthOptional.isPresent()) {
-            logger.log(Level.WARN, "Unknown command");
+            logger.log(Level.WARN, CommandConstant.UNKNOWN_COMMAND);
             return new Router(TransitionType.REDIRECT, PagesConstant.SIGN_IN_PAGE);
         }
 

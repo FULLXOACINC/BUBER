@@ -59,12 +59,12 @@
                 </div>
             </c:if>
 
-            <form action="${pageContext.request.contextPath}/controller">
+            <form action="${pageContext.request.contextPath}/Controller">
                 <input type="hidden" name="command" value="oauth">
                 <input type="hidden" name="loginType" value="google">
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="${google}">
             </form>
-            <form action="${pageContext.request.contextPath}/controller">
+            <form action="${pageContext.request.contextPath}/Controller">
                 <input type="hidden" name="command" value="oauth">
                 <input type="hidden" name="loginType" value="yandex">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="${yandex}">

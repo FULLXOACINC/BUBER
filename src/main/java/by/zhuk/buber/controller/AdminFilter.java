@@ -1,6 +1,7 @@
 package by.zhuk.buber.controller;
 
-import by.zhuk.buber.command.CommandType;
+import by.zhuk.buber.command.GetCommandType;
+import by.zhuk.buber.command.PostCommandType;
 import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
@@ -53,7 +54,7 @@ public class AdminFilter implements Filter {
     }
 
     private boolean isAdminPages(String requestURI) {
-        return requestURI.startsWith(PagesConstant.ADMIN_PAGE) || requestURI.startsWith(PagesConstant.USER_PAGE) || requestURI.startsWith(PagesConstant.SING_UP_DRIVER_PAGE);
+        return requestURI.startsWith(PagesConstant.USER_PAGE) || requestURI.startsWith(PagesConstant.SING_UP_DRIVER_PAGE) || requestURI.startsWith(PagesConstant.COMPLAINTS) || requestURI.startsWith(PagesConstant.FIND_USERS) || requestURI.startsWith(PagesConstant.USER_COMPLAINTS);
     }
 
     private boolean isAdminCommand(String command) {
@@ -63,11 +64,11 @@ public class AdminFilter implements Filter {
         command = command.toUpperCase().replaceAll("-", "_");
 
         boolean isChangeDiscount = command.equals(AJAXCommandType.CHANGE_DISCOUNT.name());
-        boolean isSwitchBanCommand = command.equals(CommandType.SWITCH_BAN.name());
+        boolean isSwitchBanCommand = command.equals(PostCommandType.SWITCH_BAN.name());
         boolean isSignUpDriverCommand = command.equals(AJAXCommandType.SIGN_UP_DRIVER.name());
         boolean isUpdateDriverCommand = command.equals(AJAXCommandType.UPDATE_DRIVER.name());
-        boolean isFindDriverCommand = command.equals(CommandType.FIND_DRIVER_UPDATE.name());
-        boolean isSwitchAdminStatusCommand = command.equals(CommandType.SWITCH_ADMIN_STATUS.name());
+        boolean isFindDriverCommand = command.equals(GetCommandType.FIND_DRIVER_UPDATE.name());
+        boolean isSwitchAdminStatusCommand = command.equals(PostCommandType.SWITCH_ADMIN_STATUS.name());
 
         return isSwitchBanCommand || isSwitchAdminStatusCommand || isSignUpDriverCommand || isChangeDiscount || isUpdateDriverCommand || isFindDriverCommand;
     }

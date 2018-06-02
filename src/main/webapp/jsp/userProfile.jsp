@@ -39,7 +39,7 @@
                     <input type="text" value="${balance}: ${user.balance} BYN" class="form-control" readonly/>
                     <input type="text" value="${discount}: ${user.discount}" class="form-control" readonly/>
 
-                    <form action="${ pageContext.request.contextPath }/controller">
+                    <form action="${ pageContext.request.contextPath }/Controller">
                         <input type="hidden" name="command" value="find-user-update">
                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="${updateProfile}">
                     </form>

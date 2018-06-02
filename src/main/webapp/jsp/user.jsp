@@ -60,20 +60,20 @@
                         </c:otherwise>
                     </c:choose>
                     <c:if test="${user.type != 'ROOT_ADMIN' && !(user.login eq sessionScope.login)}">
-                        <form action="${ pageContext.request.contextPath }/controller" method="post">
+                        <form action="${ pageContext.request.contextPath }/Controller" method="post">
                             <input type="hidden" name="command" value="switch-ban">
                             <input type="hidden" name="user" value="${user.login}">
                             <input type="submit" class="btn btn-lg btn-primary btn-block" value="${banView}">
                         </form>
 
-                        <form action="${ pageContext.request.contextPath }/controller" method="post">
+                        <form action="${ pageContext.request.contextPath }/Controller" method="post">
                             <input type="hidden" name="command" value="switch-admin-status">
                             <input type="hidden" name="user" value="${user.login}">
                             <input type="submit" class="btn btn-lg btn-primary btn-block" value="${adminStatusView}">
                         </form>
                     </c:if>
                     <c:if test="${user.type == 'DRIVER'}">
-                        <form action="${ pageContext.request.contextPath }/controller">
+                        <form action="${ pageContext.request.contextPath }/Controller">
                             <input type="hidden" name="command" value="find-driver-update">
                             <input type="hidden" name="driver" value="${user.login}">
                             <input type="submit" class="btn btn-lg btn-primary btn-block" value="${updateDriver}">

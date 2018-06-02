@@ -22,7 +22,6 @@ public class AJAXController extends HttpServlet {
     private static Logger logger = LogManager.getLogger(Controller.class);
     private static String CHARACTER_ENCODING = "UTF-8";
     private static String CONTENT_TYPE = "application/json";
-    private static String UNKNOWN_COMMAND = "Unknown command";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String command = request.getParameter(CommandConstant.COMMAND).replaceAll("-", "_");
@@ -34,9 +33,9 @@ public class AJAXController extends HttpServlet {
         if (commandOptional.isPresent()) {
             result = commandOptional.get().execute(request);
         } else {
-            logger.log(Level.WARN, UNKNOWN_COMMAND);
+            logger.log(Level.WARN, CommandConstant.UNKNOWN_COMMAND);
             result = new JSONObject();
-            result.put(ErrorConstant.ERROR, UNKNOWN_COMMAND);
+            result.put(ErrorConstant.ERROR, CommandConstant.UNKNOWN_COMMAND);
         }
         response.getWriter().print(result);
     }

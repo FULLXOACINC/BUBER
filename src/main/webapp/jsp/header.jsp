@@ -73,13 +73,13 @@
                                 </form>
                             </div>
                             <div>
-                                <form action="${ pageContext.request.contextPath }/controller">
+                                <form action="${ pageContext.request.contextPath }/Controller">
                                     <input type="hidden" name="command" value="find-user-profile">
                                     <input class="dropdown-item" type="submit" value="${profile}">
                                 </form>
                             </div>
                             <div>
-                                <form action="${ pageContext.request.contextPath }/controller" method="post">
+                                <form action="${ pageContext.request.contextPath }/Controller" method="post">
                                     <input type="hidden" name="command" value="sign-out">
                                     <input class="dropdown-item" type="submit" value="${signOut}">
                                 </form>
@@ -131,7 +131,7 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="${ pageContext.request.contextPath }/controller">
+                                    <form action="${ pageContext.request.contextPath }/Controller">
                                         <input type="hidden" name="command" value="find-driver-profile">
                                         <input class="dropdown-item" type="submit" value="${profile}">
                                     </form>
@@ -173,12 +173,12 @@
         </c:choose>
 
 
-        <form action="${ pageContext.request.contextPath }/controller">
+        <form action="${ pageContext.request.contextPath }/Controller" method="post">
             <input type="hidden" name="command" value="lang">
             <input type="hidden" name="lang" value="ru">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="RU">
         </form>
-        <form action="${ pageContext.request.contextPath }/controller">
+        <form action="${ pageContext.request.contextPath }/Controller" method="post">
             <input type="hidden" name="command" value="lang">
             <input type="hidden" name="lang" value="en">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="EN">

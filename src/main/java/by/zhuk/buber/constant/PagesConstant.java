@@ -5,9 +5,10 @@ public class PagesConstant {
     public static final String RESTORE_PASSWORD = "/jsp/restorePassword.jsp";
     public static final String SIGN_IN_PAGE = "/jsp/signIn.jsp";
     public static final String SING_UP_PAGE = "/jsp/signUp.jsp";
-    public static final String ADMIN_PAGE = "/jsp/admin.jsp";
-    public static final String DRIVER_PAGE = "/jsp/driver.jsp";
     public static final String USER_PAGE = "/jsp/user.jsp";
+    public static final String COMPLAINTS = "/jsp/complaints.jsp";
+    public static final String USER_COMPLAINTS = "/jsp/userComplaints.jsp";
+    public static final String FIND_USERS = "/jsp/findUsers.jsp";
     public static final String USER_PROFILE_VIEW_PAGE = "/jsp/userProfile.jsp";
     public static final String DRIVER_PROFILE_VIEW_PAGE = "/jsp/driverProfile.jsp";
     public static final String SING_UP_DRIVER_PAGE = "/jsp/signUpDriver.jsp";

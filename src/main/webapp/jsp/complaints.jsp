@@ -37,8 +37,8 @@
                     <input type='submit' class="page-link" id='next' value="${next}">
                 </ul>
                 <input type="text" id="complaint-id" class="form-control" readonly/>
-                <form action='${pageContext.request.contextPath}/controller'>
-                    <input type='hidden' name='command' value='view-user'>
+                <form action='${pageContext.request.contextPath}/Controller'>
+                    <input type='hidden' name='command' value='find-user'>
                     <input type='hidden' id="person-login" name='user'>
                     <input type='submit' class="btn btn-lg btn-primary btn-block" value="${moreAboutUser}">
                 </form>

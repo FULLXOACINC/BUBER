@@ -33,7 +33,7 @@ function findCurrentRide(id) {
                     $('#driver-phone-number').val(phoneNumberMessage + ": " + response['driverPhoneNumber']);
                     $('#price').val(priceMessage + ": " + response['price']);
 
-
+                    index = response['index'];
                     var startCoordinate = new google.maps.LatLng(startLat, startLng);
                     var endCoordinate = new google.maps.LatLng(endLat, endLng);
 

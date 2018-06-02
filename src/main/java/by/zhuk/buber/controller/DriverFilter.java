@@ -52,7 +52,7 @@ public class DriverFilter implements Filter {
     }
 
     private boolean isDriverPages(String requestURI) {
-        return requestURI.startsWith(PagesConstant.DRIVER_PAGE) || requestURI.startsWith(PagesConstant.CHANGE_DRIVER_COORDINATE_PAGE);
+        return requestURI.startsWith(PagesConstant.CHANGE_DRIVER_COORDINATE_PAGE);
     }
 
     private boolean isDriverCommand(String command) {

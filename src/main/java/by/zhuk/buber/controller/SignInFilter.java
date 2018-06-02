@@ -1,9 +1,11 @@
 package by.zhuk.buber.controller;
 
-import by.zhuk.buber.command.CommandType;
+import by.zhuk.buber.command.GetCommandType;
+import by.zhuk.buber.command.PostCommandType;
 import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
+import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.validator.UserValidator;
 
 import javax.servlet.Filter;
@@ -55,14 +57,14 @@ public class SignInFilter implements Filter {
         }
         command = command.toUpperCase().replaceAll("-", "_");
 
-        boolean isLangCommand = command.equals(CommandType.LANG.name());
+        boolean isLangCommand = command.equals(PostCommandType.LANG.name());
         boolean isSignInCommand = command.equals(AJAXCommandType.SIGN_IN.name());
-        boolean isSignUpAcceptCommand = command.equals(CommandType.SIGN_UP_ACCEPT.name());
+        boolean isSignUpAcceptCommand = command.equals(GetCommandType.SIGN_UP_ACCEPT.name());
         boolean isRestorePasswordCommand = command.equals(AJAXCommandType.RESTORE_PASSWORD.name());
-        boolean isRestorePasswordAcceptCommand = command.equals(CommandType.RESTORE_PASSWORD_ACCEPT.name());
+        boolean isRestorePasswordAcceptCommand = command.equals(GetCommandType.RESTORE_PASSWORD_ACCEPT.name());
 
         boolean isSignUpUserCommand = command.equals(AJAXCommandType.SIGN_UP_USER.name());
-        boolean isOAuthCommand = command.equals(CommandType.OAUTH.name()) || command.equals(CommandType.OAUTH_ACCEPT.name());
+        boolean isOAuthCommand = command.equals(GetCommandType.OAUTH.name()) || command.equals(GetCommandType.OAUTH_ACCEPT.name());
 
         return isSignInCommand || isSignUpAcceptCommand || isSignUpUserCommand || isOAuthCommand || isLangCommand || isRestorePasswordAcceptCommand || isRestorePasswordCommand;
     }
