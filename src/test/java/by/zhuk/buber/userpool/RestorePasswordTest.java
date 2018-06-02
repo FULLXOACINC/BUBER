@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class PoolCleanerTest {
+public class RestorePasswordTest {
 
     @Test
-    public void userCorrectSingUpTest() {
-        Thread cleaner = new Thread(new PoolCleaner(100));
+    public void userCorrectRestoreTest() {
+        Thread cleaner = new Thread(new PoolCleaner(5));
         cleaner.setDaemon(true);
         cleaner.start();
-        SignUpUserPool pool = SignUpUserPool.getInstance();
+        RestorePasswordUserPool pool = RestorePasswordUserPool.getInstance();
         pool.putInfo("1", new UserPoolInfo(new User(), LocalTime.now()));
 
         UserPoolInfo info = pool.find("1");
@@ -26,14 +26,14 @@ public class PoolCleanerTest {
     }
 
     @Test
-    public void singUpTimeOutTest() {
-        SignUpUserPool pool = SignUpUserPool.getInstance();
+    public void restoreTimeOutTest() {
+        RestorePasswordUserPool pool = RestorePasswordUserPool.getInstance();
         pool.putInfo("1", new UserPoolInfo(new User(), LocalTime.now()));
-        Thread cleaner = new Thread(new PoolCleaner(5));
+        Thread cleaner = new Thread(new PoolCleaner(2));
         cleaner.setDaemon(true);
         cleaner.start();
         try {
-            TimeUnit.SECONDS.sleep(20);
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             fail("Test does not throws InterruptedException");
         }

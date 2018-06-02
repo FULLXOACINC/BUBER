@@ -10,25 +10,10 @@ import by.zhuk.buber.userpool.UserPoolInfo;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-
+/**
+ * Class include method to interaction with things connection with sing in business logic
+ */
 public class SignInReceiver {
-
-    public boolean isLoginExist(String login) throws ReceiverException {
-        FindSpecification<User> specification = new FindUserByLoginSpecification(login);
-        Finder<User> userFinder = new Finder<>();
-        List<User> users = userFinder.findBySpecification(specification);
-        ConcurrentHashMap<String, UserPoolInfo> signUpMap = SignUpUserPool.getInstance().takeSignUpMap();
-
-        boolean isLoginExistSignUp = false;
-        for (UserPoolInfo info : signUpMap.values()) {
-            if (info.getUser().getLogin().equals(login)) {
-                isLoginExistSignUp = true;
-            }
-
-        }
-        return !users.isEmpty() || isLoginExistSignUp;
-    }
-
 
     public boolean checkPassword(String login, String password) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginAndPasswordSpecification(login, password);

@@ -36,7 +36,6 @@ public class SignUpUserCommand implements AJAXCommand {
         String lang = (String) session.getAttribute(UserConstant.LANG);
 
         UserReceiver userReceiver = new UserReceiver();
-        SignInReceiver signInReceiver = new SignInReceiver();
         SignUpReceiver signUpReceiver = new SignUpReceiver();
 
         if (!UserValidator.isLoginValid(login)) {
@@ -44,7 +43,7 @@ public class SignUpUserCommand implements AJAXCommand {
         }
 
         try {
-            if (signInReceiver.isLoginExist(login)) {
+            if (userReceiver.isLoginExist(login)) {
                 json.put(LOGIN_EXIST, LOGIN_EXIST);
             }
             if (userReceiver.isPhoneNumberExist(phoneNumber)) {

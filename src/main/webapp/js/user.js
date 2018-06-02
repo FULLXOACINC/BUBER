@@ -1,16 +1,21 @@
+function hideAllMessage() {
+    $('#all-correct').hide();
+}
+
 $(document).ready(function () {
     var changeDiscountFun = function () {
+        hideAllMessage();
         $.ajax({
             type: "POST",
             url: '/AJAXController',
             data: {
                 command: "change-discount",
-                login: $('#login').val(),
+                login: $('#login-val').val(),
                 discount: $('#discount').val()
             },
             success: function (response) {
                 if (!response['error']) {
-                    console.log("change discount correct");
+                    $('#all-correct').show();
                 } else {
                     viewServerError();
                 }

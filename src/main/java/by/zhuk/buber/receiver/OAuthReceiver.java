@@ -11,7 +11,9 @@ import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * Class include method to interaction with things connection with oauth protocol
+ */
 public class OAuthReceiver {
 
 

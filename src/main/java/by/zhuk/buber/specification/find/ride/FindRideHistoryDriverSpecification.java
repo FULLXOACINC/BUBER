@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindRideHistoryDriverSpecification implements FindSpecification<Ride> {
-    private static final String SELECT_DRIVER_RIDE_HISTORY = "SELECT ride_index,ride_passenger_login,ride_start_lat_coordinate,ride_start_lng_coordinate,ride_end_lat_coordinate,ride_end_lng_coordinate,ride_price,user_phone_number,user_name,user_second_name,ride_data FROM buber_db.ride INNER JOIN buber_db.user ON buber_db.ride.ride_passenger_login=buber_db.user.user_login WHERE ride_driver_login=? AND ride_is_driver_end_accept=1 AND ride_is_driver_start_accept=1 AND ride_is_passenger_end_accept=1 AND ride_is_passenger_end_accept=1";
+    private static final String SELECT_DRIVER_RIDE_HISTORY = "SELECT ride_index,ride_passenger_login,ride_start_lat_coordinate,ride_start_lng_coordinate,ride_end_lat_coordinate,ride_end_lng_coordinate,ride_price,user_phone_number,user_first_name,user_last_name,ride_data FROM buber_db.ride INNER JOIN buber_db.user ON buber_db.ride.ride_passenger_login=buber_db.user.user_login WHERE ride_driver_login=? AND ride_is_driver_end_accept=1 AND ride_is_driver_start_accept=1 AND ride_is_passenger_end_accept=1 AND ride_is_passenger_end_accept=1";
     private String login;
 
     public FindRideHistoryDriverSpecification(String login) {

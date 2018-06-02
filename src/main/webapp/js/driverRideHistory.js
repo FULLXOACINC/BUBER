@@ -32,7 +32,7 @@ function findCurrentRide(id) {
                     $('#passenger-name').val(response['firstName'] + " " + response['lastName']);
                     $('#passenger-login').val(passengerLoginMessage + ": " + response['passengerLogin']);
                     $('#passenger-phone-number').val(phoneNumberMessage + ": " + response['passengerPhoneNumber']);
-                    $('#earned-money').val(earnedMoneyMessage + ": " + precisionRound(response['earnedMoney'],2));
+                    $('#earned-money').val(earnedMoneyMessage + ": " + precisionRound(response['earnedMoney'], 2));
 
                     index = response['index'];
                     var startCoordinate = new google.maps.LatLng(startLat, startLng);
@@ -107,7 +107,7 @@ $(document).ready(function () {
     passengerLoginMessage = $('#passenger-login-mess').val();
     phoneNumberMessage = $('#passenger-phone-number-mess').val();
     earnedMoneyMessage = $('#earned-money-mess').val();
-    dateMessage=$('#date-mess').val();
+    dateMessage = $('#date-mess').val();
 
     var nextComplaintFun = function () {
         findCurrentRide(index + 1);

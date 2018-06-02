@@ -6,6 +6,7 @@ function hideAllMessage() {
     $('#all-correct').hide();
     $('#repeat-pls').hide();
 }
+
 function changeCurrentCoordinateFun() {
     if (point == null) {
         return;

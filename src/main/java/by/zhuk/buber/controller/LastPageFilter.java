@@ -1,6 +1,5 @@
 package by.zhuk.buber.controller;
 
-import by.zhuk.buber.command.GetCommandType;
 import by.zhuk.buber.command.PostCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.UserConstant;

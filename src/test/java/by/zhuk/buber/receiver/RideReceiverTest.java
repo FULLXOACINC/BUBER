@@ -13,9 +13,9 @@ public class RideReceiverTest {
         RideReceiver rideReceiver = new RideReceiver();
 
         try {
-            rideReceiver.createRide("san91130324@gmail.com", "root@gmail.com", 0.0f, 0.0f, 0.0f, 0.0f, new BigDecimal("10.00"));
+            rideReceiver.createRide("san91130324@gmail.com", "buberteam@gmail.com", 0.0f, 0.0f, 0.0f, 0.0f, new BigDecimal("10.00"));
         } catch (ReceiverException e) {
-            Assert.fail("Test mast not throw Exception");
+            Assert.fail("Test mast not throw Exception " + e.getMessage());
         }
 
     }

@@ -35,7 +35,6 @@ public class UserValidator {
         return session.getAttribute(UserConstant.LOGIN) != null && session.getAttribute(UserConstant.TYPE) != null;
     }
 
-
     public static boolean isPasswordValid(String password) {
         return password != null && password.matches(PASSWORD_REGEXP);
     }

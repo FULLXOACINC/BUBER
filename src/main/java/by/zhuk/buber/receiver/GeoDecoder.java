@@ -17,6 +17,9 @@ import java.net.URLEncoder;
 import java.util.Formatter;
 import java.util.Optional;
 
+/**
+ * Class include method to interaction with things connection with geodecode Goodle API
+ */
 public class GeoDecoder {
     private static final String GEO_DECODER_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY";
     private static final String RESULTS = "results";

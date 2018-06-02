@@ -18,6 +18,9 @@ import java.net.URLEncoder;
 import java.util.Formatter;
 import java.util.Optional;
 
+/**
+ * Class of information search about travel between two coordinate
+ */
 public class DistanceReceiver {
     private static final String DISTANCE_INFO_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=%s,%s&destination=%s,%s&key=AIzaSyDCd_w_dcctv7LlPuHYIn2dbpA74JSyaVY";
     private static final String ROUTES = "routes";
@@ -25,6 +28,16 @@ public class DistanceReceiver {
     private static final String VALUE = "value";
     private static final String TEXT = "text";
 
+    /**
+     * Method find distance info : distance and duration
+     *
+     * @param startLat start latitude
+     * @param startLng start longitude
+     * @param endLat   end latitude
+     * @param endLng   end longitude
+     * @throws ReceiverException throws when there are problems decode distance with Google API
+     * @see HttpClient,GetMethod,JSONObject,JSONValidator
+     */
     public Optional<DistanceInfo> findDistanceInfo(String startLat, String startLng, String endLat, String endLng) throws ReceiverException {
         HttpClient httpClient = new HttpClient();
         StringBuilder stringBuilder = new StringBuilder();
@@ -66,7 +79,11 @@ public class DistanceReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method parse result
+     *
+     * @see JSONObject,InputStreamReader
+     */
     private JSONObject parseResult(HttpMethod method) throws IOException {
         return new JSONObject(
                 new JSONTokener(new InputStreamReader(method.getResponseBodyAsStream())));

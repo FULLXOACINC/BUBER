@@ -41,7 +41,7 @@ public class ComplaintDriverCommand implements AJAXCommand {
         }
         try {
             int intRideId = Integer.parseInt(rideId);
-            if (complaintReceiver.isPassengerComplaintExist(intRideId, login)) {
+            if (complaintReceiver.isPersonComplaintExist(intRideId, login)) {
                 json.put(ComplaintConstant.COMPLAINT_EXIST, ComplaintConstant.COMPLAINT_EXIST);
                 return json;
             }

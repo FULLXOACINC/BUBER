@@ -13,7 +13,7 @@ public class DriverReceiverTest {
     public void testFindSuitableDriver() {
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
-            List<Driver> drivers = driverReceiver.findSuitableDrivers(54.238987f, 35.238934f, "test");
+            List<Driver> drivers = driverReceiver.findSuitableDrivers(53.904537f, 27.561535f, "test");
             Assert.assertEquals(drivers.size(), 3);
         } catch (ReceiverException e) {
             Assert.fail("Test mast not throw Exception " + e);

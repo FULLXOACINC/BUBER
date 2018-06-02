@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindUserByLoginSpecification implements FindSpecification<User> {
-    private static final String SELECT_BY_LOGIN = "SELECT user_name, user_second_name, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
+    private static final String SELECT_BY_LOGIN = "SELECT user_first_name, user_last_name, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
     private String login;
 
     public FindUserByLoginSpecification(String login) {

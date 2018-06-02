@@ -29,7 +29,7 @@ public class ChangeDiscountCommand implements AJAXCommand {
         }
 
         try {
-            if (!userReceiver.isUserExist(login)) {
+            if (!userReceiver.isLoginExist(login)) {
                 json.put(USER_NOT_FOUND, USER_NOT_FOUND);
                 return json;
             }

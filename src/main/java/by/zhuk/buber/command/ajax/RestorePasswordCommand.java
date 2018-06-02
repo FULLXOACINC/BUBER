@@ -5,6 +5,7 @@ import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.RestorePasswordReceiver;
 import by.zhuk.buber.receiver.SignInReceiver;
+import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +20,6 @@ public class RestorePasswordCommand implements AJAXCommand {
     private static final String NOT_VALID_LOGIN = "notValidLogin";
 
 
-
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -29,7 +29,7 @@ public class RestorePasswordCommand implements AJAXCommand {
         HttpSession session = request.getSession();
         String lang = (String) session.getAttribute(UserConstant.LANG);
 
-        SignInReceiver signInReceiver = new SignInReceiver();
+        UserReceiver userReceiver = new UserReceiver();
         RestorePasswordReceiver restorePasswordReceiver = new RestorePasswordReceiver();
 
         if (!UserValidator.isLoginValid(login)) {
@@ -37,7 +37,7 @@ public class RestorePasswordCommand implements AJAXCommand {
         }
 
         try {
-            if (!signInReceiver.isLoginExist(login)) {
+            if (!userReceiver.isLoginExist(login)) {
                 json.put(UserConstant.LOGIN_NOT_EXIST, UserConstant.LOGIN_NOT_EXIST);
             }
 

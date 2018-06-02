@@ -5,7 +5,6 @@ import by.zhuk.buber.command.PostCommandType;
 import by.zhuk.buber.command.ajax.AJAXCommandType;
 import by.zhuk.buber.constant.CommandConstant;
 import by.zhuk.buber.constant.PagesConstant;
-import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.validator.UserValidator;
 
 import javax.servlet.Filter;

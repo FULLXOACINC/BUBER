@@ -24,7 +24,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Formatter;
 import java.util.List;
-
+/**
+ * Class include method to interaction with things connection with sing up business logic
+ */
 public class SignUpReceiver {
 
 
@@ -35,7 +37,7 @@ public class SignUpReceiver {
 
     public void saveUser(String login, String firstName, String lastName, String password, UserType type, BigDecimal balance, LocalDate birthDay, String phoneNumber) throws ReceiverException {
         Specification userAddSpecification = new AddUserSpecification(login, firstName, lastName, password, type, balance, birthDay, phoneNumber);
-        Adder<User> adder = new Adder<>();
+        Adder adder = new Adder();
         adder.addBySpecification(userAddSpecification);
     }
 
@@ -87,7 +89,7 @@ public class SignUpReceiver {
             controller.commit();
             controller.endTransaction();
 
-        } catch (RepositoryException e) {
+        } catch (RepositoryException | ReceiverException e) {
             controller.rollBack();
             throw new ReceiverException(e);
         }

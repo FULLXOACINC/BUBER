@@ -16,19 +16,34 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+/**
+ * Class used to work with complaints
+ */
 public class ComplaintReceiver {
     private static final String COMPLAINT_ID = "complaintId";
     private static final String COMPLAINT_PERSON_LOGIN = "complaintPersonLogin";
     private static final String COMPLAINT_TEXT = "complaintText";
     private static final String COMPLAINTS_EMPTY = "complaintsEmpty";
 
-
+    /**
+     * Method find unaccepted complaints
+     *
+     * @return unaccepted complaints list
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindUnacceptedComplaintsSpecification
+     */
     public List<Complaint> findUnacceptedComplaints() throws ReceiverException {
         FindSpecification<Complaint> specification = new FindUnacceptedComplaintsSpecification();
         Finder<Complaint> complaintFinder = new Finder<>();
         return complaintFinder.findBySpecification(specification);
     }
 
+    /**
+     * Method to accepted complaints by complaints id
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Repository,RepositoryController,UpdateComplaintAcceptSpecification
+     */
     public void acceptComplaint(String complaintId) throws ReceiverException {
         Repository<Complaint> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -41,19 +56,43 @@ public class ComplaintReceiver {
         }
     }
 
-    public boolean isPassengerComplaintExist(int rideId, String login) throws ReceiverException {
+    /**
+     * Method check is exist complaint on person
+     *
+     * @param login  person login
+     * @param rideId ride id
+     * @return unaccepted complaints list
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindComplaintByRideIdSpecification
+     */
+    public boolean isPersonComplaintExist(int rideId, String login) throws ReceiverException {
         FindSpecification<Complaint> specification = new FindComplaintByRideIdSpecification(login, rideId);
         Finder<Complaint> complaintFinder = new Finder<>();
         List<Complaint> complaints = complaintFinder.findBySpecification(specification);
         return !complaints.isEmpty();
     }
 
-    public void createComplaint(String login, int intRideId, String complaint) throws ReceiverException {
-        Specification complaintAddSpecification = new AddComplaintSpecification(login, intRideId, complaint);
-        Adder<Complaint> adder = new Adder<>();
+    /**
+     * Method create complaint to login
+     *
+     * @param complaint complaint text
+     * @param rideId    ride id ,where the complaint was created
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindUnacceptedComplaintsSpecification
+     */
+    public void createComplaint(String login, int rideId, String complaint) throws ReceiverException {
+        Specification complaintAddSpecification = new AddComplaintSpecification(login, rideId, complaint);
+        Adder adder = new Adder();
         adder.addBySpecification(complaintAddSpecification);
     }
 
+    /**
+     * Create complaint json
+     *
+     * @return json that include complaint id,complaint person login,complaint text,ride id,
+     * or complaint empty mar if complaints is empty
+     * @see JSONObject
+     */
     public JSONObject createComplaintJSON(List<Complaint> complaints, int index) {
         JSONObject json = new JSONObject();
         if (complaints.isEmpty()) {

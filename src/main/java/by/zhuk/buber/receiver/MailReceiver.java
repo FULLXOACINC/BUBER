@@ -9,12 +9,23 @@ import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Class include method to interaction with things connection with mail business logic
+ */
 class MailReceiver {
     private static Logger logger = LogManager.getLogger(MailReceiver.class);
     private static final String HEAD = "head";
     private static final String CONTENT = "content";
     private static final String PROPERTIES_EXTENSION = ".properties";
 
+
+    /**
+     * @param bundleName  bundle name
+     * @param lang use language at bundle
+     * @param defaultHead default mail head
+     * @param defaultContent default mail content
+     * @return mail created from a bundleName if it exists or from defaultHead and defaultContent if there is no bundle, use language
+     */
     public Mail createMailFromBundle(String bundleName, String lang, String defaultHead, String defaultContent) {
         Locale locale = new Locale(lang);
 

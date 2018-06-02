@@ -1,4 +1,106 @@
-2018-05-28 16:41:48.023 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
-2018-05-28 16:41:52.838 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
-2018-05-28 16:41:52.843 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
-2018-05-28 16:41:53.515 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:19:45.289 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:19:46.857 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:19:46.858 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:19:47.422 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:19:50.690 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:19:50.711 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:19:52.712 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:19:52.714 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:19:53.718 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:19:53.667 [Thread-1]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:19:53.683 [Thread-2]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:19:54.136 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:19:54.167 [main]  WARN  by.zhuk.buber.receiver.MailReceiver in createMailFromBundle- bundle not found + properties/signUpMailContent
+2018-06-02 21:19:56.435 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:19:56.436 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:19:58.442 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:19:58.443 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:19:59.436 [Thread-4]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:19:59.445 [Thread-5]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:19:59.545 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:19:59.566 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:22:11.473 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:22:14.018 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:22:14.023 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:22:14.203 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:23:40.760 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:23:41.769 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:23:41.770 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:23:41.905 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:23:44.696 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:23:44.702 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:23:46.714 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:23:46.716 [Thread-1]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:23:47.691 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:23:47.673 [Thread-1]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:23:47.688 [Thread-2]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:23:48.328 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:23:48.406 [main]  WARN  by.zhuk.buber.receiver.MailReceiver in createMailFromBundle- bundle not found + properties/signUpMailContent
+2018-06-02 21:23:50.596 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:23:50.597 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:23:52.598 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear sing up pool
+2018-06-02 21:23:52.599 [Thread-4]  INFO  by.zhuk.buber.userpool.PoolCleaner in run- Clear restorePassword pool
+2018-06-02 21:23:53.592 [Thread-4]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:23:53.607 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:23:53.609 [Thread-5]  ERROR by.zhuk.buber.userpool.PoolCleaner in run- Catching
+java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method) ~[?:1.8.0_171]
+	at java.lang.Thread.sleep(Thread.java:340) ~[?:1.8.0_171]
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386) ~[?:1.8.0_171]
+	at by.zhuk.buber.userpool.PoolCleaner.run(PoolCleaner.java:24) [classes/:?]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+2018-06-02 21:23:53.613 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:25:07.387 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:25:10.173 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:25:10.175 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:25:10.479 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:25:53.624 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:25:56.285 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:25:56.288 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:25:56.643 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool
+2018-06-02 21:26:43.160 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Register MySQL JDBC driver
+2018-06-02 21:26:45.866 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in initPool- Init connection pool
+2018-06-02 21:26:45.871 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in takeConnection- Take connection from connection pool
+2018-06-02 21:26:46.158 [main]  INFO  by.zhuk.buber.connectionpool.ConnectionPool in releaseConnection- Put connection to connection pool

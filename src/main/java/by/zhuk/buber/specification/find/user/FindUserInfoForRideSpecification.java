@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindUserInfoForRideSpecification implements FindSpecification<User> {
-    private static final String SELECT_USER_RIDE_INFO_LOGIN = "SELECT user_name,user_second_name,user_phone_number FROM buber_db.user WHERE user_login=?";
+    private static final String SELECT_USER_RIDE_INFO_LOGIN = "SELECT user_first_name,user_last_name,user_phone_number FROM buber_db.user WHERE user_login=?";
     private String login;
 
     public FindUserInfoForRideSpecification(String login) {

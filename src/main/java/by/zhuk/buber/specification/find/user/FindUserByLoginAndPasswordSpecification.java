@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindUserByLoginAndPasswordSpecification implements FindSpecification<User> {
-    private static final String SELECT_BY_LOGIN_AND_PASSWORD = "SELECT user_login,user_name FROM buber_db.user WHERE user_login=? AND user_password=SHA1(?)";
+    private static final String SELECT_BY_LOGIN_AND_PASSWORD = "SELECT user_login,user_first_name FROM buber_db.user WHERE user_login=? AND user_password=SHA1(?)";
     private String login;
     private String password;
 

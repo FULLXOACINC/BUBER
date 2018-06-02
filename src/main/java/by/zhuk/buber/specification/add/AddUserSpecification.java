@@ -4,7 +4,6 @@ import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.model.User;
 import by.zhuk.buber.model.UserType;
 import by.zhuk.buber.specification.Specification;
-import sun.util.resources.LocaleData;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 
 public class AddUserSpecification implements Specification {
 
-    private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_name, user_second_name, user_password,user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban,user_discount) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0',0.0)";
+    private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_first_name, user_last_name, user_password,user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban,user_discount) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0',0.0)";
     private User user;
     private String login;
     private String firstName;

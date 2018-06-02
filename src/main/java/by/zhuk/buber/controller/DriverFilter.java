@@ -52,7 +52,7 @@ public class DriverFilter implements Filter {
     }
 
     private boolean isDriverPages(String requestURI) {
-        return requestURI.startsWith(PagesConstant.CHANGE_DRIVER_COORDINATE_PAGE);
+        return requestURI.startsWith(PagesConstant.CHANGE_DRIVER_COORDINATE_PAGE) || requestURI.startsWith(PagesConstant.CURRENT_DRIVER_RIDE_PAGE) || requestURI.startsWith(PagesConstant.DRIVER_PROFILE_PAGE) || requestURI.startsWith(PagesConstant.DRIVER_RIDE_HISTORY_PAGE) || requestURI.startsWith(PagesConstant.WITHDRAW_EARNINGS_PAGE);
     }
 
     private boolean isDriverCommand(String command) {
@@ -62,7 +62,17 @@ public class DriverFilter implements Filter {
         command = command.toUpperCase().replaceAll("-", "_");
 
         boolean isUpdateCurrentDriverCoordinate = command.equals(AJAXCommandType.UPDATE_CURRENT_DRIVER_COORDINATE.name());
-        return isUpdateCurrentDriverCoordinate;
+        boolean isAcceptStartRideDriver = command.equals(AJAXCommandType.ACCEPT_START_RIDE_DRIVER.name());
+        boolean isAcceptEndRideDriver = command.equals(AJAXCommandType.ACCEPT_END_RIDE_DRIVER.name());
+        boolean isFindRideInfoDriver = command.equals(AJAXCommandType.FIND_RIDE_INFO_DRIVER.name());
+        boolean isComplaintPassenger = command.equals(AJAXCommandType.COMPLAINT_PASSENGER.name());
+        boolean isRefuseRideDiver = command.equals(AJAXCommandType.REFUSE_RIDE_DRIVER.name());
+        boolean isDriverSetNotWorkingStatus = command.equals(AJAXCommandType.DRIVER_SET_NOT_WORKING_STATUS.name());
+        boolean isDriverSetWorkingStatus = command.equals(AJAXCommandType.DRIVER_SET_WORKING_STATUS.name());
+        boolean isFindDriverRideHistory = command.equals(AJAXCommandType.FIND_DRIVER_RIDE_HISTORY.name());
+        boolean isFindDriverEarnedMoney = command.equals(AJAXCommandType.FIND_DRIVER_EARNED_MONEY.name());
+
+        return isUpdateCurrentDriverCoordinate || isFindDriverRideHistory || isFindDriverEarnedMoney || isAcceptStartRideDriver || isAcceptEndRideDriver || isFindRideInfoDriver || isComplaintPassenger || isRefuseRideDiver || isDriverSetNotWorkingStatus || isDriverSetWorkingStatus;
     }
 
     @Override

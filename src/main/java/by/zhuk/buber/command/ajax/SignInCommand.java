@@ -33,9 +33,10 @@ public class SignInCommand implements AJAXCommand {
             json.put(LOGIN_NOT_VALID, LOGIN_NOT_VALID);
             return json;
         }
+        UserReceiver userReceiver = new UserReceiver();
         SignInReceiver signInReceiver = new SignInReceiver();
         try {
-            if (!signInReceiver.isLoginExist(login)) {
+            if (!userReceiver.isLoginExist(login)) {
                 json.put(UserConstant.LOGIN_NOT_EXIST, UserConstant.LOGIN_NOT_EXIST);
                 return json;
             }
@@ -43,7 +44,6 @@ public class SignInCommand implements AJAXCommand {
                 json.put(PASSWORD_NOT_MATCH_LOGIN, PASSWORD_NOT_MATCH_LOGIN);
                 return json;
             }
-            UserReceiver userReceiver = new UserReceiver();
             Optional<User> userOptional = userReceiver.findUserByLogin(login);
             HttpSession session = request.getSession();
             if (userOptional.isPresent()) {

@@ -22,15 +22,25 @@ import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMa
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverInfoSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
-import by.zhuk.buber.specification.update.driver.UpdateUserProfileCoordinateSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverProfileCoordinateSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class include method to interaction with things connection with Driver business logic
+ */
 public class DriverReceiver {
     private static final BigDecimal EMPTY_BALANCE = new BigDecimal("0.00");
 
+    /**
+     * Method check is driver login exist in system
+     *
+     * @return true if exist,else is not exist
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverByLoginSpecification
+     */
     public boolean isDriverExist(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverByLoginSpecification(driverLogin);
         Finder<Driver> finder = new Finder<>();
@@ -38,6 +48,13 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
+    /**
+     * Method check is car number exist in system
+     *
+     * @return true if exist,else is not exist
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverByCarNumberSpecification
+     */
     public boolean isCarNumberExist(String carNumber) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverByCarNumberSpecification(carNumber);
         Finder<Driver> finder = new Finder<>();
@@ -45,6 +62,13 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
+    /**
+     * Method check is document id exist in system
+     *
+     * @return true if exist,else is not exist
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverByCarNumberSpecification
+     */
     public boolean isDriverDocumentIdExist(String documentId) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverByDocumentIdSpecification(documentId);
         Finder<Driver> finder = new Finder<>();
@@ -52,6 +76,16 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
+
+    /**
+     * Method update driver car number, document id,car mark and tariff at the same time
+     * Include transaction:
+     * 1)update car number, document id and tariff
+     * 2)add or find car mark
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,RepositoryController,UpdateDriverInfoSpecification,CarMarkReceiver
+     */
     public void updateDriver(String driverLogin, String carNumber, String documentId, String carMarkName, BigDecimal tariff) throws ReceiverException {
 
         Repository<Driver> driverRepository = new Repository<>();
@@ -67,12 +101,19 @@ public class DriverReceiver {
 
             controller.commit();
             controller.endTransaction();
-        } catch (RepositoryException e) {
+        } catch (RepositoryException | ReceiverException e) {
             controller.rollBack();
             throw new ReceiverException(e);
         }
     }
 
+    /**
+     * Method find driver by login, if driver not exist return Optional.empty()
+     *
+     * @return Optional<Driver>
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverToUpdateSpecification,Optional
+     */
     public Optional<Driver> findDriverByLogin(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverToUpdateSpecification(driverLogin);
         Finder<Driver> driverFinder = new Finder<>();
@@ -84,12 +125,30 @@ public class DriverReceiver {
         return driver;
     }
 
+    /**
+     * Method find suitable drivers(working and are not far from the target and driver not equal passenger)
+     *
+     * @param lat current target latitude
+     * @param lng current target longitude
+     * @return list of driver
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindSuitableDriverSpecification
+     */
     public List<Driver> findSuitableDrivers(float lat, float lng, String login) throws ReceiverException {
         FindSpecification<Driver> specification = new FindSuitableDriverSpecification(lat, lng, login);
         Finder<Driver> finder = new Finder<>();
         return finder.findBySpecification(specification);
     }
 
+    /**
+     * Method check is driver suitable(working and are not far from the target and driver not equal passenger)
+     *
+     * @param lat current target latitude
+     * @param lng current target longitude
+     * @return true if driver suitable, else return false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindSuitableDriverByLoginSpecification
+     */
     public boolean isDriverSuitable(float lat, float lng, String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindSuitableDriverByLoginSpecification(lat, lng, driverLogin);
         Finder<Driver> finder = new Finder<>();
@@ -97,6 +156,13 @@ public class DriverReceiver {
         return !drivers.isEmpty();
     }
 
+    /**
+     * Method find driver traffic
+     *
+     * @return Optional<BigDecimal>
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverTariffSpecification
+     */
     public Optional<BigDecimal> findDriverTariff(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverTariffSpecification(driverLogin);
         Finder<Driver> finder = new Finder<>();
@@ -108,11 +174,19 @@ public class DriverReceiver {
         return tariff;
     }
 
+    /**
+     * Method update current driver coordinate(latitude,longitude)
+     *
+     * @param lat current target latitude
+     * @param lng current target longitude
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Repository,RepositoryController,UpdateDriverProfileCoordinateSpecification
+     */
     public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);
 
-        Specification driverUpdateSpecification = new UpdateUserProfileCoordinateSpecification(lat, lng, driverLogin);
+        Specification driverUpdateSpecification = new UpdateDriverProfileCoordinateSpecification(lat, lng, driverLogin);
         try {
             driverRepository.update(driverUpdateSpecification);
             controller.end();
@@ -121,6 +195,12 @@ public class DriverReceiver {
         }
     }
 
+    /**
+     * Method find driver info for ride:
+     * @return Optional<Driver> if exist,else  Optional.empty()
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverInfoForRideSpecification
+     */
     public Optional<Driver> findDriverInfoForRide(String driverLogin) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverInfoForRideSpecification(driverLogin);
         Finder<Driver> finder = new Finder<>();
@@ -132,6 +212,12 @@ public class DriverReceiver {
         return driver;
     }
 
+    /**
+     * Method increment positive mark
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,RepositoryController,UpdateDriverIncrementPositiveMarkSpecification,Repository
+     */
     public void incrementPositiveMark(String driver) throws ReceiverException {
         Repository<Driver> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -143,7 +229,12 @@ public class DriverReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method increment negative mark
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,RepositoryController,UpdateDriverIncrementNegativeMarkSpecification,Repository
+     */
     public void incrementNegativeMark(String driver) throws ReceiverException {
         Repository<Driver> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -155,7 +246,12 @@ public class DriverReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method set driver(login) working status isWorking
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,RepositoryController,UpdateDriverIsWorkingSpecification,Repository
+     */
     public void updateDriverWorkingStatus(String login, boolean isWorking) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);
@@ -168,7 +264,13 @@ public class DriverReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method find driver earned money
+     *
+     * @return Optional<BigDecimal> id exist, else return Optional.empty()
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Finder,FindDriverEarnedMoneySpecification
+     */
     public Optional<BigDecimal> findDriverEarnedMoney(String login) throws ReceiverException {
         FindSpecification<Driver> specification = new FindDriverEarnedMoneySpecification(login);
         Finder<Driver> finder = new Finder<>();
@@ -179,7 +281,12 @@ public class DriverReceiver {
         }
         return earnedMoney;
     }
-
+    /**
+     * Method withdraw earning money
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see Specification,Repository,RepositoryController,UpdateDriverEarnedMoneySpecification
+     */
     public void withdrawEarningMoney(String login) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);

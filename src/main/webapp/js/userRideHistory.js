@@ -108,7 +108,7 @@ $(document).ready(function () {
     driverLoginMessage = $('#driver-login-mess').val();
     phoneNumberMessage = $('#driver-phone-number-mess').val();
     priceMessage = $('#price-mess').val();
-    dateMessage=$('#date-mess').val();
+    dateMessage = $('#date-mess').val();
 
 
     var nextComplaintFun = function () {

@@ -46,7 +46,7 @@ public class SignUpDriverCommand implements AJAXCommand {
         UserReceiver userReceiver = new UserReceiver();
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
-            if (!userReceiver.isUserExist(login)) {
+            if (!userReceiver.isLoginExist(login)) {
                 json.put(USER_NOT_EXIST_NOT_VALID, USER_NOT_EXIST_NOT_VALID);
             }
             if (driverReceiver.isDriverExist(login)) {

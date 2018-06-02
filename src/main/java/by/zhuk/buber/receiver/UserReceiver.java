@@ -29,7 +29,9 @@ import org.apache.logging.log4j.Logger;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Class include method to interaction with things connection with user business logic
+ */
 public class UserReceiver {
     private static Logger logger = LogManager.getLogger(UserReceiver.class);
     private static final BigDecimal MAX_USER_BALANCE = new BigDecimal("100000.00");
@@ -54,7 +56,7 @@ public class UserReceiver {
         return !users.isEmpty();
     }
 
-    public boolean isUserExist(String login) throws ReceiverException {
+    public boolean isLoginExist(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
         Finder<User> userFinder = new Finder<>();
         List<User> users = userFinder.findBySpecification(specification);

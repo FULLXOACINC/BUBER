@@ -8,7 +8,18 @@ import by.zhuk.buber.specification.find.FindSpecification;
 
 import java.util.List;
 
+/**
+ * Class template find T entities by FindSpecification
+ */
 class Finder<T> {
+
+    /**
+     * Method find T entities by FindSpecification
+     *
+     * @return T entities list
+     * @throws ReceiverException throws when there are problems with the database
+     * @see RepositoryController,Repository,FindSpecification
+     */
     List<T> findBySpecification(FindSpecification<T> specification) throws ReceiverException {
         Repository<T> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);

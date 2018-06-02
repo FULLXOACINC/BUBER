@@ -8,7 +8,6 @@
 <fmt:setBundle basename="properties/text" var="locale" scope="session"/>
 <fmt:message bundle="${locale}" key="text.lang" var="lang"/>
 <fmt:message bundle="${locale}" key="text.buber" var="buber"/>
-<fmt:message bundle="${locale}" key="text.signOut" var="signOut"/>
 <fmt:message bundle="${locale}" key="text.ban" var="ban"/>
 <fmt:message bundle="${locale}" key="text.unBan" var="unBan"/>
 <fmt:message bundle="${locale}" key="text.removeAdminStatus" var="removeAdminStatus"/>
@@ -23,6 +22,7 @@
 <fmt:message bundle="${locale}" key="text.lastName" var="lastName"/>
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 
+<fmt:message bundle="${locale}" key="text.changeCorrect" var="changeCorrect"/>
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
@@ -35,7 +35,8 @@
         <div class="form-input">
             <c:choose>
                 <c:when test="${not empty user}">
-                    <input type="text" id="login" value="${login}: ${user.login}" class="form-control" readonly/>
+                    <input type="hidden" id="login-val" value="${user.login}" class="form-control" readonly/>
+                    <input type="text" value="${login}: ${user.login}" class="form-control" readonly/>
                     <input type="text" value="${firstName}: ${user.firstName}" class="form-control" readonly/>
                     <input type="text" value="${lastName}: ${user.lastName}" class="form-control" readonly/>
                     <input type="text" value="${phoneNumber}: ${user.phoneNumber}" class="form-control" readonly/>
@@ -82,6 +83,9 @@
                     <input id="discount" class="form-control" type="text" value="${user.discount}">
                     <input id="change-discount" class="btn btn-lg btn-primary btn-block" type="submit"
                            value="${change}">
+                    <div class="correct" id="all-correct">
+                        <p>${changeCorrect}</p>
+                    </div>
                     <div>
                         <form action="${ pageContext.request.contextPath }/jsp/userComplaints.jsp">
                             <input name="userLogin" type="hidden" value="${user.login}">

@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UpdateUserProfileSpecification implements Specification {
-    private static final String UPDATE_USER_PROFILE_BY_LOGIN = "UPDATE `buber_db`.`user` SET user_name=?, user_second_name=?, user_phone_number=? WHERE user_login=?";
+    private static final String UPDATE_USER_PROFILE_BY_LOGIN = "UPDATE buber_db.user SET user_first_name=?, user_last_name=?, user_phone_number=? WHERE user_login=?";
     private String login;
     private String firstName;
     private String lastName;

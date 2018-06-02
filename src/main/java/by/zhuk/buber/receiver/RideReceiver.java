@@ -30,14 +30,14 @@ import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptStartSpecif
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptEndSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptStartSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Optional;
-
+/**
+ * Class include method to interaction with things connection with ride business logic
+ */
 public class RideReceiver {
     private static final String USER_MAIL_BUNDLE = "properties/rideUserMailContent";
     private static final String USER_REFUSE_MAIL_BUNDLE = "properties/refuseUserMailContent";
