@@ -1,5 +1,7 @@
 package by.zhuk.buber.constant;
-
+/**
+ * Class include User constant
+ */
 public class UserConstant {
     public static final String LOGIN = "login";
     public static final String TYPE = "type";
@@ -25,5 +27,6 @@ public class UserConstant {
     public static final String LAST_NAME_NOT_VALID = "lastNameNotValid";
     public static final String PHONE_NUMBER_NOT_VALID = "phoneNumberNotValid";
     public static final String NOT_VALID_PASSWORD = "notValidPassword";
+    public static final String NOT_VALID_LOGIN = "notValidLogin";
     public static final String PASSWORD_NOT_EQ = "passwordNotEq";
 }

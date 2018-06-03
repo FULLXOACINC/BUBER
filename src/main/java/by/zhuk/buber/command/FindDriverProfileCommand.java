@@ -12,10 +12,15 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a FindDriverProfile
+ */
 public class FindDriverProfileCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindDriverProfileCommand.class);
 
+    /**
+     * Expected parameters: -
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         DriverReceiver driverReceiver = new DriverReceiver();

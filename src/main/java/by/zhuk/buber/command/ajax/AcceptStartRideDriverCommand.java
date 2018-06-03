@@ -13,10 +13,15 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax AcceptStartRideDriver
+ * Driver command
+ */
 public class AcceptStartRideDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(AcceptStartRideDriverCommand.class);
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

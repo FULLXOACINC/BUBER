@@ -23,6 +23,7 @@
 <fmt:message bundle="${locale}" key="text.phoneNumber" var="phoneNumber"/>
 
 <fmt:message bundle="${locale}" key="text.changeCorrect" var="changeCorrect"/>
+<fmt:message bundle="${locale}" key="text.repeatPls" var="repaetPls"/>
 <html>
 <c:import url="${ pageContext.request.contextPath }/jsp/header.jsp"/>
 <head>
@@ -85,6 +86,9 @@
                            value="${change}">
                     <div class="correct" id="all-correct">
                         <p>${changeCorrect}</p>
+                    </div>
+                    <div class="error" id="repeat-pls">
+                        <p>${repaetPls}</p>
                     </div>
                     <div>
                         <form action="${ pageContext.request.contextPath }/jsp/userComplaints.jsp">

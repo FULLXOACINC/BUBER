@@ -1,5 +1,7 @@
 package by.zhuk.buber.command;
-
+/**
+ * Class include info about where and how server end processing request
+ */
 public class Router {
     private TransitionType type;
     private String transitionResource;

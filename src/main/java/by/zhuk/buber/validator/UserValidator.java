@@ -7,7 +7,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * Class include method to validate user info
+ */
 public class UserValidator {
     private static final Pattern LOGIN_REGEXP = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private static final String DISCOUNT_REGEXP = "0\\.\\d{1,2}";

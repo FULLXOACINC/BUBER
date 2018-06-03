@@ -18,7 +18,11 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
-
+/**
+ * Class-singleton include LinkedBlockingDeque connectoin
+ * @see Connection,ConnectionPool
+ * Pattern: singletone
+ */
 public final class ConnectionPool {
     private Logger logger = LogManager.getLogger(ConnectionPool.class);
     private static ConnectionPool instance;

@@ -11,11 +11,17 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a OAuth
+ */
 public class OAuthCommand implements Command {
     private static Logger logger = LogManager.getLogger(OAuthCommand.class);
     private static final String LOGIN_TYPE = "loginType";
 
+    /**
+     * Expected parameters:
+     * 1)loginType
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         if (UserValidator.isAuthorization(request.getSession())) {

@@ -18,13 +18,18 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
-<div class="back d-flex">
-    <div class="container text-top my-auto">
-        <h1 class="mb-1">${buberWelcome}</h1>
-        <form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="${orderTaxi}">
-        </form>
+<div class="back">
+    <div class="container">
+        <div class="form-input">
+            <div class="container text-top my-auto">
+                <h1 class="mb-1">${buberWelcome}</h1>
+                <form action="${pageContext.request.contextPath}/jsp/orderTaxi.jsp">
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="${orderTaxi}">
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 </div>
 
 <c:import url="${ pageContext.request.contextPath }/jsp/footer.jsp"/>

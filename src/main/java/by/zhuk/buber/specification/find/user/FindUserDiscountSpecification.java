@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user discount by login
+ */
 public class FindUserDiscountSpecification implements FindSpecification<User> {
     private static final String SELECT_USER_DISCOUNT_BY_LOGIN = "SELECT user_discount FROM buber_db.user WHERE user_login=?";
     private String login;
@@ -40,7 +42,7 @@ public class FindUserDiscountSpecification implements FindSpecification<User> {
             while (resultSet.next()) {
                 User user = new User();
                 user.setLogin(login);
-                user.setDiscount(resultSet.getFloat(1));
+                user.setDiscount(resultSet.getBigDecimal(1));
                 users.add(user);
             }
         } catch (SQLException e) {

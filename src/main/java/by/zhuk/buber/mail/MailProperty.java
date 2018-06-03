@@ -1,15 +1,21 @@
 package by.zhuk.buber.mail;
 
+import by.zhuk.buber.connectionpool.ConnectionPool;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
 import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
-
+/**
+ * Class-singleton include mail properties information
+ * @see ReentrantLock,MailProperty
+ * Pattern: singletone
+ */
 public class MailProperty {
     private static Logger logger = LogManager.getLogger(MailProperty.class);
 

@@ -12,11 +12,16 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a SwitchBan
+ */
 public class SwitchBanCommand implements Command {
     private static Logger logger = LogManager.getLogger(SwitchBanCommand.class);
     private static final String PART_USER_FIND_URL = "?command=find-user&user=";
-
+    /**
+     * Expected parameters:
+     * 1)user
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         HttpSession session = request.getSession();

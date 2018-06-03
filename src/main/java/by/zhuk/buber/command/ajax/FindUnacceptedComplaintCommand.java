@@ -12,17 +12,23 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * Class include info how to react to a ajax FindUnacceptedComplaint
+ * Admin command
+ */
 public class FindUnacceptedComplaintCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUnacceptedComplaintCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)index
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
         ComplaintReceiver complaintReceiver = new ComplaintReceiver();
         String stringIndex = request.getParameter(UserConstant.INDEX);
         int index;
-        if (!IntegerValidator.isInteger(stringIndex)) {
+        if (!IntegerValidator.isUnsignedInteger(stringIndex)) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);

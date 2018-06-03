@@ -15,14 +15,20 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax SignIn
+ */
 public class SignInCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignInCommand.class);
 
     private static final String LOGIN_NOT_VALID = "loginNotValid";
     private static final String PASSWORD_NOT_MATCH_LOGIN = "passwordNotMatchLogin";
     private static final String REDIRECT_PAGE = "redirectPage";
-
+    /**
+     * Expected parameters:
+     * 1)login
+     * 2)password
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         String login = request.getParameter(UserConstant.LOGIN);

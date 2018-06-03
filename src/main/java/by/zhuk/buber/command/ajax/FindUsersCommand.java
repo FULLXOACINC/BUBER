@@ -10,12 +10,18 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * Class include info how to react to a ajax FindUsers
+ * Admin command
+ */
 public class FindUsersCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String PATTERN = "pattern";
     private static final String USERS = "users";
-
+    /**
+     * Expected parameters:
+     * 1)pattern
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

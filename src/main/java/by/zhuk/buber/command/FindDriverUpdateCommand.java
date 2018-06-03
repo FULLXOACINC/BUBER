@@ -10,11 +10,15 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a FindDriverUpdate
+ */
 public class FindDriverUpdateCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindUserCommand.class);
 
-
+    /**
+     * Expected parameters: -
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         String login = request.getParameter(DriverConstant.DRIVER);

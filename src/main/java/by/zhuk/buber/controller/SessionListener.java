@@ -6,6 +6,9 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.Enumeration;
 
+/**
+ * WebListener ,listener creating and destroying the session, when creating a session, its attributes will be put in the standard language: RU
+ */
 @WebListener
 public class SessionListener implements HttpSessionListener {
     private static final String LANG = "lang";

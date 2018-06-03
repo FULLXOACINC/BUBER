@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Web filter,When trying to access the admin resources, it will check if the user has the right to do this
+ */
 @WebFilter(urlPatterns = {"/*"}, filterName = "adminFilter")
 public class AdminFilter implements Filter {
     private static Logger logger = LogManager.getLogger(AdminFilter.class);

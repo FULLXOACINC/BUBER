@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user_first_name,user_last_name,user_phone_number by login
+ */
 public class FindUserInfoForRideSpecification implements FindSpecification<User> {
     private static final String SELECT_USER_RIDE_INFO_LOGIN = "SELECT user_first_name,user_last_name,user_phone_number FROM buber_db.user WHERE user_login=?";
     private String login;

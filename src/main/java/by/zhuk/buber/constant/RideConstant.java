@@ -1,5 +1,7 @@
 package by.zhuk.buber.constant;
-
+/**
+ * Class include Ride constant
+ */
 public class RideConstant {
     public static final String RIDE_ID = "rideId";
     public static final String IS_DRIVER_START = "isDriverStart";

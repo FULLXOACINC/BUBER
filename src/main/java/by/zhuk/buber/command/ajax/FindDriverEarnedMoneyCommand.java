@@ -13,11 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax FindDriverEarnedMoney
+ * Driver command
+ */
 public class FindDriverEarnedMoneyCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindDriverEarnedMoneyCommand.class);
 
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

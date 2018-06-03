@@ -2,6 +2,7 @@ package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class User {
     private String login;
@@ -13,13 +14,13 @@ public class User {
     private String phoneNumber;
     private BigDecimal balance;
     private UserType type;
-    private float discount;
+    private BigDecimal discount;
 
 
     public User() {
     }
 
-    public User(String login, String firstName, String lastName, String password, LocalDate birthDay, boolean isBaned, String phoneNumber, BigDecimal balance, UserType type, float discount) {
+    public User(String login, String firstName, String lastName, String password, LocalDate birthDay, boolean isBaned, String phoneNumber, BigDecimal balance, UserType type, BigDecimal discount) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -104,11 +105,11 @@ public class User {
         this.type = type;
     }
 
-    public float getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
@@ -116,5 +117,46 @@ public class User {
         balance = balance.add(moneyAmount);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return isBaned == user.isBaned &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(birthDay, user.birthDay) &&
+                Objects.equals(phoneNumber, user.phoneNumber) &&
+                Objects.equals(balance, user.balance) &&
+                type == user.type &&
+                Objects.equals(discount, user.discount);
+    }
 
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(login, firstName, lastName, password, birthDay, isBaned, phoneNumber, balance, type, discount);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", birthDay=" + birthDay +
+                ", isBaned=" + isBaned +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", balance=" + balance +
+                ", type=" + type +
+                ", discount=" + discount +
+                '}';
+    }
 }

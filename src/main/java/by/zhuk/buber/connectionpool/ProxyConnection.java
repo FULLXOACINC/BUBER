@@ -21,6 +21,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
+/**
+ * Class is proxy of Connection
+ * @see Connection,ConnectionPool
+ * Pattern: proxy
+ */
 public class ProxyConnection implements Connection {
     private Connection connection;
 

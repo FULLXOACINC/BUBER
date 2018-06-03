@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user_login by user_phone_number
+ * Check is phone number exist
+ */
 public class FindUserByPhoneNumberSpecification implements FindSpecification<User> {
     private static final String SELECT_BY_LOGIN = "SELECT user_login FROM buber_db.user WHERE user_phone_number=?";
     private String phoneNumber;

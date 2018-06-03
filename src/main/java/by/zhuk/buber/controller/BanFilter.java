@@ -22,7 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
-
+/**
+ * Web filter,if user banned redirect to sign in with attr banned=true
+ */
 @WebFilter(urlPatterns = {"/*"}, filterName = "banFilter")
 public class BanFilter implements Filter {
     private static Logger logger = LogManager.getLogger(BanFilter.class);

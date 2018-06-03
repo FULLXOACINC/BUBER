@@ -28,6 +28,12 @@ public class GeoDecoder {
     private static final String LAT = "lat";
     private static final String LNG = "lng";
 
+    /**
+     * Mathod decode addrec to coordinate with google geodecode api
+     *
+     * @return coordinate if decode end correct,else return
+     * @throws ReceiverException throws when there are problems json and google decode api
+     */
     public Optional<Coordinate> decodeCoordinate(String address) throws ReceiverException {
         HttpClient httpClient = new HttpClient();
         address = address.replaceAll(" ", "+");
@@ -64,6 +70,13 @@ public class GeoDecoder {
         }
     }
 
+    /**
+     * Method parse json
+     *
+     * @return parse JSONObject by HttpMethod
+     * @throws IOException throws when there are problems json and oauth protocol
+     * @see JSONObject,HttpMethod,InputStreamReader,JSONTokener
+     */
     private JSONObject parseResult(HttpMethod method) throws IOException {
         return new JSONObject(
                 new JSONTokener(new InputStreamReader(method.getResponseBodyAsStream())));

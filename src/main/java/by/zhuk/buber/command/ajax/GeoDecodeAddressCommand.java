@@ -11,12 +11,17 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax GeoDecodeAddress
+ */
 public class GeoDecodeAddressCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(GeoDecodeAddressCommand.class);
     private static final String CURRENT_ADDRESS = "currentAddress";
     private static final String CURRENT = "current";
-
+    /**
+     * Expected parameters:
+     * 1)currentAddress
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

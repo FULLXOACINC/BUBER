@@ -4,9 +4,13 @@ import by.zhuk.buber.constant.PagesConstant;
 import by.zhuk.buber.constant.UserConstant;
 
 import javax.servlet.http.HttpServletRequest;
-
+/**
+ * Class include info how to react to a SignOut
+ */
 public class SignOutCommand implements Command {
-
+    /**
+     * Expected parameters: -
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         request.getSession().removeAttribute(UserConstant.LOGIN);

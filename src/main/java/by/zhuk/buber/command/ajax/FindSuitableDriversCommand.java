@@ -16,13 +16,19 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-
+/**
+ * Class include info how to react to a ajax FindSuitableDrivers
+ */
 public class FindSuitableDriversCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindSuitableDriversCommand.class);
     private static final String POSITIVE_MARK = "positiveMark";
     private static final String NEGATIVE_MARK = "negativeMark";
 
-
+    /**
+     * Expected parameters:
+     * 1)lat
+     * 2)lng
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

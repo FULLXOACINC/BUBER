@@ -1,5 +1,7 @@
 package by.zhuk.buber.command;
-
+/**
+ * Enum include type of get command
+ */
 public enum GetCommandType {
     OAUTH(new OAuthCommand()),
     SIGN_UP_ACCEPT(new SignUpAcceptCommand()),

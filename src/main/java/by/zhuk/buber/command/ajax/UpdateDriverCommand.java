@@ -14,10 +14,20 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax UpdateDriver
+ * Admin command
+ */
 public class UpdateDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)login
+     * 2)carNumber
+     * 3)documentId
+     * 4)carMark
+     * 5)tariff
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

@@ -10,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
-
+/**
+ * Class include info how to react to a ajax FillUpBalance
+ */
 public class FillUpBalanceCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FillUpBalanceCommand.class);
     private static final String MONEY_AMOUNT = "moneyAmount";
@@ -18,7 +20,11 @@ public class FillUpBalanceCommand implements AJAXCommand {
     private static final String OUT_OF_BOUND_BALANCE = "outOfBoundBalance";
     private static final String UNKNOWN_MONEY_FORMAT = "unknownMoneyFormat";
 
-
+    /**
+     * Expected parameters:
+     * 1)cardNumber
+     * 2)moneyAmount
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

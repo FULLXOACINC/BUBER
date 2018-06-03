@@ -1,5 +1,7 @@
 package by.zhuk.buber.validator;
-
+/**
+ * Class include method to validate distance info
+ */
 public class DistanceValidator {
     private static final int MAX_DISTANCE = 200000;
     private static final int MIN_DISTANCE = 2000;

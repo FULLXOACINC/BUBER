@@ -11,10 +11,14 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a FindUserProfile
+ */
 public class FindUserProfileCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindUserProfileCommand.class);
-
+    /**
+     * Expected parameters: -
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         UserReceiver userReceiver = new UserReceiver();

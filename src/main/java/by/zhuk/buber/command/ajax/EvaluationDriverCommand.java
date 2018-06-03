@@ -16,11 +16,17 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax EvaluationDriver
+ */
 public class EvaluationDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(EvaluationDriverCommand.class);
     private static final String POSITIVE = "positive";
-
+    /**
+     * Expected parameters:
+     * 1)rideId
+     * 2)evaluationType
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -34,7 +40,7 @@ public class EvaluationDriverCommand implements AJAXCommand {
             json.put(EvaluationConstant.NOT_EXIST_EVALUATION_TOKEN, EvaluationConstant.NOT_EXIST_EVALUATION_TOKEN);
             return json;
         }
-        if (!IntegerValidator.isInteger(rideId)) {
+        if (!IntegerValidator.isUnsignedInteger(rideId)) {
             json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
             return json;
         }

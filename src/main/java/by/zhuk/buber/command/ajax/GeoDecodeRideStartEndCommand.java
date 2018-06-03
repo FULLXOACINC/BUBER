@@ -11,12 +11,18 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax GeoDecodeRideStartEnd
+ */
 public class GeoDecodeRideStartEndCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(GeoDecodeRideStartEndCommand.class);
     private static final String START_ADDRESS = "startAddress";
     private static final String END_ADDRESS = "endAddress";
-
+    /**
+     * Expected parameters:
+     * 1)startAddress
+     * 2)endAddress
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

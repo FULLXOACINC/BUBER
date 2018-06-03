@@ -29,6 +29,7 @@ import org.apache.logging.log4j.Logger;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Class include method to interaction with things connection with user business logic
  */
@@ -36,7 +37,13 @@ public class UserReceiver {
     private static Logger logger = LogManager.getLogger(UserReceiver.class);
     private static final BigDecimal MAX_USER_BALANCE = new BigDecimal("100000.00");
 
-
+    /**
+     * Method find user by login
+     *
+     * @return user if exist ,else Optional.empty()
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserByLoginSpecification,Finder
+     */
     public Optional<User> findUserByLogin(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
         Finder<User> userFinder = new Finder<>();
@@ -48,6 +55,13 @@ public class UserReceiver {
         return user;
     }
 
+    /**
+     * Method check is exist user with phone number
+     *
+     * @return true if exist, else false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserByPhoneNumberSpecification,Finder
+     */
     public boolean isPhoneNumberExist(String number) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByPhoneNumberSpecification(number);
         Finder<User> userFinder = new Finder<>();
@@ -56,6 +70,13 @@ public class UserReceiver {
         return !users.isEmpty();
     }
 
+    /**
+     * Method check is exist user with login
+     *
+     * @return true is exist, else false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserByLoginSpecification,Finder
+     */
     public boolean isLoginExist(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByLoginSpecification(login);
         Finder<User> userFinder = new Finder<>();
@@ -63,6 +84,15 @@ public class UserReceiver {
         return !users.isEmpty();
     }
 
+    /**
+     * Method fill up balance
+     * 1)Find balance
+     * 2)Add moneyAmount to balance
+     *
+     * @return true if exist, else false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserByLoginSpecification,Finder,Repository,RepositoryController,UpdateUserBalanceSpecification
+     */
     public void fillUpBalance(String login, String moneyAmount) throws ReceiverException {
         BigDecimal money = new BigDecimal(moneyAmount);
         FindSpecification<User> specification = new FindUserBalanceSpecification(login);
@@ -85,6 +115,13 @@ public class UserReceiver {
         }
     }
 
+    /**
+     * Method check is user balance full(<= 100000.00) if add to balance moneyAmount
+     *
+     * @return true if full, else false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserBalanceSpecification,Finder,BigDecimal
+     */
     public boolean isUserBalanceFull(String login, String moneyAmount) throws ReceiverException {
         BigDecimal money = new BigDecimal(moneyAmount);
         FindSpecification<User> specification = new FindUserBalanceSpecification(login);
@@ -99,13 +136,27 @@ public class UserReceiver {
         return user.getBalance().compareTo(MAX_USER_BALANCE) < 0;
     }
 
+    /**
+     * Method find all user complaint
+     *
+     * @return list of complaint
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserComplaintsSpecification,Finder
+     */
     public List<Complaint> findUserComplaints(String login) throws ReceiverException {
         FindSpecification<Complaint> specification = new FindUserComplaintsSpecification(login);
         Finder<Complaint> complaintFinder = new Finder<>();
         return complaintFinder.findBySpecification(specification);
     }
 
-    public boolean isBalanceNegative(String login) throws ReceiverException {
+    /**
+     * Method check is user balance negative or empty(equel 0.00)
+     *
+     * @return true if negative or empty, else false
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserBalanceSpecification,Finder
+     */
+    public boolean isBalanceNegativeOrEmpty(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserBalanceSpecification(login);
         Finder<User> userFinder = new Finder<>();
         List<User> users = userFinder.findBySpecification(specification);
@@ -116,17 +167,31 @@ public class UserReceiver {
         return balance.signum() <= 0;
     }
 
-    public Optional<Float> findUserDiscount(String login) throws ReceiverException {
+    /**
+     * Method find user discount
+     *
+     * @return discount if user exist,else Optional.empty()
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserDiscountSpecification,Finder
+     */
+    public Optional<BigDecimal> findUserDiscount(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserDiscountSpecification(login);
         Finder<User> userFinder = new Finder<>();
         List<User> users = userFinder.findBySpecification(specification);
-        Optional<Float> discount = Optional.empty();
+        Optional<BigDecimal> discount = Optional.empty();
         if (!users.isEmpty()) {
             discount = Optional.of(users.get(0).getDiscount());
         }
         return discount;
     }
 
+    /**
+     * Method find user ride info
+     *
+     * @return User if user exist,else Optional.empty()
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserInfoForRideSpecification,Finder
+     */
     public Optional<User> findUserInfoForRide(String login) throws ReceiverException {
         FindSpecification<User> specification = new FindUserInfoForRideSpecification(login);
         Finder<User> finder = new Finder<>();
@@ -138,6 +203,12 @@ public class UserReceiver {
         return user;
     }
 
+    /**
+     * Method update user profile: first name,last name phone number
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see UpdateUserProfileSpecification,Repository,RepositoryController
+     */
     public void updateUser(String login, String firstName, String lastName, String phoneNumber) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -151,6 +222,12 @@ public class UserReceiver {
         }
     }
 
+    /**
+     * Method change user password
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see UpdateUserPasswordSpecification,Repository,RepositoryController
+     */
     public void changePassword(String login, String password) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -163,7 +240,12 @@ public class UserReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method switch user ban status
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see UpdateUserBanStatusSpecification,Repository,RepositoryController
+     */
     public void switchBan(String login, boolean isBanned) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
@@ -176,7 +258,12 @@ public class UserReceiver {
         }
 
     }
-
+    /**
+     * Method switch user ban status
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see UpdateUserBanStatusSpecification,Repository,RepositoryController
+     */
     public void switchAdminStatus(String login, UserType type, boolean isExDriver) throws ReceiverException {
         Repository repository = new Repository();
         RepositoryController controller = new RepositoryController(repository);
@@ -202,8 +289,13 @@ public class UserReceiver {
             throw new ReceiverException(e);
         }
     }
-
-    public void changeDiscount(float discount, String login) throws ReceiverException {
+    /**
+     * Method update user discount
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see UpdateUserDiscountSpecification,Repository,RepositoryController
+     */
+    public void changeDiscount(BigDecimal discount, String login) throws ReceiverException {
         Repository<User> repository = new Repository<>();
         RepositoryController controller = new RepositoryController(repository);
         try {
@@ -214,7 +306,12 @@ public class UserReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method find user by pattern
+     *
+     * @throws ReceiverException throws when there are problems with the database
+     * @see FindUserByPatternSpecification,Finder
+     */
     public List<User> findUsersByPattern(String findPattern) throws ReceiverException {
         FindSpecification<User> specification = new FindUserByPatternSpecification(findPattern);
         Finder<User> userFinder = new Finder<>();

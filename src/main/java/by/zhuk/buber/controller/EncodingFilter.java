@@ -10,6 +10,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
+/**
+ * First filter,converts text from the request to the desired encoding(UTF-8)
+ */
 @WebFilter(urlPatterns = {"/*"}, filterName = "encodingFilter",
         initParams = {
                 @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param")})

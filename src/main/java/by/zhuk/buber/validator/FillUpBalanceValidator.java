@@ -1,5 +1,7 @@
 package by.zhuk.buber.validator;
-
+/**
+ * Class include method to validate money and payment info
+ */
 public class FillUpBalanceValidator {
     private static final String MONEY_FORMAT_REGEXP = "[1-9]\\d*\\.\\d{2}";
     private static final String CARD_NUMBER_REGEXP = "\\d{16}";

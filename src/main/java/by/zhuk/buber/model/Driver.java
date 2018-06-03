@@ -1,6 +1,7 @@
 package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Driver extends User {
     private String carNumber;
@@ -93,5 +94,48 @@ public class Driver extends User {
 
     public void setEarnedMoney(BigDecimal earnedMoney) {
         this.earnedMoney = earnedMoney;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Driver driver = (Driver) o;
+        return Float.compare(driver.currentLatCoordinate, currentLatCoordinate) == 0 &&
+                Float.compare(driver.currentLngCoordinate, currentLngCoordinate) == 0 &&
+                isWorking == driver.isWorking &&
+                positiveMark == driver.positiveMark &&
+                negativeMark == driver.negativeMark &&
+                Objects.equals(carNumber, driver.carNumber) &&
+                Objects.equals(documentId, driver.documentId) &&
+                Objects.equals(carMark, driver.carMark) &&
+                Objects.equals(tariff, driver.tariff) &&
+                Objects.equals(earnedMoney, driver.earnedMoney);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(carNumber, documentId, carMark, currentLatCoordinate, currentLngCoordinate, isWorking, positiveMark, negativeMark, tariff, earnedMoney);
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "carNumber='" + carNumber + '\'' +
+                ", documentId='" + documentId + '\'' +
+                ", carMark=" + carMark +
+                ", currentLatCoordinate=" + currentLatCoordinate +
+                ", currentLngCoordinate=" + currentLngCoordinate +
+                ", isWorking=" + isWorking +
+                ", positiveMark=" + positiveMark +
+                ", negativeMark=" + negativeMark +
+                ", tariff=" + tariff +
+                ", earnedMoney=" + earnedMoney +
+                '}';
     }
 }

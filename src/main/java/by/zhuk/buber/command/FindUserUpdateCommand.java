@@ -11,11 +11,15 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a FindUserUpdate
+ */
 public class FindUserUpdateCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindUserCommand.class);
 
-
+    /**
+     * Expected parameters: -
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         HttpSession session = request.getSession();

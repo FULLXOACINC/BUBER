@@ -18,11 +18,15 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax FindRideInfoPassenger
+ */
 public class FindRideInfoPassengerCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindRideInfoPassengerCommand.class);
 
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

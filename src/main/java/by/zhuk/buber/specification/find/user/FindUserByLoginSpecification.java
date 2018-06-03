@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user_first_name, user_last_name, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount by login
+ */
 public class FindUserByLoginSpecification implements FindSpecification<User> {
     private static final String SELECT_BY_LOGIN = "SELECT user_first_name, user_last_name, user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban, user_discount FROM buber_db.user WHERE user_login=?";
     private String login;
@@ -50,7 +52,7 @@ public class FindUserByLoginSpecification implements FindSpecification<User> {
                 user.setPhoneNumber(resultSet.getString(6));
                 boolean isBaned = resultSet.getBoolean(7);
                 user.setBaned(isBaned);
-                user.setDiscount(resultSet.getFloat(8));
+                user.setDiscount(resultSet.getBigDecimal(8));
                 users.add(user);
             }
         } catch (SQLException e) {

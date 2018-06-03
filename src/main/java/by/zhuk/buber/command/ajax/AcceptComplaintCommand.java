@@ -10,12 +10,16 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * au
+ * Class include info how to react to a ajax AcceptComplaint
+ * Admin command
  */
 public class AcceptComplaintCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String ID = "id";
-
+    /**
+     * Expected parameters:
+     * 1)id
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

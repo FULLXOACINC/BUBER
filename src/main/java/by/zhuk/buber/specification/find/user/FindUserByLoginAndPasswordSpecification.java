@@ -9,9 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user_login balance by login and password
+ * Check is password match login
+ */
 public class FindUserByLoginAndPasswordSpecification implements FindSpecification<User> {
-    private static final String SELECT_BY_LOGIN_AND_PASSWORD = "SELECT user_login,user_first_name FROM buber_db.user WHERE user_login=? AND user_password=SHA1(?)";
+    private static final String SELECT_BY_LOGIN_AND_PASSWORD = "SELECT user_login FROM buber_db.user WHERE user_login=? AND user_password=SHA1(?)";
     private String login;
     private String password;
 
@@ -44,7 +47,6 @@ public class FindUserByLoginAndPasswordSpecification implements FindSpecificatio
 
                 User user = new User();
                 user.setLogin(resultSet.getString(1));
-                user.setFirstName(resultSet.getString(2));
                 users.add(user);
             }
         } catch (SQLException e) {

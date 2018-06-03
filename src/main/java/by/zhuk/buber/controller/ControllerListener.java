@@ -7,7 +7,9 @@ import by.zhuk.buber.userpool.PoolCleaner;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-
+/**
+ * WebListener ,processes init and destroy action :init conection pool,start pool cleaner
+ */
 @WebListener
 public class ControllerListener implements ServletContextListener {
     private static int SIGN_UP_CLEAR_TIME = 300;

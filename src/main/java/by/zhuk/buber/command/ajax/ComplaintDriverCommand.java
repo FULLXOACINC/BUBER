@@ -16,10 +16,17 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax ComplaintDriver
+ * Driver command
+ */
 public class ComplaintDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(ComplaintDriverCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)rideId
+     * 2)complaint
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -35,7 +42,7 @@ public class ComplaintDriverCommand implements AJAXCommand {
             json.put(ComplaintConstant.NOT_EXIST_COMPLAINT_TOKEN, ComplaintConstant.NOT_EXIST_COMPLAINT_TOKEN);
             return json;
         }
-        if (!IntegerValidator.isInteger(rideId)) {
+        if (!IntegerValidator.isUnsignedInteger(rideId)) {
             json.put(ErrorConstant.ERROR, ErrorConstant.ERROR);
             return json;
         }

@@ -19,13 +19,18 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-
+/**
+ * Class include info how to react to a ajax FindDriverRideHistory
+ * Driver command
+ */
 public class FindDriverRideHistoryCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
 
     private static final String PASSENGER_LOGIN = "passengerLogin";
     private static final String PASSENGER_PHONE_NUMBER = "passengerPhoneNumber";
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -34,7 +39,7 @@ public class FindDriverRideHistoryCommand implements AJAXCommand {
         RideReceiver rideReceiver = new RideReceiver();
         String stringIndex = request.getParameter(UserConstant.INDEX);
         int index;
-        if (!IntegerValidator.isInteger(stringIndex)) {
+        if (!IntegerValidator.isUnsignedInteger(stringIndex)) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);

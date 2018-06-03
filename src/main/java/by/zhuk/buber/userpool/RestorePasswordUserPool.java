@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
-
+/**
+ * Class singleton that hold restore password info
+ */
 public class RestorePasswordUserPool {
     private static Logger logger = LogManager.getLogger(RestorePasswordUserPool.class);
     private static RestorePasswordUserPool instance;

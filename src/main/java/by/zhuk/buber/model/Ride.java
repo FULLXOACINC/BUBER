@@ -2,6 +2,7 @@ package by.zhuk.buber.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Ride {
     private int rideId;
@@ -102,5 +103,50 @@ public class Ride {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ride ride = (Ride) o;
+        return rideId == ride.rideId &&
+                isDriverAcceptStart == ride.isDriverAcceptStart &&
+                isPassengerAcceptStart == ride.isPassengerAcceptStart &&
+                isDriverAcceptEnd == ride.isDriverAcceptEnd &&
+                isPassengerAcceptEnd == ride.isPassengerAcceptEnd &&
+                Objects.equals(driver, ride.driver) &&
+                Objects.equals(passenger, ride.passenger) &&
+                Objects.equals(price, ride.price) &&
+                Objects.equals(date, ride.date) &&
+                Objects.equals(startCoordinate, ride.startCoordinate) &&
+                Objects.equals(endCoordinate, ride.endCoordinate);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(rideId, driver, passenger, price, date, startCoordinate, endCoordinate, isDriverAcceptStart, isPassengerAcceptStart, isDriverAcceptEnd, isPassengerAcceptEnd);
+    }
+
+    @Override
+    public String toString() {
+        return "Ride{" +
+                "rideId=" + rideId +
+                ", driver=" + driver +
+                ", passenger=" + passenger +
+                ", price=" + price +
+                ", date=" + date +
+                ", startCoordinate=" + startCoordinate +
+                ", endCoordinate=" + endCoordinate +
+                ", isDriverAcceptStart=" + isDriverAcceptStart +
+                ", isPassengerAcceptStart=" + isPassengerAcceptStart +
+                ", isDriverAcceptEnd=" + isDriverAcceptEnd +
+                ", isPassengerAcceptEnd=" + isPassengerAcceptEnd +
+                '}';
     }
 }

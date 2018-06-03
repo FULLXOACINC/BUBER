@@ -1,5 +1,7 @@
 package by.zhuk.buber.oauth;
-
+/**
+ * Enum include type of oauth
+ */
 public enum OAuthType {
     YANDEX(new OAuthYandex()),
     GOOGLE(new OAuthGoogle());

@@ -11,11 +11,16 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/**
+ * Class include info how to react to a ajax DriverSetNotWorkingStatus
+ * Driver command
+ */
 public class DriverSetNotWorkingStatusCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
 
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

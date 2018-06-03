@@ -13,11 +13,17 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax WithdrawEarningDriverMoney
+ * Driver command
+ */
 public class WithdrawEarningDriverMoneyCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(WithdrawEarningDriverMoneyCommand.class);
 
-
+    /**
+     * Expected parameters:
+     * 1)cardNumber
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

@@ -17,10 +17,15 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax FindRideInfoDriver
+ * Driver command
+ */
 public class FindRideInfoDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindRideInfoDriverCommand.class);
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

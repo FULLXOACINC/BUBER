@@ -1,7 +1,11 @@
 package by.zhuk.buber.command;
 
 import java.util.Optional;
-
+/**
+ * Class-factory get command
+ * Pattern: factory method
+ * @see Command,GetCommandType
+ */
 public class GetCommandFactory {
 
 

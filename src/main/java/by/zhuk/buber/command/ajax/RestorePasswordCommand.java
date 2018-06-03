@@ -4,7 +4,6 @@ import by.zhuk.buber.constant.ErrorConstant;
 import by.zhuk.buber.constant.UserConstant;
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.receiver.RestorePasswordReceiver;
-import by.zhuk.buber.receiver.SignInReceiver;
 import by.zhuk.buber.receiver.UserReceiver;
 import by.zhuk.buber.validator.UserValidator;
 import org.apache.logging.log4j.LogManager;
@@ -14,12 +13,19 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Class include info how to react to a ajax RestorePassword
+ */
 public class RestorePasswordCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RestorePasswordCommand.class);
 
-    private static final String NOT_VALID_LOGIN = "notValidLogin";
 
-
+    /**
+     * Expected parameters:
+     * 1)login
+     * 2)password
+     * 3)repeatPassword
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -33,7 +39,7 @@ public class RestorePasswordCommand implements AJAXCommand {
         RestorePasswordReceiver restorePasswordReceiver = new RestorePasswordReceiver();
 
         if (!UserValidator.isLoginValid(login)) {
-            json.put(NOT_VALID_LOGIN, NOT_VALID_LOGIN);
+            json.put(UserConstant.NOT_VALID_LOGIN, UserConstant.NOT_VALID_LOGIN);
         }
 
         try {

@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * Web filter,if the user is not authorized and accesses the page inaccessible to unauthorized users then redirect to sign in page
+ */
 @WebFilter(urlPatterns = {"/*"}, filterName = "signInFilter")
 public class SignInFilter implements Filter {
     private static final String JS_FILE_EXPANSION = ".js";

@@ -3,6 +3,7 @@ package by.zhuk.buber.specification.update.user;
 import by.zhuk.buber.exception.SpecificationException;
 import by.zhuk.buber.specification.Specification;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 /**
@@ -11,9 +12,9 @@ import java.sql.SQLException;
 public class UpdateUserDiscountSpecification implements Specification {
     private static final String UPDATE_DISCOUNT_FIELD_BY_LOGIN = "UPDATE buber_db.user SET user_discount=? WHERE user_login=?";
     private String login;
-    private float discount;
+    private BigDecimal discount;
 
-    public UpdateUserDiscountSpecification(String login, float discount) {
+    public UpdateUserDiscountSpecification(String login, BigDecimal discount) {
         this.login = login;
         this.discount = discount;
     }
@@ -26,7 +27,7 @@ public class UpdateUserDiscountSpecification implements Specification {
     @Override
     public void setupPreparedStatement(PreparedStatement statement) throws SpecificationException {
         try {
-            statement.setFloat(1, discount);
+            statement.setBigDecimal(1, discount);
             statement.setString(2, login);
         } catch (SQLException e) {
             throw new SpecificationException(e);

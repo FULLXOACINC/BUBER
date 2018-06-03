@@ -1,5 +1,7 @@
 package by.zhuk.buber.command.ajax;
-
+/**
+ * Enum include type of ajax command
+ */
 public enum AJAXCommandType {
     FIND_USERS(new FindUsersCommand()),
     SIGN_UP_USER(new SignUpUserCommand()),

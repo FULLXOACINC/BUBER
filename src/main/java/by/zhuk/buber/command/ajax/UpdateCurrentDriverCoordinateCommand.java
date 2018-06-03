@@ -12,11 +12,18 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/**
+ * Class include info how to react to a ajax UpdateCurrentDriverCoordinate
+ * Driver command
+ */
 public class UpdateCurrentDriverCoordinateCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(UpdateCurrentDriverCoordinateCommand.class);
 
-
+    /**
+     * Expected parameters:
+     * 1)lat
+     * 2)lng
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

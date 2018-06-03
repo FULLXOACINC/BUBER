@@ -1,5 +1,7 @@
 package by.zhuk.buber.constant;
-
+/**
+ * Class include Geo constant
+ */
 public class GeoConstant {
     public static final String LNG = "lng";
     public static final String LAT = "lat";

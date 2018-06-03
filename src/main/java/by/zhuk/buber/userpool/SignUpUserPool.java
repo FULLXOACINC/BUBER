@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
-
+/**
+ * Class singleton that hold sign up info
+ */
 public class SignUpUserPool {
     private static Logger logger = LogManager.getLogger(SignUpUserPool.class);
     private static SignUpUserPool instance;

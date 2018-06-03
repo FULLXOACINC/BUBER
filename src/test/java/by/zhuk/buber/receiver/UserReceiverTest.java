@@ -4,6 +4,7 @@ import by.zhuk.buber.exception.ReceiverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public class UserReceiverTest {
@@ -13,8 +14,8 @@ public class UserReceiverTest {
         UserReceiver userReceiver = new UserReceiver();
 
         try {
-            Optional<Float> discountOptional = userReceiver.findUserDiscount("san91130324@gmail.com");
-            Assert.assertEquals(discountOptional.get(), 0.99f, 0.001);
+            Optional<BigDecimal> discountOptional = userReceiver.findUserDiscount("san91130324@gmail.com");
+            Assert.assertEquals(discountOptional.get(), new BigDecimal("0.00"));
         } catch (ReceiverException e) {
             Assert.fail("Test mast not throw Exception");
         }

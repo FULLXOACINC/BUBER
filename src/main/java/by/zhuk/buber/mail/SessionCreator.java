@@ -4,7 +4,10 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
-
+/**
+ * Class include method to create mail session
+ * @see Session,PasswordAuthentication
+ */
 public class SessionCreator {
     private String username;
     private String userPassword;

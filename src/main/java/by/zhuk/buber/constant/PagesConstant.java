@@ -1,5 +1,7 @@
 package by.zhuk.buber.constant;
-
+/**
+ * Class include jsp system page
+ */
 public class PagesConstant {
     public static final String WELCOME_PAGE = "/jsp/welcome.jsp";
     public static final String RESTORE_PASSWORD = "/jsp/restorePassword.jsp";

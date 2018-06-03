@@ -14,7 +14,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * Filter save last user action,necessary for correct translation
+ */
 @WebFilter(urlPatterns = {"/*"}, filterName = "lastPageFilter")
 public class LastPageFilter implements Filter {
     private static final String JSP = "/jsp";

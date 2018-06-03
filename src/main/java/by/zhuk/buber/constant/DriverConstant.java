@@ -1,5 +1,7 @@
 package by.zhuk.buber.constant;
-
+/**
+ * Class include Command constant
+ */
 public class DriverConstant {
     public static final String DRIVER = "driver";
     public static final String NO_EARNED_MONEY = "noEarnedMoney";

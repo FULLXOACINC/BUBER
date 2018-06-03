@@ -23,7 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax CreateRide
+ */
 public class CreateRideCommand implements AJAXCommand {
 
     private static Logger logger = LogManager.getLogger(CreateRideCommand.class);
@@ -36,7 +38,14 @@ public class CreateRideCommand implements AJAXCommand {
 
     private static final BigDecimal THOUSAND = new BigDecimal("1000.00");
     private static final int ROUND = 2;
-
+    /**
+     * Expected parameters:
+     * 1)driver
+     * 2)startLat
+     * 3)startLng
+     * 4)endLat
+     * 5)endLng
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -65,7 +74,7 @@ public class CreateRideCommand implements AJAXCommand {
             if (!driverReceiver.isDriverExist(driverLogin)) {
                 json.put(DriverConstant.DRIVER_NOT_EXIST, DriverConstant.DRIVER_NOT_EXIST);
             }
-            if (userReceiver.isBalanceNegative(login)) {
+            if (userReceiver.isBalanceNegativeOrEmpty(login)) {
                 json.put(BALANCE_NEGATIVE, BALANCE_NEGATIVE);
             }
             if (rideReceiver.isRideExist(login)) {
@@ -87,15 +96,15 @@ public class CreateRideCommand implements AJAXCommand {
                 if (json.length() == 0) {
                     BigDecimal bigDecimalDistance = new BigDecimal(distance);
                     Optional<BigDecimal> tariffOptional = driverReceiver.findDriverTariff(driverLogin);
-                    Optional<Float> discountOptional = userReceiver.findUserDiscount(login);
+                    Optional<BigDecimal> discountOptional = userReceiver.findUserDiscount(login);
                     Optional<Driver> driverOptional = driverReceiver.findDriverInfoForRide(driverLogin);
                     Optional<User> userOptional = userReceiver.findUserInfoForRide(login);
                     if (tariffOptional.isPresent() && discountOptional.isPresent() && userOptional.isPresent() && driverOptional.isPresent()) {
                         BigDecimal tariff = tariffOptional.get();
-                        Float discount = discountOptional.get();
+                        BigDecimal discount = discountOptional.get();
                         Driver driver = driverOptional.get();
                         User user = userOptional.get();
-                        BigDecimal bigDecimalDiscount = new BigDecimal(1 - discount);
+                        BigDecimal bigDecimalDiscount = new BigDecimal("1.00").subtract(discount);
                         BigDecimal price = tariff.multiply(bigDecimalDistance).multiply(bigDecimalDiscount).divide(THOUSAND, ROUND, BigDecimal.ROUND_HALF_UP);
                         rideReceiver.createRide(driverLogin, login, startLat, startLng, endLat, endLng, price);
 

@@ -15,11 +15,20 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax FindDistanceInfo
+ */
 public class FindDistanceInfoCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindDistanceInfoCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)startLat
+     * 2)startLng
+     * 3)endLat
+     * 4)endLng
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -41,10 +50,10 @@ public class FindDistanceInfoCommand implements AJAXCommand {
             if (optionalDistanceInfo.isPresent()) {
                 DistanceInfo distanceInfo = optionalDistanceInfo.get();
                 UserReceiver userReceiver = new UserReceiver();
-                Optional<Float> discountOptional = userReceiver.findUserDiscount(login);
+                Optional<BigDecimal> discountOptional = userReceiver.findUserDiscount(login);
 
                 if (discountOptional.isPresent()) {
-                    Float discount = discountOptional.get();
+                    BigDecimal discount = discountOptional.get();
 
                     json.put(GeoConstant.DISTANCE, distanceInfo.getDistance());
                     json.put(GeoConstant.DURATION, distanceInfo.getDuration());

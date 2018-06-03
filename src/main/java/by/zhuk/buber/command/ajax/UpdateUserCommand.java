@@ -13,10 +13,17 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax UpdateUser
+ */
 public class UpdateUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(UpdateUserCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)firstName
+     * 2)lastName
+     * 3)phoneNumber
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

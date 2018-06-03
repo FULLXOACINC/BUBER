@@ -22,6 +22,7 @@ import by.zhuk.buber.specification.find.ride.FindRideInfoDriverSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideInfoPassengerSpecification;
 import by.zhuk.buber.specification.find.ride.FindRidePassengerLoginByRideIdSpecification;
 import by.zhuk.buber.specification.find.user.FindUserBalanceSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverCoordinateSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverEarnedMoneySpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideAllAcceptSpecification;
@@ -167,6 +168,9 @@ public class RideReceiver {
             Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true, driverLogin);
             driverRepository.update(updateDriverIsWorkingSpecification);
 
+            Specification updateDriverCoodinateSpecification = new UpdateDriverCoordinateSpecification(ride.getEndCoordinate().getLat(),ride.getEndCoordinate().getLng(), driverLogin);
+            driverRepository.update(updateDriverCoodinateSpecification);
+
             controller.commit();
             controller.endTransaction();
         } catch (RepositoryException e) {
@@ -218,6 +222,7 @@ public class RideReceiver {
 
             Specification updateDriverIsWorkingSpecification = new UpdateDriverIsWorkingSpecification(true, driverLogin);
             driverRepository.update(updateDriverIsWorkingSpecification);
+
 
 
             controller.commit();

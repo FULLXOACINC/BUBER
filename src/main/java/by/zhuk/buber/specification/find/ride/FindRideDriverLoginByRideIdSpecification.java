@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Ride> find ride driver login by ride id
+ */
 public class FindRideDriverLoginByRideIdSpecification implements FindSpecification<Ride> {
     private static final String SELECT_DRIVER_LOGIN_BY_ID = "SELECT ride_driver_login FROM buber_db.ride WHERE ride_index=?";
     private int rideId;

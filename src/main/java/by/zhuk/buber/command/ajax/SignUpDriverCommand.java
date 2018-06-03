@@ -14,13 +14,23 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
-
+/**
+ * Class include info how to react to a ajax SignUpDriver
+ * Admin command
+ */
 public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
 
     private static final String DRIVER_EXIST = "driverExist";
 
-
+    /**
+     * Expected parameters:
+     * 1)login
+     * 2)carNumber
+     * 3)documentId
+     * 4)carMark
+     * 5)tariff
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

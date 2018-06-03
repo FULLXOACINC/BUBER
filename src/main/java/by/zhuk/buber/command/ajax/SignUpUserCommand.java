@@ -13,14 +13,24 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/**
+ * Class include info how to react to a ajax SignUpUser
+ */
 public class SignUpUserCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpUserCommand.class);
 
-    private static final String NOT_VALID_LOGIN = "notValidLogin";
     private static final String LOGIN_EXIST = "loginExist";
     private static final String BIRTH_DAY_NOT_VALID = "birthDayNotValid";
-
+    /**
+     * Expected parameters:
+     * 1)login
+     * 2)firstName
+     * 3)lastName
+     * 4)password
+     * 5)repeatPassword
+     * 6)BirthDay
+     * 7)phoneNumber
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -39,7 +49,7 @@ public class SignUpUserCommand implements AJAXCommand {
         SignUpReceiver signUpReceiver = new SignUpReceiver();
 
         if (!UserValidator.isLoginValid(login)) {
-            json.put(NOT_VALID_LOGIN, NOT_VALID_LOGIN);
+            json.put(UserConstant.NOT_VALID_LOGIN, UserConstant.NOT_VALID_LOGIN);
         }
 
         try {

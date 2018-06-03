@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user balance by login
+ */
 public class FindUserBalanceSpecification implements FindSpecification<User> {
     private static final String SELECT_USER_BALANCE_BY_LOGIN = "SELECT user_balance FROM buber_db.user WHERE user_login=?";
     private String login;

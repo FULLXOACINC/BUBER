@@ -10,10 +10,15 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a FindUser
+ */
 public class FindUserCommand implements Command {
     private static Logger logger = LogManager.getLogger(FindUserCommand.class);
-
+    /**
+     * Expected parameters:
+     * 1)user
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         String login = request.getParameter(UserConstant.USER);

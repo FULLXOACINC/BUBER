@@ -16,10 +16,14 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax AcceptEndRidePassenger
+ */
 public class AcceptEndRidePassengerCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(AcceptEndRidePassengerCommand.class);
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

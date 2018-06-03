@@ -13,11 +13,16 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a RestorePassword
+ */
 public class RestorePasswordAcceptCommand implements Command {
     private static Logger logger = LogManager.getLogger(RestorePasswordAcceptCommand.class);
     private static final String HASH_PARAM = "hash";
-
+    /**
+     * Expected parameters:
+     * 1)hash
+     */
     @Override
     public Router execute(HttpServletRequest request) {
         String hash = request.getParameter(HASH_PARAM);

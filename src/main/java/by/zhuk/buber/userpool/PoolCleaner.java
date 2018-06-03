@@ -7,7 +7,10 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalTime;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * Class that clean SignUpUserPool and RestorePasswordUserPool if element in it timeout
+ * @see RestorePasswordUserPool,Runnable,SignUpUserPool
+ */
 public class PoolCleaner implements Runnable {
     private static Logger logger = LogManager.getLogger(PoolCleaner.class);
     private int timeOut;

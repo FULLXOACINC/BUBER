@@ -1,5 +1,6 @@
 function hideAllMessage() {
     $('#all-correct').hide();
+    $('#repeat-pls').hide();
 }
 
 $(document).ready(function () {
@@ -14,10 +15,15 @@ $(document).ready(function () {
                 discount: $('#discount').val()
             },
             success: function (response) {
-                if (!response['error']) {
+                if (response['allCorrect']) {
                     $('#all-correct').show();
                 } else {
-                    viewServerError();
+                    if(response['error']){
+                        viewServerError();
+
+                    }else {
+                        $('#repeat-pls').show();
+                    }
                 }
 
             },

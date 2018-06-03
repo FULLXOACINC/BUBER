@@ -1,5 +1,8 @@
 package by.zhuk.buber.exception;
 
+/**
+ * Class Exception created on business logic level
+ */
 public class ReceiverException extends Exception {
     public ReceiverException() {
     }

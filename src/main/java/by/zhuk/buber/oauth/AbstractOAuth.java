@@ -1,6 +1,7 @@
 package by.zhuk.buber.oauth;
 
 import by.zhuk.buber.constant.CommandConstant;
+import by.zhuk.buber.specification.Specification;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.logging.log4j.Level;
@@ -13,7 +14,9 @@ import java.net.URLEncoder;
 import java.util.Formatter;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-
+/**
+ * Class include methods to interaction with oauth protocol
+ */
 public abstract class AbstractOAuth {
     private static Logger logger = LogManager.getLogger(AbstractOAuth.class);
     private final static String ACCESS_TOKEN = "access_token";

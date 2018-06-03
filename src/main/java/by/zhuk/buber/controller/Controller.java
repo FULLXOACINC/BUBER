@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
-
+/**
+ * Http servlet ,processes the main requests related to the transition to other pages
+ */
 @WebServlet(urlPatterns = {"/Controller"}, name = "Controller")
 public class Controller extends HttpServlet {
     private static Logger logger = LogManager.getLogger(Controller.class);

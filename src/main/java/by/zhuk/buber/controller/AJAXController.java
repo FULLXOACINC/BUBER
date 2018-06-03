@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-
+/**
+ * Http servlet ,processes the ajax requests
+ */
 @WebServlet(urlPatterns = {"/AJAXController/*"}, name = "AJAXController")
 public class AJAXController extends HttpServlet {
     private static Logger logger = LogManager.getLogger(Controller.class);

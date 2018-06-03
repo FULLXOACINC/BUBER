@@ -1,5 +1,7 @@
 package by.zhuk.buber.command;
-
+/**
+ * Enum include type of post command
+ */
 public enum PostCommandType {
     LANG(new LangChangeCommand()),
     SIGN_OUT(new SignOutCommand()),

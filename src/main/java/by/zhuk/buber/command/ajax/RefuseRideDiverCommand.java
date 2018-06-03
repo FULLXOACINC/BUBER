@@ -17,11 +17,16 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
-
+/**
+ * Class include info how to react to a ajax RefuseRideDiver
+ * Driver command
+ */
 public class RefuseRideDiverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(RefuseRideDiverCommand.class);
     private static final String DEFAULT_DRIVER_REFUSE_COMPLAINT = "DEFAULT_DRIVER_REFUSE_COMPLAINT";
-
+    /**
+     * Expected parameters:-
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();

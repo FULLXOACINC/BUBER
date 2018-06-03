@@ -13,12 +13,18 @@ import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * Class include info how to react to a ajax FindUserComplaint
+ */
 public class FindUserComplaintCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(FindUsersCommand.class);
     private static final String IS_ACCEPT = "isAccept";
 
-
+    /**
+     * Expected parameters:
+     * 1)index
+     * 2)login
+     */
     @Override
     public JSONObject execute(HttpServletRequest request) {
         JSONObject json = new JSONObject();
@@ -27,7 +33,7 @@ public class FindUserComplaintCommand implements AJAXCommand {
         UserReceiver userReceiver = new UserReceiver();
         String stringIndex = request.getParameter(UserConstant.INDEX);
         int index;
-        if (!IntegerValidator.isInteger(stringIndex)) {
+        if (!IntegerValidator.isUnsignedInteger(stringIndex)) {
             index = 0;
         } else {
             index = Integer.parseInt(stringIndex);

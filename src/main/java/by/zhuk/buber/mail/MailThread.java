@@ -11,7 +11,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Class send mail to email
+ * @see Thread
+ */
 public class MailThread extends Thread {
     private static Logger logger = LogManager.getLogger(MailThread.class);
 

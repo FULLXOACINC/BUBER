@@ -1,5 +1,7 @@
 package by.zhuk.buber.model;
 
+import java.util.Objects;
+
 public class CarMark {
     private int index;
     private String markName;
@@ -18,6 +20,25 @@ public class CarMark {
 
     public void setMarkName(String markName) {
         this.markName = markName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarMark carMark = (CarMark) o;
+        return index == carMark.index &&
+                Objects.equals(markName, carMark.markName);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(index, markName);
     }
 
     @Override

@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<User> find user_login by login, first name ,last name and phone number
+ * Use in search of users
+ */
 public class FindUserByPatternSpecification implements FindSpecification<User> {
     private static final String SELECT_BY_PATTERN = "SELECT user_login FROM buber_db.user WHERE user_login LIKE ? OR user_first_name LIKE ? OR user_last_name LIKE ? OR user_phone_number LIKE ?";
     private String loginPattern;
