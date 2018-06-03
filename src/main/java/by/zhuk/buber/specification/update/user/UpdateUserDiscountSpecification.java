@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update user discount by login: user_discount=discount
+ */
 public class UpdateUserDiscountSpecification implements Specification {
     private static final String UPDATE_DISCOUNT_FIELD_BY_LOGIN = "UPDATE buber_db.user SET user_discount=? WHERE user_login=?";
     private String login;

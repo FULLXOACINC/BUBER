@@ -6,6 +6,9 @@ import by.zhuk.buber.specification.Specification;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Specification update ride driver accept end by ride id: ride_is_driver_end_accept=1
+ */
 public class UpdateRideDriverAcceptEndSpecification implements Specification {
     private static final String UPDATE_RIDE_BY_RIDE_INDEX = "UPDATE buber_db.ride SET ride_is_driver_end_accept=1 WHERE ride_index=?";
     private int rideId;

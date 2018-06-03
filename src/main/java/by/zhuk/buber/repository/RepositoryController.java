@@ -1,10 +1,7 @@
 package by.zhuk.buber.repository;
 
 import by.zhuk.buber.connectionpool.ConnectionPool;
-import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.exception.RepositoryException;
-import by.zhuk.buber.specification.Specification;
-import by.zhuk.buber.specification.update.driver.UpdateDriverProfileCoordinateSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

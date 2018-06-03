@@ -5,15 +5,17 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-public class UpdateDriverProfileCoordinateSpecification implements Specification {
+/**
+ * Specification update driver coordinate : driver_current_lat_coordinate, driver_current_lng_coordinate
+ */
+public class UpdateDriverCoordinateSpecification implements Specification {
     private static final String UPDATE_DRIVER_COORDINATE_BY_LOGIN = "UPDATE buber_db.driver SET driver_current_lat_coordinate=?, driver_current_lng_coordinate=? WHERE driver_login=?";
     private float lat;
     private float lng;
     private String driverLogin;
 
 
-    public UpdateDriverProfileCoordinateSpecification(float lat, float lng, String driverLogin) {
+    public UpdateDriverCoordinateSpecification(float lat, float lng, String driverLogin) {
         this.lat = lat;
         this.lng = lng;
         this.driverLogin = driverLogin;

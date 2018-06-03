@@ -9,12 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-public class FindCurrentUserRideSpecification implements FindSpecification<Ride> {
+/**
+ * FindSpecification<Ride> find ride_index by complaint_person_login and complaint_ride_id (ride_passenger_login=? OR ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)
+ */
+public class FindCurrentPassengerRideSpecification implements FindSpecification<Ride> {
     private static final String SELECT_CURRENT_USER_RIDE = "SELECT ride_index FROM buber_db.ride WHERE (ride_passenger_login=? OR ride_driver_login=?)AND(ride_is_driver_end_accept=0 OR ride_is_driver_start_accept=0 OR ride_is_passenger_end_accept=0 OR ride_is_passenger_end_accept=0)";
     private String login;
 
-    public FindCurrentUserRideSpecification(String login) {
+    public FindCurrentPassengerRideSpecification(String login) {
         this.login = login;
     }
 

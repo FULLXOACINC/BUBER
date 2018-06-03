@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update driver info : driver_is_working= isWorking
+ */
 public class UpdateDriverIsWorkingSpecification implements Specification {
     private static final String UPDATE_IS_WORKING = "UPDATE buber_db.driver SET driver_is_working=? WHERE driver_login=?";
     private boolean isWorking;

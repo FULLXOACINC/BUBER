@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification change user password  by login: user_password=SHA1(password)
+ */
 public class UpdateUserPasswordSpecification implements Specification {
     private static final String UPDATE_DISCOUNT_FIELD_BY_LOGIN = "UPDATE buber_db.user SET user_password=SHA1(?) WHERE user_login=?";
     private String login;

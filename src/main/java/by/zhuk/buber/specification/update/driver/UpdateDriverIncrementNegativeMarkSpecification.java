@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update driver negative mark : driver_negative_mark=driver_negative_mark + 1
+ */
 public class UpdateDriverIncrementNegativeMarkSpecification implements Specification {
     private static final String UPDATE_DRIVER_INCREMENT_NEGATIVE_MARK = "UPDATE buber_db.driver SET driver_negative_mark=driver_negative_mark + 1 WHERE driver_login=?;";
     private String login;

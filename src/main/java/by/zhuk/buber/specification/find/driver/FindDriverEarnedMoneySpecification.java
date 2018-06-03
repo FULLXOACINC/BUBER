@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Driver> find driver earned money by driver login
+ */
 public class FindDriverEarnedMoneySpecification implements FindSpecification<Driver> {
     private static final String SELECT_DRIVER_EARNED_MONEY_BY_LOGIN = "SELECT driver_earned_money FROM buber_db.driver WHERE driver_login=?";
     private String login;

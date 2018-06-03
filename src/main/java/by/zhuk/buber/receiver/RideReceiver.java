@@ -14,7 +14,7 @@ import by.zhuk.buber.specification.Specification;
 import by.zhuk.buber.specification.add.AddRideSpecification;
 import by.zhuk.buber.specification.find.FindSpecification;
 import by.zhuk.buber.specification.find.driver.FindDriverEarnedMoneySpecification;
-import by.zhuk.buber.specification.find.ride.FindCurrentUserRideSpecification;
+import by.zhuk.buber.specification.find.ride.FindCurrentPassengerRideSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideDriverLoginByRideIdSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideHistoryDriverSpecification;
 import by.zhuk.buber.specification.find.ride.FindRideHistoryUserSpecification;
@@ -27,8 +27,8 @@ import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecificat
 import by.zhuk.buber.specification.update.ride.UpdateRideAllAcceptSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptEndSpecification;
 import by.zhuk.buber.specification.update.ride.UpdateRideDriverAcceptStartSpecification;
-import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptEndSpecification;
-import by.zhuk.buber.specification.update.ride.UpdateRideUserAcceptStartSpecification;
+import by.zhuk.buber.specification.update.ride.UpdateRidePassengerAcceptEndSpecification;
+import by.zhuk.buber.specification.update.ride.UpdateRidePassengerAcceptStartSpecification;
 import by.zhuk.buber.specification.update.user.UpdateUserBalanceSpecification;
 
 import java.math.BigDecimal;
@@ -76,7 +76,7 @@ public class RideReceiver {
     }
 
     public boolean isRideExist(String login) throws ReceiverException {
-        FindSpecification<Ride> specification = new FindCurrentUserRideSpecification(login);
+        FindSpecification<Ride> specification = new FindCurrentPassengerRideSpecification(login);
         Finder<Ride> finder = new Finder<>();
         List<Ride> rides = finder.findBySpecification(specification);
         return !rides.isEmpty();
@@ -124,7 +124,7 @@ public class RideReceiver {
         Repository<Ride> rideRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(rideRepository);
         try {
-            Specification rideUpdateSpecification = new UpdateRideUserAcceptStartSpecification(rideId);
+            Specification rideUpdateSpecification = new UpdateRidePassengerAcceptStartSpecification(rideId);
             rideRepository.update(rideUpdateSpecification);
             controller.end();
         } catch (RepositoryException e) {
@@ -142,7 +142,7 @@ public class RideReceiver {
         RepositoryController controller = new RepositoryController(rideRepository, driverRepository, userRepository);
         try {
             controller.startTransaction();
-            Specification rideUpdateSpecification = new UpdateRideUserAcceptEndSpecification(ride.getRideId());
+            Specification rideUpdateSpecification = new UpdateRidePassengerAcceptEndSpecification(ride.getRideId());
             rideRepository.update(rideUpdateSpecification);
 
             BigDecimal price = ride.getPrice();

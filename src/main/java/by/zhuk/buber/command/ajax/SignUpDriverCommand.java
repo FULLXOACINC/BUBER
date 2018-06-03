@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 public class SignUpDriverCommand implements AJAXCommand {
     private static Logger logger = LogManager.getLogger(SignUpDriverCommand.class);
 
-    private static final String USER_NOT_EXIST_NOT_VALID = "userNotExist";
     private static final String DRIVER_EXIST = "driverExist";
 
 
@@ -47,7 +46,7 @@ public class SignUpDriverCommand implements AJAXCommand {
         DriverReceiver driverReceiver = new DriverReceiver();
         try {
             if (!userReceiver.isLoginExist(login)) {
-                json.put(USER_NOT_EXIST_NOT_VALID, USER_NOT_EXIST_NOT_VALID);
+                json.put(UserConstant.LOGIN_NOT_EXIST, UserConstant.LOGIN_NOT_EXIST);
             }
             if (driverReceiver.isDriverExist(login)) {
                 json.put(DRIVER_EXIST, DRIVER_EXIST);

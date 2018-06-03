@@ -6,7 +6,9 @@ import by.zhuk.buber.specification.Specification;
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update driver earned money : driver_earned_money = earnedMoney
+ */
 public class UpdateDriverEarnedMoneySpecification implements Specification {
     private static final String UPDATE_EARNED_BY_LOGIN = "UPDATE buber_db.driver SET driver_earned_money=? WHERE driver_login=?";
     private String login;

@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update user profile  by login:user_first_name, user_last_name, user_phone_number
+ */
 public class UpdateUserProfileSpecification implements Specification {
     private static final String UPDATE_USER_PROFILE_BY_LOGIN = "UPDATE buber_db.user SET user_first_name=?, user_last_name=?, user_phone_number=? WHERE user_login=?";
     private String login;

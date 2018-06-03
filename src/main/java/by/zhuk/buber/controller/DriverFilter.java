@@ -65,14 +65,14 @@ public class DriverFilter implements Filter {
         boolean isAcceptStartRideDriver = command.equals(AJAXCommandType.ACCEPT_START_RIDE_DRIVER.name());
         boolean isAcceptEndRideDriver = command.equals(AJAXCommandType.ACCEPT_END_RIDE_DRIVER.name());
         boolean isFindRideInfoDriver = command.equals(AJAXCommandType.FIND_RIDE_INFO_DRIVER.name());
-        boolean isComplaintPassenger = command.equals(AJAXCommandType.COMPLAINT_PASSENGER.name());
+        boolean isComplaintDriver = command.equals(AJAXCommandType.COMPLAINT_DRIVER.name());
         boolean isRefuseRideDiver = command.equals(AJAXCommandType.REFUSE_RIDE_DRIVER.name());
         boolean isDriverSetNotWorkingStatus = command.equals(AJAXCommandType.DRIVER_SET_NOT_WORKING_STATUS.name());
         boolean isDriverSetWorkingStatus = command.equals(AJAXCommandType.DRIVER_SET_WORKING_STATUS.name());
         boolean isFindDriverRideHistory = command.equals(AJAXCommandType.FIND_DRIVER_RIDE_HISTORY.name());
         boolean isFindDriverEarnedMoney = command.equals(AJAXCommandType.FIND_DRIVER_EARNED_MONEY.name());
 
-        return isUpdateCurrentDriverCoordinate || isFindDriverRideHistory || isFindDriverEarnedMoney || isAcceptStartRideDriver || isAcceptEndRideDriver || isFindRideInfoDriver || isComplaintPassenger || isRefuseRideDiver || isDriverSetNotWorkingStatus || isDriverSetWorkingStatus;
+        return isUpdateCurrentDriverCoordinate || isFindDriverRideHistory || isFindDriverEarnedMoney || isAcceptStartRideDriver || isAcceptEndRideDriver || isFindRideInfoDriver || isComplaintDriver || isRefuseRideDiver || isDriverSetNotWorkingStatus || isDriverSetWorkingStatus;
     }
 
     @Override

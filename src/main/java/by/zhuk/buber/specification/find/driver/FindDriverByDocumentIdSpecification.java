@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Driver> find driver_document_id by driver_document_id
+ * Check is driver document id exist
+ */
 public class FindDriverByDocumentIdSpecification implements FindSpecification<Driver> {
     private static final String SELECT_BY_DRIVER_DOCUMENT_ID = "SELECT driver_document_id FROM buber_db.driver WHERE driver_document_id=?";
     private String documentId;

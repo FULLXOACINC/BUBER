@@ -6,7 +6,9 @@ import by.zhuk.buber.specification.Specification;
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update user balance  by login: user_balance=balance
+ */
 public class UpdateUserBalanceSpecification implements Specification {
     private static final String UPDATE_BALANCE_BY_LOGIN = "UPDATE buber_db.user SET user_balance=? WHERE user_login=?";
     private String login;

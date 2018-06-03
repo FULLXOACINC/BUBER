@@ -5,12 +5,14 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-public class UpdateRideUserAcceptStartSpecification implements Specification {
+/**
+ * Specification update ride passenger accept start by ride id: ride_is_passenger_start_accept=1
+ */
+public class UpdateRidePassengerAcceptStartSpecification implements Specification {
     private static final String UPDATE_RIDE_BY_RIDE_INDEX = "UPDATE buber_db.ride SET ride_is_passenger_start_accept=1 WHERE ride_index=?";
     private int rideId;
 
-    public UpdateRideUserAcceptStartSpecification(int rideId) {
+    public UpdateRidePassengerAcceptStartSpecification(int rideId) {
         this.rideId = rideId;
     }
 

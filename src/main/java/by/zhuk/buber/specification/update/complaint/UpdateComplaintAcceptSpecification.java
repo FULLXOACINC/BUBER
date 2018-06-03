@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification set complaint accept: complaint_is_accept=1
+ */
 public class UpdateComplaintAcceptSpecification implements Specification {
     private static final String UPDATE_ACCEPT_FIELD_BY_ID = "UPDATE buber_db.complaint SET complaint_is_accept=1 WHERE complaint_id=?";
     private String complaintId;

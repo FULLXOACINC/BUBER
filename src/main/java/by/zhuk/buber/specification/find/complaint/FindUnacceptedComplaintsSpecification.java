@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Complaint> find complaint_id,complaint_person_login,complaint_ride_id,complaint_text by complaint_is_accept=0
+ */
 public class FindUnacceptedComplaintsSpecification implements FindSpecification<Complaint> {
     private static final String SELECT_UNACCEPTED_COMPLAINTS = "SELECT complaint_id,complaint_person_login,complaint_ride_id,complaint_text FROM buber_db.complaint WHERE complaint_is_accept=0";
 

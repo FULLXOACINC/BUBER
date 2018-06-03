@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Driver> find driver_car_number,car_mark_id,car_mark_name,user_first_name,user_last_name,user_phone_number by driver_login inner join car_mark,driver,user
+ */
 public class FindDriverInfoForRideSpecification implements FindSpecification<Driver> {
     private static final String SELECT_RIDE_INFO_DRIVER = "SELECT driver_car_number,car_mark_id,car_mark_name,user_first_name,user_last_name,user_phone_number FROM buber_db.driver INNER JOIN buber_db.car_mark ON buber_db.car_mark.car_mark_id=buber_db.driver.driver_car_mark INNER JOIN buber_db.user ON buber_db.driver.driver_login=buber_db.user.user_login WHERE driver_login=?";
 

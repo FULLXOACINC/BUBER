@@ -6,7 +6,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification how to add to database driver
+ */
 public class AddDriverSpecification implements Specification {
     private static final String INSERT_DRIVER = "INSERT INTO buber_db.driver (driver_login, driver_car_number, driver_document_id, driver_car_mark, driver_current_lat_coordinate, driver_current_lng_coordinate, driver_is_working,driver_positive_mark, driver_negative_mark,driver_tariff) VALUES (?, ?, ? , ?, 54.238991, 35.238991, 0, 0, 0, ?);";
     private Driver driver;

@@ -6,7 +6,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification update user type(ADMIN,DRIVER,USER)  by login:user_type=type
+ */
 public class UpdateUserTypeSpecification implements Specification {
     private static final String UPDATE_USER_TYPE_FIELD_BY_LOGIN = "UPDATE buber_db.user SET user_type=? WHERE user_login=?";
     private UserType type;

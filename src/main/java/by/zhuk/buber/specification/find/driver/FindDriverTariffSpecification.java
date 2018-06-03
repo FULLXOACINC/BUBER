@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Driver> find driver tariff by driver login
+ */
 public class FindDriverTariffSpecification implements FindSpecification<Driver> {
     private static final String SELECT_BY_DRIVER_LOGIN = "SELECT driver_tariff FROM buber_db.driver WHERE driver_login=?";
     private String login;

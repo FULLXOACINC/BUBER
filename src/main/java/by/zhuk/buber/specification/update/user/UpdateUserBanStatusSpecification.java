@@ -5,7 +5,9 @@ import by.zhuk.buber.specification.Specification;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+/**
+ * Specification change user ban by login: user_password=SHA1(password)
+ */
 public class UpdateUserBanStatusSpecification implements Specification {
     private static final String UPDATE_BAN_FIELD_BY_LOGIN = "UPDATE buber_db.user SET user_is_ban=? WHERE user_login=?";
     private String login;

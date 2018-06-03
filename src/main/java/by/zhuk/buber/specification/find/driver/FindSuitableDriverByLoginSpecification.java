@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Find only 3 driver order by positive mark
+ * FindSpecification<Driver> find driver_login by SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate-?,2))<5 AND driver_is_working=1 AND driver_login=? inner join car_mark,driver
+ */
 public class FindSuitableDriverByLoginSpecification implements FindSpecification<Driver> {
     private static final String SELECT_SUITABLE_DRIVER = "SELECT driver_login FROM buber_db.driver WHERE SQRT(POW(driver_current_lat_coordinate- ?,2) + POW(driver_current_lng_coordinate- ?,2))<5 AND driver_is_working=1 AND driver_login=? ORDER BY driver_positive_mark DESC LIMIT 3";
     private float lat;

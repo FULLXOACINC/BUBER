@@ -2,6 +2,8 @@ package by.zhuk.buber.receiver;
 
 import by.zhuk.buber.exception.ReceiverException;
 import by.zhuk.buber.oauth.AbstractOAuth;
+import by.zhuk.buber.specification.Specification;
+import by.zhuk.buber.specification.find.driver.FindDriverByLoginSpecification;
 import by.zhuk.buber.validator.JSONValidator;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
@@ -16,7 +18,13 @@ import java.io.InputStreamReader;
  */
 public class OAuthReceiver {
 
-
+    /**
+     * Method find email by code, token and oAuth
+     *
+     * @return true if exist,else is not exist
+     * @throws ReceiverException throws when there are problems json and oauth protocol
+     * @see Specification,HttpClient,HttpMethod,JSONValidator,JSONObject
+     */
     public String findEmail(AbstractOAuth oAuth, String code) throws ReceiverException {
 
         HttpClient httpClient = new HttpClient();
@@ -41,7 +49,13 @@ public class OAuthReceiver {
             throw new ReceiverException(e);
         }
     }
-
+    /**
+     * Method parse json
+     *
+     * @return parse JSONObject by HttpMethod
+     * @throws IOException throws when there are problems json and oauth protocol
+     * @see JSONObject,HttpMethod,InputStreamReader,JSONTokener
+     */
     private JSONObject parseResult(HttpMethod method) throws IOException {
         return new JSONObject(
                 new JSONTokener(new InputStreamReader(method.getResponseBodyAsStream())));

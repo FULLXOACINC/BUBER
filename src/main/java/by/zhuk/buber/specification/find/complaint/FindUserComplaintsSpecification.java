@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Complaint> find complaint_id,complaint_ride_id,complaint_text,complaint_is_accept by complaint_person_login
+ */
 public class FindUserComplaintsSpecification implements FindSpecification<Complaint> {
     private static final String SELECT_COMPLAINTS_BY_LOGIN = "SELECT complaint_id,complaint_ride_id,complaint_text,complaint_is_accept FROM buber_db.complaint WHERE complaint_person_login=?";
     private String login;

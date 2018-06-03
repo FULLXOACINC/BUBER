@@ -22,7 +22,7 @@ import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementNegativeMa
 import by.zhuk.buber.specification.update.driver.UpdateDriverIncrementPositiveMarkSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverInfoSpecification;
 import by.zhuk.buber.specification.update.driver.UpdateDriverIsWorkingSpecification;
-import by.zhuk.buber.specification.update.driver.UpdateDriverProfileCoordinateSpecification;
+import by.zhuk.buber.specification.update.driver.UpdateDriverCoordinateSpecification;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -180,13 +180,13 @@ public class DriverReceiver {
      * @param lat current target latitude
      * @param lng current target longitude
      * @throws ReceiverException throws when there are problems with the database
-     * @see Specification,Repository,RepositoryController,UpdateDriverProfileCoordinateSpecification
+     * @see Specification,Repository,RepositoryController, UpdateDriverCoordinateSpecification
      */
     public void updateCurrentCoordinate(float lat, float lng, String driverLogin) throws ReceiverException {
         Repository<Driver> driverRepository = new Repository<>();
         RepositoryController controller = new RepositoryController(driverRepository);
 
-        Specification driverUpdateSpecification = new UpdateDriverProfileCoordinateSpecification(lat, lng, driverLogin);
+        Specification driverUpdateSpecification = new UpdateDriverCoordinateSpecification(lat, lng, driverLogin);
         try {
             driverRepository.update(driverUpdateSpecification);
             controller.end();

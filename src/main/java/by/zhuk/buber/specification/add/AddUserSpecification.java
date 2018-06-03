@@ -10,11 +10,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+/**
+ * Specification how to add to database driver
+ */
 public class AddUserSpecification implements Specification {
 
     private static final String INSERT_USER = "INSERT INTO buber_db.user (user_login, user_first_name, user_last_name, user_password,user_type, user_balance, user_birth_dey, user_phone_number, user_is_ban,user_discount) VALUES ( ? , ? , ? , SHA1(?), ?, ?, ?, ?, '0',0.0)";
-    private User user;
     private String login;
     private String firstName;
     private String lastName;
@@ -23,10 +24,6 @@ public class AddUserSpecification implements Specification {
     private BigDecimal balance;
     private LocalDate birthDay;
     private String phoneNumber;
-
-    public AddUserSpecification(User user) {
-        this.user = user;
-    }
 
     public AddUserSpecification(String login, String firstName, String lastName, String password, UserType type, BigDecimal balance, LocalDate birthDay, String phoneNumber) {
         this.login = login;

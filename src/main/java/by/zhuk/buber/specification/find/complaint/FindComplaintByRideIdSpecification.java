@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Complaint> find complaint_id by complaint_person_login and complaint_ride_id
+ */
 public class FindComplaintByRideIdSpecification implements FindSpecification<Complaint> {
     private static final String SELECT_COMPLAINTS_BY_LOGIN = "SELECT complaint_id FROM buber_db.complaint WHERE complaint_person_login!=? AND complaint_ride_id=?";
     private String login;

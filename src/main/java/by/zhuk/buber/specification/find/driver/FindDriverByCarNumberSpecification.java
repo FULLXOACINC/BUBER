@@ -9,7 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * FindSpecification<Driver> find driver_car_number by driver_car_number
+ * Check is car number exist
+ */
 public class FindDriverByCarNumberSpecification implements FindSpecification<Driver> {
     private static final String SELECT_BY_DRIVER_CAR_NUMBER = "SELECT driver_car_number FROM buber_db.driver WHERE driver_car_number=?";
     private String carNumber;

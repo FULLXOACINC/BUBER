@@ -7,6 +7,9 @@ import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Specification update driver info : driver_car_number, driver_document_id, driver_car_mark,driver_tariff
+ */
 public class UpdateDriverInfoSpecification implements Specification {
     private static final String UPDATE_DRIVER_BY_LOGIN = "UPDATE buber_db.driver SET driver_car_number=? , driver_document_id=?, driver_car_mark=?,driver_tariff=? WHERE driver_login=?";
     private String login;
