@@ -21,74 +21,29 @@ public class RideReceiverTest {
     }
 
     @Test
-    public void testCreateRide() throws Exception {
+    public void IsRidePositiveExist() {
+        RideReceiver rideReceiver = new RideReceiver();
+
+        try {
+            boolean result = rideReceiver.isRideExist("san91130324@gmail.com");
+            Assert.assertFalse(result);
+        } catch (ReceiverException e) {
+            Assert.fail("Test mast not throw Exception " + e.getMessage());
+        }
     }
 
     @Test
-    public void testIsRideExist() throws Exception {
+    public void testSendUserMail() {
+        RideReceiver rideReceiver = new RideReceiver();
+        rideReceiver.sendUserMail("buberteam@gmail.com", "1", "1", "1", "ru","1","ru");
+
     }
 
     @Test
-    public void testSendUserMail() throws Exception {
+    public void testSendDriverMail() {
+        RideReceiver rideReceiver = new RideReceiver();
+        rideReceiver.sendDriverMail("buberteam@gmail.com", "1", "1", "1", "ru");
+
     }
 
-    @Test
-    public void testSendDriverMail() throws Exception {
-    }
-
-    @Test
-    public void testFindCurrentUserRide() throws Exception {
-    }
-
-    @Test
-    public void testPassengerAcceptStart() throws Exception {
-    }
-
-    @Test
-    public void testPassengerAcceptEnd() throws Exception {
-    }
-
-    @Test
-    public void testFindDriverLoginByRide() throws Exception {
-    }
-
-    @Test
-    public void testPassengerRefuse() throws Exception {
-    }
-
-    @Test
-    public void testSendRefuseUserMail() throws Exception {
-    }
-
-    @Test
-    public void testSendRefuseDriverMail() throws Exception {
-    }
-
-    @Test
-    public void testFindCurrentDriverRide() throws Exception {
-    }
-
-    @Test
-    public void testDriverAcceptStart() throws Exception {
-    }
-
-    @Test
-    public void testDriverAcceptEnd() throws Exception {
-    }
-
-    @Test
-    public void testFindPassengerLoginByRide() throws Exception {
-    }
-
-    @Test
-    public void testDriverRefuse() throws Exception {
-    }
-
-    @Test
-    public void testFindDriverRideHistory() throws Exception {
-    }
-
-    @Test
-    public void testFindUserRideHistory(){
-    }
 }
